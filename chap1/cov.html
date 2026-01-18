@@ -1,0 +1,330 @@
+<head>
+<title>EDE Chapter 1: Introduction</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Change of Variables</h3>
+</center>
+<h4>Discussion</h4>
+Basically, there is only one way to solve a first-order differential equation.
+That is to convert it to exact form and integrate it. We have applied this to
+exact equations, which are already in exact form; to separable equations,
+which are in exact form after they are separated; and to linear equations,
+which are in exact form after they are multiplied by an integrating factor.
+There is one other standard approach to putting a first-order equation in
+exact form, making a change of variables. Two instances where this works are
+Bernoulli equations and homogeneous equations. (WARNING: The term homogeneous
+has several different meanings in differential equations. We will encounter
+the term later with a completely different meaning in Chapter 2.)
+
+<h4>Bernoulli Equations</h4>
+An equation is a Bernoulli equation if it can be written in the form
+$$
+\frac{dy}{dx} + p(x)y = q(x)y^n
+$$
+for some $n$. Bernoulli equations are almost linear equations, they just have
+an
+extra $y^n$  term. We can make a change of variables to get rid of this term
+and rewrite the equation as a linear equation.
+Let $y = v^{1/(1-n)}$. Then $y^n=v^{n/(1-n)}$ and
+$$
+\frac{dy}{dx} = \frac{1}{1-n}v^{1/(1-n)-1}\frac{dv}{dx}
+=\frac{1}{1-n}v^{n/(1-n)}\frac{dv}{dx}
+$$
+so plugging into our equation we obtain
+$$
+\frac{1}{1-n}v^{n/(1-n)}\frac{dv}{dx} + p(x)v^{1/(1-n)}=q(x)v^{n/(1-n)}
+$$
+Dividing through by $[1/(1-n)]v^{n/(1-n)}$       we obtain
+$$
+\frac{dv}{dx} + (1-n)p(x)v = (1-n)q(x)
+$$
+which is linear. We now solve the linear equation using ordinary techniques.
+Finally, since the original problem is stated in terms of $x$ and $y$, the
+answer
+should be given in terms of $x$ and $y$ --- not $v$. So we undo our
+substitution
+by writing $y=v^{1/(1-n)}$. We must also check for singular solutions of the
+form
+$y=0$ since the substitution of $y=v^{1/(1-n)}$ is equivalent to dividing by
+$y$ if $n>1$.
+
+<h4>Paradigm</h4>
+$$
+\frac{dy}{dx}+3y=e^xy^2 $$
+<i>STEP 1:</i> Make the substitution $y = v^{1/(1-n)}$.
+<p />
+Here $n=2$ so $y = v^{-1}$
+$$
+\begin{align}
+\frac{dy}{dx}&=-v^{-2}\frac{dv}{dx} \\
+y^2&=v^{-2}
+\end{align}
+$$
+and the equation is
+$$
+-v^{-2}\frac{dv}{dx}+3v^{-1}=e^xv^{-2}.
+  $$
+<i>STEP 2:</i> Divide through by $v^{-n}$ (or equivalently multiply through by $v^n$ to obtain a linear equation
+$$
+\frac{dv}{dx}-3v=-e^x.
+$$
+<i>STEP 3:</i>Solve the linear equation for v
+<p />
+We follow the paradigm for a linear equation.
+<ol>
+<li> $\mu(x) = e^{\int -3\,dx} =  e^{-3x}$<p /></li>
+<li> $e^{-3x}\frac{dv}{dx}-3e^{-3x}v=-e^{-2x}$<p /></li>
+<li> $\frac{d}{dx}(e^{-3x}v)=-e^{-2x}$<p /></li>
+<li> $e^{-3x}v=\int -e^{-2x}\,dx=(1/2)e^{-2x}+C$<p /></li>
+<li> $v=(1/2)e^x+Ce^{3x}$<p /></li>
+</ol>
+<p />
+<i>STEP 4:</i> Back substitute to find $y$
+$$
+y=v^{-1}=[(1/2)e^x+Ce^{3x}]^{-1}
+$$
+<i>STEP 5:</i> Check for singular solution $y=0$.
+$$0+3\cdot0=e^x\cdot0$$
+so $y=0$ is a solution as well.
+<p />
+
+<h4>Homogeneous Equations</h4>
+An equation is homogeneous if it can be written in the form
+$$
+\frac{dy}{dx}=f(y/x)
+$$
+for some function $f$. Usually, it takes some algebraic manipulation to
+convert the equation to this form. Often, the equation is given in the form
+$$
+\frac{dy}{dx}=\frac{a_nx^n+a_{n-1}x^{n-1}y+a_{n-2}x^{n-2}y^2+\ldots+a_0y^n}{
+b_nx^n+b_{n-1}x^{n-1}y+b_{n-2}x^{n-2}y^2+\ldots+b_0y^n}
+$$
+In this case, divide through by $x^n$  to obtain the desired form. Once the
+equation is in the desired form, we make the change of variables $v=y/x$ so
+that $y=xv$ and $dy/dx=xdv/dx+v$.
+Plugging into our equation we obtain
+$$
+x\frac{dv}{dx}+v=f(v)
+$$
+which is separable.  We now solve the separable equation using ordinary
+techniques.  Finally, since the original problem is stated in terms of $x$ and
+$y$, the answer should be given in terms of $x$ and $y$, not $v$. So we
+undo our substitution by writing  $y = xv$.
+
+<h4>Paradigm</h4>
+$$
+\frac{dy}{dx}=\frac{2xy}{x^2+y^2}
+$$
+<i>Step 0:</i> Convert to homogeneous form
+<p />
+In this case, every term has order 2 so we divide by $x^2$ to obtain
+$$
+\frac{dy}{dx}=\frac{2(y/x)}{1+(y/x)^2}
+$$
+<i>Step 1:</i> Make the substitution $v=y/x$
+<p />
+This is equivalent to $y=xv$ so we get $dy/dx=x\,dv/dx+v$
+and plugging into the equation yields
+$$
+x\frac{dv}{dx}+v=\frac{2v}{1+v^2}
+$$
+<i>Step 2:</i> Solve the separable equation 
+<p />
+We use the paradigm for separable equations:
+<ol>
+<li> Separate the variables
+$$
+\begin{align}
+x\frac{dv}{dx}&=\frac{2v}{1+v^2}-v=\frac{v-v^3}{1+v^2} \\
+\frac{(1+v^2)dv}{v-v^3}&=\frac{dx}{x}
+\end{align}
+$$</li>
+<li> Integrate both sides
+$$
+\log(\frac{v}{v^2-1})=\log(x)+C
+$$</li>
+<li>Solve for $v$
+$$
+\begin{align}
+\frac{v}{v^2-1}&=kx \\
+v&=\frac{1\pm\sqrt{1+4k^2x^2}}{2kx}
+\end{align}
+$$</li>
+<li>Check for singular solutions.
+<p />
+We divided by $v^3-v$ which is $0$ at $v=0$ and $v=\pm1$. 
+None of these is 
+included in the general solution so they are all singular 
+solutions.
+</li>
+</ol>
+<p />
+<i>Step 3:</i> Back Substitute $v=y/x$ to find $y$
+$$
+y=\frac{1\pm\sqrt{1+4k^2x^2}}{2k}
+$$
+is the general solution and the singular solutions are 
+$$
+\begin{align}
+y&=0 \\
+y&=\pm x.
+\end{align}
+$$
+
+<h4>Example 1: A Bernoulli Initial Value Problem</h4> 
+$$\frac{dy}{dx}+y=\cos(x)/y, \qquad y(0)=1$$
+FIRST: Find the general solution.
+<p />
+Step 1: Let $y=v^{1/2}$ then
+$$(1/2)v^{-1/2}\frac{dv}{dx}+v^{1/2}=\cos(x)/v^{1/2}$$
+Step 2: $\displaystyle\frac{dv}{dx}+2v=2\cos(x)$
+<p />
+Step 3: Solving for $v$
+<ol>
+<li> $\mu(x)=e^{\int2\,dx}=e^{2x}$<p /></li>
+<li> $\displaystyle e^{2x}\frac{dv}{dx}+2e^{2x}v=2e^{2x}\cos(x)$<p /></li>
+<li> $\displaystyle \frac{d}{dx}(e^{2x}v)=2e^{2x}\cos(x)$<p /></li>
+<li> $\displaystyle e^{2x}v=\int 2e^{2x}\cos(x)\,dx
+= e^{2x}\left(\frac45\cos(x)+\frac25\sin(x)\right)+C $<p /></li>
+<li> $\displaystyle v(x)=\left(\frac45\cos(x)+\frac25\sin(x)\right)+Ce^{-2x}$
+<p /></li>
+</ol>
+<p />
+Step 4: $\displaystyle y(x)=\sqrt{\frac45\cos(x)+\frac25\sin(x)+Ce^{-2x}} 
+$
+<p />
+Step 5: $y=0$ is not a solution (can't have $\cos(x)/0$ on right-hand-side).
+<p />
+SECOND: Plug in the initial value and solve for the arbitrary constant.
+$$ \begin{align} 
+y(0)=\sqrt{\frac45\cos(0)+\frac25\sin(0)+Ce^0}&{\buildrel \text{set} \over 
+= } 
+\sqrt{\frac45+C}&=1 \\
+C&=\frac15 \end{align} $$
+So $\displaystyle y(x)=\sqrt{\frac45\cos(x)+\frac25\sin(x)+\frac15e^{-2x}} 
+$
+<p />
+
+<h4>Example 2: A Homogeneous Initial Value Problem</h4>
+$$
+\frac{dy}{dx}=\frac{3y^2+4xy+2x^2}{2xy+x^2},\qquad y(1)=2
+$$
+FIRST: Find the general solution:
+<p />
+Step 0: Divide top and bottom by $x^2$ to have everything in terms of $y/x$.
+$$
+\frac{dy}{dx}=\frac{3(y/x)^2+4(y/x)+2}{2(y/x)+1}
+$$
+Step 1: Let $v=y/x$ (or $y=xv$) to get
+$$
+x\frac{dv}{dx}+v=\frac{3v^2+4v+2}{2v+1}
+$$
+Step 2: We now solve this equation using the separable paradigm.
+<ol>
+<li>
+$$\begin{align}
+x\frac{dv}{dx}&=\frac{3v^2+4v+2}{2v+1}-v \\
+x\frac{dv}{dx}&=\frac{v^2+3v+2}{2v+1} \\
+\frac{2v+1\,dv}{v^2+3v+2}&=\frac{dx}{x}
+\end{align}$$
+</li>
+<li>Partial fractions gives us $\displaystyle \frac{2v+1}{v^2+3v+2}=\frac{3}{v+2}-\frac{1}{v+1}$, so
+$$\begin{align}
+\int\frac{2v+1\,dv}{v^2+3v+2}&=\int\frac{dx}{x} \\
+3\int\frac{dv}{v+2}-\int\frac{dv}{v+1}&=\int\frac{dx}{x} \\
+3\log(v+2)-\log(v+1)&=\log(x)+C \\
+(v+2)^3&=kx(v+1).
+\end{align}$$
+</li>
+</ol>
+Step 3: Back-substitute $v=y/x$ and to get $(y/x+2)^3=kx(y/x+1)$. We can multiply through by $x^3$
+to simplify this to
+$$(y+2x)^3=kx^3(y+x).$$
+SECOND: Now that we have the general solution, we can use the initial values $y(1)=2$ to find the 
+constant $k$. Plugging in $x=1$ and $y=2$ we get
+$$\begin{align}
+(2+2)^3&=k(2+1) \\
+64&=3k \\
+64/3=k
+\end{align}$$
+which gives us our final answer
+$$
+3(y+2x)^2=64x^3(y+x).
+$$
+
+<h4>Example 3: A Homogeneous Initial Value Problem (Singular Solution)</h4> 
+$$\frac{dy}{dx}=\frac{40x-11y}{2x-y},\qquad 
+y(1)=8$$
+FIRST: Find the general solution:
+<p />
+Step 0: Divide top and bottom by $x$ to have everything in terms of $y/x$.
+$$
+\frac{dy}{dx}=\frac{40-11(y/x)}{2-(y/x)}
+$$
+Step 1: Let $v=y/x$ (or $y=xv$) to get
+$$
+x\frac{dv}{dx}+v=\frac{40-11v}{2-v}
+$$
+Step 2: We now solve this equation.
+<ol>
+<li>
+$$ \begin{align}
+x\frac{dv}{dx}&=\frac{40-11v}{2-v}-v \\
+x\frac{dv}{dx}&=\frac{40-13v+v^2}{2-v} \\
+\frac{2-v\,dv}{40-13v+v^2}&=\frac{dx}{x}
+\end{align} $$</li>
+<li>Partial fractions tells us that
+$\displaystyle \frac{2-v}{40-13v+v^2}=\frac{1}{v-5}-\frac{2}{v-8}$, so
+$$ \begin{align}
+\int\frac{2-v\,dv}{40-13v+v^2}&=\int\frac{dx}{x} \\
+\int\frac{dv}{v-5}-\int\frac{2\,dv}{v-8}&=\int\frac{dx}{x} \\
+\log|v-5|-2\log|v-8|&=\log|x| + C \\
+v-5 &= kx(v-8)^2.
+\end{align}
+$$</li>
+</ol>
+Step 3:
+Plugging in $v=y/x$ we get $(y/x - 5)=kx(y/x - 8)^2$. We can multiply through
+by $x$ to simplify this to
+$$y-5x=k(y-8x)^2.$$
+SECOND: Now that we have the general solution, we can plug in the initial value
+to find the constant. Plugging in $x=1$ and $y=8$ we get
+$3=k\times0$, and that is impossible. This is our cue that we need to go back and
+find the singular solution. 
+<p />
+We divided by $40-13v+v^2=(v-5)(v-8)$ whose roots are $v=5$ and $v=8$. These
+are both solutions to the equation, though $v-5$ is already included in the 
+general solution with $k=0$. But $v=8$ is a singular solution. Then remembering
+that $v=y/x$, we find $y/x = 8$ or 
+$$y=8x.$$
+This satisfies our initial condition $y(1)=8$, so this is the solution to the initial
+value problem.
+<p />
+
+<h4>Randomly Generated Examples</h4>
+A randomly generated Bernoulli problem is below, and a randomly generated
+homogeneous problem is below that. As always, once you submit an answer, you will have a link to see the detailed
+solution for the problem, as well as the option to generate a new problem and you can just quickly enter 
+a "dummy" answer like $y=x$ to quickly get to the detailed solution if that is all you want to see.
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1420452" width="100%" height="500" style="border: none;"></iframe>
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1420012" width="100%" height="500" style="border: none;"></iframe>
+<p />
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

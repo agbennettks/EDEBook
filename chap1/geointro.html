@@ -1,0 +1,175 @@
+<head>
+<title>EDE Chapter 1: Slope Fields</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Geometric interpretation of a differential equation (Slope Fields)</h3>
+</center>
+<p />
+<a href='lab1.html' target='_blank'>Launch Slope Field App</a>. 
+<p />
+<table><tr>
+<td>Consider a differential equation $\displaystyle\frac{dy}{dx}=f(x,y)$. 
+Since the derivative is the slope of 
+the tangent line, we interpret this equation geometrically to mean that at 
+any point $(x,y)$ in the plane, the tangent line must have slope 
+$f(x,y).$ We 
+illustrate this with a slope field, a graph where we draw an arrow 
+indicating the slope at a grid of points. The slope field for 
+$\displaystyle\frac{dy}{dx}=x+y+2$ is illustrated at the right.</td>
+<td><img src=lab1pic1.png height=366 width=356></td>
+</tr></table>
+<p />
+<table><tr>
+<td><img src=lab1pic2.png height=364 width=358></td>
+<td>The solution to a differential equation is a curve that is tangent to the 
+arrows of the slope field. Since differential equations are solved by 
+integrating, we call such a curve an integral curve. 
+This picture 
+illustrates some of the integral curves for $\displaystyle\frac{dy}{dx}=x+y+2$. You 
+can see there are a lot of possible integral curves, infinitely many in 
+fact. This corresponds to the fact that there are infinitely many 
+solutions to a typical differential equation. To specify a particular 
+integral curve, you must specify a point on the curve. Once you specify 
+one specific point, the rest of the curve is determined by following the 
+arrows. This corresponds to finding a particular solution by specifying an 
+initial value.</td>
+</tr></table>
+<p />
+In this lab, you will experiment with the slope fields and integral 
+curves 
+for a variety of different equations. The goal is to get a geometric 
+concept of what a differential equation means, to go along with the 
+algebraic techniques to solve such equations. Launch the 
+<a href='lab1.html' target='_blank'>slope field app</a>. 
+This brings up an app where you can type in differential equations and see 
+their slope 
+fields and integral curves. When you type in the differential equation, 
+use ^ for powers, and functions (such as 
+sin(x), exp(x), log(x), etc.) must use parentheses. Once you type in a 
+formula, you should press enter or click the <nobr>"Update Slope 
+Field"</nobr> button to 
+draw the slope 
+field. The 
+<nobr>"Draw 33 Int. Curves"</nobr> button will draw the integral curves 
+passing through the points 
+<nobr>(-4, -4),</nobr> <nobr>(-4, -3.75),</nobr> <nobr>(-4, -3.5),</nobr> 
+<nobr>...,</nobr> <nobr>(-4, 4)</nobr>. You 
+can also draw a single integral curve passing through the point 
+$(-4, y_0)$ 
+by entering the value $y_0$ in the <nobr><code>"y(-4) ="</code></nobr> 
+text field and pressing the 
+<nobr>"Plot Integral Curve"</nobr> button next to it. Note that the 
+<nobr>"Update Slope Field"</nobr> 
+button clears old results from the screen, so if the screen gets too 
+confusing, press <nobr>"Update Slope Field"</nobr> to clear it up. There 
+is a red arrow that you can click and drag around the slope field to see 
+what the slope is at different points. You may want to try seeing if you 
+can visualize an integral curve by starting at an initial value at the 
+left of the app and moving the point always in the direction of the arrow.
+Or you may want to have the app draw an integral curve and trace along the 
+curve with the arrow to see how the integral curve is always tangent to 
+the arrow. 
+<p />
+<i>Write up your answers to the following 8 questions neatly on a separate 
+sheet of paper. Be sure to use complete sentences in your answers to 
+problems 3-6.</i>
+<p />
+The first pair of problems just ask you to play around with a couple of 
+slope fields and initial conditions to get started and to make sure you 
+understand the connection between the initial condition $y(-4) = y_0$ and 
+the geometric picture of the integral curve.
+<ol>
+<li>Let $y'=\cos(x)+\sin(y)$. Find a value for <nobr>y(-4)</nobr> so that 
+<nobr>-1 &lt; y(5) &lt; 1</nobr>.
+<p /></li>
+<li>Let $y'=y-x/2$. Find a value for <nobr>y(-4)</nobr> so 
+that 
+<nobr>-3 &lt; y(5) &lt; 0</nobr>.
+<p />
+The next problem illustrates that the solution to a differential equation 
+may not be defined over the whole real line, but may only exist in some 
+particular interval.<p /></li>
+<li>Let $y'=-(x+2)/y$. Draw 33 integral curves. Note that none of the 
+curves drawn extend entirely across the graph. You may have observed 
+earlier that if you point at one of the integral curves with the mouse, 
+that curve turns purple (and if you have multiple integral curves that get 
+asymptotically close, the mouse is pointing at all of them and they all 
+turn purple, which can lead to some pretty effects). Point at one of the 
+integral curves. Note that only half the circle turns purple. Write a two 
+or three sentence explanation for (i) why the solutions don't continue all 
+the way across the graph and (ii) why the integral curve isn't the full 
+circle.
+<p />
+A theorem we will discuss later says that for a "reasonable" initial value 
+problem, there will be one and only one solution, which will be defined on 
+some interval about the initial point. That there is a solution should 
+seem reasonable at this point, just start at the initial value and follow 
+the slope field and you will get the graph of the solution. The last 
+example should illustrate why you might get a solution defined only in an 
+interval.
+<p /></li>
+<li>In solving the first two problems, you almost certainly observed 
+and used (if only implicitly) the fact that solution curves didn't cross 
+to narrow the range of possible initial values to try. Explain how this 
+fact implies that a "reasonable" initial value problem can't have two 
+solutions.
+<p />
+In the final 4 problems, you will develop some feeling for the connections 
+between the slope field and certain types of differential equations. First 
+you will consider some examples, and then you can use the ideas you've 
+developed to try to recognize a couple of equations by their slope fields.
+<p /></li>
+<li>Look at several examples of slope fields of the form $y'=f(x)$ where 
+the right-hand-side doesn't depend on y. Press the <nobr>"Draw 33 
+Int. Curves"</nobr> button to 
+look at the integral curves for these slope fields. You should observe a 
+pattern in such fields. Write one or two sentences to describe how you can 
+tell if a slope field corresponds to such an equation.
+<p /></li>
+<li>Look at several examples of slope fields of the form $y'=f(y)$ where 
+the right-hand-side doesn't depend on x (such equations are called 
+"autonomous"). You should observe a pattern in such fields. Press the 
+<nobr>"Draw 33 Int. Curves"</nobr> button to look at the integral curves 
+for 
+these slope 
+fields. Do the integral curves have the same sort of pattern as for the 
+fields considered in problem 5? Write one or two sentences to describe how 
+you can tell if a slope field corresponds to such an equation.
+<p /></li>
+<li><table><tr>
+<td>At the right is the slope field for $y' = f(x,y)$. 
+Based on the graph, identify where the
+function $f(x,y)$ is positive, negative, and zero. Is $f(x,y)$ a 
+function of $x$ alone, $y$ alone, or a function of both variables 
+together? Find a function $f(x,y)$ whose slope field looks like this.</td>
+<td><img src=lab1pic3.png align=right height=365 width=356></td>
+</tr></table>
+<p /></li>
+<li><table><tr>
+<td>At the right is the slope field for $y' = g(x,y)$. 
+Where is the function 
+$g(x,y)$ positive, negative, and zero? Is $g(x,y)$ a function of $x$ 
+alone, $y$ 
+alone, or a function of both variables together? Find a function $g(x,y)$ 
+whose slope field looks like this.</td>
+<td><img src=lab1pic4.png align=right height=366 width=357></td>
+</tr></table>
+</li>
+</ol>
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+
+

@@ -1,0 +1,280 @@
+<head>
+<title>EDE Chapter 1: Linear Equations</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Linear Equations</h3>
+</center>
+
+<h4>Discussion</h4>
+We solved exact equations by assuming there was a solution and working 
+backwards. But there will be a solution to any equation we can solve, 
+and it is a theorem that all (reasonable) first order equations can be 
+solved. So why aren't all equations exact? Consider the following 
+example.
+$$
+\begin{align}
+(x^2+y)+(x-\sin(y))\frac{dy}{dx}&=0\qquad\text{is exact} \\
+\frac{x^2+y}{x}+\frac{x-\sin(y)}{x}\frac{dy}{dx}&=0\qquad\text{is not exact}
+\end{align}
+$$
+There is no real difference between the two equations, we have just divided
+through by $x$ to obtain the second equation from the first. The equations
+have the same solutions. But when we test for exactness, we find that only the
+first equation is exact. The reason most first order equations aren't exact is
+that some key factor has been divided out. One way to solve the equation would
+be to find the factor, called an integrating factor, and put it back in.
+Unfortunately, finding integrating factors can be extremely difficult. There is
+one situation where it is fairly straightforward, when the equation is
+linear.
+A first order differential equation is said to be
+<b>linear</b> if it can be written in the form $$ y' + p(x)y = q(x). $$
+In any linear equation, we can find an integrating factor which depends only on 
+the independent variable ($x$ in this case) as follows 
+$$ \mu(x) = e^{\int p(x)\,dx} $$
+If we multiply through the linear equation by $\mu(x)$ we obtain
+$$
+                   \mu(x)y'(x) + \mu(x)p(x)y(x) = \mu(x)q(x)
+$$
+Now $\mu'(x) = \mu(x)p(x)$ from the way we defined $\mu(x)$, so we can now
+write our equation as
+$$
+                       \mu(x)y'(x) + \mu'(x)y(x) = \mu(x)q(x)
+$$
+or (applying the product rule in reverse)
+$$
+                          \frac{d}{dx}(\mu(x)y(x)) = \mu(x)q(x)
+$$
+Now we integrate both sides to obtain
+$$
+                          \mu(x)y(x) = \int \mu(x)q(x)\,dx
+$$
+so
+$$
+           y(x) = \frac{1}{\mu(x)}\int \mu(x)q(x)\,dx
+$$
+WARNING: You can't cancel the $\mu(x)$ inside the integral by the $\mu(x)$
+outside the integral. This formula is confusing because we are using $x$ as
+both the dummy variable of integration and as the independent variable of the
+resulting function. Because of this it is often preferable to write the
+solution as
+$$ y(x)=\frac{1}{\mu(x)}\left(\int_a^x \mu(s)q(s)\,ds + C\right) \tag 1$$
+In this form we use $s$ as the variable of integration and use $x$ as the
+upper limit of integration to show we want to treat the result as a function
+of $x$. The $a$ as the lower limit of integration is an arbitrary constant as
+is $C$, the constant of integration. This seems to give us two arbitrary
+constants, but we really only have one "degree of freedom." That is, for any
+choice of $a$, we can choose $C$ to give us any solution to the equation.
+This is discussed in more detail in Example 1 below.
+<p />
+Linear equations won't have singular solutions, so the general solution gives all the
+solutions. You may be wondering about why I left out the constant of
+integration when computing $\mu(x)$. I could have included a constant of
+integration, which would give me an infinite family of integrating factors.
+But I don't need an infinite family of integrating factors to solve the
+problem; I only need one integrating factor. So I can ignore that constant.
+We are now ready to give the paradigm. While it is possible to just memorize
+the formula for the solution, I prefer to work through the whole process.
+While that takes longer, I find I am less likely to make mistakes if I go
+through the details. You are welcome to use the paradigm or the formula
+(1) depending on which you find works best for you.
+
+<h4>Paradigm</h4>  Solve $$dy/dx+2y/x=4$$
+<p />
+<i>Step 1:</i> Find the integrating factor
+$$
+\mu(x)=e^{\int 2/x\,dx}=e^{2\log(x)}=x^2
+$$
+<i>Step 2:</i> Multiply through by the integrating factor
+$$
+x^2\frac{dy}{dx}+2xy=4x^2
+$$
+<i>Step 3:</i> Recognize the left hand side as the derivative of $\mu
+y$.
+$$
+\frac{d}{dx}(x^2y)=4x^2
+$$
+<i>Step 4:</i> Integrate both sides
+$$
+x^2y=\int 4x^2\,dx=(4/3)x^3+C
+$$
+<i>Step 5:</i> Solve for $y$.
+$$
+y(x)=(4/3)x+Cx^{-2}
+$$
+
+<h4>Example 1: Using the formula</h4>
+$$y'+2y=e^x$$
+Plugging this into formula (1) gives the following:
+$$
+\begin{align}
+\mu(x)&=e^{\int2\,dx}=e^{2x} \\
+y(x)&=\frac{\int_a^x e^{2s}e^s\,ds+C}{e^{2x}}=\frac{\int_a^x
+e^{3s}\,ds+C}{e^{2x}}
+\\ y(x)&=\frac{e^{3x}/3-e^{3a}/3+C}{e^{2x}} \\
+y(x)&=e^x/3+\tilde{C}e^{-2x}\qquad(\tilde{C}=C-e^{3a}/3)
+\end{align}
+$$
+Note that the choice of $a$ for the lower limit of integration doesn't matter. It all gets sucked into the
+arbitrary constant in the end. That said, Example 2 will illustrate a situation where choosing the correct
+value of $a$ can make things easier.
+<p />
+Most students find using the formula as in this example shorter than going through the details in the paradigm. 
+So why don't I always use the formula? Because sometimes I misremember part of the formula or get mixed up in
+what goes where when I have a problem that arises in a situation with multiple variables as in Example 3 below.
+If I go through the steps of the paradigm, I find it easier to keep everything straight. But either approach
+is acceptable.
+
+<h4>
+EXAMPLE 2: An integral you can't simplify
+</h4>
+Solve the initial value problem $$dy/dx+2xy=1, y(1)=2$$.
+<p />
+FIRST: Find the general solution.
+<p />
+Step 1: $$\displaystyle\mu(x)=e^{\int 2x\,dx}=e^{x^2}$$
+<p />
+Step 2: $$\displaystyle e^{x^2}dy/dx+2xe^{x^2}y=e^{x^2}$$
+<p />
+Step 3: $$\displaystyle \frac{d}{dx}(e^{x^2}y)=e^{x^2}$$
+<p />
+Step 4: $$\displaystyle e^{x^2}y=\int e^{x^2}\,dx=???$$
+<p />
+Unfortunately, I don't know the indefinite integral of $e^{x^2}$. So I leave
+the integral as a definite integral with
+$x$ as the upper limit to give me a function of $x$ and $1$ as the lower limit
+because the initial value is given at $1$ (you'll see why that matters in a
+second). And I need to be sure not to forget the constant of integration.
+<p />
+Step 4: (Take Two) $$\displaystyle e^{x^2}y=\int_1^x e^{s^2}\,ds+C$$
+<p />
+Step 5: $$\displaystyle y(x)=e^{-x^2}\int_1^x e^{s^2}\,ds+Ce^{-x^2}$$
+<p />
+SECOND: Solve the initial value problem by plugging in.
+$$
+\begin{align}
+y(1)=e^{-1^2}\int_1^1 e^{s^2}\,ds+Ce^{-1^2} &{\buildrel \text{set}\over =} 2 \\
+C&=2e
+\end{align}
+$$
+While I don't know the indefinite integral of $e^{s^2}$, I do know that the
+integral of anything from $1$ to $1$ is $0$. That is the advantage of choosing
+the lower limit to be the same as the place where the initial value is given.
+So the final answer is
+$$y(x)=e^{-x^2}\int_1^x e^{s^2}\,ds+2e^{1-x^2}$$
+<p />
+You may be wondering if all this was worth it, since we end up with an integral
+instead of a nice formula. But if we want specific values, numerical integration routines
+are much faster and more accurate than approximating a solution to a differential equation
+numerically. And if what you need is qualitative information, we also have better tools for 
+qualitatively analyzing integrals than differential equations. So getting the answer
+into integral form is in fact helpful.
+
+<h4>Example 3: A Mixing Problem</h4>
+Suppose we have an ideal two tank CSTR (continuous stirred-tank reactor) in series. Fluid enters the first tank
+and then flows from the first tank to the second tank and then out the second tank (this is useful for example if you wish
+to have different conditions at different stages in a sequence of reactions). We suppose the tanks each hold
+100 liters and the fluid is flowing at a rate of 2 liters/minute. Suppose a contaminant is introduced to
+the fluid prior to entering the first tank, at a concentration of 4 mg/liter. How long after the contaminant
+is first introduced will it take for the level of contamination in each tank to reach 2 mg/liter? (Note: since this is an 
+"ideal" model, we assume perfect mixing and steady flow).
+<p />
+
+<p />
+Let $Z_1$ and $Z_2$ be the amounts of contaminant in each tank in milligrams and let $t$ be the time in minutes. In this
+situation, the volume in the tank is a constant 100 liters, so the concentration is $Z_i/100$. Hence the concentration of
+2 mg/l is equivalent to Z=200. Now just as the fluid flows from the first tank to the second, we will first solve for
+$Z_1$ and then use this to solve for $Z_2$. Contaminant is being added to the first tank at a rate of 
+$4 mg/l \times 2 l/min = 8 mg/min$. Contaminant is leaving the first tank (and flowing into the second tank) at a rate of
+$Z_1/100 mg/l \times 2 l/min = Z/50 mg/min$. So our differential equation becomes
+$$\frac{dZ_1}{dt}=8-\frac{Z_1}{50}.$$
+This is both a linear equation and also a separable equation. Solving using either technique yields 
+$$Z_1 =  400-C_1\exp(-t/50).$$
+Assuming no initial contamination, $Z_1(0)=0$, so $C_1=400$ and the amount of contaminant in tank 1 is
+$$Z_1(t)=400(1-\exp(-t/50)).$$
+Then the contamination will reach 2mg/liter when $Z_1=200$, and solving $200 = 400(1-\exp(-t/50))$ gives us 
+$t=50\log(2)\approx 34.66min$. In 34 minutes, 272 mg of contaminant have flowed into the tank, and since some also
+flows out, this seems to be a reasonable answer.
+<p />
+
+<p />
+Now we use our formula for $Z_1$ to determine how $Z_2$ increases. The amount of contaminant flowing into tank 2 is
+$Z_1(t)/100 mg/l \times 2 l/min = 8(1-\exp(-t/50)) mg/min$. The amount of contaminant flowing out of tank 2 is
+$Z_2/100 mg/l \times 2 l/min = Z_2/50 mg/min$. So our equation for $Z_2$ becomes
+$$\begin{align}
+\frac{dZ_2}{dt}= 8(1-\exp(-t/50)) - Z_2/50, \text{ or } \\
+\frac{dZ_2}{dt}+\frac{1}{50}Z_2 = 8-8\exp(-t/50). 
+\end{align}$$
+This is a linear equation (and this time is not separable). We solve it as follows:
+<p />
+Step 1:
+$$\mu(t) = \exp\left(\int \frac{dt}{50}\right) = \exp(t/50)$$
+Step 2: 
+$$\exp(t/50)\frac{dZ_2}{dt}+\frac{\exp(t/50)}{50}Z_2 = 8\exp(t/50)-8$$
+Step 3:
+$$\frac{d(\exp(t/50)Z_2}{dt}=8\exp(t/50)-8$$
+Step 4:
+$$\begin{align}
+\exp(t/50)Z_2 &= \int 8\exp(t/50) - 8 dt \\
+&=400\exp(t/50) - 8t + C_2
+\end{align}$$
+Step 5:
+$$Z_2=400 - (8t+C_2)\exp(-t/50)$$
+Assuming no initial contamination, $Z_2(0)=0$ implies $C_2=400$ and we get the amount of contaminant in tank 2 is
+$$Z_2=400\left(1-(1+t/50)\exp(-t/50)\right).$$
+This is actually a somewhat messy equation to solve for $Z_2(t)=200$ because of the $t\exp(-t/50)$ term. But numerically
+we find $t \approx 83.9 min$. So it takes more than twice as long for the contamination to reach that level in the second
+tank as in the first tank. 
+
+<h4>Example 4: Linear For $x$ As A Function Of $y$</h4>
+Find the general solution to $\displaystyle\frac{dy}{dx}=\frac{1}{x+y}$.
+<br />
+This is not a linear equation if we think of $y$ in terms of $x$. But in differential equations, we often think
+of $x$ and $y$ each as their own variable and not just of $y$ as a function of $x$ (this attitude is also quite
+useful in Physics and Chemistry when you are dealing with formulas like $PV=nRT$ where each variable depends on the others).
+Look what happens if we think of $x$ as a function of $y$ in the equation above.
+$$\begin{align}
+\frac{dy}{dx}&=\frac{1}{x+y}  \\
+(x+y)dy &= dx \\
+x+y &= \frac{dx}{dy} \\
+y = \frac{dx}{dy} - x.
+\end{align}$$
+Now we do have a linear equation. While this may seem like more of the sleight of hand we used in dealing with
+separable equations, it can be fully justified, either by using the inverse function theorem from Calculus 3 or
+just by looking for an integrating factor which depends only on $y$ for $(x+y)dy - dx = 0$.
+Now that we have our linear equation in $x$ as a function of $y$, we use the paradigm above, just being careful
+which letters we use in each step.
+<p />
+Step 1: 
+$$\mu(y)=\exp\left(\int -1\,dy\right) = e^{-y}$$
+Step 2: 
+$$e^{-y}\frac{dx}{dy} - xe^{-y} = ye^{-y}$$
+Step 3:
+$$\frac{d}{dy}\left(xe^{-y}\right) = ye^{-y}$$
+Step 4:
+$$xe^{-y} = \int ye^{-y} = -ye^{-y} - e{-y} + C$$
+Step 5:
+$$x = -y-1 + Ce^y\text{, or } x+y+1=Ce^y$$
+
+<h4>Randomly Generated Practice Problems</h4>
+A randomly generated practice problem is below. Once you submit an answer, you will have a link to see the detailed
+solution for the problem, as well as the option to generate a new problem. Note that you can just quickly enter 
+a "dummy" answer like $y=x$ to quickly get to the detailed solution if that is all you want to see.
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1419816" width="100%" height="500" style="border: none;"></iframe>
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

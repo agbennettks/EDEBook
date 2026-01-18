@@ -1,0 +1,667 @@
+<head>
+<title>EDE Chapter 1: Homework</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+
+<center>
+<h3>Math 340 Written Homework 1</h3>
+</center>
+<ol>
+<li>What is the order of the following equations?
+<ol type='a'>
+<li>$\displaystyle\frac{dy}{dx}=x^3+y^2$<p /></li>
+<li>$\displaystyle\frac{d^3y}{dx^3}=x-y$<p /></li>
+<li>$\displaystyle\left(\frac{dy}{dx}\right)^2=\cos(y)-\sin(x)$<p /></li>
+<li>$\displaystyle\frac{d^2y}{dx^2}+3\frac{dy}{dx}-6y=\exp(2x)$<p /></li>
+<li>$\displaystyle\cos\left(\frac{dy}{dx}\right)=2xy$<p /></li>
+</ol><p /></li>
+
+<li>Which of the following equations are separable? Write them in 
+separated form if possible.
+<ol type='a'>
+<li>$\displaystyle\frac{dy}{dx} = xy$<p /></li>
+<li>$\displaystyle\frac{dy}{dx} = \displaystyle\frac{x}{y}$<p /></li>
+<li>$\displaystyle\frac{dy}{dx} = x + y$<p /></li>
+<li>$\displaystyle\frac{dy}{dx} = x - y$<p /></li>
+<li>$\displaystyle\frac{dy}{dx} = \exp(x-y)$<p /></li>
+</ol><p /></li>
+
+<li>Find the general solution to
+$\displaystyle\frac{dy}{dx}=2xe^y$<p /></li>
+<li>Find the general solution to
+$\displaystyle\frac{dy}{dx}=y(1-y)$<p /></li>
+<li>Find the general solution to
+$\displaystyle x+\frac{dy}{dx}=xe^y$<p /></li>
+<li>Find the general solution to
+$\displaystyle\frac{dy}{dx}+x^2y+y=0$<p /></li>
+
+<li>Solve the initial value problem
+$\displaystyle\frac{dy}{dx}=y^2-9,$&nbsp;&nbsp;&nbsp;&nbsp;$y(0)=1.$
+<p /></li>
+<li>Solve the initial value problem
+$\displaystyle\frac{dy}{dx}=xy-3x,$&nbsp;&nbsp;&nbsp;&nbsp;$y(0)=0.$
+<p /></li>
+<li>Solve the initial value problem
+$\displaystyle\frac{dy}{dx}=\cos^2(y),$&nbsp;&nbsp;&nbsp;&nbsp;$y(0)=0.$
+<p /></li>
+<li>Solve the initial value problem
+$\displaystyle\frac{dy}{dx}=\cos^2(y),$&nbsp;&nbsp;&nbsp;&nbsp;$y(0)=\pi/2.$
+<p /></li>
+
+<li>Find the family of orthogonal trajectories to the ellipses $x^2+4y^2=C^2$.
+<p /></li>
+<li>Find the family of orthogonal trajectories to the parabolas $y^2 + 2x = C$.
+<p /></li>
+
+<li>Find $y(1)$ where $y(x)$ is the solution to 
+$\displaystyle\frac{dy}{dx}=2y,$ $y(0)=1.$<p /></li>
+<li>Find $y(2)$ where $y(x)$ is the solution to 
+$\displaystyle\frac{dy}{dx}-y=xy,$ $y(0)=1.$<p /></li>
+
+<li>Find $y_0$ given that the solution to 
+$\displaystyle\frac{dy}{dx}=xy^2$, $y(0)=y_0,$ satisfies $y(1)=1.$
+<p /></li>
+<li>Find $y_0$ given that the solution to 
+$\displaystyle\frac{dy}{dx}=e^{x+y}$, $y(0)=y_0,$ satisfies $y(1)=2.$
+<p /></li>
+
+<li>Find $y_0$ so that the integral curve for 
+$$\begin{align} 
+&\displaystyle\frac{dy}{dx} = \displaystyle\frac{y}{2} - 
+\displaystyle\frac{x}{3} \\
+&y(-4) = y_0
+\end{align}$$ is 
+a straight-line. You must justify your answer, which will require you to
+apply algebraic reasoning to the problem. Just using the slope field lab 
+applet to find the answer by repeated guessing will not get you full 
+credit.<p /></li>
+
+<li>Find $y_0$ so that the integral curve for 
+$$\begin{align} 
+&\displaystyle\frac{dy}{dx} = x+y \\
+&y(-4) = y_0
+\end{align}$$ is 
+a straight-line. You must justify your answer, which will require you to
+apply algebraic reasoning to the problem. Just using the slope field lab 
+applet to find the answer by repeated guessing will not get you full 
+credit.<p /></li>
+
+<li>Find an initial value problem that is solved by 
+$y = e^{x^2}$.<p /></li>
+
+<li>Find an initial value problem that is solved by 
+$y = e^{\sin(x)}$.<p /></li>
+
+<li>Find a differential equation whose general solution is 
+the set of curves, $e^{x}+e^{y}=C^2.$ Remember 
+that $C$ is the arbitrary constant here so it should <i>not</i> appear in 
+the differential equation.
+<p />
+
+<li>Find a differential equation whose general solution is 
+the collection of all circles about the origin, $x^2+y^2=r^2$. Remember 
+that $r$ is the arbitrary constant here so it should <i>not</i> appear in 
+the differential equation.
+<p />
+<font size=-1>Technical note: Since a circle is not the graph of a 
+function as it fails the vertical line test, it would be more proper to 
+say the general solution consists of all semicircles of the form 
+$y=\pm\sqrt{r^2-x^2}$. But the problem is easier to understand and to 
+solve written as above.</font><p /> </li>
+
+<a name='week2'>
+
+<li>Consider the initial value problem
+$$ \frac{dy}{dx}=x+y,\qquad y(0)=1.$$
+<ol type='a'>
+<li>Compute $y_1(h)$ using Euler's method with step size $h$ (i.e. carry out one step of Euler's method).</li>
+<li>The true solution is $y(h)=-h-1+2\exp(h)$. Show that 
+$$ \lim_{h\to 0}\frac{y(h)-y_1(h)}{h^2}=1 $$
+which implies the error in a single step of Euler's method for this equation is approximately $h^2$ for small $h$.</li>
+</ol></li>
+<p />
+<li>Consider the initial value problem
+$$ \frac{dy}{dx}=4x-2y,\qquad y(0)=1.$$
+<ol type='a'>
+<li>Compute $y_1(h)$ using Euler's method with step size $h$ (i.e. carry out one step of Euler's method).</li>
+<li>The true solution is $y(h)=2h-1+2\exp(-2h)$. Show that 
+$$ \lim_{h\to 0}\frac{y(h)-y_1(h)}{h^2}=4 $$
+which implies the error in a single step of Euler's method for this equation is approximately $4h^2$ for small $h$.</li>
+</ol></li>
+<p />
+<li>Consider the initial value problem
+$$ \frac{dy}{dx}=x+y,\qquad y(0)=1.$$
+<ol type='a'>
+<li>Compute $y_1(h)$ using the Improved Euler's method with step size $h$ (i.e. carry out one step of the improved 
+Euler's method).</li>
+<li>The true solution is $y(h)=-h-1+2\exp(h)$. Show that 
+$$ \lim_{h\to 0}\frac{y(h)-y_1(h)}{h^3}=\frac{1}{3} $$
+which implies the error in a single step of the improved Euler's method for this equation is approximately 
+$h^3/3$ for small $h$.</li>
+</ol></li>
+<p />
+<li>Consider the initial value problem
+$$ \frac{dy}{dx}=4x-2y,\qquad y(0)=1.$$
+<ol type='a'>
+<li>Compute $y_1(h)$ using the improved Euler's method with step size $h$ (i.e. carry out one step of 
+the improved Euler's method).</li>
+<li>The true solution is $y(h)=2h-1+2\exp(-2h)$. Show that 
+$$ \lim_{h\to 0}\frac{y(h)-y_1(h)}{h^3}=-\frac{8}{3}$$
+which implies the error in a single step of the improved Euler's method for this equation is approximately 
+$-8h^3/3$ for small $h$.</li>
+</ol></li>
+<p />
+
+<li>Classify whether the following equations are exact, linear, both, or 
+neither. You don't have to solve them, just classify them.
+<ol type='a'>
+<li>$\displaystyle\frac{dy}{dx}=-\frac{y}{x}$<p /></li>
+<li>$\displaystyle\frac{dy}{dx}=x+y$<p /></li>
+<li>$\displaystyle\frac{dy}{dx}=x^2+y$<p /></li>
+<li>$\displaystyle\frac{dy}{dx}=\frac{y+x^2}{\exp(y)-x}$<p /></li>
+</ol><p /></li>
+
+</a>
+
+<li>Classify whether the following equations are exact, 
+linear, both, or neither. You don't have to solve them, just classify 
+them.
+<ol type='a'>
+<li>$(x+y)dx + dy = 0$<p /></li>
+<li>$(x^2+ye^x)dx + (e^x-y)dy = 0$<p /></li>
+<li>$(1+y)dx + dy = 0$<p /></li>
+<li>$(x+y^2)dx + (x^2+y)dy = 0$<p /></li>
+</ol><p /></li>
+<li>Find the general solution to 
+$\displaystyle\frac{dy}{dx}=\exp(x)-\frac{y}{x}.$<p /></li>
+<li>Find the general solution to 
+$\displaystyle\frac{dy}{dx}=\frac{\exp(x)-y}{x-\sin(y)}.$<p /></li>
+<li>Find the general solution to $(x+y)dx+dy=0.$<p /></li>
+<li>Find the general solution to $(2x+y)dx+(x-2y)dy=0.$<p /></li>
+<li>Solve the initial value problem 
+$\displaystyle\frac{dy}{dx}+2y=\exp(x)$, $y(0)=2.$<p /></li>
+<li>Solve the initial value problem 
+$\displaystyle\frac{dy}{dx}-3y=x-1$, $y(0)=0.$<p /></li>
+<li>Solve the initial value problem 
+$(x^2+2xy)dx+(x^2-y)dy=0$, $y(0)=1.$<p /></li>
+<li>Solve the initial value problem 
+$(\cos(x)-y^2)dx+(\cos(y)-2xy)dy=0$, $y(0)=0.$<p /></li>
+
+<li>Suppose we have an ideal two tank CSTR (continuous stirred-tank reactor) in series. Fluid enters the first tank
+and then flows from the first tank to the second tank and then out the second tank. We suppose the tanks each hold
+2000 liters and the fluid is flowing at a rate of 10 liters/minute. Suppose a contaminant is introduced to
+the fluid prior to entering the first tank, at a concentration of 2 mg/liter. What is the concentration of the
+contaminant in each tank after 120 minutes? (Note: since this is an "ideal" model, we assume perfect mixing and 
+steady flow).<p /></li>
+<li>Suppose we have an ideal two tank CSTR (continuous stirred-tank reactor) in series. Fluid enters the first tank
+and then flows from the first tank to the second tank and then out the second tank. We suppose the tanks each hold
+600 liters and the fluid is flowing at a rate of 3 liters/minute. Suppose a contaminant is introduced to
+the fluid prior to entering the first tank, at a concentration of 4 mg/liter. What is the concentration of the
+contaminant in each tank after $t$ minutes? (Note: since this is an "ideal" model, we assume perfect mixing and 
+steady flow).<p /></li>
+<li>Suppose we have an ideal two tank CSTR (continuous stirred-tank reactor) in series. Fluid enters the first tank
+and then flows from the first tank to the second tank and then out the second tank. We suppose the tanks each hold
+2000 liters and the fluid is flowing at a rate of 4 liters/minute. Suppose 100g of a contaminant is accidentally introduced
+to the first tank all at once (with no additional contamination after this). Then the maximum concentration of contaminant
+in the first tank is 100 grams/2000 liters = 0.05 g/l = 50mg/l. What is the maximum concentration of contaminant in the second
+tank and when does it occur?<p /></li>
+<li>Suppose we have an ideal two tank CSTR (continuous stirred-tank reactor) in series. Fluid enters the first tank
+and then flows from the first tank to the second tank and then out the second tank. We suppose the tanks each hold
+4000 liters and the fluid is flowing at a rate of 10 liters/minute. Suppose 250g of a contaminant is accidentally introduced
+to the first tank all at once (with no additional contamination after this). Then the maximum concentration of contaminant
+in the first tank is 250 grams/4000 liters = 0.0625 g/l = 62.5mg/l. What is the maximum concentration of contaminant in the second
+tank and when does it occur?<p /></li>
+
+<li>Find $y(2)$ where $y(x)$ is the solution to the initial value problem
+$$
+\begin{align}
+\frac{dy}{dx}&=\frac{x-y}{x+2y} \\
+y(0)&=1
+\end{align}
+$$
+Note that solving this exact equation will lead to an implicit formula for 
+$y$ which will have two solutions for $x=2$. However, the initial value 
+problem has a unique solution and so just one of the two solutions 
+produced from the implicit formula will be the actual value of $y(2).$ 
+Justify your choice of value for $y(2).$ You can do this algebraically 
+(say by solving the implicit formula to get an explicit formula for $y$ in 
+terms of $x$ where the $\pm$ term will be specified to either be $+$ or 
+$-$) or geometrically (perhaps by arguing from the slope field that the 
+integral curve starting at (0,1) can only reach one of the two possible 
+values because it can't go below the x-axis). Just saying you checked the 
+slope field applet and can see 
+which value must be right won't get full credit, you must justify how 
+you can tell the integral curve can't go below the x-axis.<p /></li>
+<li>Find $y(1)$ where $y(x)$ is the solution to the initial value problem
+$$
+\begin{align}
+\frac{dy}{dx}&=\frac{2x-2y}{2x+y} \\
+y(0)&=\sqrt{3}
+\end{align}
+$$
+Note that solving this exact equation will lead to an implicit formula for 
+$y$ which will have two solutions for $x=1$. However, the initial value 
+problem has a unique solution and so just one of the two solutions 
+produced from the implicit formula will be the actual value of $y(1).$ 
+Justify your choice of value for $y(1).$ You can do this algebraically 
+(say by solving the implicit formula to get an explicit formula for $y$ in 
+terms of $x$ where the $\pm$ term will be specified to either be $+$ or 
+$-$) or geometrically (perhaps by arguing from the slope field that the 
+integral curve starting at (0,1) can only reach one of the two possible 
+values because it can't go below the x-axis). Just saying you checked the 
+slope field applet and can see 
+which value must be right won't get full credit, you must justify how 
+you can tell the integral curve can't go below the x-axis.<p /></li>
+
+<a name='week3'>
+
+<li>Solve the initial value problem
+$$ 
+\begin{align}
+\frac{dy}{dx} &= 2xy+\sin(x) \\
+y(0)&=1
+\end{align}
+$$
+and then use your solution to evaluate $y(1).$
+<i>Your answer should be accurate to the nearest 0.0001.</i>
+Note that you will get an integral here that you can't compute 
+analytically. You will need to use a numerical method to complete the 
+problem (the TI-83/84 and 
+similar calculators have an excellent numerical integration routine built 
+in, or you can use 
+<a href=http://www.wolframalpha.com>WolframAlpha</a>.)<p /></li>
+
+</a>
+
+<li>Solve the initial value problem
+$$ 
+\begin{align}
+\frac{dy}{dx} &= 1-\cos(x)y \\
+y(0)&=2
+\end{align}
+$$
+and then use your solution to evaluate $y(2).$
+<i>Your answer should be accurate to the nearest 0.0001.</i>
+Note that you will get an integral here that you can't compute 
+analytically. You will need to use a numerical method to complete the 
+problem (the TI-83/84 and 
+similar calculators have an excellent numerical integration routine built 
+in, or you can use 
+<a href=http://www.wolframalpha.com>WolframAlpha</a>.) <p /></li>
+
+<li>Solve the initial value problem 
+$$ 
+\begin{align}
+\frac{dy}{dx}&=-\frac{y+\exp(x)}{x+\cos(y)} \\
+y(0)&=0
+\end{align}
+$$
+and then use your solution to evaluate $y(2).$
+<i>Your answer should be accurate to the nearest 0.0001.</i>
+In this case you will get an implicit formula that you won't be able to 
+solve analytically for $y$ in terms of $x$. You can substitute $2$ for $x$ 
+in the solution to get an equation for $y$ which you can then solve 
+numerically quickly using Newton's method (which you can find described in 
+your calculus textbook or 
+<a href=http://en.wikipedia.org/wiki/Newton%27s_method>online</a>). Since 
+Newton's method has better convergence properties with a good 
+starting value, you may want to approximate $y(2)$ using Euler's method or 
+the improved Euler's method with a step-size of 1 or 2 to get your initial 
+guess. Note that the work to finish the solution using Newton's method is 
+much less than the work to get a numerical approximation to such a fine 
+tolerance using the numerical methods like Euler's method to approximate the solution 
+directly.<p /></li>
+
+<li>Solve the initial value problem 
+$$ 
+\begin{align}
+\frac{dy}{dx}&=\frac{\sin(x)-\exp(x+y)+2xy}{3y^2-x^2+\exp(x+y)} \\
+y(0)&=0
+\end{align}
+$$
+and then use your solution to evaluate $y(1).$
+<i>Your answer should be accurate to the nearest 0.0001.</i>
+In this case you will get an implicit formula that you won't be able to 
+solve analytically for $y$ in terms of $x$. You can substitute $1$ for $x$ 
+in the solution to get an equation for $y$ which you can then solve 
+numerically quickly using Newton's method (which you can find described in 
+your calculus textbook or 
+<a href=http://en.wikipedia.org/wiki/Newton%27s_method>online</a>). Since 
+Newton's method has better convergence properties with a good 
+starting value, you may want to approximate $y(1)$ using Euler's method or 
+the improved Euler's method (a step-size of 1 will be fine) to get your 
+initial 
+guess. Note that the work to finish the solution using Newton's method is 
+much less than the work to get a numerical approximation to such a fine 
+tolerance using the numerical methods like Euler's method to approximate the
+solution directly.<p /></li>
+
+<li>Find the general solution for $\exp(y)dx + (2x\exp(y)-1)dy = 0$. Hint: if 
+you treat 
+$x$ as a function of $y$, the equation is linear, i.e. it has an 
+integrating factor that is a function of $y$ alone.<p /></li>
+
+<li>Find the general solution for $-y\,dx + (x+x^2+y^2)dy = 0$. Hint:
+$\displaystyle\frac{1}{x^2+y^2}$ is an integrating factor.
+
+<li>Show that the equation $(x+4y)dx + (3x+6y)dy = 0$ has an integrating 
+factor of the form $(x+y)^r$ for some value of $r.$ This will be 
+true for any equation of the form $(ax+by)dx + ((a+c)x+(b+c)y)dy = 0,$ 
+where the value of $r$ will depend on the values of $a$, $b$, and $c$, but 
+you don't have to justify the general case.
+<p /></li>
+
+<li>Suppose $w(x)$ solves the initial value problem
+$$
+\begin{align}
+\frac{dw}{dx} + p(x)w &= q(x) \\
+w(0)&=0
+\end{align}
+$$
+while $z(x)$ solves the initial value problem
+$$
+\begin{align}
+\frac{dz}{dx} + p(x)z &= 0 \\
+z(0)&=y_0
+\end{align}
+$$
+Show that $y(x)=w(x)+z(x)$ solves the initial value problem
+$$
+\begin{align}
+\frac{dy}{dx} + p(x)y &= q(x) \\
+y(0)&=y_0
+\end{align}
+$$
+The ability to cut a problem into pieces, solve each piece separately, and 
+add up the answers to each piece to find an answer to the overall problem 
+is a fundamental feature of "linear" equations in mathematics. We will 
+discuss this more in chapter 2.
+<p /> </li>
+
+<li>
+Suppose you are modeling a situation governed by the equation
+$$\frac{dx}{dt}+ax=f(t),\qquad x(0)=x_0$$ with $a>0$, 
+but due to measurement errors, your measured values $\tilde{f}(t)$ differ from the true 
+values $f(t)$. Let $\tilde{x}(t)$ be the solution to the equation based on the imperfect data
+$$\frac{d\tilde{x}}{dt}+a\tilde{x}(t)=\tilde{f}(t),\qquad \tilde{x}(0)=x_0.$$
+Show that the difference between the true solution and the imperfect solution, $w(t)=x(t)-\tilde{x}(t)$,
+is the solution to the initial value problem
+$$\frac{dw}{dt}+aw=f(t)-\tilde{f}(t),\qquad w(0)=0.$$
+<p /></li>
+
+<li>
+Show that in the previous problem, if the error in your measurement is bounded by $b$, i.e.
+$|f(t)-\tilde{f}(t)|\le b$ for all $x>0$, then the error in your solution will be bounded by
+$b/a$, i.e. $|x(t)-\tilde{x}(t)|\le b/a$ for all $x>0$. <br />
+<i>Hint:</i> In the previous problem you showed $x(t)-\tilde{x}(t)$ satisfied a linear initial value problem,
+so you can write the formula for the solution of a linear differential equation which will give you an
+integral equal to $x(t)-\tilde{x}(t)$. 
+Then use the fact that $|\int(g(t)\,dt|\le \int|g(t)|\,dt$ and the bound on $|f(t)-\tilde{f}(t)|$ to get the required
+bound on the error in $\tilde{x}(t)$. 
+<p /></li>
+
+<a name='week4'>
+
+<hr />
+In problems 53 and 54, 
+list the technique you would use to solve the 
+following problem, separable, exact, linear, Bernoulli, homogeneous, or 
+none of the above. Note 
+that you will lose a point for choosing homogeneous for an equation that 
+can be solved using the exact paradigm, even if homogeneous would work 
+(exact is so much easier and you are much less likely to make a mistake).
+You don't need to solve the equations, just list the technique you 
+would use.
+<hr />
+
+</a>
+
+<p />
+<li>&nbsp;
+<ol type='a'>
+<li>$\displaystyle\frac{dy}{dx}=\displaystyle\frac{x-y}{2y-x}$<p /></li>
+<li>$\displaystyle\frac{dy}{dx}=\displaystyle\frac{x+y}{2y^2-x}$<p /></li>
+<li>$\displaystyle\frac{dy}{dx}=\displaystyle\frac{x+y}{2y^2+x}$<p /></li>
+<li>$\displaystyle\frac{dy}{dx}=y-\exp(x)$<p /></li>
+<!--
+<li>$\displaystyle\frac{dy}{dx}=y-xy^2$<p /></li>
+-->
+</ol><p /></li>
+<li>
+<ol type='a'>
+<li>$\displaystyle\frac{dy}{dx}=\frac{x^2+2xy-y^2}{x^2-2xy-3y^2}$<p /></li>
+<li>$\displaystyle\frac{dy}{dx}=\frac{x^2+2xy-y^2}{-x^2+2xy-3y^2}$<p /></li>
+<li>$\displaystyle\frac{dy}{dx}=\exp(x-y)$<p /></li>
+<li>$\displaystyle\frac{dy}{dx}=xy+y^2$<p /></li>
+</ol>
+<p /></li>
+<li>Find the general solution to 
+$\displaystyle\frac{dy}{dx}+2y=\exp(x)y^2.$
+<p /></li>
+<li>Find the general solution to 
+$\displaystyle\frac{dy}{dx}=\frac{3x+13y}{15x+y}.$
+<!-- (y+3x)^3 = (1/4)(y-x)^4 -->
+<p /></li>
+<li>Solve the initial values problem 
+$\displaystyle\frac{dy}{dx}=\frac{3y-2x}{4y-6x}$,&nbsp;&nbsp;&nbsp;&nbsp;$y(1)=2.$
+<p /></li>
+<li>Solve the initial values problem 
+$\displaystyle\frac{dy}{dx}-3y=\frac{x}{y}$,&nbsp;&nbsp;&nbsp;&nbsp;$y(0)=1.$
+<p /></li>
+<hr>
+<p />
+In the Change of Variables section we went over two types of equations 
+that can be solved by making substitutions, Bernoulli equations and 
+homogeneous equations. There are a lot of other substitutions that apply 
+to other types of equations. The keys for all the different substitution 
+methods are to rewrite the original variable $y$ in terms of the new 
+variable $v$ and to be sure to make the substitution everywhere in the 
+equation, including making the substitution in the derivative term, which 
+may require use of derivative rules such as the chain rule (as in 
+Bernoulli equations) or the product rule (as in homogeneous equations). 
+Two other common types of equations that can be solved by substitutions are
+<ul>
+<li>Any equation of the form $\displaystyle\frac{dy}{dx}=f(\alpha x+\beta 
+y+\gamma)$, where $\alpha$, $\beta$, and $\gamma$ are constants, can be 
+transformed to a separable equation via the substitution $v=\alpha x + 
+\beta y +\gamma$.<p /></li>
+<li>Equations of the form $\displaystyle\frac{dy}{dx}=A(x)y^2+B(x)y+C(x)$ 
+are called Riccati equations. If you know any one particular solution, 
+$y_1(x)$, to a Riccati equation, you can find the general solution by 
+transforming the Riccati equation to a linear equation with the 
+substitution $v=\displaystyle\frac{1}{y-y_1(x)}$.</li>
+</ul>
+<p />
+Using these tricks you can solve problems 59-64 below. Of course, to solve 
+a Riccati equation you must first find one particular solution, but you can 
+find one by guess and check more often than you might imagine. In context, 
+you may know one obvious solution, or you might look at the slope field 
+and be able to spot one simple solution like $y=1$ or $y=x$ or 
+$y=\exp(x)$ (especially if the problem appears in an undergraduate math 
+class). 
+<p />
+<hr />
+<p />
+<li>Find the general solution to
+$\displaystyle\frac{dy}{dx}=\frac{x-1+y-xy^2}{x}.$<p /></li>
+<li>Find the general solution to
+$\displaystyle\frac{dy}{dx}=y^2-2xy+x^2.$<p /></li>
+<li>Find the general solution to
+$\displaystyle\frac{dy}{dx}=2\exp(x)-\exp(-x)y^2.$<p /></li>
+<li>Solve the initial value problem 
+$\displaystyle\frac{dy}{dx}=\exp(x-y)+1,$&nbsp;&nbsp;&nbsp;&nbsp;
+$y(0)=1$.<p /></li>
+<li>Solve the initial value problem 
+$\displaystyle\frac{dy}{dx}=y^2-2xy+x^2+1,$&nbsp;&nbsp;&nbsp;&nbsp;
+$y(0)=1$.<p /></li>
+<li>Solve the initial value problem
+$\displaystyle\frac{dy}{dx}=(x^2-x+1)+(1-2x)y+y^2,$&nbsp;&nbsp;&nbsp;&nbsp;
+$y(0)=1.$
+<p /></li>
+<li>Find and classify (as stable, unstable, or semi-stable) all the 
+equilibrium solutions to 
+<p />
+<ol type='a'>
+<li>$\displaystyle\frac{dy}{dx}=y^3-4y^2+3y$<p /></li>
+<li>$\displaystyle\frac{dy}{dx}=(y^2+4y+3)(y^2-1)$<p /></li>
+</ol>
+<p /></li>
+<li>Find and classify (as stable, unstable, or semi-stable) all the 
+equilibrium solutions to 
+<p />
+<ol type='a'>
+<li>$\displaystyle\frac{dy}{dx}=\sin(y)$<p /></li>
+<li>$\displaystyle\frac{dy}{dx}=\cos(y)$<p /></li>
+</ol>
+<p /></li>
+<li>
+Suppose $\displaystyle\frac{dy}{dx}=x^2-y^2$, $y(1)=0.$ Explain how we can 
+tell that $0 &lt; y(x) &lt; x$ for all $x &gt; 1$. Hint: sketch the slope 
+field, specifically noting how the slope field looks along the lines $y = 
+x$ and $y = 0$. Explain why an integral curve 
+can't leave the wedge in the first quadrant formed by these two lines.
+<p /></li>
+<li>Two students are asked if the solution to the initial value problem
+$\displaystyle \frac{dy}{dx}=3x^2y^2$, $y(0)=1$ can ever take a negative 
+value for $x > 0.$ Kasey argues that $y$ can't be negative because 
+$3x^2y^2 > 0,$ so the derivative is
+always non-negative, hence $y$ is always increasing or flat, and, since we
+increase from $y = 1,$ $y$ must always be positive. On the other hand, 
+Riley solves the problem to get 
+$\displaystyle y = \frac{1}{1-x^3}$ and computes 
+$\displaystyle y(2) = \frac{1}{1-2^3} = -\frac17 < 0$
+hence y can be negative. Write a paragraph explaining whether Kasey or
+Riley (or both or neither) is correct.
+<p /></li>
+<hr />
+<p />
+Suppose a fish population experiences logistic growth with growth rate $r$ 
+per 
+year and environmental carrying capacity $C$. The population is harvested 
+at a rate of $h$ per year ($h$ might be a constant or it might be 
+variable depending on the population). This situation is described by the 
+differential equations
+$$
+\frac{dp}{dt}=rp(1-p/C)-h
+$$
+where $p$ is the population and $t$ is time (in years).
+It is desired to harvest the 
+fish to reach the maximum sustainable yield. That is, if you harvest too 
+few fish, then you aren't getting all the fish you could. But if you 
+harvest too many fish, you will drive the population too low (perhaps to 
+extinction) and so your harvest won't be sustainable. The next 4 problems 
+take you through the calculations of the maximum sustainable yield for two 
+simple harvesting models.
+<p />
+<hr />
+<p />
+<li>Suppose the growth rate is $r=0.2$ (20%), the carrying capacity is 
+$C=25,000,$ and the harvest is a constant $H$ fish per year. 
+<ol type='a'>
+<li>What are the equilibria for this model? Are they stable or 
+unstable?</li>
+<li>What is the maximum value of $H$ so that the model has an equilibrium 
+with $p > 0$?</li>
+</ol>
+Hint: as always when determining equilibria, drawing a graph of $dp/dt$ 
+vs. $p$ may be helpful.
+<p /></li>
+<li>Suppose the harvest is a constant $H$ fish per year. What is the 
+maximum value of $H$ so that the model has an equilibrium with $p > 0$? 
+Your answer this time will have $H$ as a function of $r$ and $C$, in 
+contrast to the previous problem where you were given specific values for 
+$r$ and $C.$<p /></li>
+<li>Suppose the harvest is not a constant but is a fixed proportion of the 
+total population, so $h=Ep$ where $E$ is the proportion of the population 
+that is harvested. 
+<ol type='a'>
+<li>What are the equilibria for the model now?</li> 
+<li>Which equilibrium is stable and which is unstable?</li>
+</ol>
+Note that the equilibrium populations will depend on the value of $E$, so 
+your answers will be functions $E$ as well as $r$ and $C$
+<p /></li>
+<li>Assuming you end up at the stable equilibrium in problem 71, what 
+proportion $E$ maximizes the harvest (recall $h=Ep$ where $p$ is now a 
+function of $E$, $r$, and $C$)? What is the maximum sustainable 
+yield $h$ for this approach?<p /></li>
+<p />
+<hr />
+<p />
+Many policies were originally designed to aim for the maximum 
+sustainable yield as computed above. However, this 
+model is quite simple and the 
+target values developed using it sometimes turned out to be too high in practice.
+<p />
+<hr />
+<p />
+<a name='week5' />
+<li>Find the general solution to $x(y')^2-yy' + 1=0$. You don't need to find the singular solution. 
+(Hint: If you solve for $y$ in terms of $x$ and $y'$, this is a Clairaut equation).
+<p /></li>
+<li>Find the general solution to $(2x+1)(y')^2 - 2(y+2)y' + 4 = 0$. You don't need to find the singular solution.
+(Hint: If you solve for $y$ in terms of $x$ and $y'$, this is a Clairaut equation).
+<p /></li>
+<li>Find a Clairaut differential equation whose general solution is all the tangent lines to $y=x^2+1$.
+<p /></li>
+<li>Find a Clairaut differential equation whose general solution is all the tangent lines to $y=e^x$.
+<p /></li>
+<li>In the section on "Theory of First-order Equations", the Clairaut equation $y = xy' - (y')^2/4$
+was solved, and it was pointed out that you could stitch different solutions together to get
+new solutions. Consider the function 
+$$h(x)=\begin{cases}
+-2x-1 \text{ for }x<0, \\
+2x-1\qquad\text{ for }x\ge 0.
+\end{cases}$$
+Is this a solution to $y=xy'-(y')^2/4$? Explain why or why not.
+<p /></li>
+<li>Find a solution to the Clairaut equation $y=xy' - (y')^2/4$ which passes through the points $(-2,5)$ and $(3,7)$. Hint:
+You will have to stitch several basic solutions together.
+<p /></li>
+<li>An <i>envelope</i> of a family of curves is a curve that is tangent to each member of the family at some point and these
+points of tangency form the whole enveloping curve (note that most families of curves do <i>not</i> have an enveloping curve). 
+Suppose a family of curves all solve a first-order differential equation, $F(x,y,y')=0$. Show that if the family of curves
+has an enveloping curve, then that envelope also solves the differential equation.
+<p /></li>
+<li>Consider the initial value problem $\displaystyle \frac{dy}{dx}=2x(y^2+1)$, $y(0)=0$. The true solution
+is $y(x)=\tan(x^2)$, but here we will see how Picard iteration works for this problem. The iteration 
+will start with $y_0(x)=0$. Compute
+<p />
+<ol type='a'>
+<li>$\displaystyle y_1(x) = \int_0^x 2t(y_0(t)^2+1)\,dt$<p /></li>
+<li>$y_2(x)$ (this time you have to work out the integral to evaluate for yourself).</li>
+</ol>
+<p /></li>
+<li>Consider the initial value problem $\displaystyle \frac{dy}{dx}=y$, 
+$y(0)=1.$ The true solution is $y(x)=\exp(x),$ but here we will see how 
+Picard iteration works for this problem. The iteration will start with 
+$y_0(x)=1.$ Compute<p />
+<ol type='a'>
+<li>$\displaystyle y_1(x) = \int_0^x y_0(t)dt + 1$<p /></li>
+<li>$y_2(x)$ (this time you have to work out the integral to evaluate for 
+yourself).</li>
+
+</ol>
+<p />
+</li>
+
+</ol>
+
+<p />
+<a href=chap1ansrev.php target=_blank>Answers to odd numbered exercises</a>
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

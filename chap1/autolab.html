@@ -1,0 +1,152 @@
+<head>
+<title>EDE Chapter 1: Introduction</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Autonomous Equations Lab</h3>
+</center>
+<a href=lab3.html target=_blank>Launch Autonomous 
+Equations Lab</a>
+<br /><i>Note that the system may be slow (latency of <10 seconds) for 
+drawing 33 integral curves for some problems. Unfortunately, I haven't 
+found a way yet
+to get it to post a "Working" message to let you know it is 
+thinking.</i><p /> 
+<h4>Overview</h4>
+Autonomous equations are equations of the form
+$$\frac{dx}{dt}=f(x)$$
+where the derivative does not depend on the independent variable, $t$ in 
+this case. Here $x$ is the dependent variable, because it is a function 
+of the independent variable, $t$. Of course, the names of the variables 
+are unimportant. Equations like 
+$$\begin{align}
+\frac{dy}{dx}&=y^2-1 \\
+\frac{dx}{dt}&=\frac{k}{x^2} \\
+\frac{dp}{dq}&=.07p(1-p/10000)
+\end{align}
+$$
+are all autonomous, since the derivative depends only on the dependent 
+variable (the function) and not the independent variable. Autonomous 
+equations are common in practice since the laws of nature are not 
+time-dependent. If we start from $F=mx''$ to create a differential 
+equation, we have position $x$ as the dependent variable and time $t$ as 
+the independent variable. In mechanics problems the force will usually 
+depend on the position of where the particle is, the $x$, but not when it 
+is there, the $t$. So the equations we develop this way will usually be 
+autonomous.
+<p />
+Any autonomous equation is naturally separable, so you can find a general
+solution by integration. But integration can be tricky, and frequently you
+can use geometric techniques to find answers to practical questions more
+easily than you can by writing down solutions. In problem 6 of the first
+lab, you found rules for recognizing when a slope field was autonomous
+(which in that context we defined as "a function of $y$ alone).  We will
+now build on that geometric understanding to see how you can find certain
+properties of solutions to autonomous equations, especially behavior as
+the independent variable tends to $\pm\infty$, from geometric principles
+without solving the equation. Next week we will use this understanding to
+optimize harvesting strategies for a renewable resource (e.g. fish).
+<p />
+<h4>Graphing Autonomous Equations</h4>
+The following link to <a href=lab3.html target=_blank>Launch Autonomous Equations Lab</a>
+will bring up a new window where you can enter an autonomous differential equation
+of the form
+$$ \frac{dx}{dt}=f(x),\qquad x(0)=x_0 $$ 
+and see how it looks in two versions. On the left it will show the graph of
+$dx/dt$ versus $x$, i.e. the graph of $f(x)$. On the right, it will show the
+slope field of the differential equation, which is a graph of $x$ vs. $t$. Note
+that the $x$-axis is therefore horizontal on the left graph and vertical on the
+right graph. The $x$-axis is marked in green on both axes, and there is a red dot
+corresponding to the same value of $x$ on both graphs. The dot can be moved on the
+right graph and the corresponding dot on the left graph will follow. The right graph
+has buttons to plot either the one integral curve corresponding to the listed 
+initial value or to plot 33 integral curves, just as in the slope field lab.
+Also note that if you change the equation, you need to click the "Update Graphs"
+button in the lower right to be sure everything updates. 
+<p />
+<h4>Identifying Equilibria</h4>
+<ol>
+<li>Consider the following equations
+<ul>
+<li><code><nobr>x' = (x-3)*(x+1)</nobr></code></li>
+<li><code><nobr>x' = x^2 - 4</nobr></code></li>
+<li><code><nobr>x' = x^2 + 1</nobr></code></li>
+</ul>
+<b>List where x' is positive, negative and 0. List where the slope field for 
+the differential equation is increasing, decreasing, and 
+horizontal.</b> <p /></li>
+<li><b>Conjecture a relationship between the 
+<code><nobr>dx/dt vs. x</nobr></code> curve and the slope field for 
+<code><nobr>x vs. t</nobr></code> based on your results from the first 
+step.</b><p />
+Note that this conjecture need not be correct. It will be judged on whether it is a plausible first guess
+(though of course it is fine if it is correct). <p /></li>
+<li>Repeat the first step for three more equations of your own choice to 
+test the hypothesis you just created. <b>List your three new equations and the same information as you 
+collected in Exercise 1.</b><p /></li>
+<li>If the results with the next three equations confirmed your 
+hypothesis, wonderful. If not, revise your hypothesis in light of the 
+additional evidence and try again. Repeat until you are satisfied.
+<b>List your final hypothesis.</b><p />
+This time you will be graded on having a correct conclusion.<p />
+</li>
+<li><b>Write a paragraph explaining why your final hypothesis is correct.</b>
+This explanation should involve the geometric interpretation of slope and derivative.
+It is not acceptable just to say the hypothesis works for all the examples.
+<i>Note that the paragraph should be written in complete sentences using proper
+grammar and spelling.</i><p /></li>
+</ol>
+<h4>Classifying Equilibria</h4>
+For an autonomous equation, a solution with a 
+constant value of the form <code><nobr>x(t) = x<sub>0</sub></nobr></code> 
+is called an equilibrium solution. An equilibrium solution is 
+<i>stable</i> if nearby solutions converge to the equilibrium solution 
+and unstable if nearby solutions move away from the equilibrium 
+solution. For instance, if you draw the 33 integral curves in the first 
+example (<code><nobr>x' = (x-3)*(x+1)</nobr></code>), you should see that 
+<code><nobr>x = -1</nobr></code> is a stable equilibrium while 
+<code><nobr>x = 3</nobr></code> is an unstable equilibrium. 
+<ol start=6>
+<li><b>Look through the examples you have created and identify the stable and unstable 
+equilibria.</b><p /></li>
+<li><b>Create a hypothesis to predict what the stable and unstable equilibria 
+will be for an autonomous differential equation based on the 
+<code><nobr>dx/dt vs. x</nobr></code> graph.</b><p />
+As before, your initial hypothesis doesn't have to be right (though I think you can
+probably get it right already).
+<p /></li>
+<li>As before, test three more equations of your own choice to test 
+the hypothesis you just created. <b>List your three new equations and whether your
+hypothesis correctly predicts the stable and unstable equilibria.</b>
+<p/></li>
+<li>If the results with the next three equations confirmed your 
+hypothesis, wonderful. If not, revise your hypothesis in light of the 
+additional evidence and try again. Repeat until you are satisfied.
+<b>List your final hypothesis.</b><p /></li>
+<li>As in exercise 5, <b>write a paragraph explaining why your final hypothesis is correct.</b>
+This explanation should involve the geometric interpretation of slope and derivative. It is not
+acceptable just to say the hypothesis works for all the examples. 
+<i>Note that the paragraph should be written in complete sentences using proper grammar and spelling.</i>
+<p /></li>
+</ol>
+<p />
+While you may work with a partner on the lab (indeed, due 
+to space constraints you will pretty much have to work together) everyone 
+should turn in a separate lab report.
+<p />
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

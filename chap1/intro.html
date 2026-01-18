@@ -1,0 +1,241 @@
+<head>
+<title>EDE Chapter 1: Introduction</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Introduction</h3>
+</center>
+<h4>
+"Mathematics is the language with which God has written the universe." - 
+Galileo</h4>
+Mathematics is the unique language that is precise enough to describe the 
+world for science and engineering. In this class, we will start putting 
+together what you have learned in calculus to use mathematics to describe 
+population growth, spring-mass systems, electrical circuits, and a variety 
+of other situations. 
+<p />
+Differential equations are one of the most important tools in writing such 
+descriptions. A differential equation is just an equation involving one or 
+more derivatives.
+Differential equations are important because they let 
+you write a description of a situation in terms of the forces acting in 
+the situation. 
+Consider Newton's second law of motion
+$$\text{Force}=\frac{dp}{dt}$$
+where $p$ is momentum and $t$ is time.
+This is probably more familiar to you as $F=ma$, making the
+assumption that mass is constant. Suppose you are told the acceleration of
+gravity on the moon is $1.6 \text{m}/\text{sec}^2$ . If you drop a mass above
+the surface of the
+moon, how far will it fall in 1 second? Here you know acceleration, but what
+you want to know is distance. This leads to the initial
+value problem find $x(1)$ where $d^2x/dt^2 =  -1.6$, $x(0) = 0$, 
+$x'(0)=0$. 
+In a physical situation you often know the forces acting on an object and then
+have to determine the future behavior of the object. This will lead to a
+differential equation. 
+Of course differential equations occur in many 
+other subjects besides physics. The idea of thinking of a situation in 
+terms of the "forces" acting on it makes sense not just in physics but in 
+economics, population biology, and many other disciplines. We will meet 
+a variety of applications for differential equations during this course.
+<p />
+
+<p />
+While the example above leads to a specific equation that we need to 
+solve, there are many situations where the key is being able to interpret 
+the consequences of a differential equation without actually finding a 
+solution. For example, Newton's third law says that for every action 
+(force) there is an equal and opposite reaction. This says the total net 
+force in every situation is 0 (though there may be non-zero forces acting 
+on any particular object in the situation). Now since 
+$\text{Force}=\displaystyle\frac{dp}{dt}$, this says 
+$\displaystyle\frac{dp}{dt}=0$, i.e. total momentum has a 0 derivative, so 
+momentum is conserved. Here we have deduced a key physical law by 
+interpreting what the differential equation is saying, rather than solving 
+a specific problem. In this class you will be asked both to solve problems 
+and also to use and interpret differential equations to describe and 
+explain mathematical and scientific ideas. 
+<p />
+
+<p />
+Mathematical language can be approached in several different ways. You can 
+look at problems both algebraically and graphically. This class will push 
+you to translate between these different approaches so you can better 
+understand what each tells you and be better prepared to handle real 
+problems where you may need to switch back and forth between different 
+representations. Also note that like any language, mathematics in general
+and differential equations in particular has grammar and spelling to be mastered,
+which in this class means algorithms for solving various types of equations.
+While computers are getting better at solving specific equations, a facility with
+the solution techniques will be helpful in understanding differential equations.
+So this class will feature both online homework problems to build that facility
+as well as written problems that will (hopefully) build understanding of what
+a differential equation means.
+<p />
+
+<p />
+In the rest of this section, we will introduce some definitions and 
+notation, concentrating on the algebraic viewpoint. We will discuss the 
+geometric viewpoint starting in the section on Slope Fields, which will be 
+covered in the lab.
+<p />
+<h4>Definitions</h4>
+A <b>differential equation</b> is an equation involving derivatives.
+<p />
+EXAMPLES:
+$$
+\begin{align}
+\frac{dZ}{dt}&=175-\frac{2}{100+3t}Z \tag{a} \\
+x^2\frac{d^2y}{dx^2}+x\frac{dy}{dx}+(x^2-1)y&=0 \tag{b}\\
+\frac{dp}{dt}&=-.01p^2+p \tag{c}\\
+I''+2I'+10Ix&=V_0\omega\sin(\omega t) \tag{d}\\
+\exp(f(x))\sqrt{1+(f'(x))^2}  &=
+\frac{\exp(f(x))\left((f'(x))^2+f''(x)\right)
+      (1+(f'(x))^2) -
+      \exp(f(x))(f'(x))^2f''(x)}
+     {\left(1+(f'(x))^2\right)^{3/2}} \tag{e}
+\end{align}
+$$
+
+In equation (a) for example, $Z$ is to be a function of $t$ whose derivative is
+175 minus $2/(100+3t)$ times the original function $Z$. Note that we write $Z$ instead
+of $Z(t)$. We will usually not distinguish between functions and variables in
+our notation. It will actually make things easier in some problems to just
+think of functions as variables and treat them accordingly. Of course, in 
+some situations you may want to use the $f'$ notation rather than $df/dx$ 
+and the names of the variables can be whatever is convenient. The key is 
+having an equation involving derivatives, not what notation is used. You may have
+noted that while we are talking about equations using derivatives, the subject is
+called differential equations, not derivative equations. We will discuss the reason
+for this in the section on Separable Equations.
+<p />
+
+<p /> Note that the above
+examples are all "real" examples that arise in applications. Equation (a) represents
+a particular mixing problem. Equation (b) is Bessel's equation of order 1, which 
+arises in problems with cylindrical symmetry, such as the vibration of a drum head.
+Equation (c) is an example of a logistic equation, which is used in modeling population
+dynamics. Equation (d) gives the current flowing through a particular AC
+circuit. Equation (e) is an example of an Euler-Lagrange equation from a particular
+problem in the Calculus of Variations. Depending on how fast class runs, we may 
+or may not get to Bessel equations, but we will solve the other equations in this class
+(even that monstrous looking equation (e), which is actually nicer than it looks). And
+this being a math class, we will also look at some equations that are chosen
+for their intrinsic beauty and not just for applications.
+<p />
+ 
+<p />
+The <b>order</b> of a differential equation is the highest order of 
+derivative that
+occurs in the equation. In the examples above, (a) and (c) are first order while the
+other examples are second order. A <b>particular solution</b> to a 
+differential
+equation is a function that satisfies the equation.
+<p />
+EXAMPLES:
+$$
+\begin{align}
+y(x) = x^2 &\text{ is a particular solution to } \frac{dy}{dx}=2x \\
+y(x)=x^2+1 &\text{ is a particular solution to } \frac{dy}{dx}=2x
+\end{align}
+$$
+
+This illustrates a problem with differential equations, solutions are usually
+not unique (a problem has a "unique" solution if it has only one 
+solution).
+There are two common
+approaches to resolving this difficulty.
+One is to ask for the general solution instead of
+the particular solution. A
+<b>general solution</b> is a set of solutions to a differential equation 
+with
+as many arbitrary constants as the order of the equation.
+<p />
+EXAMPLE:
+$$
+y(x)=x^2+C \text{ is the general solution to } \frac{dy}{dx}=2x
+$$
+For any choice of the arbitrary constant $C$ we get a solution to the equation.
+The two solutions in the previous example come from choosing $C=0$ and $C=1$.
+The equation is first order so we only expect one arbitrary constant.
+In many cases the general solution gives all the solutions but this need not
+be the case. A <b>singular solution</b> is a particular solution to an
+equation which is not an instance of the general solution. We will see
+examples of this later. (The term singular solution is sometimes given a 
+more restrictive and technical meaning in advanced courses.)
+<p />
+A second approach to dealing with the non-uniqueness of solutions is to narrow
+the problem.  We ask not for any old solution to the problem but rather for a
+solution which also has some additional properties.  One common situation is
+an <b>initial value problem</b> where one wants the solution to a 
+differential
+equation which takes a specified value at a given point.
+<p />
+EXAMPLE:
+$$
+\begin{align}
+&y(x)=x^2+3 \text{ is the unique solution to the
+initial value problem } \\
+&\frac{dy}{dx}=2x \text{ and } y(1)=4
+\end{align}
+$$
+
+A function which solves a differential equation can be given in two different
+forms. An <b>explicit solution</b> is a function written in the usual form 
+of a
+formula applied to an independent variable.
+<p />
+EXAMPLES: The following functions are defined explicitly
+$$
+\begin{align}
+y(x)&=x^2+\tan(x) \\
+y(x)&=\sqrt{1-x^2} \\
+y(x)&=-\sqrt{1-x^2}
+\end{align}
+$$
+
+A second way to write the function is to give a relationship between the 
+function and the independent variable. The implicit function theorem can 
+then be used to show a function exists which satisfies the relationship, 
+though it may be difficult or impossible to write the function 
+explicitly (the implicit function theorem is usually covered in Advanced 
+Calculus 2).
+<p />
+EXAMPLES:
+$$
+\begin{align}
+y-x^2-\tan(x)&=0 \\
+x^2+y^2&=1
+\end{align}
+$$
+
+The first relation above generates the first function in the previous example,
+while the second relation above generates both the second and the third
+functions of the previous example. An <b>implicit solution</b> to a
+differential equation is a relation which generates a function which solves
+the equation. Note that it is possible to check if an implicit solution solves
+a differential equation without actually computing the explicit solution by
+using implicit differentiation to solve for $y'$.
+While an explicit solution has obvious advantages over an
+implicit solution, often it is easy to find an implicit solution while the
+algebra involved in generating an explicit solution is difficult or
+impossible. It is also possible that an implicit solution will be more
+familiar and easier to understand (consider $x^2+y^2=1$ vs. $y=\pm\sqrt{1-x^2}$). In
+these cases we will settle for an implicit solution.
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+

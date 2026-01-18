@@ -1,0 +1,147 @@
+<head>
+<title>EDE Chapter 1: Solutions</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Math 340 Written Homework 1<br />Solutions to Odd Exercises</h3>
+</center>
+1. <ol type='a'>
+<li>1</li><li>3</li><li>1</li><li>2</li><li>1</li>
+</ol><p />
+3. $y=-\log(c-x^2).$<p />
+5. $\displaystyle \frac{e^y-1}{e^y}=k\exp\left(\frac{x^2}{2}\right).$ 
+<p />
+7. $\displaystyle \frac{y-3}{y+3}=-\frac12e^{6x}.$ <p />
+9. $\tan(y)=x.$<p />
+11. $y=kx^4$.<p />
+13. $e^2$ <p />
+15. $2/3$ <p />
+17. $-4/3$ <p />
+19. $\displaystyle\frac{dy}{dx}=2xy$, $y(0)=1.$<p />
+21. $\displaystyle\frac{dy}{dx}=-\exp(x-y).$ <p />
+23. <ol type='a'>
+<li>$y_1(h)=1+h$</li>
+<li>$$\lim_{h\to 0}\frac{-h-1+2\exp(h)-(1+h)}{h^2}=\lim_{h\to 0}\frac{-2-2h+2\exp(h)}{h^2} = 1$$ 
+after two applications of L'H&ocirc;pital's rule
+(you could also write out $\exp(h)$ as a series and check the lower-order terms cancel).</li>
+</ol><p />
+25. <ol type='a'>
+<li>$y_1(h)=1+h+h^2$</li>
+<li>$$\lim_{h\to 0}\frac{-h-1+2\exp(h)-(1+h+h^2)}{h^3}=\lim_{h\to 0}\frac{-2-2h-h^2+2\exp(h)}{h^3} = \frac{1}{3}$$ 
+after three applications of L'H&ocirc;pital's rule
+(you could also write out $\exp(h)$ as a series and check the lower-order terms cancel).</li>
+</ol><p />
+27. <ol type='a'>
+<li>Both</li><li>Linear</li><li>Linear</li><li>Exact</li>
+</ol><p />
+29. $\displaystyle y=\exp(x)-\frac{\exp(x)}{x}+\frac{C}{x}.$<p />
+31. $y=1-x+C\exp(-x).$ <p />
+33. $y=(1/3)\exp(x)+(5/3)\exp(-2x).$ <p />
+35. $2x^3+6x^2y-3y^2=-3.$<p />
+
+37. After 120 minutes, the concentration tank 1 is $2(1-\exp(-0.6)) \approx 0.90 mg/l$. The concentration in tank 2
+is $2-(2+t/100)\exp(-0.6) \approx 0.24 mg/l$.<p />
+39. The concentration reaches a maximum after 500 minutes. At this time, the concentration is 0.00092 g/l or 0.9mg/l, 
+so tank 2 has a max concentration less than 2% of the max concentration in tank 1. One of the 
+advantages of putting tanks in series is "resistance to shocks" since contamination in later tanks will be much lower than in
+the initial tank.<p />
+
+41. $y(2)=1.$ <p />
+43. $y(1)\approx 3.5194.$ <p />
+45. $y(2)\approx -3.2473.$ <p />
+47. $x=C\exp(-2y)+\exp(-y).$<p />
+49. Multiplying through by $(x+y)^r$ gives us $(x+4y)(x+y)^r dx + (3x+6y)(x+y)^r dy = 0$. Noting that
+$x+4y=(x+y)+3y$ and $3x+6y=3(x+y)+3y$, computing the partial derivatives in the test for exactness gives:
+$$\begin{align}
+\frac{\partial}{\partial y}\left((x+4y)(x+y)^r\right) 
+&= \frac{\partial}{\partial y} \left((x+y)^{r+1}+3y(x+y)^r\right) \\
+&=(r+1)(x+y)^r + 3(x+y)^3 + 3ry(x+y)^{r-1} &= (r+4)(x+y)^r + 3ry(x+y)^{r-1}. \\
+\frac{\partial}{\partial x}\left((3x+6y)(x+y)^r\right) \\ 
+&= \frac{\partial}{\partial x}\left(3(x+y)^{r+1} + 3y(x+y)^r\right) \\
+&=3(r+1)(x+y)^r + 3ry(x+y)^{r-1}.
+\end{align}$$
+Comparing the two partial derivatives we see they are equal 
+when $3(r+1)=r+4$, which gives us $r=1/2$. So $(x+y)^{1/2}$ is an integrating factor.
+<p />
+
+51.
+$$\begin{align}
+\frac{dw}{dt}+aw & = \frac{d(x-\tilde{x})}{dt}+a(x-a\tilde{x}) \\
+&=\left(\frac{dx}{dt}+ax\right) - \left(\frac{d\tilde{x}}{dt}+a\tilde{x}\right) \\
+&=f(t) - \tilde{f}(t)\end{align}$$
+and $w(0)=x(0)-\tilde{x}(0)=x_0-x_0=0$.
+<p />
+53. <ol type='a'>
+<li>Homogeneous</li><li>Exact</li><li>None of the 
+above</li><li>Linear</li>
+</ol><p />
+55. $\displaystyle y=
+\frac{1}{C\exp(2x)+\exp(x)}$ and singular solution $y=0.$<p />
+57. $y=2x.$ <p />
+59. $\displaystyle y=\frac{x}{C\exp(2x)-x/2-1/4}+1.$ <p />
+61. $\displaystyle y=\exp(x)-\frac{1}{C\exp(2x)+\frac13\exp(-x)}.$<p />
+63. $\displaystyle y=\frac{x^2-x-1}{x-1}.$ <p />
+65. <ol type='a'><li>$y=0$ is an unstable equilibrium.<br />
+$y=1$ is a stable equilibrium.<br />
+$y=3$ is an unstable equilibrium.<p /></li>
+<li>$y=-3$ is a stable equilibrium.<br />
+$y=-1$ is a semi-stable equilibrium.<br />
+$y=1$ is an unstable equilibrium.</li>
+</ol><p />
+67. <img align=right src=hw3-15.png height=300 width=440>
+ Along the line $y=x,$ the slope is 
+$\displaystyle \frac{dy}{dx}=x^2-y^2 = x^2 - x^2 = 0.$ Along the line 
+$y=0$ the slope is $\displaystyle \frac{dy}{dx}=x^2-y^2 = x^2-0=x^2>0.$ 
+Drawing the slope field we see that the arrows all point into the wedge 
+formed by those two lines in the first quadrant. So since we start at the 
+edge of the wedge at (1,0), we stay inside the wedge and the solution 
+therefore satisfies $0 < y(x) < x.$
+ <p />
+69. <ol type='a'><li>
+$\displaystyle p=12500\left(1-\sqrt{1-\frac{H}{1250}}\right)$ is 
+unstable.<br />
+$\displaystyle p=12500\left(1+\sqrt{1-\frac{H}{1250}}\right)$ is stable.
+<p /></li>
+<li>The maximum $H$ which has a semi-stable equilibrium is 1250. Any 
+smaller $H$ has a stable equilibrium.</li>
+</ol><p />
+71.<ol type='a'>
+<li>The equilibria are $p=0$ and 
+$\displaystyle p=\left(1-\frac{E}{r}\right)C.$<p /></li>
+<li>$p=0$ is unstable and 
+$\displaystyle p=\left(1-\frac{E}{r}\right)C$ is stable.</li>
+</ol><p />
+73. $y=cx+1/c$ for $c\ne0$. The singular solution (which was <i>not</i> required) is $y=\pm2\sqrt{x}$
+or $y^2=4x$ if you prefer. 
+<p />
+75. $y=(x+1)y'-(y')^2$.
+<p />
+77. This is not a solution to the differential equation because it is not differentiable at $x=0$.
+<p />
+79. Since the envelope is tangent to a solution curve at every point, that means $x$, $y$, and $y'$ for the enveloping
+curve match those vales for a solution curve. Since any solution curve satisfies $F(x,y,y')=0$, so does the envelope, hence
+the envelope also solves the differential equation.
+<p />
+81. 
+<ol type='a'>
+<li>$y_1(x)=x+1$.<p /></li>
+<li>$y_2(x)=x^2/2 + x + 1$.</li>
+</ol>
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+
+

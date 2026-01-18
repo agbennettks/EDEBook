@@ -1,0 +1,285 @@
+<head>
+<title>EDE Chapter 1: Calculus of Variations</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center> 
+<h3>Calculus of Variations</h3> 
+</center> 
+<h4>Discussion</h4>
+First-order differential equations can arise in a variety of contexts.  
+Population models are an example of a situation where first-order
+equations are written down directly. But in practice one often starts with
+a general mathematical problem, and then finds out in the course of
+analysis that you have to solve a differential equation. The calculus of
+variations often provides examples of this.
+<p /> 
+In the typical undergraduate calculus courses, you often apply calculus to
+finding a minimum or a maximum point. In one-variable calculus you
+differentiate and set equal to zero to reduce the problem of finding a min
+or max to solving an algebraic equation. If you have a function of several
+variables, you have to solve for each of the partials to be zero
+simultaneously, so you have to solve a system of algebraic equations. But
+sometimes you want to find not a minimal point but a minimal path. For
+example, you may want to find the path for a space probe to Jupiter that
+minimizes fuel consumption. The general idea of differentiating and
+setting to zero is still the key notion, but once you extend this to
+looking over all paths instead of just over a finite set of variables, you
+end up with a differential equation instead of the algebraic equations you
+have studied in the past.
+
+<h4>An Example</h4> 
+It is easiest to understand the procedure by addressing a specific
+example. <b>We will ask for the "cheapest" path from $(a,b)$ to $(c,d)$, 
+where
+the cost per unit length of the path is $e^y$.</b> So the farther down the
+<i>y</i>-axis you go, the cheaper it is. While the straight line between 
+$(a,b)$ and $(c,d)$ is the shortest distance, perhaps it would be cheaper
+to follow a path that curves down where the cost per unit length is lower.  
+On the other hand, if you drop too far down you may end up spending more
+because the length of the path grows so long that it outweighs the
+decreased cost per unit length. We need to calculate the overall cost,
+and then find the path that minimizes this cost. 
+<p /> 
+While the setup given above is somewhat arbitrary, it does come close to
+many practical problems of finding the best path, whether for a space
+probe or a robot arm. The specific cost function is chosen to make the
+analysis work out neatly (after all, you are in chapter 1 of a first
+course on differential equations). But the general approach will work for
+more general cost functions. <b>We will assume in this problem the
+cheapest path is given by the graph of a smooth function $y=f(x)$</b> 
+(smooth in this context means differentiable as many times as we want).
+Remember that when finding the minimum or maximum of a function of one 
+variable, you needed to check points where the function was not 
+differentiable. In the calculus of variations, you similarly need to check 
+certain regularity conditions. In fact, in practice checking the 
+regularity conditions is often more work than finding the solution once 
+you know it exists. But we won't worry about that for this example.
+<p />
+<i>STEP 1:</i> Write out a formula for the cost of a path.
+<p />
+The cost per unit length is $e^y$. And from calculus we know that the 
+length element of the graph of $y=f(x)$ from $(x,f(x))$ to 
+$(x+dx,f(x+dx))$ is $\sqrt{1+(f'(x))^2}dx$. So the cost of an 
+infinitesimal 
+section of the graph from $(x,f(x))$ to $(x+dx,f(x+dx))$ is the cost per 
+unit length times the length, which is 
+
+$$\exp(f(x))\sqrt{1+(f'(x))^2}dx$$
+
+Now to find the total cost of the path, we add up the costs of all the 
+infinitesimal sections with an integral to obtain
+
+$$Cost = \int_{a}^{c} \exp(f(x))\sqrt{1+(f'(x))^2}dx$$
+
+Since we are given the path runs from $(a,b)$ to $(c,d)$ we know the
+limits of the integral go from $a$ to $c$. And now we can compute the
+cost of any particular path. So we just have to figure out which smooth
+function $f(x)$ satisfying the conditions that $f(a)=b$ and $f(c)=d$
+minimizes this integral.
+<p />
+<i>STEP 2:</i> Write out the cost of the variations of $f$.
+<p />
+Suppose we consider two functions, $f(x)$ and $g(x)$ which satisfy the
+requirements that $f(a)=g(a)=b$ and $f(c)=g(c)=d$ and both of which are
+smooth. Then we can form their difference $\eta(x)=f(x)-g(x)$ which will
+automatically satisfy $\eta(a)=f(a)-g(a)=0$, $\eta(c)=f(c)-g(c)=0$ and
+which will also be smooth, since the derivatives of $\eta$ are just the
+derivatives of $f$ minus the derivatives of $g$. We call $\eta$ a 
+<i>variation</i> of the function $f$.
+<p />
+Now suppose that $f(x)$ is the particular path that minimizes the cost. 
+Then for any $h$ satisfying $h(a)=0=h(c)$ and any real number $t$, 
+$th(x)$ is a variation on $f$, i.e. the function $f(x)+th(x)$ is another 
+smooth path from $(a,b)$ to $(c,d)$. And we can compute the cost of this 
+path as a function of the parameter $t$ which measures how large the 
+variation is from the optimal path,
+
+$$C(t) = \int_{a}^{c} \exp(f(x)+th(x))\sqrt{1+(f'(x)+th'(x))^2}dx. $$
+
+<i>STEP 3:</i> Differentiate in the parameter $t$ and set equal to zero.
+<p />
+Now since we are assuming the graph of $y=f(x)$ is the cheapest path, it 
+follows that the cost is minimized when there is no variation from this 
+optimal path, i.e. $C(t)$ is minimized at $t=0$. But from one-variable 
+calculus, we know this means that $C'(0)=0$ (note that we use the 
+assumption that there is a minimum path which is the graph of a smooth 
+function here in ruling out the other option that $C(t)$ is not 
+differentiable at $t=0$). Differentiating in the parameter $t$ we get
+
+$$C'(t) = \int_{a}^{c} h(x)\exp(f(x)+th(x))\sqrt{1+(f'(x)+th'(x))^2}dx
++\int_{-a}^{a} \exp(f(x)+th(x)) 
+\frac{(f'(x)+th'(x))h'(x)}{\sqrt{1+(f'(x)+th'(x))^2}} dx. 
+$$
+
+Setting $t=0$ and equating the resulting formula for $C'(0)$ to zero we 
+get 
+
+$$\int_{a}^{c} h(x)\exp(f(x))\sqrt{1+(f'(x))^2}dx
++\int_{a}^{c} \exp(f(x))\frac{f'(x)h'(x)}{\sqrt{1+(f'(x))^2}} dx = 0. 
+\tag{A}
+$$
+
+This must hold for every choice of $h(x)$.
+So the cheapest path from $(a,b)$ to $(c,d)$ is the path along 
+$y=f(x)$ 
+where $f(x)$ must have the property that the integral above is 0 for 
+<b>all</b> smooth functions $h(x)$ with $h(a)=0=h(c)$.
+<p />
+At this point, it is very useful to know the following theorem.
+<p />
+<hr />
+<i>THEOREM:</i> If a continuous function $G(x)$ has the property that 
+$$\int_{a}^{c} G(x)h(x)dx =0$$
+for all smooth functions $h(x)$ with $h(a)=0=h(c)$, then $G(x)\equiv 0$ 
+for all $x$ in the interval $(a,c)$.
+<p />
+<a name='theorem'>
+This </a>is a standard result from advanced calculus. The underlying idea 
+of the proof is straightforward and 
+<a href=calcvarsidebar.html>you can go over it here if you are 
+interested.</a>
+<hr />
+<p />
+<i>STEP 4:</i> Rewrite the integrals from step 3 so the theorem applies.
+<p />
+The integral on the left in equation (A) is already in the form of the
+theorem. The integral on the right however is a complicated function times
+$h'(x)$ instead of $h(x)$. If the integral on the right had $h(x)$ instead
+of $h'(x)$ then we could rewrite the sum of the two integrals as one
+integral of the sum, use the distributive rule to factor out the $h(x)$,
+and then apply the theorem to get a condition on $f(x)$. Fortunately, in
+calculus we learned a trick to switch the derivative from one function to
+another in an integral: integration by parts. We apply this to the second
+integral as follows. Write
+
+$$F(x)=\frac{\exp(f(x))f'(x)}{\sqrt{1+(f'(x))^2}}$$
+
+so the second integral in equation (A) becomes
+
+$$ \int_{a}^{c}F(x)h'(x)dx $$
+
+Then since we are given $h(a)=0=h(c)$, integration by parts tells us that 
+
+$$ 
+\begin{align}
+\int_{a}^{c}F(x)h'(x)dx &= F(c)h(c) - F(a)h(a) - \int_{a}^{c} F'(x)h(x)dx \\
+&= 0 - 0 - \int_{a}^{c} F'(x)h(x) dx \\
+&= -\int_{a}^{c} F'(x)h(x) dx
+\end{align} 
+$$
+
+Of course, this means we are going to need to differentiate that nice 
+function $F(x)$. Using the quotient rule we get
+
+$$
+\begin{align}
+F'(x) &= 
+\frac{\left(\exp(f(x))(f'(x))^2+\exp(f(x))f''(x)\right)
+      \sqrt{1+(f'(x))^2} - 
+      \exp(f(x))f'(x)\frac{f'(x)f''(x)}{\sqrt{1+(f'(x))^2}}}
+     {1+(f'(x))^2} \\
+&= \frac{\exp(f(x))\left((f'(x))^2+f''(x)\right)
+      (1+(f'(x))^2) - 
+      \exp(f(x))(f'(x))^2f''(x)}
+     {\left(1+(f'(x))^2\right)^{3/2}}
+\end{align}
+$$ 
+
+Substituting for the second integral in equation (A), rewriting the 
+difference of integrals as the integral of the difference, and pulling 
+out the common factor $h(x)$ we get
+
+$$
+\begin{align}
+\int_{a}^{c} h(x)\exp(f(x))\sqrt{1+(f'(x))^2}dx
+-\int_{a}^{c} 
+\left(\frac{\exp(f(x))\left((f'(x))^2+f''(x)\right)
+      (1+(f'(x))^2) - 
+      \exp(f(x))(f'(x))^2f''(x)}
+     {\left(1+(f'(x))^2\right)^{3/2}}
+\right) h(x) dx &= 0 \\
+\int_a^c h(x) \left(\exp(f(x))\sqrt{1+(f'(x))^2} -
+\frac{\exp(f(x))\left((f'(x))^2+f''(x)\right)
+      (1+(f'(x))^2) -
+      \exp(f(x))(f'(x))^2f''(x)}
+     {\left(1+(f'(x))^2\right)^{3/2}}
+\right) dx &=0
+\end{align}
+$$
+
+This is exactly the form for the theorem, so we can conclude that 
+$y=f(x)$ is the cheapest path when
+
+$$
+\exp(f(x))\sqrt{1+(f'(x))^2} -
+\frac{\exp(f(x))\left((f'(x))^2+f''(x)\right)
+      (1+(f'(x))^2) -
+      \exp(f(x))(f'(x))^2f''(x)}
+     {\left(1+(f'(x))^2\right)^{3/2}}=0
+\tag{E-L}
+$$
+
+for all $x$ in the interval $(a,c)$.
+<p />
+Note that this is a differential equation for $f(x)$. So we have reduced 
+our original geometric question of finding the cheapest path to solving a 
+differential equation. Equations obtained by this process are called 
+Euler-Lagrange equations.
+<p />
+<i>STEP 5:</i> Solve the equation.
+<p />
+DON'T PANIC. Euler-Lagrange equations often come out rather messy. 
+But while this equation may look frightening, it is actually very 
+nice (you were promised that things had been rigged after all). Since 
+$\exp(f(x))\ne 0,$ 
+you can cancel out the 
+common factor of $\exp(f(x)).$
+And since $\sqrt{1+(f'(x))^2}\ne 0,$ you can multiply through by 
+$\left(\sqrt{1+(f'(x))^2}\right)^{3/2},$ which nicely both clears out the 
+denominator of the fraction and also clears up the square root in the 
+leftmost term. This turns our original equation (E-L) into
+
+$$
+\begin{align}
+\left(1+(f'(x)^2)\right)^2 -
+\left((f'(x))^2+f''(x)\right)\left(1+(f'(x))^2\right) +
+(f'(x))^2f''(x) &= 0 \\
+1+2(f'(x))^2 + (f'(x))^4 - 
+\left((f'(x))^2+f''(x)+(f'(x))^4+f''(x)(f'(x))^2\right) +
+(f'(x))^2f''(x) &= 0 \\
+1+(f'(x))^2 - f''(x) &= 0 \tag{B}
+\end{align}
+$$
+
+Now that's a much simpler expression, and you should be able to complete 
+the solution from here.
+<p />
+
+<i>EXERCISES:</i>
+<ol>
+<li>Make the substitution $u=f'$ in equation (B). Solve the resulting 
+first-order equation for $u(x)$.<p /></li>
+<li>Integrate your answer for problem 1 to find $f(x)$ solving the 
+original Euler-Lagrange equation.<p /></li>
+<li>What is the cheapest path from $(-1,0)$ to $(1,0)$?<p /></li>
+<li>What happens when you try to use the formula you found in problem 2 to 
+write out the cheapest path from $(-3,0)$ to $(3,0)$?<p /></li>
+<li>Explain why the formula doesn't work in problem 4 in terms of the 
+original problem of finding a cheapest path.</li>
+</ol>
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

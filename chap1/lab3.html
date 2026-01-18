@@ -1,0 +1,303 @@
+<html>
+<head>
+<title>EDE Chapter 1: Autonomous Equations App</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+<script type="text/javascript" charset="UTF-8" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+<script type="text/javascript" src="parser.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script type="text/javascript" src="parser.js"></script>
+</head>
+<body>
+
+
+<script>
+function graphfct() {
+  var ftemp=parser.makefct(document.getElementById('fct').value,["x"]);
+  if ((typeof ftemp)==="string") {
+    document.getElementById('emsg').innerHTML=ftemp;
+  } else {
+    for (var i=0;i<intcurves.length;i++) {
+      board2.removeObject(intcurves[i]);
+    }
+    intcurves=[];
+    f=ftemp;
+    document.getElementById('emsg').innerHTML=" ";
+    board.update();
+  }
+}
+</script>
+
+<center>
+<h3>Autonomous Equations</h3>
+<p />
+<table>
+<tr>
+<th>dx/dt vs. x</th><th>x vs. t</th>
+</tr>
+<tr>
+<td>
+<div id="box" class="jxgbox" style="width:400px; height:400px;"></div>
+<script>
+var f;
+f=parser.makefct("(x-3)(x+3)x/4",["x"]);
+var board = JXG.JSXGraph.initBoard('box', 
+  {originX: 200, originY: 200, unitX: 40, unitY: 40, axis:true});
+var xaxis = board.create('line',[0,0,1],{strokeColor:'#00BB00'});
+var pole1 = board.create('glider',[-2,0,xaxis]);
+var pf=board.create('functiongraph',[function(x) {return f([x])},-5,5],
+{strokeWidth:2, highlightStrokeColor:'purple', highlightStrokeOpacity:1});
+var pole2 = board.create('point',[function() {return pole1.X();},function() {return f([pole1.X()]);}],{visible:false});
+var seg1 = board.create('segment',[pole1,pole2],{strokeColor:'red'});
+</script>
+</td>
+<td>
+<div id="box2" class="jxgbox" style="width:400px; height:400px;"></div>
+<script>
+var board2 = JXG.JSXGraph.initBoard('box2', 
+  {originX: 200, originY: 200, unitX: 40, unitY: 40, axis:true});
+var yaxis = board2.create('line',[0,1,0],{strokeColor:'#00BB00'});
+var gridpts=[];
+var p=[];
+
+p[0] = board2.create('point',[0,function() {return pole1.X();}]);
+for (var i=1;i<5;i++) {
+  p[2*i-1]= board2.create('point',[i,function() {return pole1.X();}],{visible:false});
+  p[2*i]= board2.create('point',[-i,function() {return pole1.X();}],{visible:false});
+}
+
+var p0a = board2.create('point',[
+function() {
+  var x=pole1.X();
+  var m=f([x]);
+  return 0.5/Math.sqrt(m*m+1);
+},
+function() {
+  var x=pole1.X();
+  var m=f([x]);
+  return x+0.5*m/Math.sqrt(m*m+1);
+}
+],{visible:false});
+
+for (var i=-4;i<5;i++) {
+  gridpts[i]=[];
+  for (var j=-4;j<5;j++) {
+    gridpts[i][j]=board2.create('point',[i,j],{visible:false});
+  }
+}
+
+// Avoiding update problems by unrolling the loop
+gridptsarrpt=[];
+gridptsarrpt[-4]=board2.create('point',[
+  function() {
+    var m=f([-4]);
+    return -4+0.5/Math.sqrt(m*m+1);
+  },
+  function() {
+    var m=f([-4]);
+    return -4+0.5*m/Math.sqrt(m*m+1);
+  }
+],{visible:false});
+
+gridptsarrpt[-3]=board2.create('point',[
+  function() {
+    var m=f([-3]);
+    return -4+0.5/Math.sqrt(m*m+1);
+  },
+  function() {
+    var m=f([-3]);
+    return -3+0.5*m/Math.sqrt(m*m+1);
+  }
+],{visible:false});
+
+gridptsarrpt[-2]=board2.create('point',[
+  function() {
+    var m=f([-2]);
+    return -4+0.5/Math.sqrt(m*m+1);
+  },
+  function() {
+    var m=f([-2]);
+    return -2+0.5*m/Math.sqrt(m*m+1);
+  }
+],{visible:false});
+
+gridptsarrpt[-1]=board2.create('point',[
+  function() {
+    var m=f([-1]);
+    return -4+0.5/Math.sqrt(m*m+1);
+  },
+  function() {
+    var m=f([-1]);
+    return -1+0.5*m/Math.sqrt(m*m+1);
+  }
+],{visible:false});
+
+gridptsarrpt[0]=board2.create('point',[
+  function() {
+    var m=f([0]);
+    return -4+0.5/Math.sqrt(m*m+1);
+  },
+  function() {
+    var m=f([0]);
+    return 0.5*m/Math.sqrt(m*m+1);
+  }
+],{visible:false});
+
+gridptsarrpt[1]=board2.create('point',[
+  function() {
+    var m=f([1]);
+    return -4+0.5/Math.sqrt(m*m+1);
+  },
+  function() {
+    var m=f([1]);
+    return 1+0.5*m/Math.sqrt(m*m+1);
+  }
+],{visible:false});
+
+gridptsarrpt[2]=board2.create('point',[
+  function() {
+    var m=f([2]);
+    return -4+0.5/Math.sqrt(m*m+1);
+  },
+  function() {
+    var m=f([2]);
+    return 2+0.5*m/Math.sqrt(m*m+1);
+  }
+],{visible:false});
+
+gridptsarrpt[3]=board2.create('point',[
+  function() {
+    var m=f([3]);
+    return -4+0.5/Math.sqrt(m*m+1);
+  },
+  function() {
+    var m=f([3]);
+    return 3+0.5*m/Math.sqrt(m*m+1);
+  }
+],{visible:false});
+
+gridptsarrpt[4]=board2.create('point',[
+  function() {
+    var m=f([4]);
+    return -4+0.5/Math.sqrt(m*m+1);
+  },
+  function() {
+    var m=f([4]);
+    return 4+0.5*m/Math.sqrt(m*m+1);
+  }
+],{visible:false});
+
+var sfarr=[];
+sfarr[-4]=board2.create('arrow',[gridpts[-4][-4],gridptsarrpt[-4]],{strokeWidth:1, strokeColor:'blue'});
+sfarr[-3]=board2.create('arrow',[gridpts[-4][-3],gridptsarrpt[-3]],{strokeWidth:1, strokeColor:'blue'});
+sfarr[-2]=board2.create('arrow',[gridpts[-4][-2],gridptsarrpt[-2]],{strokeWidth:1, strokeColor:'blue'});
+sfarr[-1]=board2.create('arrow',[gridpts[-4][-1],gridptsarrpt[-1]],{strokeWidth:1, strokeColor:'blue'});
+sfarr[0]=board2.create('arrow',[gridpts[-4][0],gridptsarrpt[0]],{strokeWidth:1, strokeColor:'blue'});
+sfarr[1]=board2.create('arrow',[gridpts[-4][1],gridptsarrpt[1]],{strokeWidth:1, strokeColor:'blue'});
+sfarr[2]=board2.create('arrow',[gridpts[-4][2],gridptsarrpt[2]],{strokeWidth:1, strokeColor:'blue'});
+sfarr[3]=board2.create('arrow',[gridpts[-4][3],gridptsarrpt[3]],{strokeWidth:1, strokeColor:'blue'});
+sfarr[4]=board2.create('arrow',[gridpts[-4][4],gridptsarrpt[4]],{strokeWidth:1, strokeColor:'blue'});
+
+for (var i=-4;i<5;i++) {
+  for (var j=-3;j<5;j++) {
+    board2.create('arrowparallel',[sfarr[i],gridpts[j][i]],{strokeWidth:1, strokeColor:'blue'});
+  }
+}
+
+var arr1 = board2.create('arrow',[p[0],p0a],{strokeWidth:1, strokeColor:'red'});
+for (var i=1;i<9;i++) {
+  board2.create('arrowparallel',[arr1,p[i]],{strokeWidth:1, strokeColor:'red'});
+}
+
+/*
+// Trying to adjust to updated jsxgraphcore
+var trans=[];
+for (var j=-3;j<5;j++) {
+  trans[j]=board2.create('transform',[j+4,0],{type:'translate'});
+}
+
+for (var i=-4;i<5;i++) {
+  for (var j=-3;j<5;j++) {
+    board2.create('arrow',[sfarr[i],trans[j]],{strokeWidth:1, 
+                                               strokeColor:'blue'});
+  }
+}
+
+var arr1 = board2.create('arrow',[p[0],p0a],{strokeWidth:1, strokeColor:'red'});
+for (var i=1;i<9;i++) {
+  board2.create('arrow',[arr1,trans[i-4]],{strokeWidth:1, strokeColor:'red'});
+}
+*/
+
+board.addChild(board2);
+
+var intcrv;
+var curvecount=0;
+var intcurves=[];
+
+function draw33ic() {
+  var g=function(x) {return f([x[1]]); }
+  for (var i=-4;i<4.1;i+=0.25) {
+    intcrv=parser.rkf23crv(g,[-4,i],5,0.001);
+    intcurves.push(board2.create('curve',intcrv,{strokeWidth:2,
+                                                 strokeColor:'red',
+                                        highlightStrokeColor:'purple',
+                                      highlightStrokeOpacity:1}));
+  }
+}
+
+function graph1fct() {
+  for (var i=0;i<intcurves.length;i++) {
+    // intcurves[i].setAttribute failed silently for unknown reasons,
+    // so I changed the color of old curves the hard way
+    intcurves[i].visProp.strokeColor='gray';
+    // Update to jsxgraphcore.js broke arrowparallel
+    // intcurves[i].setAttribute({strokeColor:'gray'});
+  }
+  var y0=parseFloat(document.getElementById('x0').value);
+  var g=function(x) { return f([x[1]]); }
+  intcrv=parser.rkf23crv(g,[-4,y0],5,0.001);
+  intcurves.push(board2.create('curve',intcrv,{strokeWidth:2,
+                                              strokeColor:'red',
+                                     highlightStrokeColor:'purple',
+                                   highlightStrokeOpacity:1}));
+}
+
+</script>
+</td>
+</tr>
+<tr>
+<td>
+<span id='emsg' style='color:red'>&nbsp;</span>
+</td>
+</tr>
+<tr>
+<td>
+<form onsubmit='graphfct(); return false;'>
+dx/dt=<input type=text size=50 id='fct' value='(x-3)(x+3)x/4'><br />
+<input type=button onClick='return graphfct()' value='Update Graphs'>
+</form>
+</td>
+<td valign='top' align='right'>
+<form onsubmit='return false;'>
+x(-4)=<input type=text size=15 id='x0' value='0'>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type=submit value='Plot Integral Curve' onclick='graph1fct();'><br />
+<input type=button value='Plot 33 Int. Curves' onclick='draw33ic();'>
+</form>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+<p />
+</body>
+</html>

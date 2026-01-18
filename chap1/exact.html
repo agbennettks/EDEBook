@@ -1,0 +1,234 @@
+<head>
+<title>EDE Chapter 1: Exact Equations</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Exact Equations</h3>
+</center>
+<h4>Discussion</h4>
+The general solution to a first order equation has 1 arbitrary constant. If we
+solve for that constant, we can write the general solution to a first order
+equation in the form
+$$
+    F(x,y)  =  K
+$$
+where $F$ is some function which depends upon the equation and $K$ is the
+constant. From this solution,
+we can now try to recover the original equation. Differentiate both sides with
+respect to $x$ and use the chain rule for functions of several variables to
+obtain
+$$
+\frac{\partial F}{\partial x}+\frac{\partial F}{\partial y}\frac{dy}{dx}=0
+$$
+This now suggests a technique for solving first order differential equations;
+find a function $F$ so that the equation takes on the form above, and then the
+solution is $F(x,y) = K$. If we start with a general equation
+$$
+    M(x,y) +  N(x,y)\frac{dy}{dx}  =  0 \text{, or equivalently, }
+M(x,y)dx + N(x,y)dy = 0
+$$
+we then have the question of how to find $F$. In fact, first we should check
+that such an $F$ exists, since it would be annoying to spend time computing
+two different integrals and then failing at the needed algebra because no such $F$ exists. 
+Comparing this equation with the previous equation,
+we see that we must have
+$$
+\begin{align}
+\frac{\partial F}{\partial x}&=M(x,y) \\
+\frac{\partial F}{\partial y}&=N(x,y)
+\end{align}
+$$
+That $M$ and $N$ are the two different partials of a single function means
+that
+$[M,N]$ forms a gradient field in the terminology of Calculus III. And of
+course all of you remember that a necessary and sufficient condition that a
+vector field is locally a gradient field is that the curl of the vector field
+is 0. In this setup, that means there is a function $F$ satisfying the pair of
+equations above if and only if
+$$
+\frac{\partial M}{\partial y}=\frac{\partial N}{\partial x}
+$$
+(that this is the same as saying the two mixed partials $\frac{\partial^2 F}{\partial x \partial y}$
+and $\frac{\partial^2 F}{\partial y \partial x}$ are equal). 
+Once we have checked that an $F$ exists, it is usually a straightforward
+process
+to find $F$ by integration. The process is sufficiently lengthy, though, that it
+is worthwhile to check that an $F$ exists before trying to construct it.
+<p />
+<h4>Example 1</h4>
+$$
+2xy+(x^2+1)\frac{dy}{dx}=0
+$$
+We check that
+$$
+\frac{\partial (2xy)}{\partial y}=2x=\frac{\partial (x^2 + 1)}{\partial x}
+$$
+so the equation is exact. So we have
+$$
+\begin{align}
+\frac{\partial F}{\partial x}&=2xy \\
+\frac{\partial F}{\partial y}&=x^2+1
+\end{align}
+$$
+We now integrate the first partial derivative to obtain
+$$
+\begin{align}
+\int\,\partial F &= \int 2xy\,\partial x \\
+F(x,y)&=x^2y+C(y)
+\end{align}
+$$
+This requires a bit of explanation. We do a partial integration because we are
+undoing a partial differentiation. So we integrate with respect to $x$ and
+treat
+$y$ as a constant. Finally, we end up with an arbitrary function of $y$,
+$C(y)$, instead of the usual arbitrary constant of integration since we are
+treating $y$ as a constant.
+So from our condition that $\partial F/\partial x=2xy$  we obtain a
+formula for $F$. But
+we can obtain another formula from  $\partial F/\partial y=x^2+1$.
+$$
+\begin{align}
+\int\,\partial F&=\int x^2+1\,\partial y \\
+F(x,y)&=x^2y+y+\tilde{C}(x)
+\end{align}
+$$
+where $\tilde{C}(x)$ is an arbitrary function of $x$.
+We now have two different definitions of $F$ from our two different equations.
+$$
+\begin{align}
+F(x,y)  &=  x^2y + C(y) \\
+F(x,y)  &=  x^2y + y + \tilde{C}(x)
+\end{align}
+$$
+Comparing our two formulas, we see that they agree if we set $C(y)=y$ and
+$\tilde{C}(x)=0$. So we end up with $F(x,y)=x^2y+y$
+and our solution is
+$$
+   x^2 y + y = K
+$$
+where $K$ is an arbitrary constant.
+We are now ready to give the paradigm.
+
+<h4>Paradigm</h4>
+$(x^2+y)+(x+\cos(y))\dfrac{dy}{dx}=0$
+<p />
+<i>Step 1:</i> Test for exactness
+$$
+\frac{\partial (x^2+y)}{\partial y}=1=\frac{\partial (x+\cos(y))}{\partial x}
+$$
+so the equation is exact.
+<p />
+<i>Step 2:</i> Write the partial differential equations.
+$$
+\begin{align}
+\frac{\partial F}{\partial x}&=x^2+y \\
+\frac{\partial F}{\partial y}&=x+\cos(y)
+\end{align}
+$$
+<i>Step 3:</i> Integrate the two partial differential equations.
+$$
+\begin{align}
+\int \partial F&=\int x^2+y\,\partial x = x^3/3+xy+C(y) \\
+\int \partial F&=\int x+\cos(y)\,\partial y =xy+\sin(y)+\tilde{C}(x)
+\end{align}
+$$
+<i>Step 4:</i> Equate the two expressions for $F(x,y)$.
+$$
+x^3/3+xy+C(y) = xy+\sin(y)+\tilde{C}(x)
+$$
+So $C(y)=\sin(y)$ and $\tilde{C}(x)=x^3/3$ and
+$$
+F(x,y)=x^3/3+xy+\sin(y)
+$$
+<i>Step 5:</i> Solution is $F(x,y)=K$.
+$$
+x^3/3+xy+\sin(y)=K
+$$
+
+<h4>Example 2: Initial Value Problem</h4>
+$\displaystyle x^2\frac{dy}{dx}=x^3-2xy,\qquad y(1)=3$
+<p />
+FIRST: Find the general solution.
+<p />
+Step 1: Rewriting this as $\displaystyle (2xy-x^3)+x^2\frac{dy}{dx}=0$ the
+test for exactness is
+$$
+\frac{\partial (2xy-x^3)}{\partial y}=2x=\frac{\partial x^2}{\partial x}
+$$
+so the equation is exact.
+<p />
+Step 2: $$\begin{align} \frac{\partial F}{\partial x}&=2xy-x^3 \\
+\frac{\partial F}{\partial y}&=x^2 \end{align} $$
+
+Step 3: 
+$$\begin{align}
+F(x,y)&=\int 2xy-x^3\,\partial x=x^2y-x^4/4+C(y) \\
+F(x,y)&=\int x^2\,\partial y=x^2y+\tilde{C}(x)
+\end{align}$$
+<p />
+Step 4: We find $C(y)=0$ and $\tilde{C}(x)=-x^4/4$, so we have
+$$F(x,y)=x^2y-x^4/4.$$
+<p />
+Step 5: $\displaystyle x^2y-x^4/4=K$
+<p />
+SECOND: $$\begin{align} 1^2\times3-1^4/4&=K\\11/4&=K\end{align} $$ So
+$ x^2y-x^4/4=11/4$ or $y=x^2/4+(11/4)x^{-2}$. (It is easiest to wait to
+find an explicit solution until after finding the arbitrary constant when
+solving an <i>exact</i> initial value problem.)
+<p />
+<h4>Example 3: Separable Equations</h4>
+Any separable equation becomes an exact equation when the variables are separated. Consider
+$$ \frac{dy}{dx}=e^{x-y}. $$
+We separate the variables, but instead of writing them on opposite sides, we put both 
+the $x$ and the $y$ terms on the same side.
+$$\begin{align}
+\frac{dy}{dx}&=e^{x-y} \\
+e^y dy &= e^x dx \\
+e^x dx - e^y dy = 0.
+\end{align}$$
+Since $\frac{\partial e^x}{\partial y} = 0 = \frac{\partial (-e^y)}{\partial x}$, this is an exact equation.
+We can now find the solution using the exact paradigm (starting with Step 2 since we just carried out Step 1 above).
+<br />
+Step 2: 
+$$\begin{align}
+\frac{\partial F}{\partial x} &= e^x \\ 
+\frac{\partial F}{\partial y} &= -e^y  \\ 
+\end{align}$$
+Step 3:
+$$\begin{align}
+F(x,y)&=\int e^x \, \partial x = e^x + C(y) \\
+F(x,y)&=\int -e^y \, \partial y = -e^y + \tilde{C}(x)
+\end{align}$$
+Step 4: Equating the two expressions for $F(x,y)$, we find $C(y)=-e^y$ and $\tilde{C}(x)=e^x$ and so
+$$ F(x,y) = e^x - e^y. $$
+Step 5: Our solution is therefore $e^x - e^y = K$.
+<p />
+So we have found a longer and more complicated way to solve separable equations. You might reasonably be
+wondering why we bothered to do this. The reason is that this is the <i>justification</i> for the 
+separable paradigm we introduced earlier. You might have been concerned about why we were allowed to take 
+apart the notation $dy/dx$ and treat it as two differentials instead of one derivative in the separable paradigm. That should 
+have seemed (and was) unjustified at the time. But if you compare the separable paradigm with the process
+above, you should recognize that the separable paradigm is just taking a few shortcuts in the exact paradigm
+for the special case of a separable equation, which explains why we are allowed to play fast and loose with the
+notation. 
+<h4>Practice Problems</h4>
+A randomly generated practice problem is below. Once you submit an answer, you will have a link to see the detailed
+solution for the problem, as well as the option to generate a new problem. Note that you can just quickly enter 
+a "dummy" answer like $y=x$ to quickly get to the detailed solution if that is all you want to see.
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1419342" width="100%" height="500" style="border: none;"></iframe>
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
