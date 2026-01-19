@@ -204,13 +204,13 @@ sfarr[4]=board2.create('arrow',[gridpts[-4][4],gridptsarrpt[4]],{strokeWidth:1, 
 
 for (var i=-4;i<5;i++) {
   for (var j=-3;j<5;j++) {
-    board2.create('arrowparallel',[sfarr[i],gridpts[j][i]],{strokeWidth:1, strokeColor:'blue'});
+    board2.create('arrowparallel',[gridpts[-4][i],gridptsarrpt[i],gridpts[j][i]],{strokeWidth:1, strokeColor:'blue'});
   }
 }
 
 var arr1 = board2.create('arrow',[p[0],p0a],{strokeWidth:1, strokeColor:'red'});
 for (var i=1;i<9;i++) {
-  board2.create('arrowparallel',[arr1,p[i]],{strokeWidth:1, strokeColor:'red'});
+  board2.create('arrowparallel',[p[0],p0a,p[i]],{strokeWidth:1, strokeColor:'red'});
 }
 
 /*
