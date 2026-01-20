@@ -119,7 +119,7 @@ function here in ruling out the other option that $C(t)$ is not
 differentiable at $t=0$). Differentiating in the parameter $t$ we get
 
 $$C'(t) = \int_{a}^{c} h(x)\exp(f(x)+th(x))\sqrt{1+(f'(x)+th'(x))^2}dx
-+\int_{-a}^{a} \exp(f(x)+th(x)) 
++\int_{a}^{c} \exp(f(x)+th(x)) 
 \frac{(f'(x)+th'(x))h'(x)}{\sqrt{1+(f'(x)+th'(x))^2}} dx. 
 $$
 
@@ -253,7 +253,7 @@ leftmost term. This turns our original equation (E-L) into
 
 $$
 \begin{align}
-\left(1+(f'(x)^2)\right)^2 -
+\left(1+(f'(x))^2\right)^2 -
 \left((f'(x))^2+f''(x)\right)\left(1+(f'(x))^2\right) +
 (f'(x))^2f''(x) &= 0 \\
 1+2(f'(x))^2 + (f'(x))^4 - 
