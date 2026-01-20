@@ -31,7 +31,7 @@ situations, as well as some applications to populations.
 A "fence" is a curve that can't be crossed in at least one direction by any solution
 of the differential equation. We discovered earlier that solutions to nice first order
 differential equations do not cross, so any integral curve is a fence. But often you
-can recognize a curve other than the solution can only be crossed in a single direction.
+can recognize that a curve other than the solution can only be crossed in a single direction.
 For example, consider the differential equation
 $$
 \frac{dx}{dt}=2\cos\left(\frac{\pi}{4}(2x-t)\right)
@@ -67,11 +67,11 @@ $$ \frac{dx}{dt}=\frac{x^2-4}{4}, \qquad x(0)=3. $$
 Since this is an autonomous equation, you can use the techniques of the previous section to recognize
 that the solution will increase without bound. It is tempting to write that $\lim_{t\to\infty}x(t)=\infty$,
 but that is not true! In fact, if you solve the equation (being autonomous, it is of course separable), you obtain
-$$ x(t)=\frac{10+2\exp(t)}{5-\exp(4t)}. $$
+$$ x(t)=\frac{10+2\exp(t)}{5-\exp(t)}. $$
 And if you take the limit of this you get $\lim_{t\to\infty}x(t)=-2$. So what went wrong? The issue is that the
 solution doesn't converge to $\infty$ in infinite time. It explodes to $\infty$ in finite time, with $x(t)$ having
 a vertical asymptote at $t=\ln(5)$. Note that since the solution to a differential equation must satisfy the
-equation at every point, and the solution can't satisfy the equation at $t=\ln(5)$ since it is undefined , this is another
+equation at every point, and the solution can't satisfy the equation at $t=\ln(5)$ since it is undefined, this is another
 situation where the solution to a differential equation only exists for a limited interval. These situations are
 sometimes called "explosions." While a physical system shouldn't be able to reach infinity, if, for example, 
 you are modeling the number of free neutrons in certain nuclear reactions, an explosion is exactly what will actually
@@ -110,7 +110,7 @@ the nice features of population dynamics is that it can be applied to many
 different sorts of populations, from rabbits to U-235 nuclei.
 
 <a name=logistic><h4>Logistic Growth</h4></a>
-You may have noticed that in the preceeding model, the population grows to
+You may have noticed that in the preceding model, the population grows to
 $\infty$. Given a single bacterium, you should grow a colony the size of the
 earth in a matter of days. Of course this doesn't happen. The previous model
 provides a model of the "birth" of new individuals but makes no allowance
@@ -157,7 +157,7 @@ stable
 equilibrium point. $p_u$ is an unstable equilibrium point and is called the
 <b>threshold</b>
 as in the previous example. $p_s$ is a stable equilibrium point, called the
-<b>carrying capacity</b> as in logistic growth. So if the populations
+<b>carrying capacity</b> as in logistic growth. So if the population
 falls below the threshold $p_u$ it dies out but otherwise it tends to the
 level $p_s$. Looking at the graphs of the population vs. time, you should note
 that the behavior above the threshold closely resembles the behavior of the
