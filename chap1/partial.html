@@ -1,0 +1,95 @@
+<head>
+<title>EDE Chapter 1: Exact Equations</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Partial Derivatives</h3>
+</center>
+<h4>Discussion</h4>
+With separable equations we have already seen how it can be useful in solving differential equations to think 
+of $x$ and $y$ as two variables, instead of thinking of $y$ just as a function of $x$. But once we start 
+having two variables, we will occasionally run into situations where we need multivariable 
+Calculus (Calculus 3). Fortunately, the concepts from Calculus 3 we need in Differential Equations are 
+the most straightforward parts of Calculus 3, so you can pick them up quickly and there is no need to 
+require a full semester of Calculus 3 before Differential Equations. 
+The primary tool from Calculus 3 that we will use is partial derivatives.
+
+<h4>Definition</h4> 
+Let $f(x,y)$ be a function of $x$ and $y$. Then the partial derivative of $f$ with respect to $x$ 
+is the derivative of $f$ treating $x$ as the only variable and $y$ as a constant. 
+Similarly, the partial derivative of $f$ with respect to $y$ is the derivative of $f$ treating $y$ 
+as the only variable and $x$ as a constant. These derivatives are denoted 
+$\partial f/\partial x$ and $\partial f/\partial y$. 
+The definition extends in the obvious way to functions of more than two variables.
+
+<h4>Examples</h4> 
+EXAMPLE 1: Let $f(x,y)=x^2+3xy+y^3$. Then: 
+$$\begin{align} 
+\frac{\partial f}{\partial x} &= 2x+3y \\
+\frac{\partial f}{\partial y} &= 3x + 3y^2
+\end{align}
+$$
+
+EXAMPLE 2: Let $g(u,v,w)=\sin(uvw) + u^2 – 3vw$. Then:
+$$\begin{align}
+\frac{\partial g}{\partial u} &= vw\cos(uvw) + 2u \\
+\frac{\partial g}{\partial v} &= uw\cos(uvw) – 3w \\
+\frac{\partial g}{\partial w} &= uv\cos(uvw) – 3v
+\end{align}$$
+
+<h4>Mixed Partials</h4>
+For higher derivatives, it appears you may now have a choice of the order in which you compute the 
+partial derivatives if you take derivatives with respect to more than one variable. 
+If you want the second partial derivative of $f$, where you differentiate once with respect to $x$ 
+and once with respect to $y$, you could first compute the partial derivative with respect to $x$, 
+and then take the partial derivative of that with respect to $y$, or you could reverse the order. 
+The notation for this is 
+$$\begin{align}
+\frac{\partial^2 f}{\partial y \partial x} &= \frac{\partial}{\partial y}\left(\frac{\partial f}{\partial x}\right) \\
+\frac{\partial^2 f}{\partial x \partial y} &= \frac{\partial}{\partial x}\left(\frac{\partial f}{\partial y}\right) 
+\end{align}$$
+
+EXAMPLE 3: Let $f(x,y) = \exp(xy) + x^3 - 4xy + \sin(y)$. Then
+$$\begin{align}
+\frac{\partial^2 f}{\partial y\partial x} &= \frac{\partial}{\partial y}\left(y\exp(xy) + 3x^2 – 4y\right) = \exp(xy) + xy\exp(xy) – 4 \\ 
+\frac{\partial^2 f}{\partial x\partial y} &= \frac{\partial}{\partial x}\left(x\exp(xy) – 4x + \cos(y(\right) = \exp(xy) + xy\exp(xy) – 4 
+\end{align}$$
+In this case, the two second derivatives with mixed partials turn out to be the same. In fact, that is the general case.
+
+<h4>Key Theorems</h4>
+
+THEOREM: If $\partial^2 f/\partial y\partial x$ and $\partial^2 f/\partial x\partial y$ are continuous, then they are equal.
+<p />
+Isn’t it just like mathematicians to worry about defining notation to distinguish between two quantities that turn out to be equal. O
+f course, in mathematical theory, you can have situations where the mixed partials are not equal, but of course then they are 
+not continuous. For the functions we will encounter in this class, that won’t be an issue. 
+So in this class, mixed partials must always be equal. And this theorem has a converse.
+<p />
+THEOREM: If $\partial f/\partial y = \partial g/\partial x$ and these partial derivatives are continuous, then there is a function
+of two variables, $F(x,y)$ such that $\partial F/\partial x = f$ and $\partial F/\partial y = g$.
+<p />
+So the only way for a partial with respect to $x$ to be equal to a partial with respect to $y$ is for them to be the mixed partials
+for some function $F$. One other place that partial derivatives will be useful is in the chain rule for functions of several variables. 
+<p />
+THEOREM: Suppose $F(x,y(x))$ is a function of $x$ and $y$, where $y$ is a function of $x$. Then the derivative of $F$ with respect to $x$ is
+$$
+\frac{dF}{dx} = \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}\frac{dy}{dx}
+$$
+This extends in a straightforward way to functions of more than two variables. With these tools, you are ready 
+for most of the applications of multivariable calculus that we will encounter in this class.
+<p />
+<hr />
+&copy;2026 Andrew G. Bennett
+</body>
+</html>
