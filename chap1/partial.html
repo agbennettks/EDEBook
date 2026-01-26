@@ -20,7 +20,7 @@
 With separable equations we have already seen how it can be useful in solving differential equations to think 
 of $x$ and $y$ as two variables, instead of thinking of $y$ just as a function of $x$. But once we start 
 having two variables, we will occasionally run into situations where we need multivariable 
-Calculus (Calculus 3). Fortunately, the concepts from Calculus 3 we need in Differential Equations are 
+calculus (Calculus 3). Fortunately, the concepts from Calculus 3 we need in Differential Equations are 
 the most straightforward parts of Calculus 3, so you can pick them up quickly and there is no need to 
 require a full semester of Calculus 3 before Differential Equations. 
 The primary tool from Calculus 3 that we will use is partial derivatives.
@@ -63,7 +63,7 @@ $$\begin{align}
 EXAMPLE 3: Let $f(x,y) = \exp(xy) + x^3 - 4xy + \sin(y)$. Then
 $$\begin{align}
 \frac{\partial^2 f}{\partial y\partial x} &= \frac{\partial}{\partial y}\left(y\exp(xy) + 3x^2 – 4y\right) = \exp(xy) + xy\exp(xy) – 4 \\ 
-\frac{\partial^2 f}{\partial x\partial y} &= \frac{\partial}{\partial x}\left(x\exp(xy) – 4x + \cos(y(\right) = \exp(xy) + xy\exp(xy) – 4 
+\frac{\partial^2 f}{\partial x\partial y} &= \frac{\partial}{\partial x}\left(x\exp(xy) – 4x + \cos(y)\right) = \exp(xy) + xy\exp(xy) – 4 
 \end{align}$$
 In this case, the two second derivatives with mixed partials turn out to be the same. In fact, that is the general case.
 
@@ -71,13 +71,13 @@ In this case, the two second derivatives with mixed partials turn out to be the 
 
 THEOREM: If $\partial^2 f/\partial y\partial x$ and $\partial^2 f/\partial x\partial y$ are continuous, then they are equal.
 <p />
-Isn’t it just like mathematicians to worry about defining notation to distinguish between two quantities that turn out to be equal. O
-f course, in mathematical theory, you can have situations where the mixed partials are not equal, but of course then they are 
+Isn’t it just like mathematicians to worry about defining notation to distinguish between two quantities that turn out to be equal?
+Of course, in mathematical theory, you can have situations where the mixed partials are not equal, but of course then they are 
 not continuous. For the functions we will encounter in this class, that won’t be an issue. 
 So in this class, mixed partials must always be equal. And this theorem has a converse.
 <p />
-THEOREM: If $\partial f/\partial y = \partial g/\partial x$ and these partial derivatives are continuous, then there is a function
-of two variables, $F(x,y)$ such that $\partial F/\partial x = f$ and $\partial F/\partial y = g$.
+THEOREM: If $\partial M/\partial y = \partial N/\partial x$ and these partial derivatives are continuous, then there is a function
+of two variables, $F(x,y)$ such that $\partial F/\partial x = M$ and $\partial F/\partial y = N$.
 <p />
 So the only way for a partial with respect to $x$ to be equal to a partial with respect to $y$ is for them to be the mixed partials
 for some function $F$. One other place that partial derivatives will be useful is in the chain rule for functions of several variables. 
@@ -93,3 +93,4 @@ for most of the applications of multivariable calculus that we will encounter in
 &copy;2026 Andrew G. Bennett
 </body>
 </html>
+
