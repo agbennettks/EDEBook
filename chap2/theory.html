@@ -1,0 +1,253 @@
+<html>
+<head>
+<title>EDE Chapter 2: Theory</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Theoretical Considerations</h3> 
+</center>
+<h4>Discussion</h4> We are now going to consider higher order equations 
+such 
+as $y'' - y = 0$. While the techniques we use will generally work for any 
+order equation, we will concentrate mainly on second order equations as 
+they are the most common type in applications. The prominence of second 
+order equations is a consequence of the fact that Newton's second law 
+relates force to acceleration, the second derivative of position with 
+respect to time. It may seem like the typical perversity of a math 
+professor to start with theoretical considerations rather than solving 
+problems, but I have my reasons. We will need to know what the general 
+solution to a higher order equation looks like, however, before we can 
+start searching for it. Accordingly we will start by discussing the theory 
+of linear higher order equations, which will give us a clue about what we 
+are looking for.
+<p />
+One way to solve higher order
+equations is by reducing them to collections of first order equations.
+Unfortunately, this is easy only if the equation is linear and constant
+coefficient. On the other hand, linear constant coefficient equations are
+very common in applications so this defect isn't as troubling as it
+might first seem.
+<p />
+A differential equation is <b>linear</b> if it can be
+written in the form
+$$a_n(x)\frac{d^ny}{dx^n}+\cdots+a_1(x)\frac{dy}{dx}+a_0(x)y=f(x)$$
+For linear differential equations we have the following theorem,
+which we shall not prove.
+<p />
+<h4>Theorem</h4> If $a_{n-1}(x),\ldots,a_1(x),a_0(x),f(x)$ are all
+continuously
+differentiable in an interval about $x_0$, then the initial value problem
+$$ \begin{align}
+&\frac{d^ny}{dx^n}+a_{n-1}(x)\frac{d^{n-1}y}{dx^{n-1}}
++\cdots+a_1(x)\frac{dy}{dx}+a_0(x)y=f(x)   \\
+&y(x_0)=y_0,\quad y'(x_0)=y_1,\ldots,y^{(n-1)}(x_0)=y_{n-1}
+\end{align} $$
+has a unique solution in some interval about $x_0$.
+<p />
+Note that the conditions for the initial value problem in the theorem
+are the values of the function and its derivatives at a
+single point. While it is possible to consider other sorts of
+conditions, those other sorts of problems (prominently "boundary
+value problems") do not necessarily have solutions, and if they have
+solutions they aren't necessarily unique. In this class, we will
+concentrate on initial value problems. Fortunately
+in most physical situations, these are also the
+natural conditions to know for a problem.
+<p />
+While we are interested in understanding solutions of linear
+differential equations, much of the information we need holds for
+general linear equations. It will be convenient to introduce the
+general notion of a linear operator in what follows.
+<p />
+An <b>operator</b> is a mapping that takes functions to
+functions. An operator, $L$, is <b>linear</b> if
+$$L(f+g)=Lf+Lg \qquad\text{and}\qquad L(cf)=cL(f) $$
+for all functions $f$ and $g$ and all constants $c$.
+<p />
+<h4>Examples</h4>
+
+Let $D$ denote the differentiation operator. This is an operator
+because the derivative of a function is another function (though possibly the
+constant function or the zero function). This is also a linear operator
+since
+$$D(f+g)=Df+Dg\qquad\text{and}\qquad D(cf)=cDf $$
+by the usual rules of differentiation.
+<p />
+A more complicated example is
+$$Ly=\frac{d^ny}{dx^n}+a_{n-1}(x)\frac{d^{n-1}y}{dx^{n-1}}+
+\cdots+a_1(x)\frac{dy}{dx}+a_0(x)y$$
+This is also a linear operator because
+$$ \begin{align}
+L(y+z)&=
+\frac{d^n(y+z)}{dx^n}+a_{n-1}(x)\frac{d^{n-1}(y+z)}{dx^{n-1}}+
+\cdots+a_1(x)\frac{d(y+z)}{dx}+a_0(x)(y+z) \\
+&=\frac{d^ny}{dx^n}+\frac{d^nz}{dx^n}+\cdots+a_0(x)y+a_0(x)z \\
+&=\left(\frac{d^ny}{dx^n}+\cdots+a_0(x)y\right)
++\left(\frac{d^nz}{dx^n}+\cdots+a_0(x)z\right) \\
+&=Ly+Lz
+\end{align} $$
+since the derivative of the sum is the sum of the derivatives and also
+$$ \begin{align}
+L(cy)&=\frac{d^n(cy)}{dx^n}+a_{n-1}(x)\frac{d^{n-1}(cy)}{dx^{n-1}}+
+\cdots+a_1(x)\frac{d(cy)}{dx}+a_0(x)(cy) \\
+&=c\frac{d^ny}{dx^n}+ca_{n-1}(x)\frac{d^{n-1}y}{dx^{n-1}}+
+\cdots+ca_1(x)\frac{dy}{dx}+ca_0(x)y\\
+&=c\left(\frac{d^ny}{dx^n}+a_{n-1}(x)\frac{d^{n-1}y}{dx^{n-1}}+
+\cdots+a_1(x)\frac{dy}{dx}+a_0(x)y\right) \\
+&=cLy
+\end{align} $$
+since the derivative of a constant times a function is the constant times the
+derivative of the function.
+
+This last example shows that a linear differential equation can be written
+as
+$$Ly=f$$
+where $L$ is a linear operator. We call any operator of the form $L$ a 
+<b>linear differential operator</b>.
+A linear differential equation is <b>homogeneous</b> if
+it can be written in the form
+$$Ly=0.$$
+A linear differential equation of the form
+$$Ly=f$$
+where $f(x)$ is not identically 0 is called <b>inhomogeneous</b>.
+<p />
+<h4>Theorem</h4> Suppose $L$ is a linear operator and $Ly=0$ and $Lz=0$.
+Then $L(c_1y+c_2z)=0$.
+<p />
+<i>Proof:</i> $L(c_1y+c_2z)=L(c_1y)+L(c_2z)=c_1Ly+c_2Lz=0+0=0$
+<p />
+So if we have two solutions to a linear homogeneous equation, all their linear
+combinations are also solutions. This is true for all linear equations,
+including linear differential equations of course. For inhomogeneous
+equations, the sum of two solutions will not be a solution but we do have the
+following.
+<p />
+<h4>Theorem</h4> Suppose $L$ is a linear operator and $Ly=0$ and $Ly_p=f$.
+Then $L(y+y_p)=f$
+<p />
+<i>Proof:</i> $L(y+y_p)=Ly+Ly_p=0+f=f$.
+<p />
+So if we have a solution to a linear inhomogeneous equation and a solution to
+the corresponding linear homogeneous equation their sum is another solution to
+the linear inhomogeneous equation.
+What is more, <i>every</i> solution to the linear inhomogeneous equation 
+can
+be found from any <i>single</i> solution to the linear inhomogeneous 
+equation
+in this fashion.
+<p />
+<h4>Theorem</h4> Suppose $y_p$ is a solution to $Ly_p=f$ where $L$ is a
+linear operator. Then the set
+$$ \{y+y_p:Ly=0\}$$
+is the set of all solutions to $Lz=f$. 
+<p />
+<i>Proof:</i> Suppose $Lz=f$. Then $L(z-y_p)=Lz-Ly_p=f-f=0$. So 
+$z=(z-y_p)+y_p$
+with $L(z-y_p)=0$ and so $z$ is in the specified set. 
+<p />
+So to find the general solution of a linear inhomogeneous equation it is
+enough to find one particular solution and then find all the solutions
+to the corresponding homogeneous equation. Now just as for first
+order equations, we expect the general solution to a higher order
+equation to involve arbitrary constants. Since the initial value problem
+for an $n^{th}$ order equation has a unique solution when given $n$
+conditions, we should expect the general solution to an $n^{th}$
+order equation to involve $n$ arbitrary constants. Furthermore, given
+$n$ different solutions of a homogeneous equation,
+$y_1(x),\ldots,y_n(x)$, we have a theorem that assures us that
+$c_1y_1(x)+\cdots+c_ny_n(x)$ is also a solution to the homogeneous
+equation. This solution appears to involve $n$ arbitrary constants,
+but looks can be deceiving. Consider the following example.
+<p />
+<i />Example:</i> $y''+4y'+3y=0$
+<p />
+Two different solutions are $y_1(x)=e^{-x}$ and $y_2(x)=2e^{-x}$. So
+$y(x)=c_1e^{-x}+c_2(2e^{-x})$ is also a solution to the equation and
+it involves two arbitrary constants $c_1$ and $c_2$. But $e^{-3x}$
+is also a solution and it can not be obtained by any choice of $c_1$
+and $c_2$. So while $y(x)$ is always a solution of the equation for
+any choice of $c_1$ and $c_2$, it doesn't give all the solutions,
+despite its two arbitrary constants.
+<p />
+The difficulty here, of course, is that we really only have one
+constant split into two pieces. $y(x)=(c_1+2c_2)e^{-x}$ and the one
+arbitrary constant is $c_1+2c_2$. There was nothing wrong with our
+general approach, the problem was that our two different solutions
+just weren't different enough. We need to replace the term different
+by the technical condition, linearly independent.
+A collection of $n$ functions $y_1(x),\ldots,y_n(x)$ is
+<b>linearly independent</b> if the only choice of constants 
+$c_1,\ldots,c_n$ for which
+$$c_1y_1(x)+\cdots+c_ny_n(x)=0$$
+for all $x$ is $c_1=0,\ldots,c_n=0$.
+<p />
+<h4>Theorem</h4> If 
+ $y_1(x),\ldots,y_n(x)$ are linearly
+independent solutions to an $n^{th}$ order linear homogeneous differential
+equation
+$Ly=0$, then the general solution to $Ly=0$ is
+$y(x)=c_1y_1(x)+\cdots+c_ny_n(x)$. 
+<p />
+Of course checking linear independence by using the definition is
+very messy. There is a simple test for linear independence using the
+Wronskian of the set of functions.
+The <b>Wronskian</b> of a pair of functions $y_1(x)$ and
+$y_2(x)$ is $W(y_1,y_2)=y_1(x)y_2'(x)-y_2(x)y_1'(x)$.
+This definition only works for pairs of functions. The definition can
+be extended to a collection of $n$ functions, but it depends on the
+concept of a determinant of an $n\times n$ 
+matrix. If you have seen determinants before, stop by my office and we will go
+over Wronskians in the general case. If you haven't seen determinants, then
+you ought to take Math 551 and make their acquaintance.
+<p />
+<h4>Theorem</h4> If $W(y_1,y_2)\ne0$ for some value of $x$, then $y_1$ and
+$y_2$ are linearly independent. 
+<p />
+<i>Proof:</i>  
+Suppose $$c_1y_1(x)+c_2y_2(x)=0$$ for all $x$. Differentiating this
+equation we obtain $$c_1y_1'(x)+c_2y_2'(x)=0$$ for all $x$ as well.
+Now if we multiply the second equation by $y_1(x)$ and the first
+equation by $y_1'(x)$ and subtract we obtain
+$$c_2[y_1(x)y_2'(x)-y_2(x)y_1'(x)]=0$$
+or $c_2W(y_1,y_2)(x)=0$ for all $x$ by the definition of the Wronskian. 
+Since $W(y_1,y_2)(x)\ne0$ for some $x$, we must have $c_2=0$. On the other
+hand, if we multiply the first equation by $y_2'(x)$ and the second
+equation by $y_2(x)$ and subtract we obtain $c_1W(y_1,y_2)(x)=0$ for
+all $x$. Again, since $W(y_1,y_2)(x)\ne0$ for some $x$, it must also
+be the case that $c_1=0$. But then we have shown that the only choice
+of constants $c_1$ and $c_2$ for which $c_1y_1(x)+c_2y_2(x)=0$ is
+$c_1=c_2=0$ and so $y_1$ and $y_2$ are linearly independent.
+<p />
+Note that the theorem just says that if the Wronskian is non-zero
+then the functions are linearly independent. It doesn't say that if
+the functions are linearly independent then the Wronskian is non-zero. It
+doesn't say that because it isn't true, but we will not have occasion
+to worry about situations where linearly independent functions have a
+zero Wronskian in this course. 
+
+<h4>Practice Problems</h4>
+Since this is a section on theory, there isn't a paradigm. The only thing we really learned to compute was
+the Wronskian. So a randomly generated Wronskian problem is below. Once you submit an answer, you will have 
+a link to see the detailed solution for the problem, as well as the option to generate a new problem. 
+Note that you can just quickly enter 
+a "dummy" answer like $x$ to quickly get to the detailed solution if that is all you want to see.
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1573301" width="100%" height="500" style="border: none;"></iframe>
+ 
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+</html>
+
+

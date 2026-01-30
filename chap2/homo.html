@@ -1,0 +1,272 @@
+<head>
+<title>EDE Chapter 2: Linear Homogeneous Equations</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Homogeneous Equations</h3>
+</center>
+<p />
+<h4>Discussion</h4>
+As the results in the first section showed, solving the homogeneous equation
+plays a special role in solving the general problem. One way to solve such 
+problems is to factor the equation. Consider the example
+$$ y''-y=0$$
+We factor the equation to a pair of first-order equations.
+        Let $D=d/dx$. Then $D^2=DD=(d/dx)(d/dx)=d^2/dx^2$. Write the equation
+$y''-y=0$ as
+        $$ \begin{align}
+        (D^2 - 1)y &= 0 \\
+        (D-1)(D+1)y &= 0 \\
+        (D-1)y = 0\qquad  &\text{OR}\qquad  (D+1)y = 0  \\
+        y = Ce^x\qquad&\text{OR}\qquad    y = Ke^{-x} \\
+        \text{General Solution:}\quad  y &= Ce^x  + Ke^{-x}
+\end{align} $$
+where we use the fact from the previous section that the sum of solutions to a linear
+homogeneous equation is also a solution. We can then check this solution by
+computing
+$$ \eqalign
+{y&=Ce^x+Ke^{-x} \cr
+y'&=Ce^x-Ke^{-x} \cr
+y''&=Ce^x+Ke^{-x} \cr} $$
+and so $y''-y=0$ as desired.
+So we have solved a linear constant coefficient homogeneous equation by
+treating
+it as a polynomial with a "variable" $D$. If the equation was not
+constant
+coefficient, the method would become much harder because we wouldn't be able
+to factor in the same fashion we are used to. This is because the algebra of
+differential operators is different from the usual algebra learned in high
+school. For example
+$$ \begin{align}
+(D+x)(D+1)y &= y'' + (x+1)y' + xy \\
+(D+1)(D+x)y &= y'' + (x+1)y' + (x+1)y.
+\end{align} $$
+So we see $(D+x)(D+1)$ is not equal to $(D+1)(D+x)$. In other words, the
+commutative law fails for differential operators. Differential Algebra is a
+very interesting subject but it quickly gets very difficult. That is why 
+we restrict our attention here to the constant coefficient case.
+For the constant coefficient case everything works the
+same
+as in high school algebra and let's be thankful for it. There are three points
+to remember in solving these equations by factoring:
+<p />
+<ol>
+<li>The solution to $(D-r)y = 0$  is  $y = Ce^{rx}$.<p /></li>
+<li>The solution to $(D-r)^2 y = 0$  is  $y = Cxe^{rx}   + Ke^{rx}$.
+<p /></li>
+<li>The solution to $(D-r)^n y = 0$ is
+$y=C_{n-1}x^{n-1}e^{rx}+C_{n-2}x^{n-2}e^{rx}+\cdots+C_0e^{rx}$.
+<p /></li>
+</ol>
+In all three cases $r$ represents a constant. The first equation is both separable
+and
+linear and can be easily solved. The second equation is a little trickier. We
+solve it by converting to a system.
+Let $u=(D-r)y$. Then the equation is $(D-r)u=0$ and so $u=Ce^{rx}$. Now we
+solve $Ce^{rx}=(D-r)y$ (which is a first-order linear equation) for $y$ to
+obtain $y=Cxe^{rx}+Ke^{rx}$ as advertised. Repeating this process we get the
+solution to the general case in the third equation.
+<p />
+<h4>Paradigm</h4> Find the general solution of $y''+3y'-10y=0$
+<p />
+<i>Step 1:</i> Write in operator form (with $D$ for $d/dx$)
+$$(D^2+3D-10)y=0$$
+<i>Step 2:</i> Factor and find roots.
+<p />
+$(D-2)(D+5)y=0$ so the roots are $2$, $-5$.
+<p />
+<i>Step 3:</i> Write the general solution.
+$$y(x)=Ce^{2x}+Ke^{-5x}$$
+<hr />
+<i>EXAMPLE 1:</i>   $$y'' + 4y' + 3y = 0 \qquad y(0)=1,\quad y'(0)=1$$
+
+FIRST: Find the general solution.
+<p />
+Step 1: $(D^2 + 4D + 3)y = 0 $
+<p />
+Step 2: $ (D+3)(D+1)y = 0 $ so the roots are $-3$, $-1$
+<p />
+Step 3: $ y = Ce^{-3x}   + Ke^{-x} $
+<p />
+SECOND: Plug in the initial
+values and solve for the constants.
+$$ \begin{align}
+y(0) &= Ce^{-3\times0}     + Ke^{-1\times0}    =  C + K  
+\buildrel{\text{set}}\over{=} 1 \\
+y'(x) &= -3Ce^{-3x}   - Ke^{-x} \\
+y'(0) &= -3Ce^{-3\times0}    - Ke^{-1\times0}   = -3C - K  
+\buildrel{\text{set}}\over{=} 1 
+\end{align} $$
+Taking 3 times the first equation and adding it to the second we find $2K=4$ so
+$K=2$ and $C=-1$. This gives us the solution
+$$y=-e^{-3x}+2e^{-x}$$
+<hr />
+
+<i>EXAMPLE 2:</i> $$  y'' + 10y' + 25y = 0$$
+Step 1: $(D^2 + 10D + 25)y = 0$
+<p />
+Step 2:$ (D+5)^2 y = 0$, double root of $-5$
+<p />
+Step 3:  $y = Cxe^{-5x}   + Ke^{-5x}$
+<p />
+<hr />
+<p />
+Now we consider the equation $y''+y=0$. If we try to solve this equation
+using our new techniques, we obtain the operator $D^2+1$ which
+has roots $\pm i$, so the general solution is $c_1e^{ix}+c_2e^{-ix}$.
+This is in fact the correct general <i>complex</i> solution, provided
+we allow $c_1$ and $c_2$ to be arbitrary complex constants.
+But since
+we started with a real problem we probably want a real answer. One
+way to deal with that is to obtain the general complex solution as
+above and find all the complex solutions which are actually real
+solutions. The algebra involved in that is rather messy though.
+Fortunately, there is a quicker way that will give us two linearly
+independent real solutions from a single complex solution.
+<p />
+<i>Theorem:</i> If $e^{(\alpha+\beta i)x}$ is a solution of the equation
+$ay''+by'+cy=0$ where $a$, $b$ and $c$ are all real, then
+$e^{\alpha x}\cos(\beta x)$ and $e^{\alpha x}\sin(\beta x)$ are two
+linearly independent solutions of $ay''+by'+cy=0$. 
+<p />
+<i>Proof:</i> We are given that
+$$
+a(e^{(\alpha+\beta i)x})''+
+b(e^{(\alpha+\beta i)x})'+c(e^{(\alpha+\beta i)x})=0
+$$
+Since $\Re[y'(x)]=(\Re[y(x)])'$ and $\Im[y'(x)]=(\Im[y(x)])'$,
+it follows that 
+$$ \eqalign {
+a(\Re[e^{(\alpha+\beta i)x}])''+
+b(\Re[e^{\alpha+\beta i)x}])'+c(\Re[e^{(\alpha+\beta i)x}])&=0 \cr
+a(\Im[e^{(\alpha+\beta i)x}])''+
+b(\Im[e^{\alpha+\beta i)x}])'+c(\Im[e^{(\alpha+\beta i)x}])&=0 \cr}
+$$
+So $e^{\alpha x}\cos(\beta x)$ and $e^{\alpha x}\sin(\beta x)$ are
+both real solutions to the given equation. Linear independence can be
+quickly checked using the Wronskian. 
+<p />
+Using this theorem we can now handle complex roots efficiently. One point
+that often bothers students at this stage is that we only need one
+complex solution to find the complete general solution. What happens
+to the other complex solution? It is a theorem that complex roots to a 
+real polynomial always come in complex conjugate pairs, $\alpha\pm\beta 
+i$. So since the operator has real
+coefficients, if $\alpha+\beta i$ is one root of the polynomial
+equation, $\alpha-\beta i$ must be another root of the equation, and
+$\alpha-\beta i$ will give rise to the same pair of real roots. So we
+really get our pair of real roots from a pair of complex roots. 
+<p />
+Another point to be noted is that we can write the pair of real solutions 
+we get from our complex conjugate pair  of roots $\alpha\pm\beta i$ as 
+either $C_1e^{\alpha x}\cos(\beta x) + C_2e^{\alpha x}\sin(\beta x)$ or as 
+$Ae^{\alpha x}\cos(\beta x-\phi)$ (with arbitrary constants $A$ and 
+$\phi$) using the techniques of section 3. The first form is usually the 
+easiest for solving initial value problems while the second form is 
+usually the easiest for sketching solutions. And, of course, in initial 
+value problems where you have to sketch solutions, you may want to solve 
+first in one form to solve the initial value problem and then switch to 
+the second form to draw your sketch.
+<p />
+<hr />
+<p />
+<i>EXAMPLE 3:</i> $$  y'' + 2y' + 2y = 0$$
+
+Step 1: Write the equation in operator form
+$$(D^2 + 2D + 2)y = 0$$
+Step 2: Find the  roots of the equation
+<p />
+roots are $-1\pm i$
+<p />
+Step 3: The general solution is $Ae^{-x}\cos(x-\phi)$ (or 
+$C_1e^{-x}\cos(x)+C_2e^{-x}\sin(x)$ in the alternate form).
+<p />
+<hr />
+<p />
+<i>EXAMPLE 4:</i> $$y''+y=0,\qquad y(0)=1,\quad y'(0)=1$$
+
+FIRST: Find the general solution.
+<p />
+Step 1: $(D^2+1)y=0$
+<p />
+Step 2: roots are $\pm i$
+<p />
+Step 3: $y(x)=C\cos(x)+K\sin(x)$ (the easiest form for initial value 
+problems).
+<p />
+SECOND: Plug in the initial values and solve for the constants
+$$ \begin{align}
+y(0)&=C
+\buildrel{\text{set}}\over{=} 1 \\
+y'(x)&=-C\sin(x)+K\cos(x) \\
+y'(0)&=K \buildrel{\text{set}}\over{=} 1 
+\end{align} $$
+So the solution to the initial value problem is $y(x)=\cos(x)+\sin(x)$.
+
+<p />
+<hr />
+<p />
+<i>EXAMPLE 5:</i> $$y'''+y=0$$
+
+Step 1: $(D^3+1)y=0$
+<p />
+Step 2: $D^3+1=(D+1)(D^2-D+1)$ so the roots are $-1$ and 
+$1/2\pm(\sqrt{3}/2)i$.
+<p />
+Step 3: The solution corresponding to the root $-1$ is $e^{-x}$. The 
+solutions corresponding to the complex conjugate pair $1/2\pm(\sqrt{3}/2)i$ 
+are $Ae^{x/2}\cos(\sqrt{3}x/2-\phi)$. So the general solution is 
+$$y(x)=C_1e^{-x}+Ae^{x/2}\cos(\sqrt{3}x/2-\phi).$$
+<hr />
+<p />
+<i>EXAMPLE 6:</i> $$y''''+8y'''+27y''+38y'+26y=0$$
+
+Step 1: $(D^4+8D^3+27D^2+38D+26)y=0$
+<p />
+Step 2: $D^4+8D^3+27D^2+38D+26=(D^2+2D+2)(D^2+6D+13)=0$ so the roots are 
+$-1\pm i$ and $-3\pm 2i$.
+<p />
+Step 3: $y=Ae^{-x}\cos(x-\phi)+Be^{-3x}\cos(2x-\psi)$, or written in the 
+alternate form $y=C_1e^{-x}\cos(x)+C_2e^{-x}\sin(x)+C_3e^{-3x}\cos(2x)+ 
+C_4e^{-3x}\sin(2x)$.
+<p />
+<hr />
+<p />
+<i>EXAMPLE 7:</i> $$y''''+4y'''+24y''+40y'+100y=0$$
+
+Step 1: $(D^4+4D^3+24D^2+40D+100)y=0$
+<p />
+Step 2: $(D^2+2D+10)^2=0$ so we have <i>double</i> roots of $-1\pm 3i$.
+<p />
+Step 3: We handled double real roots by using both the usual solution 
+and the solution multiplied by $x$. We do exactly the same thing with 
+double complex roots. So the solution is 
+$y=Ae^{-x}\cos(3x-\phi)+Bxe^{-x}\cos(3x-\psi)$ or in the alternate form 
+$y=C_1e^{-x}\cos(3x)+C_2e^{-x}\sin(3x)+C_3xe^{-x}\cos(3x)+C_4xe^{-x}\sin(3x)$.
+<hr />
+<p />
+<h4>Randomly Generated Examples</h4>
+A randomly generated second order constant coefficient linear homogeneous initial value problem is below.
+As always, once you submit an answer, you will have a link to see the detailed
+solution for the problem, as well as the option to generate a new problem and you can just quickly enter 
+a "dummy" answer like $x$ to quickly get to the detailed solution if that is all you want to see.
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1424552" width="100%" height="500" style="border: none;"></iframe>
+<p />
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+</html>
+

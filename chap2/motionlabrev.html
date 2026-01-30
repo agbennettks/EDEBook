@@ -1,0 +1,978 @@
+<html>
+<head> 
+<title>Exploring Spring-Mass Motions</title>
+<link rel="stylesheet" type="text/css" href="jsxgraph.css" /> 
+<script type="text/javascript" src="jsxgraphcore.js"></script>
+<script>
+function evalatx(x,m,c,k,f,w,y0,y1,a,b) {
+
+  var r,w0,r1,r2,const1,const2,x0,x1,forced;
+  
+  if (f!=0 && w==0) {
+    if (k!=0) {
+      forced=a;
+      x0=y0-a;
+      x1=y1;
+    } else if (c!=0) {
+      forced=f*x/c;
+      x0=y0;
+      x1=y1-f/c;
+    } else {
+      forced=f*x*x/2+y0+y1*x;
+      x0=0;
+      x1=0;
+    }
+  } else if (f!=0 && c==0 && k==m*w*w) {
+    forced=b*x*Math.sin(w*x);
+    x0=y0;
+    x1=y1;
+  } else {    
+    x0=y0-a;
+    x1=y1-b*w;
+    forced=a*Math.cos(w*x)+b*Math.sin(w*x);
+  }
+
+
+  if (m!=0) {
+    if (c*c>4*m*k) {
+      r1=(-c+Math.sqrt(c*c-4*m*k))/(2*m);
+      r2=(-c-Math.sqrt(c*c-4*m*k))/(2*m);
+      const1=(x0*r2-x1)/(r2-r1);
+      const2=(x1-r1*x0)/(r2-r1);
+      return const1*Math.exp(r1*x)+const2*Math.exp(r2*x)+forced; 
+    }
+    if (c*c<4*m*k) {
+      r=-c/(2*m);
+      w0=Math.sqrt(k/m - c*c/(4*m*m));
+      const1=x0;
+      const2=(x1-r*x0)/w0;
+      return Math.exp(r*x)*(const1*Math.cos(w0*x)
+                           +const2*Math.sin(w0*x))+forced;
+    }
+    r=-c/(2*m);
+    const1=x0;
+    const2=x1-r*x0;
+    return Math.exp(r*x)*(const1+const2*x)+forced;
+  }
+}
+</script>
+</head>
+<body>
+<a href='../index.php'>Textbook Contents</a>
+<hr />
+<center>
+<h3>Exploring Spring-Mass Motions</h3>
+</center>
+<p />
+Below are the graphs of 6 different solutions to 
+<nobr><i>mx" + cx' + kx = F<sub>0</sub></i>cos(<i>wt</i>),</nobr>
+<nobr><i>x</i>(0) = <i>x<sub>0</sub>,</nobr> 
+<nobr>x'</i>(0) = <i>x<sub>1</sub></i></nobr> in red. For each graph you 
+need to 
+<p>
+<ol type='a'>
+<li>Identify if the graph in red is <p />
+<ul>
+<li>undamped?</li>
+<li>underdamped?</li>
+<li>overdamped?<p /></li>
+<li>unforced?</li>
+<li>forced (beats)?</li>
+<li>forced (resonance)?</li>
+</ul>
+<p /></li>
+<li>Using what you determined in part (a), find the 
+initial value problems for which the red graph is the graph of the 
+solution.<p /></li>
+</ol>
+To help do this, 
+we've set up a place for you to enter problems and see the graph of the 
+solutions in blue. So you need to enter the correct values to get the blue 
+solution graphs to match the target red graphs. The final problem then 
+asks you to go back and look at the 6 examples and think about the 
+possible behaviors of solutions to second order linear equations.
+<p />
+Don't just randomly type in coefficients. Looking at the graphs of the 
+solutions, you should be able to decide what the functions are. 
+Then think about what sort 
+of problem has that solution. Note that this is actually closer to actual 
+engineering practice than just solving equations. You have a behavior you 
+want to get and you have to design the circuit to give you that behavior. 
+While mathematically you have either positive or negative coefficients for 
+an equation, in practical problems the coefficients are usually all 
+positive since they have real meaning like mass or coefficient of 
+friction, and those are positive. In the graphs below, the coefficients of 
+the equations, <i>though perhaps not the initial values</i>, are all 
+positive.
+<p />
+<hr />
+<p />
+<table>
+<tr>
+<td><b>1.</b>&nbsp;</td>
+<td>
+<form name="eqn1" onsubmit='return redraw1();'>
+<table>
+<tr>
+<td align="center"><input type="text" name="m" size="4" value="1"></td>
+<td align="center">x"&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="c" size=4 value="0"></td>
+<td align="center">x'&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="k" size=4 value="1"></td>
+<td align="center">x&nbsp;&nbsp;=&nbsp;&nbsp;</td>
+<td align="center"><input type="text" name="f" size=4 value="0"></td>
+<td align="center">cos(</td>
+<td align="left"><input type="text" name="w" size=4 value="1">&nbsp;t)</td>
+</tr>
+<tr>
+<td align="right">x(0)&nbsp;=&nbsp;</td>
+<td align="left"><input type="text" name="y0" size=4 value="1"></td>
+<td></td>
+<td align="right">x'(0)&nbsp;=&nbsp;</td>
+<td align=left><input type="text" name="y1" size=4 value="0"></td>
+<td></td>
+<td></td>
+<td></td>
+<td align=right><input type="submit" value="Update Graph"></td> 
+</tr>
+<tr>
+<td colspan=9 align='center'><span id='emsg1' style="color:red"> 
+</span></td>
+</tr>
+</table>
+<p />
+</form>
+
+<div id="box1" class="jxgbox" style="width:500px; height:500px;"></div>
+<script type="text/javascript"> 
+
+var m1=1;
+var c1=0;
+var k1=1;
+var y10=1;
+var y11=0;
+var f1=0;
+var w1=1;
+var a1=0;
+var b1=0;
+
+function redraw1() {
+  if (parseinput1()) {
+    brd1.update();
+  }
+  return false;
+}
+
+function parseinput1() {
+  m1=parseFloat(document.eqn1.m.value);
+  c1=parseFloat(document.eqn1.c.value);
+  k1=parseFloat(document.eqn1.k.value);
+  y10=parseFloat(document.eqn1.y0.value);
+  y11=parseFloat(document.eqn1.y1.value);
+  f1=parseFloat(document.eqn1.f.value);
+  w1=parseFloat(document.eqn1.w.value);
+  if (isNaN(m1)) {
+    document.getElementById('emsg1').innerHTML=
+                                   'Can\'t interpret coefficient of x"';
+    return false;
+  } else if (m1==0) {
+    document.getElementById('emsg1').innerHTML=
+                                   'Coefficient of x" not allowed to be 0';
+    return false;
+  } else if (isNaN(c1)) {
+    document.getElementById('emsg1').innerHTML=
+                                   'Can\'t interpret coefficient of x\'';
+    return false;
+  } else if (isNaN(k1)) {
+    document.getElementById('emsg1').innerHTML=
+                                   'Can\'t interpret coefficient of x';
+    return false;
+  } else if (isNaN(y10)) {
+    document.getElementById('emsg1').innerHTML=
+                                   'Can\'t interpret x(0)';
+    return false;
+  } else if (isNaN(y11)) {
+    document.getElementById('emsg1').innerHTML=
+                                   'Can\'t interpret x\'(0)';
+    return false;
+  } else if (isNaN(f1)) {
+    document.getElementById('emsg1').innerHTML=
+                                   'Can\'t interpret coefficient of cos';
+    return false;
+  } else if (isNaN(w1)) {
+    document.getElementById('emsg1').innerHTML=
+                                   'Can\'t interpret frequency';
+    return false;
+  } else {
+    document.getElementById('emsg1').innerHTML='';
+  }
+  if (f1==0) {
+    a1=0;
+    b1=0;
+  } else if (w1==0) {
+    a1=w1;
+    b1=0;
+  } else if (c1==0) {
+    if (k1==m1*w1*w1) {
+      a1=0;
+      b1=f1/(2*m1*w1);
+    } else {
+      a1=f1/(k1-m1*w1*w1);
+      b1=0;
+    }
+  } else {
+    var alpha1=k1-m1*w1*w1;
+    var den1=c1*c1+alpha1*alpha1;
+    a1=alpha1*f1/den1;
+    b1=c1*f1/den1;
+  }
+  return true;
+}
+
+var brd1 = JXG.JSXGraph.initBoard('box1', 
+  {originX: 10, originY: 250, unitX: 25, unitY: 50, axis:true});
+
+var fixed1=brd1.create('functiongraph',
+[function(x) {return 4*Math.sin(x);},0,100],
+{strokeColor:"red",highlightStrokeColor:'purple',highlightStrokeOpacity:1});
+
+var resp1=brd1.create('functiongraph', 
+[function(x) { return evalatx(x,m1,c1,k1,f1,w1,y10,y11,a1,b1); },0,100],
+{highlightStrokeColor:'purple',highlightStrokeOpacity:1, strokeWidth:2});
+    
+</script> 
+</td> 
+</tr> 
+<tr> 
+<td colspan=2> <hr /> </td> 
+</tr> 
+<tr>
+<td><b>2.</b>&nbsp;</td>
+<td>
+<form name="eqn2" onsubmit='return redraw2();'>
+<table>
+<tr>
+<td align="center"><input type="text" name="m" size="4" value="1"></td>
+<td align="center">x"&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="c" size=4 value="0"></td>
+<td align="center">x'&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="k" size=4 value="1"></td>
+<td align="center">x&nbsp;&nbsp;=&nbsp;&nbsp;</td>
+<td align="center"><input type="text" name="f" size=4 value="0"></td>
+<td align="center">cos(</td>
+<td align="left"><input type="text" name="w" size=4 value="1">&nbsp;t)</td>
+</tr>
+<tr>
+<td align="right">x(0)&nbsp;=&nbsp;</td>
+<td align="left"><input type="text" name="y0" size=4 value="1"></td>
+<td></td>
+<td align="right">x'(0)&nbsp;=&nbsp;</td>
+<td align=left><input type="text" name="y1" size=4 value="0"></td>
+<td></td>
+<td></td>
+<td></td>
+<td align=right><input type="submit" value="Update Graph"></td> 
+</tr>
+<tr>
+<td colspan=9 align='center'><span id='emsg2' style="color:red"> 
+</span></td>
+</tr>
+</table>
+<p />
+</form>
+
+<div id="box2" class="jxgbox" style="width:500px; height:500px;"></div>
+<script type="text/javascript"> 
+
+var m2=1;
+var c2=0;
+var k2=1;
+var y20=1;
+var y21=0;
+var f2=0;
+var w2=1;
+var a2=0;
+var b2=0;
+
+function redraw2() {
+  if (parseinput2()) {
+    brd2.update();
+  }
+  return false;
+}
+
+function parseinput2() {
+  m2=parseFloat(document.eqn2.m.value);
+  c2=parseFloat(document.eqn2.c.value);
+  k2=parseFloat(document.eqn2.k.value);
+  y20=parseFloat(document.eqn2.y0.value);
+  y21=parseFloat(document.eqn2.y1.value);
+  f2=parseFloat(document.eqn2.f.value);
+  w2=parseFloat(document.eqn2.w.value);
+  if (isNaN(m2)) {
+    document.getElementById('emsg2').innerHTML=
+                                   'Can\'t interpret coefficient of x"';
+    return false;
+  } else if (m2==0) {
+    document.getElementById('emsg2').innerHTML=
+                                   'Coefficient of x" not allowed to be 0';
+    return false;
+  } else if (isNaN(c2)) {
+    document.getElementById('emsg2').innerHTML=
+                                   'Can\'t interpret coefficient of x\'';
+    return false;
+  } else if (isNaN(k2)) {
+    document.getElementById('emsg2').innerHTML=
+                                   'Can\'t interpret coefficient of x';
+    return false;
+  } else if (isNaN(y20)) {
+    document.getElementById('emsg2').innerHTML=
+                                   'Can\'t interpret x(0)';
+    return false;
+  } else if (isNaN(y21)) {
+    document.getElementById('emsg2').innerHTML=
+                                   'Can\'t interpret x\'(0)';
+    return false;
+  } else if (isNaN(f2)) {
+    document.getElementById('emsg2').innerHTML=
+                                   'Can\'t interpret coefficient of cos';
+    return false;
+  } else if (isNaN(w2)) {
+    document.getElementById('emsg2').innerHTML=
+                                   'Can\'t interpret frequency';
+    return false;
+  } else {
+    document.getElementById('emsg2').innerHTML='';
+  }
+  if (f2==0) {
+    a2=0;
+    b2=0;
+  } else if (w2==0) {
+    a2=w2;
+    b2=0;
+  } else if (c2==0) {
+    if (k2==m2*w2*w2) {
+      a2=0;
+      b2=f2/(2*m2*w2);
+    } else {
+      a2=f2/(k2-m2*w2*w2);
+      b2=0;
+    }
+  } else {
+    var alpha2=k2-m2*w2*w2;
+    var den2=c2*c2+alpha2*alpha2;
+    a2=alpha2*f2/den2;
+    b2=c2*f2/den2;
+  }
+  return true;
+}
+
+var brd2 = JXG.JSXGraph.initBoard('box2', 
+  {originX: 10, originY: 250, unitX: 25, unitY: 50, axis:true});
+
+var fixed2=brd2.create('functiongraph',[function(x) 
+{return 3*Math.cos(2*x)},0,100],
+{strokeColor:"red",highlightStrokeColor:'purple',highlightStrokeOpacity:1});
+
+var resp2=brd2.create('functiongraph', 
+[function(x) { return evalatx(x,m2,c2,k2,f2,w2,y20,y21,a2,b2); },0,100],
+{highlightStrokeColor:'purple',highlightStrokeOpacity:1, strokeWidth:2});
+    
+</script> 
+</td> 
+</tr> 
+<tr>
+<td colspan=2><hr /></td>
+</tr>
+
+<tr>
+<td><b>3.</b>&nbsp;</td>
+<td>
+<form name="eqn3" onsubmit='return redraw3();'>
+<table>
+<tr>
+<td align="center"><input type="text" name="m" size="4" value="1"></td>
+<td align="center">x"&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="c" size=4 value="0"></td>
+<td align="center">x'&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="k" size=4 value="1"></td>
+<td align="center">x&nbsp;&nbsp;=&nbsp;&nbsp;</td>
+<td align="center"><input type="text" name="f" size=4 value="0"></td>
+<td align="center">cos(</td>
+<td align="left"><input type="text" name="w" size=4 value="1">&nbsp;t)</td>
+</tr>
+<tr>
+<td align="right">x(0)&nbsp;=&nbsp;</td>
+<td align="left"><input type="text" name="y0" size=4 value="1"></td>
+<td></td>
+<td align="right">x'(0)&nbsp;=&nbsp;</td>
+<td align=left><input type="text" name="y1" size=4 value="0"></td>
+<td></td>
+<td></td>
+<td></td>
+<td align=right><input type="submit" value="Update Graph"></td> 
+</tr>
+<tr>
+<td colspan=9 align='center'><span id='emsg3' style="color:red"> 
+</span></td>
+</tr>
+</table>
+<p />
+</form>
+
+<div id="box3" class="jxgbox" style="width:500px; height:500px;"></div>
+<script type="text/javascript"> 
+
+var m3=1;
+var c3=0;
+var k3=1;
+var y30=1;
+var y31=0;
+var f3=0;
+var w3=1;
+var a3=0;
+var b3=0;
+
+function redraw3() {
+  if (parseinput3()) {
+    brd3.update();
+  }
+  return false;
+}
+
+function parseinput3() {
+  m3=parseFloat(document.eqn3.m.value);
+  c3=parseFloat(document.eqn3.c.value);
+  k3=parseFloat(document.eqn3.k.value);
+  y30=parseFloat(document.eqn3.y0.value);
+  y31=parseFloat(document.eqn3.y1.value);
+  f3=parseFloat(document.eqn3.f.value);
+  w3=parseFloat(document.eqn3.w.value);
+  if (isNaN(m3)) {
+    document.getElementById('emsg3').innerHTML=
+                                   'Can\'t interpret coefficient of x"';
+    return false;
+  } else if (m3==0) {
+    document.getElementById('emsg3').innerHTML=
+                                   'Coefficient of x" not allowed to be 0';
+    return false;
+  } else if (isNaN(c3)) {
+    document.getElementById('emsg3').innerHTML=
+                                   'Can\'t interpret coefficient of x\'';
+    return false;
+  } else if (isNaN(k3)) {
+    document.getElementById('emsg3').innerHTML=
+                                   'Can\'t interpret coefficient of x';
+    return false;
+  } else if (isNaN(y30)) {
+    document.getElementById('emsg3').innerHTML=
+                                   'Can\'t interpret x(0)';
+    return false;
+  } else if (isNaN(y31)) {
+    document.getElementById('emsg3').innerHTML=
+                                   'Can\'t interpret x\'(0)';
+    return false;
+  } else if (isNaN(f3)) {
+    document.getElementById('emsg3').innerHTML=
+                                   'Can\'t interpret coefficient of cos';
+    return false;
+  } else if (isNaN(w3)) {
+    document.getElementById('emsg3').innerHTML=
+                                   'Can\'t interpret frequency';
+    return false;
+  } else {
+    document.getElementById('emsg3').innerHTML='';
+  }
+  if (f3==0) {
+    a3=0;
+    b3=0;
+  } else if (w3==0) {
+    a3=w3;
+    b3=0;
+  } else if (c3==0) {
+    if (k3==m3*w3*w3) {
+      a3=0;
+      b3=f3/(2*m3*w3);
+    } else {
+      a3=f3/(k3-m3*w3*w3);
+      b3=0;
+    }
+  } else {
+    var alpha3=k3-m3*w3*w3;
+    var den3=c3*c3+alpha3*alpha3;
+    a3=alpha3*f3/den3;
+    b3=c3*f3/den3;
+  }
+  return true;
+}
+
+var brd3 = JXG.JSXGraph.initBoard('box3', 
+  {originX: 10, originY: 250, unitX: 25, unitY: 50, axis:true});
+
+var fixed3=brd3.create('functiongraph',[function(x) 
+{return 4*Math.exp(-x/4)},0,100],
+{strokeColor:"red",highlightStrokeColor:'purple',highlightStrokeOpacity:1});
+
+var resp3=brd3.create('functiongraph', 
+[function(x) { return evalatx(x,m3,c3,k3,f3,w3,y30,y31,a3,b3); },0,100],
+{highlightStrokeColor:'purple',highlightStrokeOpacity:1, strokeWidth:2});
+    
+</script> 
+</td> 
+</tr> 
+<tr>
+<td colspan=2><hr /></td>
+</tr>
+
+<tr>
+<td><b>4.</b>&nbsp;</td>
+<td>
+<form name="eqn4" onsubmit='return redraw4();'>
+<table>
+<tr>
+<td align="center"><input type="text" name="m" size="4" value="1"></td>
+<td align="center">x"&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="c" size=4 value="0"></td>
+<td align="center">x'&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="k" size=4 value="1"></td>
+<td align="center">x&nbsp;&nbsp;=&nbsp;&nbsp;</td>
+<td align="center"><input type="text" name="f" size=4 value="0"></td>
+<td align="center">cos(</td>
+<td align="left"><input type="text" name="w" size=4 value="1">&nbsp;t)</td>
+</tr>
+<tr>
+<td align="right">x(0)&nbsp;=&nbsp;</td>
+<td align="left"><input type="text" name="y0" size=4 value="1"></td>
+<td></td>
+<td align="right">x'(0)&nbsp;=&nbsp;</td>
+<td align=left><input type="text" name="y1" size=4 value="0"></td>
+<td></td>
+<td></td>
+<td></td>
+<td align=right><input type="submit" value="Update Graph"></td> 
+</tr>
+<tr>
+<td colspan=9 align='center'><span id='emsg4' style="color:red"> 
+</span></td>
+</tr>
+</table>
+<p />
+</form>
+
+<div id="box4" class="jxgbox" style="width:500px; height:500px;"></div>
+<script type="text/javascript"> 
+
+var m4=1;
+var c4=0;
+var k4=1;
+var y40=1;
+var y41=0;
+var f4=0;
+var w4=1;
+var a4=0;
+var b4=0;
+
+function redraw4() {
+  if (parseinput4()) {
+    brd4.update();
+  }
+  return false;
+}
+
+function parseinput4() {
+  m4=parseFloat(document.eqn4.m.value);
+  c4=parseFloat(document.eqn4.c.value);
+  k4=parseFloat(document.eqn4.k.value);
+  y40=parseFloat(document.eqn4.y0.value);
+  y41=parseFloat(document.eqn4.y1.value);
+  f4=parseFloat(document.eqn4.f.value);
+  w4=parseFloat(document.eqn4.w.value);
+  if (isNaN(m4)) {
+    document.getElementById('emsg4').innerHTML=
+                                   'Can\'t interpret coefficient of x"';
+    return false;
+  } else if (m4==0) {
+    document.getElementById('emsg4').innerHTML=
+                                   'Coefficient of x" not allowed to be 0';
+    return false;
+  } else if (isNaN(c4)) {
+    document.getElementById('emsg4').innerHTML=
+                                   'Can\'t interpret coefficient of x\'';
+    return false;
+  } else if (isNaN(k4)) {
+    document.getElementById('emsg4').innerHTML=
+                                   'Can\'t interpret coefficient of x';
+    return false;
+  } else if (isNaN(y40)) {
+    document.getElementById('emsg4').innerHTML=
+                                   'Can\'t interpret x(0)';
+    return false;
+  } else if (isNaN(y41)) {
+    document.getElementById('emsg4').innerHTML=
+                                   'Can\'t interpret x\'(0)';
+    return false;
+  } else if (isNaN(f4)) {
+    document.getElementById('emsg4').innerHTML=
+                                   'Can\'t interpret coefficient of cos';
+    return false;
+  } else if (isNaN(w4)) {
+    document.getElementById('emsg4').innerHTML=
+                                   'Can\'t interpret frequency';
+    return false;
+  } else {
+    document.getElementById('emsg4').innerHTML='';
+  }
+  if (f4==0) {
+    a4=0;
+    b4=0;
+  } else if (w4==0) {
+    a4=w4;
+    b4=0;
+  } else if (c4==0) {
+    if (k4==m4*w4*w4) {
+      a4=0;
+      b4=f4/(2*m4*w4);
+    } else {
+      a4=f4/(k4-m4*w4*w4);
+      b4=0;
+    }
+  } else {
+    var alpha4=k4-m4*w4*w4;
+    var den4=c4*c4+alpha4*alpha4;
+    a4=alpha4*f4/den4;
+    b4=c4*f4/den4;
+  }
+  return true;
+}
+
+var brd4 = JXG.JSXGraph.initBoard('box4', 
+  {originX: 10, originY: 250, unitX: 25, unitY: 50, axis:true});
+
+var fixed4=brd4.create('functiongraph',[function(x) 
+{return 3*Math.exp(-x/2)*Math.cos(2*x)},0,100],
+{strokeColor:"red",highlightStrokeColor:'purple',highlightStrokeOpacity:1});
+
+var resp4=brd4.create('functiongraph', 
+[function(x) { return evalatx(x,m4,c4,k4,f4,w4,y40,y41,a4,b4); },0,100],
+{highlightStrokeColor:'purple',highlightStrokeOpacity:1, strokeWidth:2});
+    
+</script> 
+</td> 
+</tr> 
+<tr>
+<td colspan=2><hr /></td>
+</tr>
+
+<tr>
+<td><b>5.</b>&nbsp;</td>
+<td>
+<form name="eqn5" onsubmit='return redraw5();'>
+<table>
+<tr>
+<td align="center"><input type="text" name="m" size="4" value="1"></td>
+<td align="center">x"&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="c" size=4 value="0"></td>
+<td align="center">x'&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="k" size=4 value="1"></td>
+<td align="center">x&nbsp;&nbsp;=&nbsp;&nbsp;</td>
+<td align="center"><input type="text" name="f" size=4 value="0"></td>
+<td align="center">cos(</td>
+<td align="left"><input type="text" name="w" size=4 value="1">&nbsp;t)</td>
+</tr>
+<tr>
+<td align="right">x(0)&nbsp;=&nbsp;</td>
+<td align="left"><input type="text" name="y0" size=4 value="1"></td>
+<td></td>
+<td align="right">x'(0)&nbsp;=&nbsp;</td>
+<td align=left><input type="text" name="y1" size=4 value="0"></td>
+<td></td>
+<td></td>
+<td></td>
+<td align=right><input type="submit" value="Update Graph"></td> 
+</tr>
+<tr>
+<td colspan=9 align='center'><span id='emsg5' style="color:red"> 
+</span></td>
+</tr>
+</table>
+<p />
+</form>
+
+<div id="box5" class="jxgbox" style="width:500px; height:500px;"></div>
+<script type="text/javascript"> 
+
+var m5=1;
+var c5=0;
+var k5=1;
+var y50=1;
+var y51=0;
+var f5=0;
+var w5=1;
+var a5=0;
+var b5=0;
+
+function redraw5() {
+  if (parseinput5()) {
+    brd5.update();
+  }
+  return false;
+}
+
+function parseinput5() {
+  m5=parseFloat(document.eqn5.m.value);
+  c5=parseFloat(document.eqn5.c.value);
+  k5=parseFloat(document.eqn5.k.value);
+  y50=parseFloat(document.eqn5.y0.value);
+  y51=parseFloat(document.eqn5.y1.value);
+  f5=parseFloat(document.eqn5.f.value);
+  w5=parseFloat(document.eqn5.w.value);
+  if (isNaN(m5)) {
+    document.getElementById('emsg5').innerHTML=
+                                   'Can\'t interpret coefficient of x"';
+    return false;
+  } else if (m5==0) {
+    document.getElementById('emsg5').innerHTML=
+                                   'Coefficient of x" not allowed to be 0';
+    return false;
+  } else if (isNaN(c5)) {
+    document.getElementById('emsg5').innerHTML=
+                                   'Can\'t interpret coefficient of x\'';
+    return false;
+  } else if (isNaN(k5)) {
+    document.getElementById('emsg5').innerHTML=
+                                   'Can\'t interpret coefficient of x';
+    return false;
+  } else if (isNaN(y50)) {
+    document.getElementById('emsg5').innerHTML=
+                                   'Can\'t interpret x(0)';
+    return false;
+  } else if (isNaN(y51)) {
+    document.getElementById('emsg5').innerHTML=
+                                   'Can\'t interpret x\'(0)';
+    return false;
+  } else if (isNaN(f5)) {
+    document.getElementById('emsg5').innerHTML=
+                                   'Can\'t interpret coefficient of cos';
+    return false;
+  } else if (isNaN(w5)) {
+    document.getElementById('emsg5').innerHTML=
+                                   'Can\'t interpret frequency';
+    return false;
+  } else {
+    document.getElementById('emsg5').innerHTML='';
+  }
+  if (f5==0) {
+    a5=0;
+    b5=0;
+  } else if (w5==0) {
+    a5=w5;
+    b5=0;
+  } else if (c5==0) {
+    if (k5==m5*w5*w5) {
+      a5=0;
+      b5=f5/(2*m5*w5);
+    } else {
+      a5=f5/(k5-m5*w5*w5);
+      b5=0;
+    }
+  } else {
+    var alpha5=k5-m5*w5*w5;
+    var den5=c5*c5+alpha5*alpha5;
+    a5=alpha5*f5/den5;
+    b5=c5*f5/den5;
+  }
+  return true;
+}
+
+var brd5 = JXG.JSXGraph.initBoard('box5', 
+  {originX: 10, originY: 250, unitX: 25, unitY: 50, axis:true});
+
+var fixed5=brd5.create('functiongraph',[function(x) 
+{return 3*Math.sin(x)*Math.sin(4*x)},0,100],
+{strokeColor:"red",highlightStrokeColor:'purple',highlightStrokeOpacity:1});
+
+var resp5=brd5.create('functiongraph', 
+[function(x) { return evalatx(x,m5,c5,k5,f5,w5,y50,y51,a5,b5); },0,100],
+{highlightStrokeColor:'purple',highlightStrokeOpacity:1, strokeWidth:2});
+    
+</script> 
+</td> 
+</tr> 
+<tr>
+<td colspan=2><hr /></td>
+</tr>
+
+<tr>
+<td><b>6.</b>&nbsp;</td>
+<td>
+<form name="eqn6" onsubmit='return redraw6();'>
+<table>
+<tr>
+<td align="center"><input type="text" name="m" size="4" value="1"></td>
+<td align="center">x"&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="c" size=4 value="0"></td>
+<td align="center">x'&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="k" size=4 value="1"></td>
+<td align="center">x&nbsp;&nbsp;=&nbsp;&nbsp;</td>
+<td align="center"><input type="text" name="f" size=4 value="0"></td>
+<td align="center">cos(</td>
+<td align="left"><input type="text" name="w" size=4 value="1">&nbsp;t)</td>
+</tr>
+<tr>
+<td align="right">x(0)&nbsp;=&nbsp;</td>
+<td align="left"><input type="text" name="y0" size=4 value="1"></td>
+<td></td>
+<td align="right">x'(0)&nbsp;=&nbsp;</td>
+<td align=left><input type="text" name="y1" size=4 value="0"></td>
+<td></td>
+<td></td>
+<td></td>
+<td align=right><input type="submit" value="Update Graph"></td> 
+</tr>
+<tr>
+<td colspan=9 align='center'><span id='emsg6' style="color:red"> 
+</span></td>
+</tr>
+</table>
+<p />
+</form>
+
+<div id="box6" class="jxgbox" style="width:500px; height:500px;"></div>
+<script type="text/javascript"> 
+
+var m6=1;
+var c6=0;
+var k6=1;
+var y60=1;
+var y61=0;
+var f6=0;
+var w6=1;
+var a6=0;
+var b6=0;
+
+function redraw6() {
+  if (parseinput6()) {
+    brd6.update();
+  }
+  return false;
+}
+
+function parseinput6() {
+  m6=parseFloat(document.eqn6.m.value);
+  c6=parseFloat(document.eqn6.c.value);
+  k6=parseFloat(document.eqn6.k.value);
+  y60=parseFloat(document.eqn6.y0.value);
+  y61=parseFloat(document.eqn6.y1.value);
+  f6=parseFloat(document.eqn6.f.value);
+  w6=parseFloat(document.eqn6.w.value);
+  if (isNaN(m6)) {
+    document.getElementById('emsg6').innerHTML=
+                                   'Can\'t interpret coefficient of x"';
+    return false;
+  } else if (m6==0) {
+    document.getElementById('emsg6').innerHTML=
+                                   'Coefficient of x" not allowed to be 0';
+    return false;
+  } else if (isNaN(c6)) {
+    document.getElementById('emsg6').innerHTML=
+                                   'Can\'t interpret coefficient of x\'';
+    return false;
+  } else if (isNaN(k6)) {
+    document.getElementById('emsg6').innerHTML=
+                                   'Can\'t interpret coefficient of x';
+    return false;
+  } else if (isNaN(y60)) {
+    document.getElementById('emsg6').innerHTML=
+                                   'Can\'t interpret x(0)';
+    return false;
+  } else if (isNaN(y61)) {
+    document.getElementById('emsg6').innerHTML=
+                                   'Can\'t interpret x\'(0)';
+    return false;
+  } else if (isNaN(f6)) {
+    document.getElementById('emsg6').innerHTML=
+                                   'Can\'t interpret coefficient of cos';
+    return false;
+  } else if (isNaN(w6)) {
+    document.getElementById('emsg6').innerHTML=
+                                   'Can\'t interpret frequency';
+    return false;
+  } else {
+    document.getElementById('emsg6').innerHTML='';
+  }
+  if (f6==0) {
+    a6=0;
+    b6=0;
+  } else if (w6==0) {
+    a6=w6;
+    b6=0;
+  } else if (c6==0) {
+    if (k6==m6*w6*w6) {
+      a6=0;
+      b6=f6/(2*m6*w6);
+    } else {
+      a6=f6/(k6-m6*w6*w6);
+      b6=0;
+    }
+  } else {
+    var alpha6=k6-m6*w6*w6;
+    var den6=c6*c6+alpha6*alpha6;
+    a6=alpha6*f6/den6;
+    b6=c6*f6/den6;
+  }
+  return true;
+}
+
+var brd6 = JXG.JSXGraph.initBoard('box6', 
+  {originX: 10, originY: 250, unitX: 25, unitY: 50, axis:true});
+
+var fixed6=brd6.create('functiongraph',[function(x) 
+{return .3*x*Math.sin(2*x)},0,100],
+{strokeColor:"red",highlightStrokeColor:'purple',highlightStrokeOpacity:1});
+
+var resp6=brd6.create('functiongraph', 
+[function(x) { return evalatx(x,m6,c6,k6,f6,w6,y60,y61,a6,b6); },0,100],
+{highlightStrokeColor:'purple',highlightStrokeOpacity:1, strokeWidth:2});
+    
+</script> 
+</td> 
+</tr> 
+<tr>
+<td colspan=2><hr /></td>
+</tr>
+<tr>
+<td><b>7.&nbsp;</td>
+<td>In the above graphs you have examples of solutions that never cross 
+the <i>x</i>-axis (problem 3) and that cross the <i>x</i>-axis 
+infinitely many times 
+(problems 1, 2, 5, and 6). It is hard to tell exactly how many times the 
+solution 
+crosses in problem 4 just from the graph. <b>Is it possible to have a 
+solution that crosses the axis exactly <i>once</i>?</b> Give an example if 
+you can or explain why it is impossible.
+</td>
+</tr>
+<tr>
+<td colspan=2><hr /></td>
+</tr>
+<tr>
+<td><b>8.&nbsp;</td>
+<td><b>Is it possible to have a 
+solution that crosses the axis exactly <i>twice</i>?</b> Give an example 
+if you can or explain why it is impossible.
+</td>
+</tr>
+<tr>
+<td colspan=2><hr /></td>
+</tr>
+</table>
+<p />
+<hr>
+<font size=-1>If you have any problems with this page, please contact 
+bennett@math.ksu.edu.<br />
+&copy;1994-2025 Andrew G. Bennett
+</font>
+
+</body> 
+</html>
+

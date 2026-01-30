@@ -1,0 +1,247 @@
+<html>
+<head>
+<title>EDE Chapter 2: Homework Answers</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Math 340 Written Homework Chapter 2<br />Solutions to Odd 
+Exercises</h3>
+</center>
+1. 
+$(\cos(n\theta)+i\sin(n\theta))=\exp(i(n\theta))=\exp((i\theta)n)
+=\exp(i\theta)^n=(cos(\theta)+i\sin(\theta))^n$.
+<p />
+3. <ol type='a'>
+<li>
+$\displaystyle f_e(x)+f_o(x)=\frac{f(x)+f(-x)}2 + \frac{f(x)-f(-x)}2
+= \frac{2f(x)}2=f(x)$<p /></li>
+<li>$\displaystyle f_e(-x)=\frac{f(-x)+f(x)}2=\frac{f(x)+f(-x)}2 = 
+f_e(x)$
+<br />
+$\displaystyle f_o(-x)=\frac{f(-x)-f(x)}2=-\frac{f(x)-f(-x)}2 = -f_o(x)$
+</li></ol>
+<p />
+5. <ol type='a'>
+<li>Remember that $\cos(-x)=\cos(x)$ and $\sin(-x)=-\sin(x)$.
+$$ \begin{align}
+\cosh(ix)&=\frac{\exp(ix)+\exp(-ix)}2 \\
+&=\frac{(\cos(x)+i\sin(x))+(\cos(-x)+i\sin(-x))}2 \\
+&=\frac{\cos(x)+i\sin(x)+\cos(x)-i\sin(x))}2 \\
+&=\frac{2\cos(x)}2 = \cos(x)
+\end{align} $$
+</li>
+<li>
+$$ \begin{align}
+\sinh(ix)&=\frac{\exp(ix)-\exp(-ix)}2 \\
+&=\frac{(\cos(x)+i\sin(x))-(\cos(-x)+i\sin(-x)}2 \\
+&=\frac{\cos(x)+i\sin(x)-\cos(x)+i\sin(x)}2 \\
+&=\frac{2i\sin(x)}2 = i\sin(x)
+\end{align} $$
+</li></ol>
+<p />
+7. $\ln(x+\sqrt{1+x^2}).$ <p />
+9. $\sinh^{-1}(x)+C.$ If you use trig substitutions, you end up 
+integrating $\sec(u)$ to $\ln(\sec(u)+\tan(u))+C$ and after 
+back-substituting for $u$ you get the formula for $\sinh^{-1}(x)$ found 
+above in problem 7.<p />
+11. $12\exp(2x).$<p />
+13. $12x^5.$<p />
+15. Remember that the differentiation operator $D$ is linear by the basic 
+rules of differentiation from calculus 1. 
+We first check $L(y+z)=Ly+Lz$. 
+$$ \begin{align}
+L(y+z)&=D^2(y+z)+3D(y+z)-4(y+z) \\
+&=D^2y+D^2z+3Dy+3Dz-4y-4z \\
+&=(D^2y+3Dy-4y) + (D^2z+3Dz-4z) \\
+&=Ly+Lz
+\end{align} $$
+Second we check $L(cy)=cLy$.
+$$ \begin{align}
+L(cy)&=D^2(cy)+3D(cy)-4(cy) \\
+&=c(D^2y)+c(3Dy)-c(4y) \\
+&=c(D^2y+3Dy-4y) \\
+&=c(Ly)
+\end{align} $$
+<p />
+17. Almost any choice of $y$ and $z$ will show this is not linear. For 
+example, let $y=x$ and $z=1$. Then we compute
+$$ \begin{align}
+Ly&=x(Dx)=x \\
+Lz&=1(D1)=0 \\
+L(y+z)&=(x+1)D(x+1)=x+1
+\end{align} $$
+So $Ly+Lz=x+0\ne x+1=L(y+z).$
+<p />
+19. Computing the Wronskian we get 
+$W(\exp(x),\exp(2x))=2\exp(x)\exp(2x)-\exp(x)\exp(2x) = \exp(3x).$ Since 
+$W(0)=1\ne0$, the Wronskian is not identically 0 and hence the functions 
+are linearly independent.<p />
+21. Computing the Wronskian we get
+$W(\exp(rx),x\exp(rx))=\exp(rx)((1+rx)\exp(rx))-rx\exp(rx)\exp(rx)
+=\exp(2rx).$ Since $W(0)=1\ne0$, the Wronskian is not identically 0 and 
+hence the functions are linearly independent.
+<p />
+23.  <ol type='i'> 
+<li>b</li> 
+<li>a</li>
+<li>c</li> 
+</ol><p /> 
+
+25.<ol type='a'> 
+<li>$y''+(x-1)y'-xy=0$</li>
+<li>$y''+(x-1)y'+(1-x)y=0$</li> 
+</ol> <p /> 
+
+27. <ol type='a'>
+<li>$y''+(a(x)+b(x))y'+(a(x)b(x)+b'(x))y=0$</li>
+<li>$y''+(a(x)+b(x))y'+(a(x)b(x)+a'(x))y=0$</li> 
+</ol> <p /> 
+
+29. $$ y=C_1\exp(-x)\int_0^x \exp(-t^2+t) dt + C_2\exp(-x)$$ 
+
+31. $$y = \exp(-x^2)\int_0^x\exp(t^2+t)dt + 
+ C_1\exp(-x^2)\int_0^x\exp(t^2-t)dt + C_2\exp(-x^2) $$
+
+33. $y=C_1\exp(rx)+C_2x\exp(rx)$.
+<p />
+
+35. $y_p=A\exp(2x)+Bx^2+Cx+D$ where $A,$ $B,$ $C,$ and $D$ are 
+constants.<p /> 
+
+37. $y_p=Ax\sin(2x)+Bx\cos(2x)+Cx^2\exp(x)+Dx\exp(x)+E\exp(x)$ where $A,$ 
+$B,$ $C,$ $D,$ and $E$ are constants.<p /> 
+
+39. $y=C_1\exp((1+3i)z + C_2\exp((1-3i)z)$<p />
+
+41. $\displaystyle y=C_1\exp(2iz)+C_2\exp(-2iz)+\frac{z}{4}.$<p />
+
+43. $y=(-5-i)\exp(-2z)+(7+2i)\exp(-z)$<p />
+
+45. $$ \begin{align}
+y&=\exp(5iz) + \exp(-5iz) \\
+&=\cos(5z)+i\sin(5z) + \cos(-5z) + i\sin(-5z) \\
+&=\cos(5z)+i\sin(5z) + \cos(5z) - i\sin(5z) \\
+&=2\cos(5z)
+\end{align} $$
+
+<!--
+45. $y = 2\cos(5z)$
+<p />
+-->
+
+47. $v(x)w''+(2v'(x)+p(x)v(x))w' = 0$
+<p />
+
+49. $\displaystyle \frac{\sqrt{799}}{40}\approx 0.71$ radians/sec
+<p />
+
+51. $\displaystyle \frac{2\pi}{\sqrt{799}/40} \approx 8.89$ sec
+<p />
+
+53. $\displaystyle \frac{20\pi}{3} \approx 20.9$ sec
+<p />
+
+55. $c \approx 346.1$ g/sec
+<p />
+
+57. <ol type='a'><li>1/sec</li><li>sec</li></ol> 
+<p />
+
+59. Any value from 2 seconds to infinity
+<p />
+
+61. Approximately 1.73 seconds
+<p /> 
+
+63. $c \approx 77.0$ g/sec
+<p />
+
+65. Approximately 0.99 seconds
+<p />
+
+67. From the previous problem we know successive maxima occur at intervals 
+of $2\pi/\omega$ where the position function is 
+$$x(t)=A\exp\left(-\frac{ct}{2m}\right)\cos(\omega t+\phi)$$
+for some constants $A$ and $\phi$ (and $
+\omega=\sqrt{\frac{k}{m}-\left(\frac{c}{2m}\right)^2},$ but all that 
+matters in what follows is that the $\omega$ in the interval between 
+successive maxima is the same as the omega in the position function). Now
+$$ \begin{align}
+x(t+2\pi/\omega)&=A\exp\left(-\frac{c(t+2\pi/\omega)}{2m}\right)
+\cos(\omega(t+2\pi/\omega)+\phi) \\
+&=A\exp\left(-\frac{ct}{2m}\right)\exp\left(-\frac{c\pi}{m}\right)
+\cos(\omega t + 2\pi + \phi) \\
+&=A\exp\left(-\frac{ct}{2m}\right)\exp\left(-\frac{c\pi}{m}\right)
+\cos(\omega t + \phi) 
+\end{align} $$
+Then the ratio of the amplitudes of successive maxima is
+$$ \begin{align}
+\frac{x(t+2\pi/\omega)}{x(t)}&=
+\frac{=A\exp\left(-\frac{ct}{2m}\right)\exp\left(-\frac{c\pi}{m}\right)
+\cos(\omega t + \phi)}
+{=A\exp\left(-\frac{ct}{2m}\right)\cos(\omega t + \phi)} \\
+&= \exp\left(-\frac{c\pi}{m}\right)
+\end{align} $$
+which is a constant (depending on $c$ and $m$ but not $t$).
+<p />
+
+69. $4\pi/35 \approx 0.36$ seconds
+<p />
+
+71. $8\pi^2 kg/sec^2$ 
+<p />
+
+73. Approximately $1.39\times10^{-12}$ farads.
+<p />
+
+75. Coming soon
+<p />
+
+77. $x(t) = \displaystyle 2B\sin\left(\frac{\omega+\omega_0}{2}t\right)
+\sin\left(\frac{\omega-\omega_0}{2}t\right)$
+<p />
+
+79. $y(x)=x\sin(x)+\cos(x)\ln|\cos(x)| + C_1\cos(x)+C_2\sin(x)$
+<p />
+
+81. $y(x)=2x^2-3x+2x^{-1}$
+<p />
+
+83. $\displaystyle y(x) = \frac{\exp(-x)-\exp(-3x)}{\exp(-1)-\exp(-3)}$
+<p />
+
+85. $\displaystyle y(x) = -\frac{1}{13}\exp(-x)\cos(x) - \frac{\exp(-1)\cos(1)+e}{13\exp(-1)\sin(1)}\exp(-x)\sin(x)$
+<p />
+
+87. $y(x)=-\sin(x)$
+<p />
+
+89. $y(x)=\cos(2x)+B\sin(2x)$ where $B$ is an arbitrary constant
+<p />
+
+91. $y(x)=B\exp(-x)\sin(2x)$ where $B$ is an arbitrary constant
+<p />
+
+93. $n = r/2$ where $r$ is any integer
+<p />
+
+95. $n = r\pi$ where $r$ is any integer
+<p />
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+</html>
+
+

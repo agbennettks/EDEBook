@@ -1,0 +1,902 @@
+<html>
+<head>
+<title>EDE Chapter 2: Homework</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+
+<center>
+<h3>Math 340 Written Homework Chapter 2</h3>
+</center>
+
+<ol>
+
+<li>Using Euler's formula, $\exp(ix)=\cos(x)+i\sin(x),$ 
+and the usual rules of exponents, establish De 
+Moivre's formula,
+$$ \left(\cos(n\theta)+i\sin(n\theta)\right) = 
+\left(\cos(\theta)+i\sin(\theta)\right)^n. $$
+</li>
+
+<li>
+Use DeMoivre's formula to write the following in terms of $\sin(\theta)$ 
+and 
+$\cos(\theta)$.
+<ol type='a'>
+<li>$\cos(6\theta)$</li>
+<li>$\sin(6\theta)$</li>
+</ol>
+<p /></li>
+
+<hr />
+One of the properties of the $\sin(x)$ and $\cos(x)$ that I hope you 
+recall from trigonometry is that $\cos(x)$ is an even function, i.e. 
+$\cos(-x)=\cos(x),$ while $\sin(x)$ is an odd function, i.e. 
+$\sin(-x)=-\sin(x).$ We will see that any function can be split into 
+pieces with these symmetries.
+<hr /><p />
+
+<li>Given a general function $f(x),$ define $\displaystyle 
+f_e(x)=\frac{f(x)+f(-x)}2$ and $\displaystyle f_o(x)=\frac{f(x)-f(-x)}2.$. 
+Show <p /><ol type='a'>
+<li>$f(x)=f_e(x)+f_o(x),$ and <p /></li>
+<li>$f_e(x)$ is an even function and $f_o(x)$ is an odd function.</li>
+</ol>
+So every function can be split into even and odd pieces.<p /></li>
+
+<li>Given that $f(x)=f_e(x)+f_o(x)$ where $f_e(x)$ is an even function and 
+$f_o(x)$ is an odd function, show that <p /><ol type='a'>
+<li>$\displaystyle f_e(x)=\frac{f(x)+f(-x)}2,$ and <p /></li>
+<li>$\displaystyle f_o(x)=\frac{f(x)-f(-x)}2,$ and </li>
+</ol>
+This shows the decomposition in the previous problem is the unique way to 
+cut a function into even and odd pieces.<p /></li>
+
+<hr />
+If we apply the decomposition developed in the previous two problems to 
+the exponential function, we get the <i>hyperbolic functions</i>,
+$$
+\begin{align}
+\cosh(x)&=\frac{\exp(x)+\exp(-x)}2 \\
+\sinh(x)&=\frac{\exp(x)-\exp(-x)}2 
+\end{align} $$
+These functions are covered in your calculus text, but sometimes that 
+section is skipped. They are closely related to the usual trigonometric 
+functions and you can define hyperbolic tangent, secant, cosecant, and 
+cotangent in the obvious way (e.g. $\displaystyle 
+\tanh(x)=\frac{\sinh(x)}{\cosh(x)}$). The next 
+few problems give a quick overview of some of their properties. 
+<hr />
+<p />
+<li>Show <ol type='a'>
+<li>$\cosh(ix)=\cos(x),$ and <p /></li>
+<li>$\sinh(ix)=i\sin(x).$</li>
+</ol>
+So the hyperbolic functions are just rotations of the usual trigonometric 
+functions in the complex plane.<p /></li>
+
+<li>Verify the following hyperbolic trig identities.<p /><ol type='a'>
+<li>$\cosh^2(x)-\sinh^2(x)=1$<p /></li>
+<li>$\cosh(s+t)=\cosh(s)\cosh(t)+\sinh(s)\sinh(t)$<p /></li>
+</ol>Note that these are almost the same as the corresponding identities 
+for the regular trig functions, except for changes in the signs. You can 
+derive hyperbolic identities corresponding to all the different identities 
+you learned in trigonometry. <p /></li>
+
+<li>Invert the formula $\displaystyle \sinh(x)=\frac{\exp(x)-\exp(-x)}2$ 
+to write $\sinh^{-1}(x)$ in terms of $\log(x).$ Note that you will need to 
+use the quadratic formula to get the inverse.<p /></li>
+
+<li>Verify the following differentiation rules for the hyperbolic 
+functions<p /><ol type='a'>
+<li>$\displaystyle \frac{d\sinh(x)}{dx}=\cosh(x),$ and <p /></li>
+<li>$\displaystyle \frac{d\cosh(x)}{dx}=\sinh(x).$ </li>
+</ol>
+So for the hyperbolic functions you don't have to try to remember which 
+derivative gets a minus sign.<p /></li>
+
+<li>Use the substitution $x=\sinh(u)$ to evaluate the integral
+$$
+\int \frac{dx}{\sqrt{1+x^2}}.
+$$
+This integral can also be evaluated with a trig substitution, but using a 
+hyperbolic substitution simplifies the process. <p /></li>
+
+<hr />
+<table>
+<tr>
+<td>
+The equation for a freely hanging chain (or wire or what-have-you) is
+$$
+\frac{d^2y}{dx^2}=\frac{\delta g}{H}\sqrt{1+\left(\frac{dy}{dx}\right)^2}
+$$
+where $y$ and $x$ are the vertical and horizontal coordinates of the 
+chain, $\delta$ is the linear density of the chain, $g$ is the 
+acceleration of gravity, and $H$ is the horizontal tension in the chain. 
+The curve that solves this equation is called a <i>catenary</i>, after the 
+Latin word for "chain." 
+If you are curious about the derivation of this equation, you are welcome 
+to come by my office and ask about it. This is a second-order non-linear 
+equation. In general, we won't tackle such problems in this course, but 
+this one has the special feature that $y$ never appears by itself. You 
+only see its derivatives, $\displaystyle \frac{dy}{dx}$ and 
+$\displaystyle \frac{d^2y}{dx^2}.$ 
+That allows us to use a special trick to reduce this 
+to a first-order equation, which we can actually solve. 
+</td>
+<td>
+<img align=right 
+src='http://upload.wikimedia.org/wikipedia/commons/0/04/Kette_Kettenkurve_Catenary_2008_PD.JPG'
+height=170 width=227>
+<br />
+(Image from Wikimedia user
+Kamel15 under a Creative Commons License)
+</td>
+</tr>
+</table>
+<hr />
+<p />
+
+<!--
+<li>Show that the operator 
+$$
+Ly=\frac{d^2y}{dx^2}-\frac{\delta 
+g}{H}\sqrt{1+\left(\frac{dy}{dx}\right)^2}
+$$
+is non-linear.<p /></li>
+-->
+
+<li>Suppose $\delta g/H=2$ so the equation for the catenary becomes
+$$
+\frac{d^2y}{dx^2}=2\sqrt{1+\left(\frac{dy}{dx}\right)^2}.
+$$
+Make the substitution $\displaystyle p=\frac{dy}{dx}.$
+This leads to a separable equation in $p$ and $x.$ Solve 
+this equation for $p(x)$ (the integral in problem 9 will be helpful). 
+Then back-substitute and integrate 
+$\displaystyle \frac{dy}{dx}=p(x)$ to find the solution. Note that you 
+will get one arbitrary constant from the separable equation and a second 
+arbitrary constant from the integration in the back-substitution, giving 
+you the two arbitrary constants you expect for a second-order equation.
+<p /></li>
+
+
+
+
+
+
+<!--
+<hr>
+As we move to higher-order equations we will stick primarily to linear 
+equations. Non-linear equations are in general much harder to handle. 
+However, we can use a trick to reduce the order of <i>autonomous</i> 
+non-linear equations which will let us solve some second-order non-linear 
+equations. If you have an equation of the form
+$$
+\frac{d^2y}{dx^2}=f\left(y,\frac{dy}{dx}\right)
+$$
+where the right-hand-side doesn't depend on $x$ (or whatever letter is the 
+independent variable), you make the substitution 
+$\displaystyle p=\frac{dy}{dx}.$ Then 
+$\displaystyle \frac{d^2y}{dx^2}=\frac{dp}{dx}$ 
+so the original second order equation is now a first-order equation.
+Unfortunately, instead 
+of just having two variables, we now have $p$, $y$ and $x.$ But since the 
+original equation was autonomous, the only place $x$ appears is in the 
+derivative,
+$$
+\frac{dp}{dx}=f(y,p).
+$$
+So if we could write $\displaystyle \frac{dp}{dx}$ in terms of just $p$ 
+and 
+$y,$ we would have a first-order equation in just $p$ and $y$ and we could 
+solve it using the techniques of the previous chapter. To do this, we use 
+the chain rule, which says
+$$
+\frac{dp}{dx}=\frac{dp}{dy}\frac{dy}{dx}=\frac{dp}{dy}p
+$$
+So our equation now becomes
+$$
+\frac{dp}{dy}=\frac{f(y,p)}p
+$$
+which is a first-order equation. Once we solve it to find $p(y)$, we then 
+back-substitute and solve the separable equation
+$\displaystyle \frac{dy}{dx}=p(y)$ to find the solution to the original 
+equation. Note that we pick one arbitrary constant when we solve the 
+first-order equation and a second arbitrary constant when we solve the 
+separable equation during the back-substitution, so we end up with two 
+arbitrary constants, just as we expect when given a second-order equation.
+ <hr /><p />
+-->
+
+<li>Suppose $L$ is the operator defined by $Ly=D^2y+3Dy+2y$. Compute 
+$L(\exp(2x)).$<p /></li>
+
+<li>Suppose $L$ is the operator defined by $Ly=D^2y-3Dy+y$. Compute 
+$L(\sin(x)).$<p /></li>
+
+<li>Suppose $L$ is the operator defined by $Ly=yDy$. Compute 
+$L(2x^3).$<p /></li>
+
+<li>Show $Ly = Dy - xy$ is a linear operator. Remember you must show both 
+parts of the definition hold for all functions $y$.<p /></li>
+
+<li>Show $Ly = D^2y + 3Dy - 4y$ is a linear operator. Remember you must 
+show both parts of the definition hold for all functions $y$.<p /></li>
+
+<li>Show $Ly = Dy - xy^2$ is not a linear operator. Hint: It is 
+sufficient to show 
+$L(y + z) \ne Ly + Lz.$ for some choice of $y$ and $z$.<p /></li>
+
+<li>Show $Ly = yDy$ is not a linear operator. Hint: It is 
+sufficient to show 
+$L(y + z) \ne Ly + Lz.$ for some choice of $y$ and $z$.<p /></li>
+
+<li>Suppose $L$ is a linear operator and we have three partial particular 
+solutions, <ul>
+<li>$y_{p1}$ with $Ly_{p1}=f_1$</li>
+<li>$y_{p2}$ with $Ly_{p2}=f_2$</li>
+<li>$y_{p3}$ with $Ly_{p3}=f_3$</li>
+</ul>
+Show $y=ay_{p1}+by_{p2}+cy_{p3}$ is a particular solution to 
+$Ly=af_1+bf_2+cf_3$.<p /></li>
+
+<li>Show $\exp(x)$ and $\exp(2x)$ are linearly independent. <p /></li>
+
+<li>Show $\exp(rx)$ and $\exp(sx)$ are linearly independent if $r\ne s$.
+<p /></li>
+
+<li>Show $\exp(rx)$ and $x\exp(rx)$ are linearly independent for every 
+$r.$ <p /></li>
+
+<li>Show $\cos(rx)$ and $\sin(sx)$ are linearly independent for every choice of
+$r$ and $s$ (including when $r=s$).<p /></li>
+
+<!--
+
+<li>Show the general solution to $(D-r)y=0$ is $y=c\exp(rx)$.<p /></li>
+
+<li>Once you have factored a second order linear differential operator as
+$Lu = RSu$, you can solve $Lu=f$ by first solving $Rv=f$ and then $Su=v$.
+Using this, find the general solutions to the following problems.
+<ol type='a'>
+<li>$(D+1)(D+x)y=0$</li>
+<li>$(D+x)(D+1)y=0$</li>
+</ol>
+<p /></li>
+
+<li>Using the idea from problem 3 that a factored linear differential
+equation can be reduced to a sequence of first-order equations, show that
+the solution to $(D-r)^2y=0$ is $y=C_1xe^{rx}+C_2e^{rx}.$ You can justify 
+the general formula for $(D-r)^ny=0$ similarly
+(but you don't have to for this problem).<p /></li>
+
+-->
+
+<li>Match the equations on the right with the factorings on the left.
+<table>
+<tr>
+<td><ol type='i'>
+<li>$(D+x)(D+2)y=0$</li>
+<li>$(D+2)(D+x)y=0$</li>
+<li>$(D+x)(D+x)y=0$</li>
+</ol>
+</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td>
+<ol type='a'>
+<li>$y''+(x+2)y'+(2x+1)y=0$</li>
+<li>$y''+(x+2)y'+2xy=0$</li>
+<li>$y''+2xy'+(x^2+1)y=0$</li>
+</ol>
+</td>
+</tr></table><p /></li>
+
+<li>Match the equations on the right with the factorings on the left.
+<table>
+<tr>
+<td><ol type='i'>
+<li>$(D+x)(D-x)y=0$</li>
+<li>$(D-x)(D+x)y=0$</li>
+<li>$(D+x^2)(D-1)y=0$</li>
+</ol>
+</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td>
+<ol type='a'>
+<li>$y''+(x^2-1)y'-x^2y=0$</li>
+<li>$y''-(x^2+1)y=0$</li>
+<li>$y''-(x^2-1)y=0$</li>
+</ol>
+</td>
+</tr></table><p /></li>
+
+<li>Expand the following equations into the form $y''+p(x)y'+q(x)y=0.$
+<ol type='a'>
+<li>$(D+x)(D-1)y=0$</li>
+<li>$(D-1)(D+x)y=0$</li>
+</ol>
+<p /></li>
+
+<li>Expand the following equations into the form $y''+p(x)y'+q(x)y=0.$
+<ol type='a'>
+<li>$(D+2x)(D+3)y=0$</li>
+<li>$(D+3)(D+2x)y=0$</li>
+</ol>
+<p /></li>
+
+<li>Expand the following equations into the form $y''+p(x)y'+q(x)y=0.$
+<ol type='a'>
+<li>$(D+a(x))(D+b(x))y=0$</li>
+<li>$(D+b(x))(D+a(x))y=0$</li>
+</ol>
+<p /></li>
+
+<li>Based on the results of previous problem, when will 
+$$(D+a(x))(D+b(x))y=(D+b(x))(D+a(x))y,$$
+i.e. when do the operators commute? <p /></li>
+
+<hr />
+Once you have factored a second order linear differential operator as
+$Lu = RSu$, you can solve $Lu=f$ by first solving $Rv=f$ and then $Su=v$.
+Using this, find the general
+solutions to the following problems.
+<hr />
+<p />
+
+<li>Find the general solution to $(D+2x)(D+1)y=0.$<p /></li>
+
+<li>Find the general solution to $(D+1)(D+2x)y=0.$<p /></li>
+
+<li>Find the general solution to $(D+1)(D+2x)y=\exp(x).$<p /></li>
+
+<li>Solve $(D-r)y=0$, justifying the claim made in point 1 of the 
+<a href=homo.php>text section on homogeneous equations</a>.<p /></li>
+
+<li>Solve $(D-r)^2y=0$, justifying the claim made in point 2 of the 
+<a href=homo.php>text section on homogeneous equations</a>.<p /></li>
+
+<li>Assume the solution of $(D-r)^ny=0$ is 
+$y=C_{n-1}x^{n-1}e^{rx} + 
+C_{n-2}x^{n-2}e^{rx} + \cdots + C_0e^{rx}.$ Using this assumption, show 
+that the solution of $(D-r)^{n+1}y=0$ is 
+$y=C_{n}'x^{n}e^{rx} + 
+C_{n-1}'x^{n-1}e^{rx} + \cdots + C_0'e^{rx}$ (where we use C_0' so we 
+don't get confused about the two sets of arbitrary constants).<p /></li>
+<hr>
+We can use the result in the previous problem to
+justify the claim made in point 3 of the 
+<a href=homo.html>text section on homogeneous equations</a>.
+Problems 32 and 33 
+have shown the result is true for $n=1$ and $n=2$. We could also reason by problem 34 that
+since the result is true for $n=1$, it is also true for $n=1+1=2$ But 
+then since the result is true for $n=2,$ it must also be true for $n=3.$ 
+And continuing, it must be true for all $n.$ This general process of 
+proving something is true for a starting value, and then proving if it is 
+true for one value, it will also be true for the next value, and 
+concluding the statement is then always true is called <i>mathematical 
+induction.</i>
+<hr><p />
+<a name=week2>
+<li>Write the form for the particular solution to
+$$
+y''+4y'+3y=e^{2x}+x^2+1
+$$
+You just need the form with the undetermined coefficents, you <b>don't</b> 
+need to actually find the particular solution.<p /></li>
+</a>
+<li>Write the form for the particular solution to
+$$
+y''+4y'+3y=xe^{-x}-\cos(3x)
+$$
+You just need the form with the undetermined coefficents, you <b>don't</b> 
+need to actually find the particular solution.<p /></li>
+
+<li>Write the form for the particular solution to
+$$
+y''+4y=\sin(2x)-x^2e^x
+$$
+You just need the form with the undetermined coefficents, you <b>don't</b> 
+need to actually find the particular solution.<p /></li>
+
+<li>Write the form for the particular solution to
+$$
+y''+6y'+25y=x\exp(-3x)\cos(4x)
+$$
+You just need the form with the undetermined coefficents, you <b>don't</b> 
+need to actually find the particular solution.<p /></li>
+
+<li>Find the general <i>complex</i> solution to the differential equation
+$$\frac{d^2y}{dz^2}-2\frac{dy}{dz}+10y=0.$$
+</li>
+
+<li>Find the general <i>complex</i> solution to the differential equation
+$$\frac{d^2y}{dz^2}+4\frac{dy}{dz}+8y=0.$$
+</li>
+
+<li>Find the general <i>complex</i> solution to the differential equation
+$$\frac{d^2y}{dz^2}+4y=z.$$
+</li>
+
+<li>Find the general <i>complex</i> solution to the differential equation
+$$\frac{d^2y}{dz^2}+y=\exp(iz).$$
+</li>
+
+<li>Solve the <i>complex</i> initial value problem 
+$$ \begin{align}
+\frac{d^2y}{dz^2}+3\frac{dy}{dz}+2y&=0 \\
+y(0)&=2+i \\
+y'(0)&=3 
+\end{align} $$
+</li>
+
+<li>Find the <i>complex</i> general solution to the differential equation
+$$ 
+\frac{d^2y}{dz^2}+25y=0.
+$$</li>
+
+<li>Using the complex general solution you found in problem 44, solve the 
+initial value problem 
+$$ \begin{align} 
+\frac{d^2y}{dz^2}+25y&=0, \\
+y(0)&=2, \\
+y'(0)&=0 
+\end{align} $$
+Show that the answer you get is a <b>real</b> function, illustrating that 
+a linear differential equation with real coefficients and real initial 
+data will have a real solution.<p /></li>
+
+<li>Consider the differential operator
+$$Ly=\frac{d^2y}{dx^2}-2y\frac{dy}{dx}.$$
+<ol type='a'>
+<li>Show two homogeneous solutions of $Ly=0$ are $y_1=\tan(x)$ and 
+$y_2=-\tanh(x).$</li>
+<li>In general, $y=c_1y_1(x)+c_2y_2(x)$ is <b>not</b> a solution to the 
+equation $Ly=0$ for this operator.
+Why can't we just take linear combinations here like we did in 
+the <a href=homo.php>text section on homogeneous equations</a>?</li></ol>
+<p /></li>
+
+<li>When solving a polynomial equation in algebra, once you find one 
+solution you can factor it out to get an equation of smaller degree. We 
+can do something similar with linear differential equations. Suppose 
+$v(x)$ is a solution to the second-order linear equation, 
+$y''+p(x)y'+q(x)y=0.$ Substitute $y=v(x)w(x)$ in the equation and show 
+you 
+get a differential equation involving $w'$ and $w'',$ but not $w$ by 
+itself. This new equation can be reduced to a first-order equation using 
+the trick from problem 22 (but you just have to 
+get the equation, not reduce the degree).<p /></li>
+
+<li>For first-order equations we discovered that solution curves never 
+cross. This was because if two solutions crossed, then we would have two 
+different solutions to the corresponding initial value problem and that's 
+not allowed by the existence and uniqueness theorem. We have a 
+corresponding existence and uniqueness theorem for higher-order equations 
+(which is given in the section on numerical methods for higher-order 
+equations). 
+However, solution curves for a higher-order equation may cross. Why 
+doesn't this violate the existence and uniqueness theorem?
+<center>
+<img src=" ypp04yp3y.png" width=352 height=231 align=center>
+<br />Solution curves for $y'' + 0.04y' + 0.3y = 0$.<br />
+<font size=-1>(Graph produced by WolframAlpha)</font>
+</center>
+<hr>As derived in the text, underdamped free motion has the form
+$$ \begin{align}
+x(t)&=A\exp\left(-\frac{ct}{2m}\right)\cos(\omega_1t+\phi) \\
+\omega_1&=\sqrt{\frac{k}{m}-\left(\frac{c}{2m}\right)^2}.
+\end{align} $$
+This motion is <i>quasi-periodic</i>. That means 
+the motion isn't periodic (since the amplitude is decaying) but the time 
+between successive upcrossings (or downcrossings or maxima or minima) is 
+constant (and, naturally, this time is called the <i>quasi-period</i>). It 
+is straightforward to compute the spring constant of a 
+spring. But 
+computing the damping coefficient is difficult to do directly. A standard 
+way to do so is to use the quasi-period. You'll work out the details of 
+this below.
+<hr /><p />
+<li>Suppose a spring-mass system has a mass of $200g,$ a spring constant 
+of 
+$100g/sec^2,$ and a damping constant of 
+$10g/sec.$ What is the (circular) 
+quasi-frequency, $\omega_1,$ 
+of the damped motion?<p /></li>
+<li>Suppose a spring-mass system has a mass of $70kg,$ a spring constant 
+of 
+$7kg/sec^2,$ and a damping constant of 
+$28kg/sec.$ What is the (circular) quasi-frequency, $\omega_1,$ 
+of the damped motion?<p /></li>
+
+<!--
+<li>Suppose a spring-mass system has a mass of $600g,$ a spring constant 
+of 
+$300g/sec^2,$ and a damping constant of 
+$100g/sec.$ What is the (circular) 
+quasi-frequency, $\omega_1,$ 
+of the damped motion?<p /></li>
+<li>Suppose a spring-mass system has a mass of $1kg,$ a spring constant 
+of 
+$2kg/sec^2,$ and a damping constant of 
+$0.4kg/sec.$ What is the (circular) quasi-frequency, $\omega_1,$ 
+of the damped motion?<p /></li>
+-->
+
+&nbsp;<p />
+<li>Suppose a spring-mass system has a mass of $200g,$ a spring constant 
+of 
+$100g/sec^2,$ and a damping constant of 
+$10g/sec.$ What is the quasi-period 
+of the damped motion?<p /></li>
+<li>Suppose a spring-mass system has a mass of $70kg,$ a spring constant 
+of 
+$7kg/sec^2,$ and a damping constant of 
+$28kg/sec.$ What is the quasi-period
+of the damped motion?<p /></li>
+<li>Suppose a spring-mass system has a mass of $100g,$ a spring constant 
+of 
+$10g/sec^2,$ and a damping constant of 
+$20g/sec.$ What is the quasi-period 
+of the damped motion?<p /></li>
+
+<!--
+<li>Suppose a spring-mass system has a mass of $150kg,$ a spring constant 
+of $900kg/sec^2,$ and a damping constant of 
+$10kg/sec.$ What is the quasi-period
+of the damped motion?<p /></li>
+-->
+
+<a name='week3'>
+<li>Suppose a spring-mass system has a mass of $250g,$ a spring constant 
+of $150g/sec^2,$ and a damping constant of 
+$1000g/sec.$ What goes wrong and why when you try to compute the 
+quasi-period?<p /></li>
+</a>
+&nbsp;<p />
+
+<li>A spring-mass system has mass $500g$ and spring constant $150g/sec^2.$ 
+The quasi-period is measured at 14.8 seconds. What is the damping constant 
+of the spring-mass system (to the nearest $0.1 g/sec$)?<p /></li>
+<li>A spring-mass system has mass $140g$ and spring constant $700g/sec^2.$ 
+The quasi-period is measured at 2.9 seconds. What is the damping constant 
+of the spring-mass system (to the nearest $0.1 g/sec$)?<p /></li>
+
+<!--
+<li>A spring-mass system has mass $380g$ and spring constant $250g/sec^2.$ 
+The quasi-period is measured at 9.2 seconds. What is the damping constant 
+of the spring-mass system (to the nearest $0.1 g/sec$)?<p /></li>
+<li>A spring-mass system has mass $600g$ and spring constant $900g/sec^2.$ 
+The quasi-period is measured at 5.1 seconds. What is the damping constant 
+of the spring-mass system (to the nearest $0.1 g/sec$)?<p /></li>
+-->
+
+<!--
+&nbsp;<p />
+<li>Suppose you attach a 500g mass to 
+a spring and it stretches 8.0cm. You then set the spring-mass system in 
+oscillation and time that it takes 1.2 seconds between upcrossings (i.e. 
+the quasiperiod is 1.2 seconds). What 
+are m, k, and c for the spring-mass system? 
+Use $g=980cm/sec^2$ for the acceleration of gravity.
+<p /></li>
+<li>Suppose you attach a 200g mass to 
+a spring and it stretches 4cm. You then set the spring-mass system in 
+oscillation and time that it takes 4 seconds between upcrossings (i.e. 
+the quasiperiod is 4 seconds). What 
+are m, k, and c for the spring-mass system?
+Use $g=980cm/sec^2$ for the acceleration of gravity.
+<p /></li>
+<li>Suppose you attach a 250g mass to 
+a spring and it stretches 3cm. You then set the spring-mass system in 
+oscillation and time that it takes 3.5 seconds between upcrossings (i.e. 
+the quasiperiod is 3.5 seconds). What 
+are m, k, and c for the spring-mass system?
+Use $g=980cm/sec^2$ for the acceleration of gravity.
+<p /></li>
+<li>Suppose you attach a 100g mass to 
+a spring and it stretches 1cm. You then set the spring-mass system in 
+oscillation and time that it takes 4.2 seconds between upcrossings (i.e. 
+the quasiperiod is 4.2 seconds). What 
+are m, k, and c for the spring-mass system?
+Use $g=980cm/sec^2$ for the acceleration of gravity.
+<p /></li>
+-->
+
+&nbsp;<p />
+<li>If $m$ has units of $g,$ $k$ has units of $g/sec^2$ (or equivalently 
+$ergs/cm$), and $c$ has units of $g/sec$ (or equivalently 
+$ergs/(cm/sec)$), <ol type='a'>
+<li>What are the units of (circular) quasi-frequency, $\omega_1,$ and</li>
+<li>What are the units of quasi-period?</li>
+</ol>
+<p /></li>
+
+<li>Show that increasing the damping of a spring-mass system increases the 
+quasi-period.<p /></li>
+
+<li>Suppose an undamped spring-mass system has a natural frequency of 2 
+seconds. A damping mechanism is then attached to the system so that the 
+damping constant can be set to any desired value. What are all 
+the possible quasi-periods the system could have?<p /></li>
+<hr />
+The amplitude of an underdamped spring-mass system is
+$\displaystyle A\exp\left(-\frac{ct}{2m}\right),$ which decays 
+exponentially. So if you know the mass 
+and the damping constant, you can determine decay rate. And if you know 
+the mass and measure the decay rate, you can determine the damping 
+constant. Note that measuring the decay of the amplitude is usually much 
+more difficult in practice than measuring the quasi-period. The 
+quasi-period can be determined by measuring the times between the system 
+passing through the equilibrium position, which means you can set 
+the measuring devices in a fixed position. Since the amplitude changes, 
+the measuring devices will need to observe at different positions to 
+measure the amplitude.
+<p />
+The <i>half-life</i> of the amplitude (or anything else that decays 
+exponentially) is the time it takes for the amplitude to decrease to half 
+its starting value. 
+<hr />
+<p />
+<li>Suppose a spring-mass system has mass $500g$ and damping constant 
+$750g/sec.$ What is the half-life of the amplitude of the system, i.e. how 
+long does it take for the amplitude to be halved?<p /></li>
+<li>Suppose a spring-mass system has mass $100g$ and damping constant 
+$80g/sec.$ What is the half-life of the amplitude of the system, i.e. how 
+long does it take for the amplitude to be halved?<p /></li>
+
+<!--
+<li>Suppose a spring-mass system has mass $200g$ and the amplitude has a 
+half-life of 1 second, that is, the amplitude is cut in half every second. 
+What is the damping constant of the system? <p /></li>
+<li>Suppose a spring-mass system has mass $400g$ and the amplitude has a 
+half-life of 1 second, that is, the amplitude is cut in half every second. 
+What is the damping constant of the system? <p /></li>
+-->
+
+<li>Suppose a spring-mass system has mass $2.0kg$ and the amplitude has a 
+half-life of 0.4 seconds.
+What is the damping constant of the system? <p /></li>
+<li>Suppose a spring-mass system has mass $250g$ and the amplitude has a 
+half-life of 4.5 seconds.
+What is the damping constant of the system? <p /></li>
+&nbsp;<p />
+
+<li>A spring-mass system has mass $350g$ and spring constant $700g/sec^2.$ 
+The damping constant can be adjusted to take any value. What is the 
+smallest half-life that can be obtained without the system becoming 
+overdamped?<p /></li>
+
+<li>A spring-mass system has mass $100g$ and spring constant $49g/sec^2.$ 
+The damping constant can be adjusted to take any value. What is the 
+smallest half-life that can be obtained without the system becoming 
+overdamped?<p /></li>
+
+<li>The extreme points (max and min) of underdamped free motion $x(t)$ 
+occur when $x'(t)=0.$ Show that the timing of the extreme points is 
+periodic. Note that you don't have to actually solve $x'(t)=0.$ You just 
+have to show the solutions are periodic.<p /></li>
+
+<li>Given that the extreme points occur at a set period from the previous 
+problem, show that the ratio of the amplitudes of successive maxima is 
+constant.<p /></li>
+
+<li>You attach a mass to an <i>undamped</i> spring, which causes it to 
+stretch $1.4cm.$ You then pull the mass down and release it (with initial 
+velocity 0), starting the 
+spring in motion. How long will it take the mass to return to the position 
+from which it was released (to the nearest $0.1 sec$)? Yes you do have 
+enough information to solve 
+this problem. Use $g=980cm/sec^2$ for the acceleration of gravity.
+<p /></li> 
+
+<li>You attach a mass to an <i>undamped</i> spring, which causes it to 
+stretch $3.2cm.$ You then pull the mass down and release it (with initial 
+velocity 0), starting the 
+spring in motion. How long will it take the mass to return to the position 
+from which it was released (to the nearest $0.1 sec$)? Yes you do have 
+enough information to solve 
+this problem. Use $g=980cm/sec^2$ for the acceleration of gravity.
+<p /></li> 
+<hr />
+In designing systems to detect signals of various sorts, it is often 
+useful to create a system that resonates at the frequency you wish to 
+detect. This can happen with spring-mass systems used in seismographs or 
+with LC circuits used in radio tuners. In the following problems you will 
+need to remember that $\cos(at)$ has frequency $a/(2\pi)$ cycles per 
+second. 
+<hr />
+<p />
+<li>Consider an undamped spring-mass system with mass of $340g.$ What 
+spring constant will cause it to resonate at a frequency of 6 cycles 
+per second.
+<p /></li>
+<li>Consider an undamped spring-mass system with mass of $50kg.$ What 
+spring constant will cause it to resonate at a frequency of 0.2 cycles 
+per second.
+<p /></li>
+<li> If you have a coil of 70 millihenrys, what 
+capacitance do you need to have the circuit resonate at 60Hz (60 cycles 
+per second)? <p /></li>
+<li> If you have a coil of 10 millihenrys, what 
+capacitance do you need to have the circuit resonate at 1350kHz 
+($1.35\times10^6$ cycles per second)? <p /></li>
+&nbsp;<p />
+<li>Show that for any unforced, overdamped system, there is 
+<ol type='a'>
+<li>a set of initial conditions such that the solution asymptotically 
+approaches the equilibrium position (the origin), but never reaches it, 
+and</li>
+<li>a set of initial conditions such that the solution passes through the 
+equilibrium position (the origin) exactly once, and then approaches the 
+equilibrium position asymptotically as $t\to\infty.$</li>
+</ol>
+<p /></li>
+<li>Show that if any solution to a spring-mass system (or LRC 
+circuit) passes through the equilibrium position more 
+than once, it is underdamped.<p /></li>
+<hr />
+As noted in the text, a forced undamped system can display the phenomenon 
+of beats. The next few problems will go through the computations to 
+explore this. 
+<hr />
+<p />
+<li>The general solution to the forced undamped system 
+$mx''+kx=F_0\cos(\omega t)$ 
+is $\displaystyle x(t)=\frac{F_0}{m(\omega_0^2-\omega^2)}cos(\omega t) 
++ A\cos(\omega_0 t + \phi),$ where $\omega_0=\sqrt{k/m}$ and $A$ and 
+$\phi$ are arbitrary constants. Show that with 
+initial conditions $x(0)=0,$ $x'(0)=0,$ which correspond to starting the 
+system from rest, the solution takes the form $x(t)=B(\cos(\omega t) - 
+\cos(\omega_0 t))$ for some constant $B.$<p /></li>
+<li>Use the identity 
+$\displaystyle \cos(a)-\cos(b)=2\sin\left(\frac{a+b}2\right)
+\sin\left(\frac{a-b}2\right),$ to rewrite the solution to the previous 
+problem as a product of two sine waves.<p /></li>
+<li>You can think of a function of the form $B\sin(at)\sin(rt)$ with $r$ 
+much larger than $a$ as a "fast" sine curve $\sin(rt)$ 
+with slowly varying amplitude $B\sin(at).$ Each of these frequencies can 
+be measured. Suppose the amplitude is varying with frequency 
+$\displaystyle \frac{1}{4\pi}$ cycles per second. How close is the 
+circular frequency of the forcing function, $\omega$ to the natural 
+frequency $\omega_0$?<p /></li> 
+
+<!-- <img src='varcapsketch.png' align='right' width=400 
+height=254>
+Very old radio tuners often used an LC circuit (R=0) whose natural 
+frequency could 
+be adjusted to match the desired frequency of different broadcasts. Such a 
+circuit would have a large response to the desired broadcast with a very 
+small response to other broadcasts, enabling you to isolate one station 
+out of all the different signals. Either the capacitance or the inductance 
+could be made variable. 
+If you had a fixed coil with a fixed value of L, 
+then you would use a variable capacitor. Typically this was handled by 
+having a set of fixed (stator) plates and a set of rotating (rotor) 
+plates as illustrated. By turning the shaft, a different amount of area of 
+the rotor plates would be opposite the stator plates, adjusting the 
+capacitance. <b>In a circuit with a coil of inductance 10 millihenrys, 
+what capacitance would you want to tune for a signal of 650kHz 
+(6.5&times;10<sup>5</sup> cycles per second)?</b>
+<p />
+Note that starting shortly after World War I, tuners began using the 
+superheterodyne system where a variable oscillator adds (heterodynes) an 
+additional signal to shift the desired frequency to a standard frequency 
+(455kHz for AM radio) and then the tuner can be fixed to detect just that 
+frequency. This procedure still typically used variable capacitors in the 
+oscillator.
+
+<img src='varcapphoto.png' align='right' width=300 height=348>
+-->
+
+<li>Find the general solution for 
+$\displaystyle \frac{d^2y}{dx^2}+y=\sec(x).$
+<p />
+</li>
+<li>Given that $x^2$ and $x^3$ are homogeneous solutions for
+$\displaystyle x^2\frac{d^2y}{dx^2}-4x\frac{dy}{dx}+6y=\sqrt{x},$ find the 
+general solution.
+<p />
+</li>
+<li>Given that $x$ and $x^{-1}$ are homogeneous solutions for 
+$\displaystyle x^2\frac{d^2y}{dx^2}+x\frac{dy}{dx}-y=6x^2$, find the 
+solution to the initial value problem with $y(1)=1$, $y'(1)=0$.
+<p />
+</li>
+<li>Solve the initial value problem
+$\displaystyle \frac{d^2y}{dx^2}+2\frac{dy}{dx}+5y=\ln(x)$, $y(1)=1$, 
+$y'(1)=0$.
+<p />
+</li>
+<!--
+<hr />
+The following boundary value problems each have a unique solution
+<hr />
+-->
+<hr />
+The following boundary value problems may have one, none, or infinitely many solutions
+<hr />
+
+<li>Solve the boundary value problem
+$\displaystyle \frac{d^2y}{dx^2} + 4\frac{dy}{dx}+ 3y = 0$, $y(0)=0$, $y(1)=1$.
+<p />
+</li>
+<li>Solve the boundary value problem
+$\displaystyle \frac{d^2y}{dx^2} + 6\frac{dy}{dx}+ 10y = 0$, $y(0)=0$, $y(2)=1$.
+<p />
+</li>
+<li>Solve the boundary value problem
+$\displaystyle \frac{d^2y}{dx^2} + 2\frac{dy}{dx}+ 10y = \exp(x)$, $y(0)=0$, $y(1)=0$.
+<p />
+</li>
+<li>Solve the boundary value problem
+$\displaystyle \frac{d^2y}{dx^2} + 6\frac{dy}{dx}+ 8y = 16$, $y(0)=0$, $y(2)=1$.
+<p />
+</li>
+<li>Solve the boundary value problem
+$\displaystyle \frac{d^2y}{dx^2} + y = 0$, $y(0)=0$, $y'(\pi)=1$ (Note that this has mixed conditions
+where we have $y$ given at $x=0$ but a value for $y'$ given at $x=\pi$.
+<p />
+</li>
+<li>Solve the boundary value problem
+$\displaystyle \frac{d^2y}{dx^2} + 5\frac{dy}{dx} + 4y = 0$, $y(0)=1$, $y'(1)=0$ (Note that this has mixed conditions
+where we have $y$ given at $x=0$ but a value for $y'$ given at $x=1$.
+<p />
+</li>
+<!--
+<hr />
+The following boundary value problems may have one, none, or infinitely many solutions
+<hr />
+-->
+<li>Solve the boundary value problem
+$\displaystyle \frac{d^2y}{dx^2} + 4y = 0$, $y(0)=1$, $y(\pi)=1$.
+<p />
+</li>
+<li>Solve the boundary value problem
+$\displaystyle \frac{d^2y}{dx^2} + 2\frac{dy}{dx} + 5y = 0$, $y(0)=0$, $y(\pi)=1$.
+<p />
+</li>
+<li>Solve the boundary value problem
+$\displaystyle \frac{d^2y}{dx^2} + 2\frac{dy}{dx} + 5y = 0$, $y(0)=0$, $y(\pi)=0$.
+<p />
+</li>
+<li>Solve the boundary value problem
+$\displaystyle \frac{d^2y}{dx^2} + 9y = 0$, $y(0)=1$, $y'(\pi)=0$. (Note that this has mixed conditions where we have 
+$y$ given at $x=0$ but a value for $y'$ given at $x=\pi$.
+<p />
+</li>
+<li>For what values of $n$ are there non-zero solutions to the boundary value problem
+$$ \frac{d^2y}{dx^2} + n^2 y = 0, \qquad y(0)=0, y(2\pi)=0.$$
+</li>
+<li>For what values of $n$ are there non-zero solutions to the boundary value problem
+$$ \frac{d^2y}{dx^2} + n^2 y = 0, \qquad y(0)=0, y(\pi)=0.$$
+</li>
+<li>For what values of $n$ are there non-zero solutions to the boundary value problem
+$$ \frac{d^2y}{dx^2} + n^2 y = 0, \qquad y(0)=0, y(1)=0.$$
+</li>
+<li>For what values of $n$ are there non-zero solutions to the boundary value problem
+$$ \frac{d^2y}{dx^2} + 16 y = 0, \qquad y(0)=0, y(n)=0.$$
+</li>
+
+</ol>
+
+<p />
+<a href=chap2ansrev.php target=_blank>Answers to the odd numbered 
+exercises.</a>
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+</html>
+
+

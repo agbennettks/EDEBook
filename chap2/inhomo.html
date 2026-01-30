@@ -1,0 +1,513 @@
+<html>
+<head>
+<title>EDE Chapter 2: Linear Inhomogeneous Equations</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Inhomogeneous Equations</h3>
+</center>
+<p />
+<h4>Discussion</h4> 
+Now that we have learned to solve homogeneous
+equations, the next topic is inhomogeneous equations. From the
+discussion in section 5, we know that all we need to find the general
+solution to an inhomogeneous equation is any one particular
+solution to the equation along with the general solution to the
+homogeneous equation. The main method we have to find such a
+particular solution is called <i>undetermined coefficients</i>. The
+reason it is called undetermined coefficients is that 
+<i>guessing</i> is not nearly so impressive a name. The basic idea is
+that if we apply a constant coefficient linear differential operator
+to the function $e^{rx}$ for any constant $r$, the result is
+just $Be^{rx}$ for some constant $B$. So if we want to solve
+$Ly=Be^{rx}$, we should guess the solution is of the form $y=Ae^{rx}$
+for some constant $A$. Having made this guess we plug it into the
+equation $Ly=Be^{rx}$ and solve for $A$ to find our particular solution.
+Of course, this guess won't always work. Then we guess again using
+somewhat more sophisticated guesses. Undetermined coefficients
+qualifies as a method rather than just a trick because it is possible
+to write down a precise procedure for coming up with exactly the
+right guess. But doing so right now would be more confusing than
+helpful. So we will instead deal with the simplest case first and
+then explain what to do if the obvious guess fails later in the examples.
+<p />
+<h4>Paradigm</h4> $$y''+4y'+3y=4e^{-2x}$$
+
+<i>Step 1:</i> Find the general solution to the homogeneous
+equation, $y_h(x)$.
+<p />
+We obtain $D^2+4D+3=0$ which has roots $-1$ and $-3$. So the general
+solution to the homogeneous equation is $y_h(x)=c_1e^{-x}+c_2e^{-3x}$.
+<p />
+<i>Step 2:</i> Guess the form of the particular solution $y_p(x)$.
+<p />
+As indicated in the discussion above, a good guess for the form of
+the particular solution is $y_p(x)=Ae^{-2x}$.
+<p />
+<i>Step 3:</i> Plug the guess for the particular solution, $y_p(x)$,
+into the equation and solve for the undetermined coefficients.
+<p />
+We have 
+$$\eqalign {
+y_p(x)&=Ae^{-2x} \cr
+y_p'(x)&=-2Ae^{-2x} \cr
+y_p''(x)&=4Ae^{-2x} \cr }
+$$
+So plugging into the equation we find
+$$ \eqalign {
+y_p''(x)+4y_p'(x)+3y_p(x)&=4Ae^{-2x}+4(-2Ae^{-2x})+3(Ae^{-2x}) \cr
+&=(4A-8A+3A)e^{-2x} \cr
+&=-Ae^{-2x} \buildrel{\text{set}}\over{=} 4e^{-2x} \cr}
+$$
+Solving the last equation we get $A=-4$ so $y_p(x)=-4e^{-2x}$.
+<p />
+<i>Step 4:</i> The general solution is now $y_p(x)+y_h(x)$.
+<p />
+The general solution to the equation is
+$$y(x)=-4e^{-2x}+c_1e^{-x}+c_2e^{-3x}$$
+
+That is a very simple process. We now consider some of the situations
+where things can go wrong.
+<p />
+<hr />
+<p />
+EXAMPLE 1: $$y''+4y'+3y=2e^{-x}$$
+Step 1: $D^2+4D+3=0$ still has roots $-1$ and $-3$ and the general
+solution to the homogeneous equation is still
+$y_h(x)=c_1e^{-x}+c_2e^{-3x}$. 
+<p />
+Step 2: Here the right hand side has the form $Be^{rx}$ where $r=-1$
+is one of the roots of the homogeneous equation. Suppose we try our
+guess $y_p(x)=Ae^{-x}$ anyway. Then $y_p'(x)=-Ae^{-x}$ and
+$y_p''(x)=Ae^{-x}$ and so plugging into the equation yields
+$$ \eqalign {
+y_p''+4y_p'+3y_p&=Ae^{-x}+4(-Ae^{-x})+3(Ae^{-x}) \cr
+&=(A-4A+3A)e^{-x} \cr
+&=0 \buildrel{\text{set}}\over{=} 2e^{-x} \cr }
+$$
+which is a problem. The trouble here is that since $e^{-x}$ is part
+of the homogeneous solution, it drops out. What we need is a second
+term of the form $e^{-x}$ which won't drop out. Looking back at
+section 6, we see that if we have a double root we have a term of the
+form $Axe^{rx}$ so let's try that in our present problem.
+<p />
+Step 2: (Take 2) Guess $y_p(x)=Axe^{-x}$
+<p />
+Step 3:
+$$ \eqalign {
+y_p(x)&=Axe^{-x} \cr
+y_p'(x)&=Ae^{-x}-Axe^{-x} \cr
+y_p''(x)&=-2Ae^{-x}+Axe^{-x} \cr }
+$$
+So plugging into the equation we obtain
+$$ \eqalign {
+y_p''+4y_p'+3y_p&=(-2Ae^{-x}+Axe^{-x})+4(Ae^{-x}-Axe^{-x})+3(Axe^{-x}) \cr
+&=(-2A+4A)e^{-x}+(A-4A+3A)xe^{-x} \cr
+&=2Ae^{-x} \buildrel{\text{set}}\over{=} 2e^{-x} \cr}
+$$
+Solving the last equation we find $A=1$ and $y_p(x)=xe^{-x}$.
+<p />
+Step 4: $y(x)=xe^{-x}+c_1e^{-x}+c_2e^{-3x}$.
+<p />
+<hr />
+<p />
+There are two points to be noted about the last example.
+One is that if your first guess doesn't work, try try again. There is
+no penalty for making a wrong guess, beyond wasting a little bit of
+time, so try your guess and if it doesn't work, guess again. The
+second point is that you can often get some insight into the need for
+a second guess from what goes wrong with the first guess. In
+particular from this example, if you end up with an equation of the
+form $0=Be^{rx}$, you probably need to multiply your initial guess by $x$.
+<p />
+<hr>
+<p />
+EXAMPLE 2: $$y''+4y'+4y=e^{-2x}$$
+
+Step 1: We obtain $D^2+4D+4=(D+2)^2=0$ so we have a double root of
+$-2$ and the general solution of the homogeneous equation is
+$y_h(x)=c_1e^{-2x}+c_2xe^{-2x}$.
+<p />
+Step 2: We don't want to guess $Ae^{-2x}$ because that is part of the
+homogeneous solution. But so is $Axe^{-2x}$. So let's try
+$y_p(x)=Ax^2e^{-2x}$. 
+<p />
+Step 3:
+$$ \eqalign {
+y_p(x)&=Ax^2e^{-2x} \cr
+y_p'(x)&=-2Ax^2e^{-2x}+2Axe^{-2x} \cr
+y_p''(x)&=4Ax^2e^{-2x}-8Axe^{-2x}+2Ae^{-2x} \cr }
+$$
+So plugging into the equation yields
+$$ \eqalign {
+y_p''+4y_p'+4y_p&=(4Ax^2e^{-2x}-8Axe^{-2x}+2Ae^{-2x}) \cr
+&\qquad+4(-2Ax^2e^{-2x}+2Axe^{-2x})+4(Ax^2e^{-2x}) \cr
+&=(4A-8A+4A)x^2e^{-2x}+(-8A+8A)xe^{-2x}+2Ae^{-2x} \cr
+&=2Ae^{-2x} \buildrel{\text{set}}\over{=} e^{-2x} \cr }
+$$
+Solving the last equation we find $A=1/2$ and so $y_p=1/2x^2e^{-2x}$.
+<p />
+Step 4: $y(x)=1/2x^2e^{-2x}+c_1e^{-2x}+c_2xe^{-2x}$.
+<p />
+<hr />
+<p />
+Now we consider some right hand sides which are not quite of the form
+$Be^{rx}$, but not far from it.
+<p />
+<hr />
+<p />
+EXAMPLE 3: $$y''+5y'+6y=2xe^x$$
+Step 1: $D^2+5D+6=0$ has roots $-2$ and $-3$ so
+$y_h(x)=c_1e^{-2x}+c_2e^{-3x}$. 
+<p />
+Step 2: Well, the first guess that probably comes to your mind is
+$y_p(x)=Axe^x$, so let's give that a try.
+<p />
+Step 3: 
+$$ \eqalign {
+y_p(x)&=Axe^x \cr
+y_p'(x)&=Axe^x+Ae^x \cr
+y_p''(x)&=Axe^x+2Ae^x \cr }
+$$
+Plugging into our equation we obtain
+$$ \eqalign {
+y_p''+5y_p'+6y_p&=(Axe^x+2Ae^x)+5(Axe^x+Ae^x)+6(Axe^x) \cr
+&=(A+5A+6A)xe^x+(2A+5A)e^x \cr
+&=12Axe^x+7Ae^x \buildrel{\text{set}}\over{=} 2xe^x \cr }
+$$
+Well that almost worked out. Unfortunately, we got that extra $7Ae^x$
+term. So how should we get rid of it? But no real harm done, we just
+have to guess again. And we use the fact that we got an extra $7Ae^x$
+term to guess that we need a $Be^x$ term to go along with our $Axe^x$
+term. That makes sense. Whenever we've had an $xe^x$ term in the past
+in any solution we had an $e^x$ to go along with it. 
+<p />
+Step 2: (Take 2) $y_p=Axe^x+Be^x$.
+<p />
+Step 3: (Take 2)
+$$ \eqalign {
+y_p(x)&=Axe^x+Be^x \cr
+y_p'(x)&=Axe^x+(A+B)e^x \cr
+y_p''(x)&=Axe^x+(2A+B)e^x \cr }
+$$
+Plugging into our equation we obtain
+$$ \eqalign {
+y_p''+5y_p'+6y_p&=(Axe^x+(2A+B)e^x)+5(Axe^x+(A+B)e^x)+6(Axe^x+Be^x) \cr
+&=(A+5A+6A)xe^x+(2A+B+5A+5B+6B)e^x \cr
+&=12Axe^x+(7A+12B)e^x \buildrel{\text{set}}\over{=} 2xe^x \cr }
+$$
+From the last equation we find $12A=2$ and $7A+12B=0$, so $A=1/6$ and
+$B=-7/72$. Hence $y_p(x)=1/6xe^x-7/72e^x$.
+<p />
+Step 4: $y(x)=1/6xe^x-7/72e^x+c_1e^{-2x}+c_2e^{-3x}$.
+<p />
+<hr />
+<p />
+Before we consider the next example, we state and prove an easy and
+useful theorem (the best kind).
+<p />
+<i>Theorem:</i> Suppose $L$ is a linear operator and $Ly=f$ and
+$Lz=g$. Then $L(y+z)=f+g$. 
+<p />
+<i>Proof:</i> This follows immediately from the definition of
+linearity. $L(y+z)=Ly+Lz=f+g$.
+<p />
+<hr>
+<p />
+EXAMPLE 4: $$y''-2y'-8y=e^x-e^{-x}$$
+Step 1: $D^2-2D-8=0$ has roots $-2$ and $4$ so
+$y_h(x)=c_1e^{-2x}+c_2e^{4x}$. 
+<p />
+Step 2: Using the previous theorem, we can now split the hunt for a
+particular solution into two parts.
+<p />
+Step 2: (Part 1) Find a particular solution for $y''-2y'-8y=e^x$. We
+guess $y_{p1}(x)=Ae^x$.
+<p />
+Step 3: (Part 1) 
+$$ \eqalign {
+y_{p1}(x)&=Ae^x \cr
+y_{p1}'(x)&=Ae^x \cr
+y_{p1}''(x)&=Ae^x \cr }
+$$
+Plugging into our equation we obtain
+$$ \eqalign {
+y_{p1}''-2y_{p1}'-8y_{p1}&=Ae^x-2(Ae^x)-8(Ae^x) \cr
+&=(A-2A-8A)e^x \cr
+&=-9Ae^x \buildrel{\text{set}}\over{=} e^x \cr}
+$$
+From the last equation we find $A=-1/9$ so $y_{p1}(x)=-1/9e^x$.
+<p />
+Step 2: (Part 2) Find a particular solution for $y''-2y'-8y=-e^{-x}$.
+We guess $y_{p2}(x)=Ae^{-x}$.
+<p />
+Step 3: (Part 2) 
+$$ \eqalign {
+y_{p2}(x)&=Ae^{-x} \cr
+y_{p2}'(x)&=-Ae^{-x} \cr
+y_{p2}''(x)&=Ae^{-x} \cr }
+$$
+Plugging into our equation we obtain
+$$ \eqalign {
+y_{p2}''-2y_{p2}'-8y_{p2}&=Ae^{-x}-2(-Ae^{-x})-8(Ae^{-x}) \cr
+&=(A+2A-8A)e^{-x} \cr
+&=-5Ae^{-x} \buildrel{\text{set}}\over{=} -e^{-x} \cr }
+$$
+From the last equation we find $A=1/5$ so $y_{p2}(x)=1/5e^{-x}$.
+<p />
+Step 3: (Conclusion) $y_p(x)=y_{p1}(x)+y_{p2}(x)=-1/9e^x+1/5e^{-x}$.
+<p />
+Step 4: $y(x)=-1/9e^x+1/5e^{-x}+c_1e^{-2x}+c_2e^{4x}$.
+<p />
+<hr />
+<p />
+Finally we consider how to handle sines and cosines on the right hand
+side. There are two different approaches and I will give examples of
+both. Most students find the real variable method easier than the
+complex method, but be warned that in later courses you may discover
+the complex method easier in many applications. 
+<p />
+We will begin with the real variables approach. The key idea is to figure
+out what to guess if the right hand side is a sine and/or cosine. The key
+result is that whenever your right
+hand side is of the form $a\sin(\omega x)+b\cos(\omega x)$, guess a
+particular solution in the form $y_p(x)=A\sin(\omega x)+B\cos(\omega x)$.
+It
+needs to be emphasized that you must guess $y_p(x)$ with a sine/cosine
+<i>pair</i>, even if the original right hand side just has an individual
+sine or cosine. Just because $a$ or $b$ is 0 doesn't mean either $A$ or
+$B$ will be. 
+<p />
+<hr />
+<p />
+EXAMPLE 5: $$y''+3y'+2y=\sin(2x)$$
+Step 1: We obtain $D^2+3D+2=0$ which has roots $-1$ and $-2$. So the
+general solution to the homogeneous equation is
+$y_h(x)=c_1e^{-x}+c_2e^{-2x}$. 
+<p />
+Step 2: Since the right hand side is of the form $\sin(2x)$, we guess
+$y_p(x)=A\sin(2x)+B\cos(2x)$.
+<p />
+Step 3:
+$$ \eqalign {
+y_p(x)&=A\sin(2x)+B\cos(2x) \cr
+y_p'(x)&=2A\cos(2x)-2B\sin(2x) \cr
+y_p''(x)&=-4A\sin(2x)-4B\cos(2x) \cr
+}$$
+Plugging into our equation we obtain
+$$ \eqalign {
+y_p''+3y_p'+2y_p&=(-4A-6B+2A)\sin(2x)+(-4B+6A+2B)\cos(2x) \cr
+&=(-2A-6B)\sin(2x)+(6A-2B)\cos(2x)
+\buildrel{\text{set}}\over{=} \sin(2x) \cr
+}$$
+This gives us two equations in two unknowns,
+$$ \eqalign {
+-2A-6B&=1 \cr
+6A-2B&=0 \cr
+} $$
+Solving the pair of equations we get $A=-1/20$ and $B=-3/20$, so the
+particular solution is $y_p(x)=-1/20 \sin(2x)-3/20 \cos(2x)$.
+<p />
+Step 4: $y(x)=-1/20 \sin(2x)-3/20 \cos(2x)+c_1e^{-x}+c_2e^{-2x}$.
+<p />
+<hr />
+<p />
+We will go over the complex method next.
+We start with a theorem
+similar to that in the previous section.
+<p />
+<i>Theorem:</i> If $a$, $b$ and $c$ are real and $ay''+by'+cy=f$, then
+$a(\Re[y])''+b(\Re[y])'+c(\Re[y])=\Re[f]$ and
+$a(\Im[y])''+b(\Im[y])'+c(\Im[y])=\Im[f]$. 
+<p />
+<i>Proof:</i> Take the real and imaginary parts of each side of the given
+equation $ay''+by'+cy=f$.
+<p />
+This gives us a strategy to use with sines and cosines. We write them
+as the real part of a complex exponential and then find a particular
+solution for the complex equation. Finally we take the real part of
+the complex particular solution to find the particular solution to
+the original real equation. This differs enough from the first
+paradigm that I will write it down as a new paradigm.
+<p  />
+<h4>Paradigm:</h4> $$y''+y'-2y=-\cos(2x).$$
+
+<i>Step 1:</i> Find the general solution of the homogeneous equation.
+<p />
+The roots of $D^2+D-2=0$ are $-2$ and $1$ so the general solution of
+the homogeneous equation is $y_h(x)=c_1e^{-2x}+c_2e^x$.
+<p />
+<i>Step 2:</i> Write the right hand side of the equation as the real
+part of a complex exponential.
+<p />
+$-\cos(2x)=\Re[-e^{i2x}]$.
+<p />
+<i>Step 3:</i> Find a particular solution to the corresponding
+complex equation.
+<p />
+Let $\tilde{y}_p$ denote a particular solution to
+$\tilde{y}_p''+\tilde{y}_p'-2\tilde{y}_p=-e^{i2x}$.
+Then we use the techniques developed earlier in this section to find
+$\tilde{y}_p(x)$. 
+<p />
+SubStep 1: Guess the form of $\tilde{y}_p$
+<p />
+$\tilde{y}_p=Ae^{2ix}$.
+<p />
+SubStep 2: Plug into the equation and solve for the undetermined coefficients.
+$$ \eqalign {
+\tilde{y}_p&=Ae^{2ix} \cr
+\tilde{y}_p'&=2iAe^{2ix} \cr
+\tilde{y}_p''&=-4Ae^{2ix} \cr }
+$$
+Plugging into the equation we obtain
+$$ \eqalign {
+\tilde{y}_p''+\tilde{y}_p'-2\tilde{y}_p&=(-4Ae^{2ix})+(2iAe^{2ix})-2(Ae^{2ix}) 
+\cr
+&=(-4A+2iA-2A)e^{2ix} \cr
+&=(-6+2i)Ae^{2ix} \buildrel{\text{set}}\over{=} -e^{2ix} \cr }
+$$
+Solving the last equation we find $A=-1/(-6+2i)=3/20+1/20i$. So 
+$\tilde{y}_p(x)=(3/20+1/20i)e^{2ix}$.
+<p />
+<i>Step 4:</i> Take the real part of the complex particular solution
+to find the real particular solution.
+<p />
+$y_p(x)=\Re[\tilde{y}_p(x)]=3/20\cos(2x)-1/20\sin(2x)$.
+<p />
+<i>Step 5:</i> The general solution is $y(x)=y_p(x)+y_h(x)$.
+<p />
+$y(x)=3/20\cos(2x)-1/20\sin(2x)+c_1e^{-2x}+c_2e^x$.
+<p />
+We illustrate a few more possible difficulties in the final two examples.
+<p />
+<hr />
+<p />
+EXAMPLE 6: $$y''+3y'+2y=3e^{-2x}\sin(x)$$
+
+Step 1: The roots of $D^2+3D+2=0$ are $-1$ and $-2$ so the
+homogeneous solution is $y_h(x)=c_1e^{-x}+c_2e^{-2x}$.
+<p />
+Step 2: $3e^{-2x}\sin(x)=\Re[-3ie^{(-2+i)x}]$. (Note that we have to
+put the $-3i$ to get a $3$ after multiplying by $i\sin(x)$ in the
+identity for complex exponentials. It would also be possible to write
+the real function as the imaginary part of a complex exponential
+rather than the real part. In that case, we would have to take the
+imaginary part of the complex particular solution in step 4.)
+<p />
+Step 3: 
+<p />
+SubStep 1: $\tilde{y}_p(x)=Ae^{(-2+i)x}$
+<p />
+SubStep 2:
+$$ \eqalign {
+\tilde{y}_p(x)&=Ae^{(-2+i)x} \cr
+\tilde{y}_p'(x)&=(-2+i)Ae^{(-2+i)x} \cr
+\tilde{y}_p''(x)&=(3-4i)Ae^{(-2+i)x} \cr }
+$$
+Plugging into our equation we obtain
+$$ \eqalign {
+\tilde{y}_p''+3\tilde{y}_p'+2\tilde{y}_p&=[(3-4i)Ae^{(-2+i)x}] +
+3[(-2+i)Ae^{(-2+i)x}]+2[Ae^{(-2+i)x}] \cr
+&=(3-4i-6+3i+2)Ae^{(-2+i)x} \cr
+&=(-1-i)Ae^{(-2+i)x} \buildrel{\text{set}}\over{=} -3ie^{(-2+i)x} \cr }
+$$
+Solving the last equation we find $A=-3i/(-1-i)=3/2+3/2i$.
+So $\tilde{y}_p(x)=(3/2+3/2i)e^{(-2+i)x}$.
+<p />
+Step 4: $y_p(x)=e^{-2x}(3/2\cos(x)-3/2\sin(x))$.
+<p />
+Step 5: $y(x)=e^{-2x}(3/2\cos(x)-3/2\sin(x))+c_1e^{-x}+c_2e^{-2x}$.
+<p />
+<hr>
+<p />
+EXAMPLE 7: $$y''+y=\cos(x)+2\sin(x)$$
+
+Step 1: The roots of $D^2+1=0$ are $\pm i$ so the homogeneous
+solution is $y_h(x)=c_1\cos(x)+c_2\sin(x)$.
+<p />
+Step 2: We could split this into two pieces, but since both terms
+have the same frequency we can do it all in one by writing
+$\cos(x)+2\sin(x)=\Re[(1-2i)e^{ix}]$.
+<p />
+Step 3:
+<p />
+SubStep 1: $\tilde{y}_p(x)=Axe^{ix}$. Since $e^{ix}$ already appears in 
+the homogeneous solution, we have to multiply by $x$.
+<p />
+SubStep 2:
+$$ \eqalign {
+\tilde{y}_p(x)&=Axe^{ix} \cr
+\tilde{y}_p'(x)&=iAxe^{ix}+Ae^{ix} \cr
+\tilde{y}_p''(x)&=-Axe^{ix}+2iAe^{ix} \cr }
+$$
+Plugging into our equation we obtain
+$$ \eqalign {
+\tilde{y}_p''+\tilde{y}_p&=(-Axe^{ix}+2iAe^{ix})+(Axe^{ix}) \cr
+&=(-A+A)xe^{ix}+2iAe^{ix} \cr
+&=2iAe^{ix} \buildrel{\text{set}}\over{=} (1-2i)e^{ix} \cr }
+$$
+Solving the last equation we find $A=(1-2i)/(2i)=-1-1/(2i)=-1+(1/2)i$.
+So $\tilde{y}_p(x)=(-1+(1/2)i)xe^{ix}$.
+<p />
+Step 4: $y_p(x)=-x\cos(x)+(1/2)x\sin(x)$.
+<p />
+Step 5: $y(x)=-x\cos(x)+1/2x\sin(x)+c_1\cos(x)+c_2\sin(x)$.
+<p />
+<hr />
+<p />
+After all these examples, the reader may have discovered the following 
+general rules. 
+<p />
+<ul>
+<li>If the right-hand side is of the form $e^{rx}$ and $e^{rx}$ 
+is not already in the homogeneous solution, then the guess should be 
+$Ae^{rx}$. <p /></li>
+
+<li> If the right-hand side is of the form $(a_nx^n+\cdots 
+a_1x+a_0)e^{rx}$ with $a_n\ne0$ and 
+$e^{rx}$ is not already in the homogeneous solution, then the guess should 
+be $(A_nx^n+\cdots A_1x+A_0)e^{rx}.$ Note that while $a_n\ne0$, the other 
+$a_j$ terms may or may not be 0 in this case.
+<p /></li>
+<li>If the right-hand side is of the form $(a_nx^n+\cdots a_1x+a_0)e^{rx}$ 
+with $a_n\ne0$ and $x^me^{rx}$ is in the homogeneous solution, then the 
+guess should be $x^{m+1}(A_nx^n+\cdots A_1x+A_0)e^{rx}.$
+<p /></li>
+<li>If the right-hand side is of the form $a\sin(\omega
+x)+b\cos(\omega x)$, then the guess should be $A\sin(\omega x)+B\cos(\omega x)$. Note that
+you have to include both $A$ and $B$ even if $a$ or $b$ is 0.
+<p /></li>
+<li>You can also replace sines and cosines with complex exponentials
+to apply the above rules to them.<p /></li>
+</ul>
+Of course, if you misapply these rules all that will happen is that you 
+will get stuck as we did in the examples above where a wrong initial 
+guess was made. In that case you just reconsider and guess again.
+<p />
+
+<h4>Randomly Generated Examples</h4>
+A randomly generated second order constant coefficient linear inhomogeneous initial value problem is below.
+As always, once you submit an answer, you will have a link to see the detailed
+solution for the problem, as well as the option to generate a new problem and you can just quickly enter 
+a "dummy" answer like $t$ to quickly get to the detailed solution if that is all you want to see.
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1436751" width="100%" height="500" style="border: none;"></iframe>
+<p />
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+</html>
+

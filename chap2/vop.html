@@ -1,0 +1,237 @@
+<html>
+<head>
+<title>EDE Chapter 2: Variation of Parameters</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Variation of Parameters</h3>
+</center>
+<p />
+<h4>Discussion</h4> The method of undetermined coefficients is the most 
+efficient
+way to solve an inhomogeneous equation if we can guess the proper form for
+the particular solution. Unfortunately we can't always guess the proper
+form.
+If we can find the general solution to the
+homogeneous equation, the method of variation of parameters will always work.
+Because the method is complicated, we will only cover the second-order case.
+Consider the following example
+$$ y''+y=\tan(x) $$
+We first find two linearly independent solutions to the homogeneous equation
+$y''+y=0$. In this case two linearly independent solutions are $\cos(x)$ and
+$\sin(x)$. We now guess that the solution to the inhomogeneous equation will
+take the form
+$$
+y(x)=u(x)\cos(x)+v(x)\sin(x)
+$$
+Differentiating this yields
+$$
+y'(x)=-u(x)\sin(x)+v(x)\cos(x)+u'(x)\cos(x)+v'(x)\sin(x)
+$$
+
+We should now differentiate this again to compute $y''$ but this is getting
+ugly. $y''$ will have 6 terms. At this point I observe I have 2 degrees of
+freedom in my guess for the solution (i.e. 2 unknown functions) and I only
+need to satisfy one equation. With 2 unknown functions I should be
+able  to satisfy 2
+equations and I will now tack on the additional condition that besides
+solving
+the original problem, $y''+y=\tan(x)$, I will choose $u$ and $v$ so that
+$$
+u'(x)\cos(x)+v'(x)\sin(x)=0.
+$$
+Using this I can then get
+$$
+y'(x)=-u(x)\sin(x)+v(x)\cos(x)
+$$
+and I then differentiate again to get
+$$
+y''(x)=-u(x)\cos(x)-v(x)\sin(x)-u'(x)\sin(x)+v'(x)\cos(x)
+$$
+So plugging into $y''+y=\tan(x)$ we get
+$$
+y''+y=
+\eqalign
+{&-u(x)\cos(x)-v(x)\sin(x)-u'(x)\sin(x)+v'(x)\cos(x) \cr
+&\qquad\qquad+u(x)\cos(x) +
+v(x)\sin(x)\cr} \buildrel{\text{set}}\over{=} \tan(x)
+$$
+From which we get the equation
+$$
+-u'(x)\sin(x)+v'(x)\cos(x)=\tan(x)
+ $$
+We now have two equations for $u'(x)$ and $v'(x)$.
+$$ \begin{align}
+u'(x)\cos(x)+v'(x)\sin(x)&=0 \\
+-u'(x)\sin(x)+v'(x)\cos(x)&=\tan(x)
+\end{align} \tag 1 $$
+Multiplying the first equation by $\sin(x)$ and the second equation by
+$\cos(x)$ and adding we obtain
+$$ \begin{align}
+v'(x)(\sin^2(x)+\cos^2(x))&=\sin(x) \\
+v'(x)&=\sin(x) \\
+v(x)&=-\cos(x)+C_1
+\end{align} $$
+Multiplying the first equation in (1) by $\cos(x)$ and the second equation in
+(1) by $-\sin(x)$ and adding we obtain
+$$   \begin{align}
+u'(x)(\cos^2(x)+\sin^2(x))&=-\sin^2(x)/\cos(x) \\
+u'(x)&=-\sin^2(x)/\cos(x) \\
+u(x)&=\sin(x)-\log\left(\frac{\sin(x)+1}{\cos(x)}\right)+C_2
+\end{align} $$
+
+Finally we get
+$$  \begin{align}
+y(x)&=\sin(x)\cos(x)-\log\left(\frac{\sin(x)+1}{\cos(x)}\right)\cos(x)
++C_2\cos(x)-\cos(x)\sin(x)+C_1\sin(x) \\
+&=-\log\left(\frac{\sin(x)+1}{\cos(x)}\right)\cos(x)+C_2\cos(x)+C_1\sin(x)
+\end{align} $$
+
+In this one case, I <i>do not</i> advise you to learn the procedure for
+solving inhomogeneous equations using variation of parameters. The
+manipulations given above are complicated and most students have lots of
+trouble with them. Using them, I can derive the following formula and I advise
+you to just copy down the formula on your crib sheet and use it whenever
+necessary.
+<p />
+<a name='vopform'>
+<i>Theorem:</i> If $y_1(x)$ and $y_2(x)$ are two linearly independent
+solutions to the second order linear homogeneous equation
+$ y''(x)+b(x)y'(x)+c(x)y(x)=0 $ then
+$$
+y(x)=-y_1(x)\int_{x_0}^x\frac{y_2(s)g(s)}{W(y_1,y_2)(s)}\,ds+y_2(x)\int_{x_0}^x
+\frac{y_1(s)g(s)}{W(y_1,y_2)(s)}\,ds + C_1y_1(x)+C_2y_2(x)
+$$ 
+is the general solution to the inhomogeneous equation
+$y''(x)+b(x)y'(x)+c(x)y(x)=g(x)$ where $x_0$, $C_1$ and $C_2$ are
+arbitrary constants and $W(y_1,y_2)(s)$ is the Wronskian. 
+</a>
+<p />
+This looks at first glance to have three arbitrary constants but in fact it
+only has two. Any given solution can be obtained with every choice of $x_0$
+by making the right choice of $C_1$ and $C_2$. The advantage of this form is
+that while we often won't be able to evaluate the integrals, we will always be
+able to evaluate any definite integral from $x_0$ to $x_0$. So if we have an
+initial value problem with the values given at $x_0$, we will be able to work
+out the values of $C_1$ and $C_2$ even if we can't compute the integrals
+directly.
+<p />
+<h4>Paradigm</h4> Solve $x^2y''+xy'-4y=x$ given that two linearly 
+independent
+solutions of the corresponding homogeneous equation are $y_1(x)=x^2$ and
+$y_2(x)=x^{-2}$.
+<p />
+<i>Step 0:</i> The theorem above only applies when the coefficient of 
+$y''$ is 1, so we need to divide through the whole equation by $x^2$ to 
+get 
+$$
+y''+(1/x)y'-(4/x^2)y=1/x
+$$
+<i>Step 1:</i> Find two linearly independent solutions of the 
+corresponding homogeneous problem.
+<p />
+Here we are given that two solutions are $y_1(x)=x^2$ and $y_2(x)=x^{-2}$.
+<p />
+<i>Step 2:</i> Evaluate the solution of the inhomogeneous problem using 
+the formula.
+$$
+W(y_1,y_2)(s)=s^2\times-2s^{-3}-2s\times s^{-2}=-4s^{-1}
+$$
+We don't need to worry about the lower limit in this problem and can just 
+treat the integrals as indefinite integrals in $x$.
+$$ \begin{align}
+&\int^x\frac{s^{-2}s^{-1}}{-4s^{-1}}\,ds=-\frac14\int^x s^{-2}\,ds= 
+\frac{x^{-1}}4
+\\
+&\int^x\frac{s^2s^{-1}}{-4s^{-1}}\,ds=-\frac14\int^x 
+s^2\,ds=-\frac{x^3}{12}
+\end{align} $$
+So we get
+$$ \begin{align}
+y(x)&=-x^2\times\frac{x^{-1}}4+x^{-2}\times-\frac{x^3}{12}+C_1x^2+C_2x^{-2} 
+\\
+&=-\frac{x}{4}-\frac{x}{12}+C_1x^2+C_2x^{-2} \\
+&=-\frac{x}{3}+C_1x^2+C_2x^{-2}
+\end{align} $$
+<p />
+<hr />
+<p />
+EXAMPLE 1: Solve the initial value problem
+$$y''+6y'+5y=\sqrt{x},\qquad y(1)=0,\quad y'(1)=0$$
+FIRST: Find the general solution
+<p />
+Step 1: The homogeneous equation is $y''+6y'+5y=0$
+<p />
+SubStep 1: $(D^2+6D+5)y=(D+5)(D+1)y=0$
+<p />
+SubStep 2: roots are $-5$ and $-1$
+<p />
+SubStep 3: The general solution is $C_1e^{-5x}+C_2e^{-x}$ and $e^{-5x}$ and
+$e^{-x}$ are two linearly independent solutions of the homogeneous equation.
+<p />
+Step 2:
+$$
+W(e^{-5x},e^{-x})=e^{-5x}\times-e^{-x}-(-5e^{-5x}\times e^{-x})=4e^{-6x}
+$$
+We choose $x_0=1$ since we are given initial values at $1$. Then
+$$ \begin{align}
+&\int_1^x\frac{e^{-s}\sqrt{s}}{4e^{-6s}}\,ds=\int_1^x\frac{e^{5s}\sqrt s}{4}
+\,ds \\
+&\int_1^x\frac{e^{-5s}\sqrt{s}}{4e^{-6s}}\,ds =
+\int_1^x\frac{e^{s}\sqrt{s}}{4}\,ds
+\end{align} $$
+I can evaluate neither of these integrals. So the best I can do for the
+general solution to the inhomogeneous problem is
+$$
+y(x)=-e^{-5x}\int_1^x\frac{e^{5s}\sqrt s}{4}\,ds
++e^{-x}\int_1^x\frac{e^{s}\sqrt{s}}{4}\,ds +C_1e^{-5x}+C_2e^{-x}
+$$
+<p />
+SECOND: Plug in the initial values and solve for the constants.
+$$ \begin{align}
+y(1)&=-e^{-5}\times0+e^{-1}\times0+C_1e^{-5}+C_2e^{-1}
+\buildrel{\text{set}}\over{=} 0 \\
+y'(x)&=5e^{-5x}\int_1^x\frac{e^{5s}\sqrt s}{4}\,ds
+-e^{-5x}\frac{e^{5x}\sqrt{x}}{4} \\
+&\qquad\qquad-e^{-x}\int_1^x\frac{e^{s}\sqrt{s}}{4}\,ds
++e^{-x}\frac{e^x\sqrt{x}}{4} \\
+&\qquad\qquad-5C_1e^{-5x}-C_2e^{-x} \\
+y'(1)&=5e^{-5}\times0-\frac 14 -e^{-1}\times0+\frac 14
+-5C_1e^{-5}-C_2e^{-1} \buildrel{\text{set}}\over{=} 0
+\end{align} $$            
+Here we have used the fact that the derivative of the
+integral is the original function. So the initial values yield the two
+equations
+$$ \begin{align}
+C_1e^{-5}+C_2e^{-1}&=0            \\
+-5C_1e^{-5}-C_2e^{-1}&=0
+\end{align} $$
+These have the solution $C_1=0$ and $C_2=0$ so our solution to the initial
+value problem is
+$$y(x)=-e^{-5x}\int_1^x\frac{e^{5s}\sqrt s}{4}\,ds
++e^{-x}\int_1^x\frac{e^{s}\sqrt{s}}{4}\,ds $$
+<p />
+
+<p/>
+Unfortunately, there aren't many problems where you can't reasonably guess a
+particular solution to apply undetermined coefficients, while still getting an
+integral you can evaluate in closed form. It is useful to know that whenever you can solve the
+homogeneous equation you can solve the inhomogeneous equation, at least in integral form.
+But this isn't a method that lends itself to random generation of problems, so there
+isn't a link to randomly generate examples.
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+</html>

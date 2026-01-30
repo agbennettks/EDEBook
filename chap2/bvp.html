@@ -1,0 +1,213 @@
+<html>
+<head>
+<title>EDE Chapter 2: Boundary Value Problems</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Boundary Value Problems</h3>
+</center>
+<p />
+<h4>Discussion</h4>
+For a second-order linear equation, the general solution will have two
+arbitrary constants, and you will need two additional pieces of information to determine those constants.
+So far we have considered initial value problems, where those additional pieces of information give the value
+of the function and its derivative at a single point. In the theory section, we stated a theorem that for 
+reasonable problems, such an initial value problem always had a unique solution. But sometimes the two data points
+we know give values at different points. These are called boundary value problems. As noted in the theory section,
+with boundary values sometimes even nice problems may have no solution, or many solutions. In this section we will
+explore these issues. We will start with a paradigm and then some examples of the types of results that can occur.
+<p />
+
+<h4>Paradigm</h4>
+$$ y'' + 4y' + 3y = 0, \qquad y(0)=1,  y(1)=1$$
+<i>Step 1:</i> Find the general solution, the same way as always. I won't bother to show all the sub-steps since I 
+think you are good with those by now.
+$$ y = C_1 e^{-3x} + C_2 e^{-x} $$
+<i>Step 2:</i> Plug in the boundary values to get two equations in two unknowns (or $n$ equations in $n$ unknowns if
+you have an $n^{th}$-order equation).
+$$\begin{align}
+y(0)&=C_1 + C_2 \buildrel{\text{set}}\over{=} 1 \\
+y(1)&=C_1 e^{-3} + C_2 e^{-1} \buildrel{\text{set}}\over{=} 1
+\end{align}
+$$
+<i>Step 3:</i> Solve the system of equations for the values of the constants.
+<p />
+If we multiply the second equation by $e$ we get $C_1 e^{-2} + C_2 = e$. Subtracting this from the first equation
+we get $(1-e^{-2})C_1 = 1-e$ and hence $C_1 = (1-e)/(1-e^{-2})$. Plugging this into the first equation then gives us
+$C_2=(e-e^{-2})/(1-e^{-2})$ and so the solution to the initial value problem is
+$$
+y(x) = \frac{1-e}{1-e^{-2}}e^{-3x} + \frac{e-e^{-2}}{1-e^{-2}}e^{-x}.
+$$
+
+<h4>Examples</h4>
+EXAMPLE 1: An inhomogeneous equation
+$$ y'' - 4y = 6e^x, \qquad y(0)=1, y(\ln(2))=2 $$
+Step 1: 
+$$ y = C_1 e^{2x} + C_2e^{-2x} - 2e^{x}$$
+Step 2:
+$$ \begin{align}
+y(0) &= C_1 + C_2 - 2 \buildrel{\text{set}}\over{=} 1 \\
+y(\ln(2)) &= 4C_1 + \frac{C_2}{4} - 4 \buildrel{\text{set}}\over{=} 2 
+\end{align}$$
+Step 3:
+Moving all the constants to the right, we get
+$$\begin{align}
+C_1 + C_2 &= 3 \\
+4C_1 + \frac{C_2}{4} &= 6
+\end{align}$$
+Subtracting the second equation from the four times the first equation 
+we get $(15/4)C_2 = 6$, which gives us $C_2 = 8/5$. Plugging this into the first 
+equation we then find $C_1 = 7/5$ and so the solution to the boundary value problem is
+$$
+y = (7/5)e^{2x} + (8/5)e^{-2x} - 2e^x.
+$$
+Note that the only contribution of the inhomogeneous equation is that we have to move the values of the forcing function to
+the right when we solve for the constants. Because of that, all the qualitative features of boundary value problems show up in
+homogeneous equations. So we will concentrate on homogeneous equations to keep the algebra simpler.
+<p />
+<hr />
+<p />
+The next three examples will all feature the same equation, but with different boundary values leading to different numbers
+of solutions.
+<p />
+<i>EXAMPLE 2:</i> One Solution
+$$ y'' + y = 0, \qquad y(0)=0, y(1)=1 $$
+Step 1: 
+$$ y = C_1 \cos(x) + C_2 \sin(x) $$
+Step 2:
+$$\begin{align}
+y(0) &= C_1 \cos(0) + C_2 \sin(0) \buildrel{\text{set}}\over{=} 0 \\
+y(1) &= C_1 \cos(1) + C_2 \sin(1) \buildrel{\text{set}}\over{=} 1
+\end{align}$$
+Step 3: From the first equation we know $C_1=0$ and then the second equation tells us $C_2=1/\sin(1)$. So the solution 
+to the boundary value problem is 
+$$ y = \frac{\sin(x)}{\sin(1)}. $$
+<i>EXAMPLE 3:</i> No Solutions
+$$ y'' + y = 0, \qquad y(0)=0, y(\pi)=1 $$
+Step 1: 
+$$ y = C_1 \cos(x) + C_2 \sin(x) $$
+Step 2:
+$$\begin{align}
+y(0) &= C_1 \cos(0) + C_2 sin(0) \buildrel{\text{set}}\over{=} 0 \\
+y(\pi) &= C_1\cos(\pi) + C_2 \sin(\pi) \buildrel{\text{set}}\over{=} 1 
+\end{align}$$
+Step 3: From the first equation we get $C_1 = 0$, but the second equation requires $C_1 = -1$. This is impossible, so there are
+no solutions to this boundary value problem.
+<p />
+
+<p />
+<i>EXAMPLE 4:</i> Infinitely Many Solutions
+$$ y'' + y = 0, \qquad y(0)=0, y(\pi)=0 $$
+Step 1: 
+$$ y = C_1 \cos(x) + C_2 \sin(x) $$
+Step 2:
+$$\begin{align}
+y(0) &= C_1 \cos(0) + C_2 \sin(0) \buildrel{\text{set}}\over{=} 0 \\
+y(\pi) &= C_1 \cos(\pi) + C_2 \sin(\pi) \buildrel{\text{set}}\over{=} 0
+\end{align}$$
+Step 3: Both the first and second equations turn into $C_1=0$, so definitely we need $C_1=0$. But neither equation says
+anything about $C_2$, so we can choose $C_2$ to be any value we wish. The solutions to the boundary value problem are all
+the functions
+$$ y = C_2 \sin(x). $$
+<hr />
+So even for a very simple equation like $y'' + y = 0$, the boundary value problem is not guaranteed to have a unique solution
+like an initial value problem would. You might get a unique solution, but you might also get no solution or infinitely many
+solutions. This need not be a disaster, in fact in many applications it is a blessing. If you take Partial Differential 
+Equations, you will often reduce a partial differential equation to a collection of ordinary differential equations, solve the
+ordinary differential equations, and then add up the solutions in the appropriate way to get the solution to the original 
+partial differential equation. Typically the ordinary differential equations are going to be boundary value problems.
+Suppose the ordinary differential equation is $L(y)=0$ with boundary values $y(a)=0$ and $y(b)=0$. Then one solution must
+be $y=0$. If that were the only solution, you wouldn't have anything interesting to add up, just a bunch of zeros. But if
+you have a situation like Example 4 above, then you can still get interesting functions that enable you to build your solution
+to the partial differential equation. In these sorts of situations, you may need to choose the parameters of your
+ordinary differential equation carefully to be sure you get interesting solutions.
+<p />
+<hr />
+<p />
+EXAMPLE 5: Choosing Boundary Values With Interesting Solutions
+<p />
+Find all values of $a$ where the following boundary value problem has non-zero solutions.
+$$ y'' + 4y = 0, \qquad y(0)=0, y(a)=0 $$
+Step 1: 
+$$ y = C_1 \cos(2x) + C_2 \sin(2x) $$
+Step 2:
+$$\begin{align}
+y(0) &= C_1 \cos(0) + C_2 \sin(0) \buildrel{\text{set}}\over{=} 0  \\
+y(a) &= C_1 \cos(a) + C_2 \sin(a) \buildrel{\text{set}}\over{=} 0
+\end{align}$$
+Step 3: From the first equation we see $C_1=0$. Then the second equation becomes $C_2 \sin(a) = 0$. So either $C_2=0$ or
+$\sin(a)=0$. If $C_2=0$, then our solution becomes $y = 0 \cos(x) + 0 \sin(x) = 0$. Since we are looking for non-zero 
+solutions, that won't work. But if $\sin(a)=0$, then any function of the form $y = C_2 \sin(x)$ is a solution and we have
+non-zero solutions. So the condition we need is that $\sin(a)=0$, or $a = n\pi$ for some integer $n$.
+<p />
+
+<p />
+EXAMPLE 6: Choosing an Equation With Interesting Solutions
+<p />
+Find all values of $\lambda$ where the following boundary value problem has non-zero solutions. 
+$$ y'' + \lambda y = 0, \qquad y(0)=0, y(1)=0 $$
+We will have to consider three cases depending on the sign of $\lambda$.
+<p />
+<i>Case 1:</i> $\lambda<0$. We let $\mu=\sqrt{-\lambda}$.
+<p />
+Step 1: 
+$$ y = C_1 \exp\left(\mu x\right) + C_2 \exp\left(-\mu x\right) $$
+Step 2:
+$$\begin{align}
+y(0)&= C_1 + C_2 \buildrel{\text{set}}\over{=} 0 \\
+y(1)&= C_1 \exp\left(\mu\right) + C_2 \exp\left(-\mu\right) \buildrel{\text{set}}\over{=} 0
+\end{align} $$
+Step 3:
+Multiplying the second equation by $\exp(\mu)$ and subtracting it from the first equation we get
+$\left(1-\exp(2\mu)\right)C_1 = 0$. Since $\lambda$ is strictly less than 0, $1-\exp(2\mu)  \ne 0$, and so 
+$C_1=0$. Then we must also have $C_2=0$, so there are no non-zero solutions if $\lambda>0$.
+<p />
+<i>Case 2:</i> $\lambda=0$.
+<p />
+Step 1:
+$$ y = C_1 x + C_2 $$
+Step 2:
+$$\begin{align}
+y(0) &= C_2 \buildrel{\text{set}}\over{=} 0 \\
+y(1) &= C_1+C_2 \buildrel{\text{set}}\over{=} 0
+\end{align} $$
+Again, the only solution is $C_1=0$ and $C_2=0$ so there are no non-zero solutions.
+<p />
+<i>Case 3:</i> $\lambda>0$. We let $\mu=\sqrt{\lambda}$.
+<p />
+Step 1:
+$$ y = C_1 \cos\left(\mu x\right) + C_2 \sin\left(\mu x\right) $$
+Step 2:
+$$\begin{align}
+y(0) &= C_1 \cos(0) + C_2 \sin(0) \buildrel{\text{set}}\over{=} 0 \\
+y(1) &= C_1 \cos\left(\mu\right) + C_2\sin\left(\mu\right) \buildrel{\text{set}}\over{=} 0
+\end{align}$$
+Step 3:
+From the first equation we have $C_1 = 0$, and so the second equation becomes $C_2\sin\left(\mu x\right)=0$.
+Then either $C_2=0$, which makes our solution $y=0$, or $\sin\left(\mu x\right)=0$, in which case we have 
+infinitely many non-zero solutions $y = C_2\sin\left(\mu x\right)$. That means $\mu = n\pi$ for some integer $n$.
+<p />
+<i>So the values of $\lambda$ for which we have non-zero solutions are $\lambda=n^2\pi^2$ for
+some integer $n$.</i>
+<p />
+
+<p />
+This last example was rather involved. But if you have to work with partial differential equations (which show up in 
+many applications), it is by far the most important example in this section.
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+</html>
+
