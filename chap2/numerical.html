@@ -123,7 +123,7 @@ A3..E3 and then click on the small square at the lower right of the box
 around those cells and drag it down for about 20 rows or so to copy
 the formulas down and automate the calculations. 
 <center>
-<img src=euler2spread1a.png width=537 height=156>
+<img src=euler2spread1a.png width=537 height=156 />
 </center>
 <p />
 Note that the approximate values of the solution function $y(x)$ are 
@@ -143,12 +143,11 @@ is a percent. Now click and drag to select cells F2 and G2 and drag those
 formulas down. This will show you how accurate the approximation produced 
 by Euler's method is. 
 <center>
-<img src=euler2spread1b.png width=537 height=154>
+<img src=euler2spread1b.png width=537 height=154 />
 </center>
 <p />
 Euler's method isn't particularly accurate, though it works well enough in 
-this problem with a relative error of about 1% (problems with exponential 
-decay tend to work better than exponential growth). We can improve 
+this problem with a relative error of about 1%. We can improve 
 the approximation by taking smaller steps. If you change cell H2 to 
 <code>0.05</code> to cut the step size in half, you find that the error in 
 the value of $y(0.5)$ has been cut to about 0.43%. Of course you had 
@@ -159,87 +158,50 @@ for first-order equations.
 <p />
 Naturally, you can use this technique to handle other equations. The only 
 thing you need to edit is the formula for <code>dv/dx</code> in column 
-C. Do be sure to copy the edited formula down the whole column.
+C. Do be sure to copy the edited formula down the whole column. And you don't have
+to use a spreadsheet. It is easy to program Euler's method into your favorite
+programming language. And carrying out Euler's method by hand is straightforward if tedious.
+On a test where you may have to carry out a couple of steps by hand, I find it easiest to keep track 
+of what goes where if I organize it in columns just as in a spreadsheet. 
 <p />
-<h4>The Improved Euler Method</h4>
-Just like for first-order equations, we can get more accuracy 
-with the improved Euler's method.
-As before, you can use 
-whatever tool you find most appropriate, but the simplest is probably the 
-spreadsheet. We set things up similarly to the 
-Euler's method, but with a couple of extra columns now for the extra 
-computations. Enter <code>x</code> in cell A1, <code>left dy/dx</code> in 
-cell B1, <code>left dv/dx</code> in cell C1, <code>y tilde</code> in cell 
-D1, <code>v tilde</code> in cell E1, <code>right dy/dx</code> in cell 
-F1, <code>right dv/dx</code> in cell G1, <code>y</code> in cell H1, 
-<code>v=y'</code> in cell I1, and <code>h</code> in cell L1. Next enter 
-the initial values <code>0</code> in cell A2, <code>1</code> in cell H2, 
-<code>0</code> in cell I2, 
-and <code>0.1</code> in cell L2. Then enter the formulas
-<code>=A2+$L$2</code> in cell A3, <code>=I2</code> in cell B3, 
-<code>=-3*I2-2*H2</code> in cell C3,
-<code>=H2+$L$2*B3</code> in cell D3, 
-<code>=I2+$L$2*C3</code> in cell E3,
-<code>=E3</code> in cell F3, <code>=-3*E3-2*D3</code> in cell G3, 
-<code>=H2+$L$2*(B3+F3)/2</code> in cell H3, and
-<code>=I2+$L$2*(C3+G3)/2</code> in cell I3.
-Now click and drag to select 
-A3..I3 and then copy the formula down the sheet to repeat the 
-calculations as far as you want.
-<center>
-<img src=impeuler2spread2a.png height=157 width=796>
-</center>
+<h4>Stiff Equations and More Accurate Methods</h4>
+When talking about first-order equations, we next considered the improved
+Euler's method. And you can adapt the improved Euler's method to higher-order
+equations, just as we adapted Euler's method above. And just as for first-order
+equations, the improved Euler's method is a second-order mehthod, which means
+for nice equations and small enough step sizes, halving the step size cuts the
+error by a factor of 1/4. However, the notion of nice equations and picking the 
+right step size can get rather complicated. Consider the initial value
+problem
+  $$
+  \frac{d^2x}{dt^2}+101\frac{dx}{dt}+100x = 0,\qquad x(0)=1,\quad x'(0)=-1
+  $$
+This is simple constant-coefficient linear differential equation, and the solution
+to the initial value problem is $x = \exp(-t)$. Yet if we approximate the solution
+with the improved Euler's method using a step size of 0.1 we get the following
+<img src=stiff.png width=857 height=547 />
+Things seem to be going fine, and then suddenly everything falls apart. The difficulty
+here is that the roots of $D^2+101D+100$ are $-1$ and $-100$. As round-off error builds
+up over the first few steps, we will get slightly away from our true solution of $\exp(-t)$.
+But then that large factor of $-100$ will grab that small round-off error and magnify it,
+eventually causing the approximate solution to diverge badly from the true solution. 
+Note that even though the general solution to the differential equation is $x(t) = C_1\exp(-t) + C_2\exp(-100t)$,
+so all the solutions converge to 0, the approximate solution heads off to $-\infty$.
+Equations like this are called "stiff." Note that there isn't a precise definition of the
+term stiff, because these sorts of issues can come up in various ways which makes it hard to
+be precise about when things may go wrong. 
 <p />
-As before we can set up
-columns for the exact values and the relative error to see how accurate 
-this method is for this problem. Enter 
-<nobr><code>y exact</code></nobr> in cell J1 and 
-<nobr><code>rel error</code></nobr> in cell K1. Enter the formulas 
-<code>=2*exp(-A2)-exp(-2*A2)</code> in cell J2 and 
-<code>=(J2-H2)/J2</code> in cell K2. 
-As before it looks nicer if you set the format of the 
-cells in column K to Percentage. 
-<center>
-<img src=impeuler2spread2b.png height=155 width=794>
-</center>
-<p />
-Note that the improved Euler's method is twice as much work 
-as the 
-original Euler's method, since you do an extra improvement step each row. 
-On the other hand, the error for $y(0.5)$ is now just 0.21%, which 
-is better than the -0.43% error we got by 
-doing twice as much work with a smaller step size with the original 
-Euler's method. We can improve the accuracy of our approximation further 
-by using a smaller step size of $h=.05$. The result of this calculation is 
-off by only 0.05% of the true value. While halving the step size (hence 
-doubling the work) halved the error for Euler's method, it reduces the 
-error in the improved Euler's method by about a factor of 4. Again, this 
-is the same pattern as you saw for the first-order equations.
-And of course you can apply this method for other equations just by 
-editing the formulas for the dv/dx in columns C and G. 
-<p />
-<h4>Concluding Discussion</h4>
-As noted above, to adjust to a different second-order equation you just 
-need to change the column(s) for <code>dv/dx</code>. It is up to you to 
-convert the second-order equation to a first order system and determine 
-what the formula needs to be for $dv/dx$. It should be emphasized that
-the spreadsheets we've designed here are for <i>second-order</i> 
-equations. If we 
-had a third-order equation then, as discussed in the first section on this 
-page, we would need a system of three equations. That would require 
-columns for <code>w</code> and <code>dw/dx</code> in addition to those for 
-<code>y</code>, <code>v</code>, <code>dy/dx</code>, and 
-<code>dv/dx</code>. This isn't hard, but you do need to be sure you don't 
-just blindly plug into the spreadsheets we've created if the problem 
-doesn't fit.
-<p />
-We can extend the Runge-Kutta and Runge-Kutta-Fehlberg techniques to higher 
-order equation by converting them to first-order systems in the same way 
-as we have extended the Euler and Improved Euler method here. The same 
-tradeoffs will apply. The RK and RKF methods are more accurate and 
-preferred for careful computations. But for situations in which a fast 
-runtime is more important than precise accuracy you may choose to use 
-Euler's method or the improved Euler's method. 
+Now if you shrink the step size enough, you can avoid this issue in this example. But shrinkning the
+step size means more steps and that means more roundoff error. So you need to be careful about just
+always cutting down the step size. The solution is to use a method like the Runge-Kutta-Fehlberg, which
+automates the selection of the step-size, and can adjust it dynamically so the step size is small where
+it needs to be, but can grow when it is safe so that you avoid wasting time and building up roundoff
+error by taking too many steps. You can see the code for an implementation of the RKF2(3) algorithm
+if you look at the Python version of Geometric Interpretations (Slope Fields) unit in chapter 1. But you
+don't have to program this yourself. It is easier to just call the routine from a standard library, such as the 
+<code>scipy.integrate.solve_ivp</code> function from the SciPy library. However, this routine, like most such routines, expects
+the equation to be provided in the form of a first-order system. So you will still have to translate higher-order
+equations to first-order equations yourself (though now most AI assistants can do that for you too).
 <p />
 <h4>Exercises</h4>
 <ol>
@@ -257,40 +219,10 @@ step-size in half in Euler's method affect the relative error for this
 problem?
 <p /></li>
 
-<li>Approximate $y(2)$ for the linear homogeneous initial value problem 
-$$
-\frac{d^2y}{dx^2}+\frac{dy}{dx}-6y=0,\qquad
-y(0)=1,\quad y'(0)=0
-$$
-using the improved Euler's method with $h=0.1$ and $h=0.05$. How does 
-cutting the step-size in half in the improved Euler's method affect the 
-relative error for this problem?
-<p /></li>
-
 <li>Approximate $y(2)$ for the linear inhomogeneous initial value problem 
 $$
 \frac{d^2y}{dx^2}+4\frac{dy}{dx}+3y=e^x,\qquad
 y(0)=1,\quad y'(0)=0
-$$
-using Euler's method with $h=0.1$ and $h=0.05$. How does cutting the 
-step-size in half in Euler's method affect the relative error for this 
-problem?
-<p /></li>
-
-<li>Approximate $y(2)$ for the linear inhomogeneous initial value problem 
-$$
-\frac{d^2y}{dx^2}+4\frac{dy}{dx}+3y=e^x,\qquad
-y(0)=1,\quad y'(0)=0
-$$
-using the improved Euler's method with $h=0.1$ and $h=0.05$. How does 
-cutting the step-size in half in the improved Euler's method affect the 
-relative error for this problem?
-<p /></li>
-
-<li>Approximate $y(2)$ for the third-order linear initial value problem 
-$$
-\frac{d^3y}{dx^3}+2\frac{d^2y}{dx^2}-\frac{dy}{dx}-2y=0,\qquad
-y(0)=1,\quad y'(0)=0,\quad y''(0)=-1
 $$
 using Euler's method with $h=0.1$ and $h=0.05$. How does cutting the 
 step-size in half in Euler's method affect the relative error for this 
@@ -302,9 +234,9 @@ $$
 \frac{d^3y}{dx^3}+2\frac{d^2y}{dx^2}-\frac{dy}{dx}-2y=0,\qquad
 y(0)=1,\quad y'(0)=0,\quad y''(0)=-1
 $$
-using the improved Euler's method with $h=0.1$ and $h=0.05$. How does 
-cutting the step-size in half in the improved Euler's method affect the 
-relative error for this problem?
+using Euler's method with $h=0.1$ and $h=0.05$. How does cutting the 
+step-size in half in Euler's method affect the relative error for this 
+problem?
 <p /></li>
 
 <li>Approximate $y(0.5)$ for the non-linear initial value problem 
@@ -318,25 +250,13 @@ step-size in half in Euler's method affect the relative error for this
 non-linear problem.
 <p /></li>
 
-<li>Approximate $y(0.5)$ for the non-linear initial value problem 
-$$
-\frac{d^2y}{dx^2}-2y\frac{dy}{dx}=0,\qquad
-y(0)=1,\quad y'(0)=1
-$$
-using the improved Euler's method with $h=0.1$ and $h=0.05$. The exact 
-solution is
-$y(x)=\displaystyle\frac{1}{1-x}$ so $y(0.5)=2$. How does cutting the 
-step-size in half in the improved Euler's method affect the relative error 
-for this non-linear problem.
-<p /></li>
-
 <li> (<i>TRICKY</i>)
 Approximate $y(1.1)$ for the non-linear initial value problem 
 $$
 \frac{d^2y}{dx^2}-2y\frac{dy}{dx}=0,\qquad
 y(0)=1,\quad y'(0)=1
 $$
-using the improved Euler's method with $h=0.1$. The exact 
+using Euler's method with $h=0.1$. The exact 
 solution is 
 $y(x)=\displaystyle\frac{1}{1-x}$ so $y(1.1)=-10$. In this case the 
 approximation is badly off. How small a step-size do you need to pick to 
