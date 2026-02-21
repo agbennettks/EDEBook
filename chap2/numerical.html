@@ -179,7 +179,9 @@ problem
 This is simple constant-coefficient linear differential equation, and the solution
 to the initial value problem is $x = \exp(-t)$. Yet if we approximate the solution
 with the improved Euler's method using a step size of 0.1 we get the following
-<img src=stiff.png width=857 height=547 />
+<p>
+<img src='stiff.png' width=600 height=383 />
+</p>
 Things seem to be going fine, and then suddenly everything falls apart. The difficulty
 here is that the roots of $D^2+101D+100$ are $-1$ and $-100$. As round-off error builds
 up over the first few steps, we will get slightly away from our true solution of $\exp(-t)$.
