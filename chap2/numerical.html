@@ -168,7 +168,7 @@ of what goes where if I organize it in columns just as in a spreadsheet.
 When talking about first-order equations, we next considered the improved
 Euler's method. And you can adapt the improved Euler's method to higher-order
 equations, just as we adapted Euler's method above. And just as for first-order
-equations, the improved Euler's method is a second-order mehthod, which means
+equations, the improved Euler's method is a second-order method, which means
 for nice equations and small enough step sizes, halving the step size cuts the
 error by a factor of 1/4. However, the notion of nice equations and picking the 
 right step size can get rather complicated. Consider the initial value
@@ -195,7 +195,7 @@ Equations like this are called "stiff." Note that there isn't a precise definiti
 term stiff, because these sorts of issues can come up in various ways which makes it hard to
 be precise about when things may go wrong. 
 <p />
-Now if you shrink the step size enough, you can avoid this issue in this example. But shrinkning the
+Now if you shrink the step size enough, you can avoid this issue in this example. But shrinking the
 step size means more steps and that means more roundoff error. So you need to be careful about just
 always cutting down the step size. The solution is to use a method like the Runge-Kutta-Fehlberg, which
 automates the selection of the step-size, and can adjust it dynamically so the step size is small where
