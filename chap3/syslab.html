@@ -1,0 +1,375 @@
+<html>
+<head> 
+<title>First Order Linear Systems</title>
+<link rel="stylesheet" type="text/css" href="../JSXGraph/jsxgraph.css" /> 
+<script type="text/javascript" src="../JSXGraph/jsxgraphcore.js"></script>
+</head>
+<body>
+<center>
+<h3>First Order Linear Systems</h3>
+<p />
+<table>
+<tr>
+<td>
+<form name="eqn" onsubmit='redraw(); return false;'>
+<table>
+<tr>
+<td align="center">x'&nbsp;=&nbsp;</td>
+<td align="center"><input type="text" name="a" size="4" value="0"></td>
+<td align="left">x&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="b" size=4 value="1"></td>
+<td align="left">y&nbsp;&nbsp;
+<td>&nbsp;&nbsp;</td>
+<td align="right">x(0)&nbsp;=&nbsp;
+<td align="left"><input type="text" name="x0" size=4 value="1.5"></td>
+</tr>
+<tr>
+<td align="center">y'&nbsp;=&nbsp;</td>
+<td align="center"><input type="text" name="c" size="4" value="1"></td>
+<td align="left">x&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="d" size=4 value="0"></td>
+<td align="left">y&nbsp;&nbsp;
+<td>&nbsp;&nbsp;</td>
+<td align="right">y(0)&nbsp;=&nbsp;
+<td align="left"><input type="text" name="y0" size=4 value="-1"></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align=right><input type="submit" value="Update Graph"></td> 
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align=right><input type="button" value="Clear Old Curves" 
+onClick="undraw();"></td> 
+</tr>
+<tr>
+<td colspan=8 align='center'><span id='emsg' style="color:red"> 
+</span></td>
+</tr>
+</table>
+<p />
+</form>
+
+<div id="box" class="jxgbox" style="width:500px; height:500px;"></div>
+<script type="text/javascript"> 
+
+var a=0;
+var b=1;
+var c=1;
+var d=0;
+var x0=1.5;
+var y0=-1;
+var trh=0; 
+var det=-1;
+var abm=Math.sqrt(a*a+b*b);
+var cdm=Math.sqrt(c*c+d*d);
+var intcurves=[];
+var syschg=false;
+
+function redraw() {
+  if (parseinput()) {
+    if (syschg) {
+      for (var i=0;i<intcurves.length;i++) {
+        brd.removeObject(intcurves[i]);
+      }
+      intcurves=[];
+      brd.update();
+    } else {
+      for (var i=0;i<intcurves.length;i++) {
+        intcurves[i].setAttribute({strokeColor:'gray'});
+      }
+    }
+    intcurves.push(brd.create('curve',makeparmcrv(),
+                              {highlightStrokeColor:'purple',
+                               highlightStrokeOpacity:1, 
+                               strokeWidth:2}));
+  }
+  return false;
+}
+
+function undraw() {
+  for (var i=0;i<intcurves.length;i++) {
+    brd.removeObject(intcurves[i]);
+  }
+  intcurves=[];
+}
+
+function xcoord(t) {
+  var alpha,beta,w,r1,r2;
+  if (trh*trh>det) {
+    r1=trh+Math.sqrt(trh*trh-det);    
+    r2=trh-Math.sqrt(trh*trh-det);    
+    alpha=(x0*r1+b*y0-d*x0)/(r1-r2);
+    beta=(x0*r2+b*y0-d*x0)/(r2-r1);
+    return alpha*Math.exp(r1*t)+beta*Math.exp(r2*t);
+  } else if (trh*trh<det) {
+    w=Math.sqrt(det-trh*trh);
+    alpha=x0;
+    beta=(b*y0+(trh-d)*x0)/w;
+    return Math.exp(trh*t)*(alpha*Math.cos(w*t)+beta*Math.sin(w*t));
+  } else {
+    alpha=x0;
+    beta=b*y0+(trh-d)*x0;
+    return Math.exp(trh*t)*(beta*t+alpha);
+  }
+}
+
+function ycoord(t) {
+  var alpha,beta,w,r1,r2;
+  if (trh*trh>det) {
+    r1=trh+Math.sqrt(trh*trh-det);    
+    r2=trh-Math.sqrt(trh*trh-det);    
+    alpha=(y0*r1+c*x0-a*y0)/(r1-r2);
+    beta=(y0*r2+c*x0-a*y0)/(r2-r1);
+    return alpha*Math.exp(r1*t)+beta*Math.exp(r2*t);
+  } else if (trh*trh<det) {
+    w=Math.sqrt(det-trh*trh);
+    alpha=y0;
+    beta=(c*x0+(trh-a)*y0)/w;
+    return Math.exp(trh*t)*(alpha*Math.cos(w*t)+beta*Math.sin(w*t));
+  } else {
+    alpha=y0;
+    beta=c*x0+(trh-a)*y0;
+    return Math.exp(trh*t)*(beta*t+alpha);
+  }
+}
+
+function parseinput() {
+  var an=parseFloat(document.eqn.a.value);
+  var bn=parseFloat(document.eqn.b.value);
+  var cn=parseFloat(document.eqn.c.value);
+  var dn=parseFloat(document.eqn.d.value);
+  x0=parseFloat(document.eqn.x0.value);
+  y0=parseFloat(document.eqn.y0.value);
+  if (isNaN(an)) {
+    document.getElementById('emsg').innerHTML=
+       'Can\'t interpret coefficient of x in first equation';
+    return false;
+  } else if (isNaN(bn)) {
+    document.getElementById('emsg').innerHTML=
+       'Can\'t interpret coefficient of y in first equation';
+    return false;
+  } else if (isNaN(cn)) {
+    document.getElementById('emsg').innerHTML=
+       'Can\'t interpret coefficient of x in second equation';
+    return false;
+  } else if (isNaN(dn)) {
+    document.getElementById('emsg').innerHTML=
+       'Can\'t interpret coefficient of y in second equation';
+    return false;
+  } else if (isNaN(x0)) {
+    document.getElementById('emsg').innerHTML=
+                                   'Can\'t interpret x(0)';
+    return false;
+  } else if (isNaN(y0)) {
+    document.getElementById('emsg').innerHTML=
+                                   'Can\'t interpret y(0)';
+    return false;
+  } else {
+    document.getElementById('emsg').innerHTML='';
+  }
+  syschg=false;
+  if (a!=an || b!=bn || c!=cn || d!=dn) {
+    syschg=true;
+    a=an;
+    b=bn;
+    c=cn;
+    d=dn;
+    trh=(a+d)/2;
+    det=a*d-b*c;
+    abm=Math.sqrt(a*a+b*b);
+    cdm=Math.sqrt(c*c+d*d);
+  }  
+  return true;
+}
+
+function makeparmcrv() {
+  var i=0;
+  var x=x0;
+  var y=y0;
+  var sdist=x0*x0+y0*y0;
+  var xpts=[x0];
+  var ypts=[y0];
+  while (i++<1000 && (x*x+y*y)<2500 && (x*x+y*y)>.000001*sdist) {
+    xpts.push(xcoord(i/20.0));
+    ypts.push(ycoord(i/20.0));
+  }
+  return [xpts,ypts];
+}   
+
+var brd = JXG.JSXGraph.initBoard('box', 
+  {originX: 250, originY: 250, unitX: 50, unitY: 50, axis:true});
+
+/*
+var resp=brd.create('curve', 
+[function(x) {return xcoord(x);},function(x) {return ycoord(x);},0,20],
+{highlightStrokeColor:'purple',highlightStrokeOpacity:1, strokeWidth:2});
+*/
+
+intcurves.push(brd.create('curve',makeparmcrv(),
+{highlightStrokeColor:'purple',highlightStrokeOpacity:1, strokeWidth:2}));
+
+var xpiz=brd.create('line',[0,function() {return a;}
+                             ,function() {return b;}],
+                           {strokeColor:'red'});
+
+function signum(x) {
+  if (x>0) {
+    return 1;
+  } else if (x<0) {
+    return -1;
+  } else {
+    return 0;
+  }
+}
+
+var xab1=brd.create('point',
+             [function() {return -b/abm;},function() {return a/abm;}],
+             {visible:false});
+var xat1=brd.create('point',[function() {return -b/abm;},
+                             function() {return a/abm+0.5*signum(det);}],
+                            {visible:false});
+var xa1=brd.create('arrow',[xab1,xat1],
+                   {strokeWidth:1,strokeColor:'red',
+                    highlightStrokeColor:'red'});
+
+var xab2=brd.create('point',
+             [function() {return -3*b/abm;},function() {return 3*a/abm;}],
+             {visible:false});
+var xat2=brd.create('point',[function() {return -3*b/abm;},
+                             function() {return 3*a/abm+0.5*signum(det);}],
+                            {visible:false});
+var xa2=brd.create('arrow',[xab2,xat2],
+                   {strokeWidth:1,strokeColor:'red',
+                    highlightStrokeColor:'red'});
+
+var xab3=brd.create('point',
+             [function() {return -5*b/abm;},function() {return 5*a/abm;}],
+             {visible:false});
+var xat3=brd.create('point',[function() {return -5*b/abm;},
+                             function() {return 5*a/abm+0.5*signum(det);}],
+                            {visible:false});
+var xa3=brd.create('arrow',[xab3,xat3],
+                   {strokeWidth:1,strokeColor:'red',
+                    highlightStrokeColor:'red'});
+
+var xab4=brd.create('point',
+             [function() {return b/abm;},function() {return -a/abm;}],
+             {visible:false});
+var xat4=brd.create('point',[function() {return b/abm;},
+                             function() {return -a/abm-0.5*signum(det);}],
+                            {visible:false});
+var xa4=brd.create('arrow',[xab4,xat4],
+                   {strokeWidth:1,strokeColor:'red',
+                    highlightStrokeColor:'red'});
+
+var xab5=brd.create('point',
+             [function() {return 3*b/abm;},function() {return -3*a/abm;}],
+             {visible:false});
+var xat5=brd.create('point',[function() {return 3*b/abm;},
+                             function() {return -3*a/abm-0.5*signum(det);}],
+                            {visible:false});
+var xa5=brd.create('arrow',[xab5,xat5],
+                   {strokeWidth:1,strokeColor:'red',
+                    highlightStrokeColor:'red'});
+
+var xab6=brd.create('point',
+             [function() {return 5*b/abm;},function() {return -5*a/abm;}],
+             {visible:false});
+var xat6=brd.create('point',[function() {return 5*b/abm;},
+                             function() {return -5*a/abm-0.5*signum(det);}],
+                            {visible:false});
+var xa6=brd.create('arrow',[xab6,xat6],
+                   {strokeWidth:1,strokeColor:'red',
+                    highlightStrokeColor:'red'});
+
+var ypiz=brd.create('line',[0,function() {return c;}
+                             ,function() {return d;}],
+                           {strokeColor:'green'});
+
+var yab=[];
+var yat=[];
+var ya=[];
+
+var yab1=brd.create('point',
+             [function() {return d/cdm;},function() {return -c/cdm;}],
+             {visible:false});
+var yat1=brd.create('point',[function() {return d/cdm+0.5*signum(det);},
+                             function() {return -c/cdm;}],
+                            {visible:false});
+var ya1=brd.create('arrow',[yab1,yat1],
+                   {strokeWidth:1,strokeColor:'green',
+                    highlightStrokeColor:'green'});
+
+var yab2=brd.create('point',
+             [function() {return 3*d/cdm;},function() {return -3*c/cdm;}],
+             {visible:false});
+var yat2=brd.create('point',[function() {return 3*d/cdm+0.5*signum(det);},
+                             function() {return -3*c/cdm;}],
+                            {visible:false});
+var ya2=brd.create('arrow',[yab2,yat2],
+                   {strokeWidth:1,strokeColor:'green',
+                    highlightStrokeColor:'green'});
+
+var yab3=brd.create('point',
+             [function() {return 5*d/cdm;},function() {return -5*c/cdm;}],
+             {visible:false});
+var yat3=brd.create('point',[function() {return 5*d/cdm+0.5*signum(det);},
+                             function() {return -5*c/cdm;}],
+                            {visible:false});
+var ya3=brd.create('arrow',[yab3,yat3],
+                   {strokeWidth:1,strokeColor:'green',
+                    highlightStrokeColor:'green'});
+
+var yab4=brd.create('point',
+             [function() {return -d/cdm;},function() {return c/cdm;}],
+             {visible:false});
+var yat4=brd.create('point',[function() {return -d/cdm-0.5*signum(det);},
+                             function() {return c/cdm;}],
+                            {visible:false});
+var ya4=brd.create('arrow',[yab4,yat4],
+                   {strokeWidth:1,strokeColor:'green',
+                    highlightStrokeColor:'green'});
+
+var yab5=brd.create('point',
+             [function() {return -3*d/cdm;},function() {return 3*c/cdm;}],
+             {visible:false});
+var yat5=brd.create('point',[function() {return -3*d/cdm-0.5*signum(det);},
+                             function() {return 3*c/cdm;}],
+                            {visible:false});
+var ya5=brd.create('arrow',[yab5,yat5],
+                   {strokeWidth:1,strokeColor:'green',
+                    highlightStrokeColor:'green'});
+
+var yab6=brd.create('point',
+             [function() {return -5*d/cdm;},function() {return 5*c/cdm;}],
+             {visible:false});
+var yat6=brd.create('point',[function() {return -5*d/cdm-0.5*signum(det);},
+                             function() {return 5*c/cdm;}],
+                            {visible:false});
+var ya6=brd.create('arrow',[yab6,yat6],
+                   {strokeWidth:1,strokeColor:'green',
+                    highlightStrokeColor:'green'});
+
+
+</script> 
+
+</center>
+<p />
+&nbsp;
+<p />
+</body> 
+</html>
+

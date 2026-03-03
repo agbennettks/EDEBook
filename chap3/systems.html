@@ -1,0 +1,141 @@
+<head>
+<title>EDE Chapter 3: Laplace Transforms</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Systems of Equations</h3>
+</center>
+<h4>Discussion</h4>
+
+The final topic for the chapter is systems of equations. For 
+example, suppose $x(t)$ and $y(t)$ are both functions of $t$ and satisfy 
+the system of equations
+$$ \eqalign {
+\frac{dx}{dt}&=3x+5y \cr
+\frac{dy}{dt}&=3x+y \cr}
+\qquad
+\eqalign {
+x(0)&=1  \cr
+y(0)&=2. \cr}
+$$
+
+Systems such as this can be solved using Laplace transforms with the same
+three step process we always use.
+
+<h4>Paradigm</h4>
+$$ \eqalign {
+\frac{dx}{dt}&=3x+5y \cr
+\frac{dy}{dt}&=3x+y \cr}
+\qquad
+\eqalign {
+x(0)&=1  \cr
+y(0)&=2. \cr}
+$$
+<i>Step 1:</i> Take the Laplace transform of both sides. 
+<p />
+The only trick 
+here is that both equations need to be transformed.
+$$ \eqalign {
+s{\mathcal L}\{x\}-1&=3{\mathcal L}\{x\}+5{\mathcal L}\{y\} \cr
+s{\mathcal L}\{y\}-2&=3{\mathcal L}\{x\}+{\mathcal L}\{y\} \cr}
+$$
+<i>Step 2:</i> Solve for ${\mathcal L}\{x\}$ and ${\mathcal L}\{y\}$. 
+<p />
+Here we have to solve two 
+equations in two unknowns instead of just one equation in one unknown, so 
+the algebra is messier. First we collect the unknowns ${\mathcal L}\{x\}$ and ${\mathcal L}\{y\}$ on 
+the same side of the equation.
+$$ \eqalign {
+(s-3){\mathcal L}\{x\}-5{\mathcal L}\{y\}&=1 \cr
+-3{\mathcal L}\{x\}+(s-1){\mathcal L}\{y\}&=2 \cr}
+$$
+Next we multiply the top equation by $3$ and the bottom equation by 
+$s-3$ so the two ${\mathcal L}\{x\}$ terms will have the same coefficients.
+$$ \eqalign {
+3(s-3){\mathcal L}\{x\}-15{\mathcal L}\{y\}&=3 \cr
+-3(s-3){\mathcal L}\{x\}+(s-3)(s-1){\mathcal L}\{y\}&=2(s-3) \cr }
+$$
+Now we add the equations to get the ${\mathcal L}\{x\}$ term to drop out.
+$$[(s-3)(s-1)-15]{\mathcal L}\{y\}=2(s-3)+3$$
+Then we solve for ${\mathcal L}\{y\}$.
+$${\mathcal L}\{y\}=\frac{2s-3}{s^2-4s-12}$$
+Now we plug our formula for ${\mathcal L}\{y\}$ back into our first equation.
+$$(s-3){\mathcal L}\{x\}-5\frac{2s-3}{s^2-4s-12}=1$$
+Then we solve for ${\mathcal L}\{x\}$.
+$$ \eqalign {
+(s-3){\mathcal L}\{x\}&=1+5\frac{2s-3}{s^2-4s-12} \cr
+{\mathcal L}\{x\}&=\frac{1}{s-3}+5\frac{2s-3}{(s-3)(s^2-4s-12)} \cr
+{\mathcal L}\{x\}&=\frac{(s^2-4s-12)+(10s-15)}{(s-3)(s^2-4s-12)} \cr
+{\mathcal L}\{x\}&=\frac{s^2+6s-27}{(s-3)(s^2-4s-12)} \cr
+{\mathcal L}\{x\}&=\frac{(s+9)(s-3)}{(s-3)(s-6)(s+2)} \cr
+{\mathcal L}\{x\}&=\frac{s+9}{(s-6)(s+2)} }
+$$
+
+<i>Step 3:</i> Take inverse Laplace transforms to find $x(t)$ and $y(t)$.
+<p />
+At this stage we have separate formulas for ${\mathcal L}\{x\}$ and ${\mathcal L}\{y\}$ and we can 
+compute the inverse Laplace transforms separately. We start with ${\mathcal L}\{x\}$.
+$$\eqalign {
+\frac{s+9}{(s-6)(s+2)}&=\frac{A}{s-6}+\frac{B}{s+2}  \cr
+s+9&=A(s+2)+B(s-6) \cr
+s+9&=(A+B)s+(2A-6B) \cr }
+$$
+This gives us two equations in two unknowns
+$$ \leqalignno {
+1&=A+B&(s) \cr
+9&=2A-6B&(1) \cr}
+$$
+which we solve to find $A=15/8$ and $B=-7/8$. So
+$$\eqalign {
+x(t)&={\mathcal L}^{-1}\{\frac{15/8}{s-6}-\frac{7/8}{s+2}\} \cr
+&=\frac{15}{8}e^{6t}-\frac{7}{8}e^{-2t} \cr }
+$$
+Next we find $y(t)$.
+$$ \eqalign {
+\frac{2s-3}{s^2-4s-12}&=\frac{A}{s-6}+\frac{B}{s+2} \cr
+2s-3&=A(s+2)+B(s-6) \cr
+2s-3&=(A+B)s+(2A-6B) \cr }
+$$
+This gives us two equations in two unknowns
+$$ \leqalignno {
+2&=A+B&(s) \cr
+-3&=2A-6B&(1) \cr}
+$$
+which we solve to find $A=9/8$ and $B=7/8$. So
+$$\eqalign {
+y(t)&={\mathcal L}^{-1}\{\frac{9/8}{s-6}+\frac{7/8}{s+2}\} \cr
+&=\frac{9}{8}e^{6t}+\frac{7}{8}e^{-2t} \cr }
+$$ 
+
+There, that wasn't so bad was it? The only trick 
+is that the algebra is a little messier. It is also possible to solve 
+systems like these without Laplace transforms, but the usual techniques 
+for doing so require more matrix theory than is included in the 
+prerequisites for this class.
+<p />
+
+<h4>Randomly Generated Examples</h4>
+A randomly generated example problem is given below. As always, once you submit an answer, 
+you will have a link to see the detailed solution for the problem, as well as the option 
+to generate a new problem and you can just quickly enter "dummy" answers like $t$
+to quickly get to the detailed solution if that is all you want to see.
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1440267" width="100%" height="500" style="border: none;"></iframe>
+<p />
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+
+

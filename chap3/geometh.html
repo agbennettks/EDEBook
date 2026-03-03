@@ -1,0 +1,121 @@
+<head>
+<title>EDE Chapter 3: Laplace Transforms</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Geometric Methods for 2 Dimensional Systems</h3>
+</center>
+
+<h4>Discussion</h4>
+The analytic techniques discussed previously work well for determining 
+behavior near an equilibrium. But in many cases you want to know how a 
+system behaves more generally. In such circumstances geometric and 
+numerical techniques may add useful information. In this section we will 
+deal 
+with geometric techniques applied to autonomous systems in two dimensions. 
+Techniques such as these get much more complicated in higher dimensions.
+<p />
+<h4>Paradigm</h4>
+We will sketch some solutions of the system
+$$ \begin{align}
+\frac{dx}{dt}&=y-x^3 \\
+\frac{dy}{dt}&=x^2+y^2-2
+\end{align} $$
+<i>Step 1:</i> Sketch the curves $x'=0$ and $y'=0.$ 
+<p />In this case, these 
+are the curves $y-x^3=0$ for $x'=0$ (sketched in blue) and $x^2+y^2-2=0$ 
+for $y'=0$ (sketched in red). 
+<center>
+<img align=center src=geometh1.png width=492 height=439>
+</center>
+<p />
+<i>Step 2:</i> Draw horizontal arrows showing where $x' &gt; 0$ and where 
+$x' &lt; 0.$ These will be on opposite sides of the curve $x'=0.$ 
+<p />
+In this 
+case, we have $x'=y-x^3$ which is 0 along the curve $y=x^3.$ Above this 
+curve, $y$ has increased and so $x'=y-x^3&gt; 0.$ Therefore we draw the 
+arrows pointing toward increasing $x$ in the region above the curve. Below 
+the curve $y$ is decreased so $x' &lt; 0$ and the arrows go to the left. 
+If you have trouble recognizing whether the values should be positive or 
+negative, you can always check values at a representative point. For 
+example, the point $(0,1)$ lies above the curve $y=x^3.$ And at $(0,1)$ 
+$x'=1-0^3=1 &gt; 0.$ Since $x'$ can't change sign without crossing the 
+value 0, that means $x' &gt; 0$ at all points above $y=x^3.$ Similarly you 
+can check the value of $x'$ at $(0,-1)$ to see $x' &lt; 0$ below the 
+curve.
+<center>
+<img align=center src=geometh2.png width=552 height=463>
+</center>
+<p />
+<i>Step 3:</i> Draw vertical arrows showing where $y' &gt; 0$ and where 
+$y' &lt; 0.$ As above, these will be on opposite sides of the curve 
+$y'=0.$
+<p />
+In this case, we have $y'=x^2+y^2-2$ which is 0 along the circle 
+$x^2+y^2=2.$ Outside this 
+circle, $x^2+y^2$ has increased and so $y'=x^2+y^2-2&gt; 0.$ Therefore we 
+draw the 
+arrows pointing up toward increasing $y$ in the region outside the circle. 
+Inside the circle
+$x^2+y^2$ is decreased so $y' &lt; 0$ and the arrows go down. As before, 
+you can check values at a representative point if you prefer. For 
+example, the point $(0,0)$ lies inside the circle. And at $(0,0)$ 
+$y'=0^2+0^2-2=-2 &lt; 0.$ Since $y'$ can't change sign without crossing 
+the 
+value 0, that means $y' &lt; 0$ at all points inside the circle. Similarly 
+you 
+can check the value of $x'$ at $(2,2)$ to see $y' &gt; 0$ outside the 
+circle.
+<center>
+<img align=center src=geometh3.png width=550 height=437>
+</center>
+<p />
+<i>Step 4:</i> Identify the behavior around each equilibrium point.
+Do this using the analytical techniques we have used previously.   
+<p />
+The equilibrium points occur where the red and blue curves cross, at 
+$(1,1)$ and $(-1,-1)$ in this case. Using the techniques of the previous 
+section we classify $(1,1)$ as a saddle point while curves will spiral in 
+to $(-1,-1).$
+<p />
+<i>Step 5:</i> Sketch solution curves by following the arrows.
+<p />
+So if we start at a point outside the circle and below the curve $y=x^3$ 
+then the solution will move northwesterly (with $x$ decreasing since below 
+the curve and $y$ increasing since outside the circle). The solution will 
+continue to move northwesterly until it crosses either $x'=0$ or $y'=0.$ 
+So looking at the curve that starts outside the circle and just above the 
+x-axis we see it goes up until it crosses into the circle. At that point 
+it starts moving southwest as now $y' &lt; 0.$ The curve then moves down 
+toward $(-1,-1)$ and then spirals into that equilibrium. This curve and 
+others are sketched below.
+<center> 
+<img align=center src=geometh4.png width=517 height=534>
+</center>
+<p />
+Note that you can tell from the arrows that the solutions will spin around 
+$(-1,-1).$ However, it is not always possible to decide whether the 
+solution curves are spiraling in or out from the arrows alone, hence the 
+inclusion of step 4. Also note that as you can see from the sketch, some 
+solutions will spin into $(-1,-1)$ while others will be swept away to 
+$(\infty,\infty),$ with the split depending on how the curves split across 
+the saddle point at $(1,1).$ Obviously it is of interest to find the line 
+that separates initial values that go to $(-1,-1)$ and those that go to 
+$(\infty,\infty).$ Finding this line is a delicate question that we won't 
+go into in this class.  
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

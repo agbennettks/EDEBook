@@ -1,0 +1,212 @@
+<head>
+<title>EDE Chapter 3: Laplace Transforms</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Non-Linear Systems</h3>
+</center>
+
+<h4>Discussion</h4>
+Laplace transform techniques work well for constant-coefficient linear 
+systems. However, many situations in practice have non-linear systems. We 
+can approximate the answers numerically using the techniques of chapter 2. 
+After all, in that chapter we first converted a second-order equation to a 
+first-order system and then applied the numerical methods to the system. 
+Those techniques work for any first-order system, whether it comes from a 
+higher-order equation or starts life as a system naturally. But if you 
+want to know the range of behaviors a system can manifest, just finding 
+numerical approximations, even for a variety of starting points, may not 
+be enough. In this section we will discuss two techniques for determining 
+long-term behavior of solutions to non-linear systems. We will stick to 
+autonomous systems since those are the simpler (and more common) variety 
+of non-linear systems. 
+<p />
+<h4>Equilibria</h4>
+For first-order autonomous equations we could quickly deduce long-term 
+behavior from geometric principles. The solutions converge to (stable) 
+equilibria or head off to $\pm\infty$ (or stay precariously at an unstable 
+equilibrium when given exactly the right initial condition). We can develop 
+a similar set of rules for first-order systems. The first step of course 
+is to find the equilibria. And we do this just the way we do with first 
+order equations, we ask where the derivatives are 0. 
+<p />
+<i>Definition:</i>
+Given the autonomous 
+system
+$$ \begin{align}
+\frac{dx}{dt}&=f(x,y) \\
+\frac{dy}{dt}&=g(x,y)
+\end{align} $$
+the equilibria are points $(x_0,y_0)$ such that 
+$f(x_0,y_0)=0$ and $g(x_0,y_0)=0$.
+<p />
+<i>Theorem:</i> 
+If $(x_0,y_0)$ is an equilibrium point for the autonomous 
+system
+$$ \begin{align}
+\frac{dx}{dt}&=f(x,y) \\
+\frac{dy}{dt}&=g(x,y)
+\end{align} $$
+then $x(t)=x_0$, $y(t)=y_0$ is a solution of the system.
+<p />
+<i>Proof:</i> This follows immediately from 
+$\displaystyle\frac{dx}{dt}=f(x(t),y(t))=f(x_0,y_0)=0$ and the 
+similar calculation that $\displaystyle\frac{dy}{dt}=0$.
+<p />
+Conversely, any constant solution must be an equilibrium. Of course, now
+that we've found these equilibria we want to decide if solution curves 
+head toward them or away from them. Actually, while those were the two 
+possibilities for first-order equations, we have additional possibilities 
+for systems. In a first-order equation we are moving in just one 
+dimension. With systems we can move in more than one dimension, and that 
+allows for some new sorts of curves.
+<p />
+<h4>Linearization</h4>
+In the studio on systems you will discover rules for how solutions to 
+first-order linear systems behave about equilibria. Those same rules 
+(almost) apply to non-linear systems. The key is to "linearize" the 
+non-linear system so you can apply the rules. For the system
+$$ \begin{align}
+\frac{dx}{dt}&=f(x,y) \\
+\frac{dy}{dt}&=g(x,y)
+\end{align} $$
+with an equilibrium point at $(x_0,y_0)$, we do this by 
+replacing $f(x,y)$ by its tangent-plane approximation about 
+$(x_0,y_0)$ and similarly replacing $g(x,y)$ by its 
+tangent-plane approximation about $(x_0,y_0)$. Then we have  
+<p />
+<i>Theorem:</i> If a non-linear system has an equilibrium point at 
+$(x_0,y_0)$ and the linearized system at that equilibrium point has 
+<ul>
+<li>solutions that diverge straight out away from the origin</li>
+<li>solutions that converge directly to the origin (possibly 
+with a twist)</li>
+<li> a saddle point at the origin where solutions converge in 
+one direction and diverge away in a different direction</li>
+<li>solutions that spiral away from the origin</li>
+<li>solutions that spiral in toward the origin</li>
+</ul>
+then the solutions to the non-linear system will have the same character 
+in some neighborhood of the equilibrium point. 
+<p />
+We won't give a careful proof of this theorem, but the basic idea is the 
+following. As long as you stay sufficiently close to the equilibrium point 
+$(x_0,y_0)$, the tangent-plane approximations will be close enough to the 
+non-linear functions $f(x,y)$ and $g(x,y)$ that the solutions will behave 
+similarly. One key point to note is that the theorem above covers 5 
+different sorts of behavior. In studio we had a 6<sup>th</sup> possible 
+behavior, that the solutions spin around the origin along ellipses, 
+neither converging toward the origin nor diverging away from it. 
+Unfortunately, if the linearized system has this behavior, we are unable 
+to conclude what the non-linear system does. 
+The small 
+differences between the non-linear system and the linearized system could 
+easily be enough to move the solutions off the perfect ellipses so they 
+don't 
+return perfectly to the same point each cycle.
+The non-linear system will 
+certainly spin around the origin but it might spiral in, spiral out, or 
+keep its distance. When we encounter this case, we will need a more 
+detailed analysis.
+<p />
+With this theorem we are now ready for a paradigm.
+<p />
+<h4>Paradigm</h4>
+Find and classify the equilibria for the autonomous system 
+$$ \begin{align}
+\frac{dx}{dt}&=4x-2xy \\
+\frac{dy}{dt}&=xy-3y
+\end{align} $$
+<i>Step 1:</i> Find the equilibria by solving the simultaneous equations
+$$ \begin{align}
+4x-2xy&=0 \\
+xy-3y&=0
+\end{align} $$
+This gives us the two equilibria $(0,0)$ and $(3,2)$.
+<p />
+<i>Step 2:</i> For each equilibrium point, find the linearized system near 
+that point.
+<p />
+The tangent-plane approximation to any function $f(x,y)$ near a point
+$(x_0,y_0)$ is given by
+$$
+f(x,y) \approx f(x_0,y_0) 
++ \frac{\partial f}{\partial x}(x_0,y_0)\times(x-x_0)
++ \frac{\partial f}{\partial y}(x_0,y_0)\times(y-y_0)
+$$
+So about the point $(0,0)$ the tangent-plane approximations are
+$$ \begin{align}
+4x-2xy &\approx 0 + \left.(4-2y)\right|_{(x,y)=(0,0)}\times(x-0) 
++ \left.(-2x)\right|_{(x,y)=(0,0)}\times(y-0) \\
+&=4x \\
+xy-3y &\approx 0 + \left.(y)\right|_{(x,y)=(0,0)}\times(x-0) 
++ \left.(x-3)\right|_{(x,y)=(0,0)}\times(y-0) \\
+&=-3y  
+\end{align} $$
+so near $(0,0)$ our linearized system becomes
+$$ \begin{align}
+\frac{dx}{dt}&=4x \\
+\frac{dy}{dt}&=-3y
+\end{align} $$
+Repeating this for $(3,2)$ we get
+$$ \begin{align}
+4x-2xy &\approx 0 + \left.(4-2y)\right|_{(x,y)=(3,2)}\times(x-0) 
++ \left.(-2x)\right|_{(x,y)=(3,2)}\times(y-0) \\
+&=-6y \\
+xy-3y &\approx 0 + \left.(y)\right|_{(x,y)=(3,2)}\times(x-0) 
++ \left.(x-3)\right|_{(x,y)=(3,2)}\times(y-0) \\
+&=2x  
+\end{align} $$
+and near $(3,2)$ our linearized system becomes
+$$ \begin{align}
+\frac{dx}{dt}&=-6y \\
+\frac{dy}{dt}&=2x
+\end{align} $$
+<i>Step 3:</i> Compute the trace and determinant and classify each 
+critical point according to the rules developed in studio.
+<p />
+Near $(0,0)$ our linearized system is 
+$$ \begin{align}
+\frac{dx}{dt}&=4x \\
+\frac{dy}{dt}&=-3y
+\end{align} $$
+which has trace 1 and determinant -12, and so forms a saddle point. By our 
+theorem above, that means $(0,0)$ is a saddle-point for the original 
+non-linear system.
+<p />
+Near $(3,2)$ our linearized system is
+$$ \begin{align}
+\frac{dx}{dt}&=-6y \\
+\frac{dy}{dt}&=2x
+\end{align} $$
+which has trace 0 and determinant 12, and so the solutions to the 
+linearized system spin around the origin on ellipses, neither converging 
+toward the origin nor diverging away from it. But now we run into a 
+problem. This is the one case where we can't conclude what the behavior of 
+the non-linear system is from the linearized system. So we list $(3,2)$  
+as "unable to classify." 
+<p />This has just given a taste of this subject. As we move to higher 
+dimensions, even more  
+issues arise. The general study of the behavior of non-linear systems 
+leads to chaos theory, a complex and beautiful subject even in two 
+dimensions. By the way, for 
+the particular paradigm problem given above, the solutions spin 
+around the equilibrium 
+at $(3,2)$ neither spiraling in nor out (though moving on more 
+complicated curves than ellipses). The key to showing this is a trick that 
+is in the written homework. 
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

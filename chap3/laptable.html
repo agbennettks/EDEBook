@@ -1,0 +1,69 @@
+<head>
+<title>EDE Chapter 3: Laplace Transforms</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Laplace Transform Table</h3>
+<p />
+<table cellpadding=3 cellspacing=3>
+<tr>
+<th align=left>$f(t)={\mathcal L}^{-1}\{F(s)\}$</th>
+<th>&nbsp;&nbsp;&nbsp;</th>
+<th align=left>$F(s)={\mathcal L}\{f(t)\}$</th>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr><td>$1$</td><td></td><td>$\displaystyle\frac 1s$</td></tr>
+<tr><td>$t^n$, $n$ a positive integer </td><td></td>
+<td>$\displaystyle\frac{n!}{s^{n+1}}$ </td></tr>
+<tr><td>$t^a$, $a>-1$ </td><td></td>
+<td>$\displaystyle\frac{\Gamma(a+1)}{s^{a+1}}$ </td></tr>
+<tr><td>$e^{at}$ </td><td></td><td> $\displaystyle\frac{1}{s-a}$ 
+</td></tr>
+<tr><td>$t^ne^{at}$, $n$ a positive integer </td><td></td>
+<td> $\displaystyle\frac{n!}{(s-a)^{n+1}}$ </td></tr>
+<tr><td>$\sin(at)$ </td><td></td><td> $\displaystyle\frac{a}{s^2+a^2}$ 
+</td></tr>
+<tr><td>$\cos(at)$ </td><td></td><td> $\displaystyle\frac{s}{s^2+a^2}$ 
+</td></tr>
+<tr><td>$t\sin(at)$ </td><td></td>
+<td> $\displaystyle\frac{2as}{(s^2+a^2)^2}$ </td></tr>
+<tr><td>$t\cos(at)$ </td><td></td>
+<td>$\displaystyle\frac{s^2-a^2}{(s^2+a^2)^2}$</td></tr>
+<tr><td>$e^{at}\sin(bt)$ </td><td></td>
+<td> $\displaystyle\frac{b}{(s-a)^2+b^2}$ </td></tr>
+<tr><td>$e^{at}\cos(bt)$ </td><td></td>
+<td>$\displaystyle\frac{s-a}{(s-a)^2+b^2}$ </td></tr>
+<tr><td>$te^{at}\sin(bt)$ </td><td></td>
+<td>$\displaystyle\frac{2(s-a)b}{((s-a)^2+b^2)^2}$ </td></tr>
+<tr><td>$te^{at}\cos(bt)$ </td><td></td><td> 
+$\displaystyle\frac{(s-a)^2-b^2}{((s-a)^2+b^2)^2}$ 
+<tr><td>$\delta(t-c)$ </td><td></td><td> $e^{-cs}$ </td></tr>
+<tr><td>$u(t-c)f(t-c)$ </td><td></td><td> $e^{-cs}{\mathcal L}\{f(t)\}$ 
+</td></tr>
+<tr><td>$f'(t)$ </td><td></td><td> $s{\mathcal L}\{f(t)\}-f(0)$ </td></tr>
+
+<tr><td>$f^{(n)}(t)$ </td><td></td>
+<td> $s^n{\mathcal L}\{f(t)\}-s^{n-1}f(0)-s^{n-2}f'(0)
+-\cdots-f^{(n-1)}(0)$</td></tr> 
+<tr><td>$\int_0^t f(T)\,dT$</td><td></td><td> $\displaystyle\frac{1}{s} 
+{\mathcal L}\{f(t)\}$</td></tr>
+<tr><td>$\int_0^t f(t-T)g(T)\,dT$ </td><td></td><td> ${\mathcal 
+L}\{f(t)\}{\mathcal L}\{g(t)\}$</td></tr>
+
+</table>
+</center>
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

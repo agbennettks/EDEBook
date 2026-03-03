@@ -1,0 +1,111 @@
+<head>
+<title>EDE Chapter 3: Laplace Transforms</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Convolutions</h3>
+</center>
+<h4>Discussion</h4>
+Since the Laplace transform is linear, the Laplace transform of a sum is the
+sum of the Laplace transforms. This is <i>not</i> true for products. To 
+study
+products of Laplace transforms, we introduce a generalized product called the
+convolution. The convolution of two functions $f$ and $g$ is denoted $f\star g$ and
+is defined to be
+$$f\star g(t)=\int_0^t f(t-T)g(T)\,dT$$
+For our purposes, the most important fact about convolutions is
+<p />
+<i>Theorem:</i>
+${\mathcal L}\{f\star g\} = {\mathcal L}\{f\}{\mathcal L}\{g\}$.
+<p />
+<i>Proof:</i>
+$$ \begin{align}
+{\mathcal L}\{f\star g\}&=\int_0^{\infty}f\star g(t)e^{-st}\,dt \\
+&=\int_0^{\infty}\biggl(\int_0^t f(t-T)g(T)\,dT\biggl)e^{-st}\,dt \\
+&=\int_0^{\infty}\biggl(\int_T^{\infty}f(t-T)e^{-st}\,dt\biggl)g(T)\,dT \\
+&=\int_0^{\infty}\biggl(\int_0^{\infty}f(u)e^{-s(u+T)}\,du\biggl)g(T)\,dT \\
+&=\int_0^{\infty}{\mathcal L}\{f\}(s)e^{-sT}g(T)\,dT \\
+&={\mathcal L}\{f\}(s)\int_0^{\infty}e^{-sT}g(T)\,dT \\
+&={\mathcal L}\{f\}{\mathcal L}\{g\}
+\end{align} $$ 
+ This will be very useful in
+finding integral
+representations for solutions of differential equations where the forcing
+function is either unknown or something unusual that isn't in our tables. It
+is possible to obtain integral representations of the solution in these cases
+by using variation of parameters, but Laplace transforms are easier to handle
+and usually lead to simpler integrals.
+<h4>Paradigm</h4>
+$$ \begin{align}
+x'' + x &= \sqrt t \\
+x(0)&=0 \\
+x'(0)&=0
+\end{align} $$
+We again use exactly the same techniques as in the two previous sections.
+<p />
+<i>Step 1:</i> Take the Laplace transform of both sides.
+$$ \eqalign {
+{\mathcal L}\{x'' + x\} &= s^2 {\mathcal L}\{x\} - sx(0) - x'(0)
++ {\mathcal L}\{x\} \cr
+&= (s^2 + 1){\mathcal L}\{x\} \cr
+{\mathcal L}\{\sqrt{t}\} &= \Gamma(3/2)/s^{3/2} \cr
+} $$
+So we have
+$$(s^2 + 1){\mathcal L}\{x\} = \Gamma(3/2)/s^{3/2} $$
+<i>Step 2:</i> Solve for ${\mathcal L}\{x\}$.
+$${\mathcal L}\{x\} = [\Gamma(3/2)/s^{3/2}]\times[1/(s^2 + 1)]$$
+<i>Step 3:</i> Take the inverse Laplace transform to find the solution.
+<p />
+At first glance there is nothing like this in the table.
+So we find the inverse Laplace transform in the form of a convolution.
+$$\begin{align}
+{\mathcal L}^{-1}  \{\Gamma(3/2)/s^{3/2}\}&=\sqrt{t} \\
+{\mathcal L}^{-1}  \{1/(s^2 +1)\} &= \sin(t)
+\end{align} $$
+So
+$$
+x(t) = \int_0^t\sqrt{t-T}\sin(T)\, dT
+$$
+Unfortunately, I can't evaluate this integral. But then from the very
+beginning we have run into problems where the best we could do was find
+an integral version for the solution.
+<p />
+EXAMPLE:
+  $$ \begin{align}
+x'' + 2x' + 5x &= f(t) \\
+x(0)=0\quad&\quad x'(0)=0
+\end{align} $$
+Step 1:
+$$ (s^2 + 2s + 5){\mathcal L}\{x\} = {\mathcal L}\{f\} $$
+Step 2:
+$$ {\mathcal L}\{x\} = {\mathcal L}\{f\}[1/(s^2 + 2s + 5)] $$
+Step 3:
+$1/(s^2 + 2s + 5) = 1/((s+1)^2 + 2^2)$ and
+$$
+{\mathcal L}^{-1} \{1/(s^2 + 2s + 5)\} = (1/2)e^{-t}\sin(2t)
+$$
+and
+$$
+x(t) = f(t)\star \left((1/2)e^{-t}\sin(2t)\right)
+$$
+If you compare this to the paradigm in the section on Impulse Functions, you'll see that we have the same equation here, 
+except that we have $f(t)$ on the right-hand side instead of $\delta(t)$. And our solution is $f(t)$ convolved with the solution
+we got when we used $\delta(t)$. This is another reason why we might want to solve a differential equation with a 
+Dirac delta function on the right-hand side. The solution when you have a $\delta(t)$ is called the "fundamental solution" 
+(though this terminology is more common when working with partial differential equations). Once you have the fundamental
+solution to a linear ordinary differential equation, you can find the solution for any right-hand side by convolution.
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

@@ -1,0 +1,232 @@
+<head>
+<title>EDE Chapter 3: Laplace Transforms</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Solving Differential Equations with Laplace Transforms</h3>
+</center>
+
+<h4>Discussion</h4>
+Now we know how to take the Laplace transform of a function and then
+undo it.  So what good is that? Well the importance of the Laplace
+transform lies in how it affects differentiation.
+<p />
+<i>Theorem</i> If $\lim_{t\to\infty}e^{-st}f(t)=0$, then ${\mathcal 
+L}\{f'(t)\}=s{\mathcal L}\{f(t)\}-f(0)$
+<p />
+<i>Proof</i>
+ $$ \begin{align}
+{\mathcal L}\{f'(t)\}&=\int_0^{\infty}f'(t)e^{-st}\,dt \\
+&=f(t)e^{-st}\biggl|_0^{\infty}+s\int_0^{\infty}f(t)e^{-st}\,dt \\
+&=-f(0)+s{\mathcal L}\{f(t)\},
+\end{align} $$
+where we have integrated by parts. 
+<p />
+Note that for $s$ sufficiently large, $e^{-st}\to0$ very quickly 
+as $t\to\infty$, so the hypothesis that $e^{-st}f(t)\to0$ as 
+$t\to\infty$ will usually hold. In this class, we won't worry about 
+assumptions on the growth of $f(t)$, but do remember they may be an 
+issue in later classes.
+<p />
+<i>Corollary</i>
+$$ \begin{align}
+{\mathcal L}\{f''(t)\}&=s^2{\mathcal L}\{f(t)\}-sf(0)-f'(0) \\
+{\mathcal L}\{f^{(n)}(t)\}&=s^n{\mathcal L}\{f(t)\}-s^{n-1}f(0)
+-s^{n-2}f'(0)-\cdots-f^{(n-1)}(0) 
+\end{align} $$
+<i>Proof</i> To prove the result for $f''(t)$ we apply the theorem twice.
+$$ \begin{align}
+{\mathcal L}\{f''(t)\}&={\mathcal L}\{(f')'(t)\} \\
+&=s{\mathcal L}\{f'(t)\}-f'(0) \\
+&=s\bigl(s{\mathcal L}\{f(t)\}-f(0)\bigl)-f'(0) \\
+&=s^2{\mathcal L}\{f(t)\}-sf(0)-f'(0)
+\end{align} $$
+The result for $f^{(n)}(t)$ is proven by applying the theorem $n$ times, or
+more properly by "induction" (if you have questions about proving things 
+by induction, stop by my office). 
+<p />
+So the Laplace transform converts differentiation into multiplication. Thus it
+converts differential equations into algebraic equations. But solving
+algebraic equations is easy.
+Consider the initial
+value problem
+$$ \begin{align}
+   x' &= x \\
+   x(0) &= 1
+\end{align} $$
+We take the Laplace transform of both sides of the equation to obtain
+$$   s{\mathcal L}\{x(t)\} - x(0) = {\mathcal L}\{x(t)\} $$
+We now use $x(0)=1$ and solve to find
+$$   {\mathcal L}\{x(t)\} = 1/(s-1) $$
+Finally, we look in the table to find that the function whose Laplace
+transform is $1/(s-1)$ is
+$$x(t)=e^t$$
+which is the solution.
+<p />
+ I mentioned earlier that the Laplace transform is
+only one of many transform techniques. The basic idea of all transform
+techniques is exactly what is happening here. You have some operator,
+differentiation in our case, that is difficult to work with. You find a
+transform that converts that operator into something easier to work with,
+multiplication in this case. You then solve the simplified problem and undo
+the transform. The last step is usually the tricky one.
+<p />
+<h4>Paradigm:</h4> Solve the initial value problem $y''+2y'+5y=0$,
+$y(0)=2$, $y'(0)=0$.
+<p />
+<i>STEP 1:</i> Take the Laplace transform of both sides.
+$$ \begin{align}
+{\mathcal L}\{y''+2y'+5y\}&={\mathcal L}\{y''\}+2{\mathcal L}\{y'\}+5{\mathcal L}\{y\} \\
+&=s^2{\mathcal L}\{y\}-sy(0)-y'(0)+2\bigl(s{\mathcal L}\{y\}-y(0)\bigl)+5{\mathcal L}\{y\}
+\\
+&=s^2{\mathcal L}\{y\}-2s+2(s{\mathcal L}\{y\}-2)+5{\mathcal L}\{y\} \\
+&=(s^2+2s+5){\mathcal L}\{y\}-2s-4 \\
+{\mathcal L}\{0\}&=0
+\end{align} $$
+So our equation becomes
+$$
+(s^2+2s+5){\mathcal L}\{y\}-2s-4=0
+$$
+
+<i>STEP 2:</i> Solve for ${\mathcal L}\{y\}$.
+$$
+{\mathcal L}\{y\}=\frac{2s+4}{s^2+2s+5}
+$$
+
+<i>STEP 3:</i> Take the inverse Laplace transform to find the solution.
+$$
+y={\mathcal L}^{-1}\left\{\frac{2s+4}{s^2+2s+5}\right\}
+$$
+Now the denominator is a quadratic which doesn't factor into linear terms
+(i.e. it has no real roots). So we complete the square to get
+$$
+\frac{2s+4}{s^2+2s+5}=\frac{2s+4}{(s+1)^2+2^2}
+$$
+Now in our table we find the following lines with a denominator similar to
+this
+$$ \begin{align}
+e^{at}\sin(bt)\qquad&\qquad\frac{b}{(s-a)^2+b^2} \\
+e^{at}\cos(bt)\qquad&\qquad\frac{s-a}{(s-a)^2+b^2}
+\end{align} $$
+If we let $a=-1$ and $b=2$ then we will get the denominator we are looking
+for. We now pick a multiple of $\displaystyle\frac{s+1}{(s+1)^2+2^2}$ with the right $s$
+term and then use a multiple of $\displaystyle\frac{2}{(s+1)^2+2^2}$ to get the right
+constant term.
+$$ \begin{align}
+\frac{2s+4}{(s+1)^2+2^2}&=\frac{2(s+1)+2}{(s+1)^2+2^2} \\
+&=2\frac{s+1}{(s+1)^2+2^2}+\frac{2}{(s+1)^2+2^2}
+\end{align} $$
+and so taking the inverse Laplace transform gives
+$$ \begin{align}
+y&={\mathcal L}^{-1}\left\{2\frac{s+1}{(s+1)^2+2^2}+\frac{2}{(s+1)^2+2^2}\right\} \\
+&=2{\mathcal L}^{-1}\left\{\frac{s+1}{(s+1)^2+2^2}\right\}
++{\mathcal L}^{-1}\left\{\frac{2}{(s+1)^2+2^2}\right\} \\
+&=2e^{-t}\cos(2t)+e^{-t}\sin(2t)
+\end{align} $$
+Usually when we solve initial value problems we find the general solution and
+then plug in the initial values to solve for the constants. When using Laplace
+transforms the initial values get plugged in right at step 1 and we get the
+unique solution to the initial value problem without having to find the
+general solution. Also note that while we have written $y$ as a function of
+$t$ in our solution, the name of the independent variable doesn't matter. If
+the problem had originally been posed with $y$ as a function of $x$ then the
+solution would be $y=2e^{-x}\cos(2x)+e^{-x}\sin(2x)$.
+<p />
+EXAMPLE 1: Solve the initial value problems $y''+4y'+4y=e^{-t}$, $y(0)=1$, $y'(0)=2$.
+<p />
+Step 1: $$ \begin{align}
+{\mathcal L}\{y''\}+4{\mathcal L}\{y'\}+4{\mathcal L}\{y\}&={\mathcal L}\{e^{-t}\} \\
+s^2{\mathcal L}\{y\}-s-2+4\bigl(s{\mathcal
+L}\{y\}-1\bigl)+4{\mathcal L}\{y\}&=\frac{1}{s+1}
+\\
+(s^2+4s+4){\mathcal L}\{y\}-s-6&=\frac{1}{s+1}
+\end{align} $$
+
+Step 2: $$ \begin{align} {\mathcal L}\{y\}&=\frac{1}{(s+1)(s^2+4s+4)}+
+\frac{s+6}{s^2+4s+4}  \\
+&= \frac{1+(s+1)(s+6)}{(s+1)(s+2)^2} \\
+&= \frac{s^2+7s+7}{(s+1)(s+2)^2}
+\end{align}$$
+
+Step 3: We will use partial fractions to evaluate the inverse Laplace transform. Because
+we have the $(s+2)^2$ term in the denominator, we will match coefficients.
+$$ \begin{align}
+\frac{s^2+7s+7}{(s+1)(s+2)^2}&\buildrel{\text{set}}\over{=}
+\frac{A}{s+1}+\frac{B}{s+2}+\frac{C}{(s+2)^2} \\
+s^2+7s+7&=A(s+2)^2+B(s+1)(s+2)+C(s+1) \\
+s^2+7s+7&=(A+B)s^2+(4A+3B+C)s+(4A+2B+C)
+\end{align} $$
+$$ \begin{align}
+1&=A+B \tag {$s^2$ term} \\
+7&=4A+3B+C \tag {$s$ term} \\
+7&=4A+2B+C \tag {constant term}
+\end{align} $$
+This has solution $A=1$, $B=0$, $C=3$. So
+$$ \begin{align}
+{\mathcal L}^{-1}\left\{\frac{1}{(s+1)(s+2)^2}\right\}
+&={\mathcal L}^{-1}\left\{\frac{1}{s+1}\right\} -
+{\mathcal L}^{-1}\left\{\frac{0}{s+2}\right\}
++{\mathcal L}^{-1}\left\{\frac{3}{(s+2)^2}\right\} \\
+&=e^{-t}+3te^{-2t}
+\end{align} $$
+
+If you have an initial value problem, using Laplace transforms instead of the techniques of chapter 2 means you solve
+one big algebra problem (the three equations in three unknowns) instead of several smaller algebra problems (finding
+the undetermined coefficients and solving for the initial values). In many circumstances, which you use is a matter 
+of taste. But there are problems where Laplace transforms are clearly simpler. 
+<p />
+EXAMPLE 2: Return of the mixing problem!<p />
+In chapter 1 we considered the following problem (Example 3 in the section on <a href='../chap1/linear.html'>Linear Equations</a>):
+<p />
+Suppose we have an ideal two tank CSTR (continuous stirred-tank reactor) in series. Fluid enters the first tank and then flows from the first tank to the second tank and then out the second tank (this is useful for example if you wish to have different conditions at different stages in a sequence of reactions). We suppose the tanks each hold 100 liters and the fluid is flowing at a rate of 2 liters/minute. Suppose a contaminant is introduced to the fluid prior to entering the first tank, at a concentration of 4 mg/liter. How long after the contaminant is first introduced will it take for the level of contamination in each tank to reach 2 mg/liter? (Note: since this is an "ideal" model, we assume perfect mixing and steady flow).
+<p />
+We showed this situation was described by the pair of differential equations
+$$\begin{align}
+\frac{dz_1}{dt}&=8-\frac{z_1}{50},\qquad z_1(0)=0 \\
+\frac{dz_2}{dt}&=\frac{z_1}{50}-\frac{z_2}{50}, \qquad z_2=0
+\end{align}$$
+where $z_1$ and $z_2$ are the amounts of contaminant in each tank in milligrams and $t$ is the time in minutes (you'll see why I used lower-case $z_1$ and $z_2$ instead of the upper-case letters used in chapter 1 in a moment). In chapter 1
+we solved this by first solving the top equation for $z_1$, plugging that into the bottom equation, and then solving the bottom equation for $z_2$. Now we'll see how to solve this with Laplace transforms. 
+<p />
+Step 1: Take the Laplace Transform of both sides. We let ${\mathcal L}\{z_1\}=Z_1$ and 
+${\mathcal L}\{z_2\}=Z_2$. Then we have
+$$\begin{align}
+sZ_1 - 0 &= \frac{8}{s} - \frac{Z_1}{50} \\
+sZ_2 - 0 &= \frac{Z_1}{50} - \frac{Z_2}{50}
+\end{align}$$
+Step 2: Solve for $Z_1$ and $Z_2$.
+$$\begin{align}
+Z_1 &= \frac{8}{s(s+1/50)} \\
+Z_2 &= \frac{Z_1}{50(s+1/50)} = \frac{8}{50s(s+1/50)^2}
+\end{align} $$
+Step 3: Take the inverse Laplace transform. Since we are just interested in $z_2$, we only have to invert the Laplace
+transform for $Z_2$.
+$$ \begin{align}
+z_2 &= {\mathcal L}^{-1}\left\{\frac{8/50}{s(s+1/50)^2}\right\} \\
+&= {\mathcal L}^{-1}\left\{\frac{400}{s} + \frac{-400}{s+1/50} + \frac{8}{(s+1/50)^2}\right\} \\
+&= 400 - 400e^{-t/50} - 8te^{-t/50}
+\end{align} $$
+We finish the same as we did in chapter 1 solving $z_2(t)=200$ numerically to find $t \approx 83.9 min$.
+<p />
+Comparing this approach to the approach in chapter 1 shows two main differences. One is that in chapter 1 we needed an integration by parts, where here we needed partial fractions. The more significant difference is that in chapter 1 we
+needed to solve for $z_1$, where here we just needed the Laplace transform of $z_1$. Since the hard part of using Laplace 
+transforms is taking the inverse Laplace transform at the end, being able to skip that for $z_1$ can be a substantial savings.
+That is particularly true when you have a system with more than two components. If we had a five tank system, solving five
+different equations with messy integrals at each step would be cumbersome. Replacing that with one partial fraction 
+calculations is preferable.
+<p />
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

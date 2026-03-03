@@ -1,0 +1,427 @@
+<html>
+<head> 
+<title>Chapter 3: Laplace Transforms</title>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+<script type="text/javascript" charset="UTF-8" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+
+<script>
+
+function clearpoles() {
+  for (var i=0;i<poles.length;i++) {
+    brd1.removeObject(poles[i]);
+  }  
+  for (var i=0;i<polepts.length;i++) {
+    brd1.removeObject(polepts[i]);
+  }  
+  poles=[];
+  polepts=[];
+}
+ 
+function drawpoles() {
+
+  var r,w0,r1,r2,const1,const2,x0,x1,forced;
+
+  if (f!=0 && w==0) {
+    if (k!=0) {
+      drawx(0,0);
+      x0=y0-a;
+      x1=y1;
+    } else if (c!=0) {
+      drawx(0,0,2);
+      x0=y0;
+      x1=y1-f/c;
+    } else {
+      drawx(0,0,3);
+      return;
+    }
+  } else if (f!=0 && c==0 && k==m*w*w) {
+    drawx(0,w,2);
+    drawx(0,-w,2);
+    return;
+  } else {    
+    x0=y0-a;
+    x1=y1-b*w;
+    if (f!=0) {
+      drawx(0,w);
+      drawx(0,-w);
+    }
+  }
+
+  if (m!=0) {
+    if (c*c>4*m*k) {
+      r1=(-c+Math.sqrt(c*c-4*m*k))/(2*m);
+      r2=(-c-Math.sqrt(c*c-4*m*k))/(2*m);
+      const1=(x0*r2-x1)/(r2-r1);
+      const2=(x1-r1*x0)/(r2-r1);
+      if (const1!=0) {
+        drawx(r1,0);
+      }
+      if (const2!=0) {
+        drawx(r2,0);
+      }
+      return;
+    }
+    if (c*c<4*m*k) {
+      r=-c/(2*m);
+      w0=Math.sqrt(k/m - c*c/(4*m*m));
+      const1=x0;
+      const2=(x1-r*x0)/w0;
+      if (const1!=0 || const2!=0) {
+        drawx(r,w0);
+        drawx(r,-w0);
+      }
+      return;
+    }
+    r=-c/(2*m);
+    const1=x0;
+    const2=x1-r*x0;
+    if (const2!=0) {
+      drawx(r,0,2);
+    } else if (const1!=0) {
+      drawx(r,0);
+    }
+    return;
+  }
+}
+
+function evalatx(x) {
+
+  var r,w0,r1,r2,const1,const2,x0,x1,forced;
+  
+  if (f!=0 && w==0) {
+    if (k!=0) {
+      forced=a;
+      x0=y0-a;
+      x1=y1;
+    } else {
+      forced=f*x*x/2+y0+y1*x;
+      x0=0;
+      x1=0;
+    }
+  } else if (f!=0 && c==0 && k==m*w*w) {
+    forced=b*x*Math.sin(w*x);
+    x0=y0;
+    x1=y1;
+  } else {    
+    x0=y0-a;
+    x1=y1-b*w;
+    forced=a*Math.cos(w*x)+b*Math.sin(w*x);
+  }
+
+
+  if (m!=0) {
+    if (c*c>4*m*k) {
+      r1=(-c+Math.sqrt(c*c-4*m*k))/(2*m);
+      r2=(-c-Math.sqrt(c*c-4*m*k))/(2*m);
+      const1=(x0*r2-x1)/(r2-r1);
+      const2=(x1-r1*x0)/(r2-r1);
+      return const1*Math.exp(r1*x)+const2*Math.exp(r2*x)+forced; 
+    }
+    if (c*c<4*m*k) {
+      r=-c/(2*m);
+      w0=Math.sqrt(k/m - c*c/(4*m*m));
+      const1=x0;
+      const2=(x1-r*x0)/w0;
+      return Math.exp(r*x)*(const1*Math.cos(w0*x)
+                           +const2*Math.sin(w0*x))+forced;
+    }
+    r=-c/(2*m);
+    const1=x0;
+    const2=x1-r*x0;
+    return Math.exp(r*x)*(const1+const2*x)+forced;
+  }
+}
+</script>
+</head>
+<body>
+<a href=../index.php>Table of Contents</a>
+<hr />
+<center>
+<h3><h3>Poles of the Laplace Transform<br>
+and Behavior of Solutions</h3>
+</h3>
+
+<form name="eqn" onsubmit='return redraw();'>
+<table>
+<tr>
+<td align="center"><input type="text" name="m" size="4" value="1"></td>
+<td align="center">x"&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="c" size=4 value="0"></td>
+<td align="center">x'&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="k" size=4 value="9"></td>
+<td align="center">x&nbsp;&nbsp;=&nbsp;&nbsp;</td>
+<td align="center"><input type="text" name="f" size=4 value="0"></td>
+<td align="center">cos(</td>
+<td align="left"><input type="text" name="w" size=4 value="1">&nbsp;t)</td>
+</tr>
+<tr>
+<td align="right">x(0)&nbsp;=&nbsp;</td>
+<td align="left"><input type="text" name="y0" size=4 value="4"></td>
+<td></td>
+<td align="right">x'(0)&nbsp;=&nbsp;</td>
+<td align=left><input type="text" name="y1" size=4 value="0"></td>
+<td></td>
+<td></td>
+<td></td>
+<td align=right><input type="submit" value="Update Graph"></td> 
+</tr>
+<tr>
+<td colspan=9 align='center'><span id='emsg' style="color:red"> 
+</span></td>
+</tr>
+</table>
+<p />
+</form>
+
+<table>
+<tr>
+<th>Laplace Transform Poles (s-plane)</th>
+<th>Solution Curve (x vs. t)</th>
+</tr>
+<tr>
+<td>
+<div id="box1" class="jxgbox" style="width:300px; height:300px;"></div>
+</td>
+<td>
+<div id="box2" class="jxgbox" style="width:300px; height:300px;"></div>
+</td>
+</tr>
+</table>
+<script type="text/javascript"> 
+
+var m=1;
+var c=0;
+var k=9;
+var y0=4;
+var y1=0;
+var f=0;
+var w=1;
+var a=0;
+var b=0;
+
+function redraw() {
+  if (parseinput()) {
+    brd2.update();
+    clearpoles();
+    drawpoles();
+  }
+  return false;
+}
+
+function parseinput() {
+  m=parseFloat(document.eqn.m.value);
+  c=parseFloat(document.eqn.c.value);
+  k=parseFloat(document.eqn.k.value);
+  y0=parseFloat(document.eqn.y0.value);
+  y1=parseFloat(document.eqn.y1.value);
+  f=parseFloat(document.eqn.f.value);
+  w=parseFloat(document.eqn.w.value);
+  if (isNaN(m)) {
+    document.getElementById('emsg').innerHTML=
+                                   'Can\'t interpret coefficient of x"';
+    return false;
+  } else if (m==0) {
+    document.getElementById('emsg').innerHTML=
+                                   'Coefficient of x" not allowed to be 0';
+    return false;
+  } else if (isNaN(c)) {
+    document.getElementById('emsg').innerHTML=
+                                   'Can\'t interpret coefficient of x\'';
+    return false;
+  } else if (isNaN(k)) {
+    document.getElementById('emsg').innerHTML=
+                                   'Can\'t interpret coefficient of x';
+    return false;
+  } else if (isNaN(y0)) {
+    document.getElementById('emsg').innerHTML=
+                                   'Can\'t interpret x(0)';
+    return false;
+  } else if (isNaN(y1)) {
+    document.getElementById('emsg').innerHTML=
+                                   'Can\'t interpret x\'(0)';
+    return false;
+  } else if (isNaN(f)) {
+    document.getElementById('emsg').innerHTML=
+                                   'Can\'t interpret coefficient of cos';
+    return false;
+  } else if (isNaN(w)) {
+    document.getElementById('emsg').innerHTML=
+                                   'Can\'t interpret frequency';
+    return false;
+  } else {
+    document.getElementById('emsg').innerHTML='';
+  }
+  if (f==0) {
+    a=0;
+    b=0;
+  } else if (w==0) {
+    a=w;
+    b=0;
+  } else if (c==0) {
+    if (k==m*w*w) {
+      a=0;
+      b=f/(2*m*w);
+    } else {
+      a=f/(k-m*w*w);
+      b=0;
+    }
+  } else {
+    var alpha=k-m*w*w;
+    var den=c*c+alpha*alpha;
+    a=alpha*f/den;
+    b=c*f/den;
+  }
+  return true;
+}
+
+var brd1 = JXG.JSXGraph.initBoard('box1', 
+  {originX: 250, originY: 150, unitX: 25, unitY: 25, axis:true});
+
+var polepts=[];
+var poles=[];
+
+function drawx(x,y,deg) {
+  var r=0.2
+  polepts.push(brd1.create('point',[x-r,y+r]));
+  polepts.push(brd1.create('point',[x+r,y-r]));
+  poles.push(brd1.create('segment',
+                         [polepts[polepts.length-2],polepts[polepts.length-1]],
+                         {strokeWidth:2, strokeColor:'red',
+                          highlightStrokeColor:'purple',
+                          highlightStrokeOpacity:1
+                         }));
+  polepts.push(brd1.create('point',[x+r,y+r]));
+  polepts.push(brd1.create('point',[x-r,y-r]));
+  poles.push(brd1.create('segment',
+                         [polepts[polepts.length-2],polepts[polepts.length-1]],
+                         {strokeWidth:2, strokeColor:'red',
+                          highlightStrokeColor:'purple',
+                          highlightStrokeOpacity:1
+                         }));
+  for (var i=polepts.length-4;i<polepts.length;i++) {
+    polepts[i].hideElement();
+  }
+
+  if (deg>1) {
+    polepts.push(brd1.create('point',[x,y]));
+    poles.push(brd1.create('circle',[polepts[polepts.length-1],r],
+                           {strokeWidth:2, strokeColor:'red',
+                            highlightStrokeColor:'purple',
+                            highlightStrokeOpacity:1
+                           }));
+    polepts[polepts.length-1].hideElement();
+  }
+
+  if (deg>2) {
+    polepts.push(brd1.create('point',[x,y-r]));
+    polepts.push(brd1.create('point',[x,y+r]));
+    poles.push(brd1.create('segment',
+                           [polepts[polepts.length-2],polepts[polepts.length-1]],
+                           {strokeWidth:2, strokeColor:'red',
+                            highlightStrokeColor:'purple',
+                            highlightStrokeOpacity:1
+                           }));
+    polepts.push(brd1.create('point',[x-r,y]));
+    polepts.push(brd1.create('point',[x+r,y]));
+    poles.push(brd1.create('segment',
+                           [polepts[polepts.length-2],polepts[polepts.length-1]],
+                           {strokeWidth:2, strokeColor:'red',
+                            highlightStrokeColor:'purple',
+                            highlightStrokeOpacity:1
+                           }));
+    for (var i=polepts.length-4;i<polepts.length;i++) {
+      polepts[i].hideElement();
+    }
+  }
+}
+
+drawx(0,3);
+drawx(0,-3);
+
+var brd2 = JXG.JSXGraph.initBoard('box2', 
+  {originX: 25, originY: 150, unitX: 25, unitY: 25, axis:true});
+
+
+var resp=brd2.create('functiongraph', 
+[function(x) { return evalatx(x); },0,100],
+{highlightStrokeColor:'purple',highlightStrokeOpacity:1});
+
+    
+</script> 
+</center>
+<p />
+There are several situations where using Laplace transforms is easier than solving an equation using the techniques of chapter 2. 
+One such situation is when you are more interested in certain qualitative features of the solution rather than the 
+explicit formula for the solution. Some qualitative features of the solution can be read directly from the Laplace 
+transform of the function. This means you will just have to carry out steps 1 and 2 of our paradigm to find the 
+Laplace transform of the solution. Since taking the inverse Laplace transform in step 3 is the most complicated 
+part of the paradigm, if we can skip this step, we can usually save some time and effort in answering our question. 
+<p />
+The particular features that are easiest to read off the Laplace transform are whether the function tends to 0 or infinity 
+as time tends to infinity. This is referred to as the stability of the solution. In addition, we can quickly tell 
+whether the solution function is oscillating or not. We can also get a sense of how quickly the solution tends to 0 
+(if it does tend to 0). 
+<p />
+The applet at the top of the page has two graph windows.  The window on the right shows the graph of
+the solution curve to the equation defined at the top of the applet. The
+window on the left shows the poles of the Laplace transform of the
+solution function. The Laplace transform is a rational function, that is a
+quotient of two polynomials. The poles (as you may remember from algebra)
+are the zeros of the polynomial in the denominator of the Laplace
+transform of the function. The poles are marked with an <code>X</code> on
+the complex plane. If you get a double pole (a double root of the
+polynomial in the denominator), then the <code>X</code> will be
+circled.The differential equation is initially set to <nobr><code>x'' + 9x
+= 0</code></nobr>, <code>x(0)=4</code>, <code>x'(0)=0</code>. You can
+check that the Laplace transform of the solution is
+<code>4s/(s<sup>2</sup>+9)</code> and so the poles are the roots of
+<nobr><code>s<sup>2</sup> + 9 = 0</code></nobr>, which are 
+<nobr><code>s = &#177;3i</code></nobr>.
+<h4>Questions</h4>
+<ol>
+<li>The initial equation, <nobr><code>x'' + 9x = 0</code></nobr>, is
+undamped. Increase the coefficient of <code>x'</code> from 0 to 10 in
+steps of 2. <b>How do the poles of the Laplace transform change as you
+increase the damping? How does the speed with which the solution converges
+to 0 change as you increase the damping?</b><p /></li>
+<li>Now experiment with changing the values of the different coefficients,
+while leaving the forcing function set at 0. <b>How can you distinguish
+undamped, underdamped, critically damped, and overdamped equations from
+the poles of the Laplace transform of the solution?</b><p /></li>
+<li>Continue to experiment with changing the values of the coefficients of
+<code>x''</code>, <code>x'</code> and <code>x</code>, only now pay
+attention to the speed with which the solution tends to 0. <b>How can you
+judge how quickly the solution tends to 0 from the poles of the Laplace
+transform?</b><p /></li>
+<li>In general, changing the values of the initial conditions won't change
+the poles in the left window. <b>Can you explain why the initial values
+usually don't affect the locations of the poles of the Laplace transform?
+Can you find a second-order example (i.e. where the coefficient of
+<code>x''</code> is not 0) where changing the initial values will cause 
+just one of the poles to disappear?</b> This question may be easier if you
+start with a Laplace transform with just one pole and work backwards to
+find the second-order initial value problem<p /></li>
+<li>Now change the amplitude of the forcing function (the right-hand-side
+of the equation) to something positive. This will add two more poles to
+the left window. So far we have only considered equations where the
+solution converges to 0, or at least stays bounded (in other words, we
+have only considered stable equations). Our solution will tend to infinity
+(and hence be unstable) if we have resonance. <b>How can you distinguish
+resonance from the poles of the Laplace transform?</b><p /></li>
+<li>One other way to have solutions tending to infinity is to have a
+negative amount of friction. This may seem ridiculous, but consider the
+feedback loop when a microphone is placed in front of an amplifier. In
+this applet, it is possible to enter a negative value for the coefficient
+of <code>x'</code>. <b>Where are the poles of the Laplace transform when
+the damping is negative?</b>
+You will want to use a small negative damping 
+to keep all the poles on the screen.
+<p /></li>
+</ol>
+Prepare a lab report for this lab which includes your answers to the
+questions in bold face.
+<p />
+
+</body> 
+</html>
+

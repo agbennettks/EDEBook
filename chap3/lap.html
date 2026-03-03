@@ -1,0 +1,191 @@
+<head>
+<title>EDE Chapter 3: Laplace Transforms</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Laplace Transforms</h3>
+</center>
+
+<h4>Discussion</h4>
+The next topic we will cover this semester is Laplace transforms. This is
+a method of solving differential equations that is very different from any of
+the methods we have used previously, but has a great many important
+applications. It is also the simplest of a whole family of techniques
+called transform techniques. The Laplace transform is the only one we will
+use in this class.
+
+Let $f(t)$ be a function. The <b>Laplace transform</b> 
+${\mathcal L}\{f(t)\}$ of the function $f(t)$ is defined to be
+$${\mathcal L}\{f(t)\}=\int_0^{\infty}f(t)e^{-st}\,dt$$
+We should worry about the convergence of the improper integral, but we won't
+in this course, as long as you promise me to remember that convergence is a
+possible problem that should be considered in later courses where you have
+more time to spend on this subject. If you want to discuss convergence now,
+you are welcome to stop by my office.
+<p />
+Note that the Laplace transform takes a function of a variable $t$ to another
+function of a variable $s$. (This is in fact what is meant by the term
+transform). Also note that the Laplace transform of a function only 
+depends on the values of the function for $0\le t$ and not on the 
+values of the function for $t<0$. This will be important when we apply 
+Laplace transforms to initial value problems.
+<p />
+There are two ways to compute a Laplace transform. One way is to compute the
+improper integral.
+<p />
+<hr />
+EXAMPLE: What is ${\mathcal L}\{e^{rt}\}$?
+$$ \begin{align}
+{\mathcal L}\{e^{rt}\}&=\int_0^{\infty}e^{rt}e^{-st}\,dt \\
+&=\int_0^{\infty}e^{(r-s)t}\,dt \\
+&=\left.\frac{1}{r-s}e^{(r-s)t}\right|_0^{\infty} \\
+&=\frac{1}{s-r}
+\end{align} $$
+provided $s>r$ (otherwise the integral diverges and the Laplace transform is
+undefined).
+<hr />
+<p />
+This is the long way. The other way is to look up the
+answer in the 
+<a href=laptable.php target=_blank>Table of Laplace Transforms</a> I've 
+provided you with. This is
+the short way. Of course looking things up suffers from
+the disadvantage that the table can't list every function, but it lists enough
+for our purposes in this class. Using the Laplace transform table is similar
+to using a table of integrals; you are responsible for manipulating the
+expressions so they fit the forms in the table. To manipulate expressions so
+they fit the forms in the table, it is useful to note that the Laplace
+transform is a linear operator.
+<p />
+<i>Theorem</i> Let $f(t)$ be a function and $c$ a constant. Then
+$$\begin{align}
+{\mathcal L}\{f(t)+g(t)\} &= {\mathcal L}\{f(t)\} + {\mathcal L}\{g(t)\} 
+\\
+{\mathcal L}\{cf(t)\} &= c{\mathcal L}\{f(t)\}
+\end{align} $$
+
+This is important
+because it allows us to reduce the problem of finding the Laplace transform
+of a complicated function to a collection of simpler problems by rewriting
+the complicated function as a sum of simpler pieces. The simpler pieces can
+then be dealt with by consulting our table.
+<p />
+<hr />
+EXAMPLE: Compute ${\mathcal L}\{3\sin(2t)\}$.
+<p />
+First we note that ${\mathcal L}\{3\sin(2t)\}=3{\mathcal L}\{\sin(2t)\}$. Now
+we look for ${\mathcal L}\{\sin(2t)\}$ in the table. We find that ${\mathcal
+L}\{\sin(at)\}=a/(s^2+a^2)$. So using this formula with $a=2$ we get
+${\mathcal L}\{\sin(2t)\}=2/(s^2+4)$. Finally
+${\mathcal L}\{3\sin(2t)\}=6/(s^2+4)$.
+<p />
+<hr />
+EXAMPLE: Compute ${\mathcal L}\{e^t-e^{2t}\}$.
+<p />
+We write ${\mathcal L}\{e^t-e^{2t}\}={\mathcal L}\{e^t\}-{\mathcal L}\{e^{2t}\}$.
+From the table we find ${\mathcal L}\{e^{at}\}=1/(s-a)$. So applying this
+with $a=1$ yields ${\mathcal L}\{e^t\}=1/(s-1)$ and with $a=2$ yields
+${\mathcal L}\{e^{2t}\}=1/(s-2)$. Finally
+${\mathcal L}\{e^t-e^{2t}\}=1/(s-1)-1/(s-2)=-1/(s-1)(s-2)$.
+<hr />
+<p />
+Of course, being able to take the Laplace transform of a function
+isn't very useful if you aren't going to be able to undo the transform
+later to recover the original function. We denote the inverse Laplace
+transform by ${\mathcal L}^{-1}\{F(s)\}$ and then $f(t)={\mathcal
+L}^{-1}\{{\mathcal L}\{f(t)\}\}$. It is possible to give a definition of
+the inverse Laplace transform similar to the definition of the Laplace
+transform, but it isn't very useful.
+$$ f(t)=\frac{1}{2\pi i}\int_{a-i\infty}^{a+i\infty}e^{st}{\mathcal
+L}\{f(t)\}(s)\,ds $$
+for all sufficiently large $a$. This is a complex contour integral which you
+can learn about in Introduction to Complex Analysis (or stop by my office). We
+aren't going to use this formula in this class, instead we will just
+reverse the process of finding a Laplace transform in the table. It should be
+noted that the inverse of any invertible linear function is also linear. In
+particular
+$$ \begin{align}
+{\mathcal L}^{-1}\{F(s)+G(s)\}&={\mathcal L}^{-1}\{F(s)\}+{\mathcal L}^{-1}\{G(s)\} \\
+{\mathcal L}^{-1}\{cF(s)\}&=c{\mathcal L}^{-1}\{F(s)\}
+\end{align} $$
+Finally, since evaluating an inverse Laplace transform is evaluating a
+complicated integral, it should not be surprising that if you have an
+expression you don't know how to deal with, it is usually best to try the same
+manipulations you would use as if you were trying to integrate the expression
+(see the second example below).
+<p />
+<hr />
+EXAMPLE: Compute ${\mathcal 
+L}^{-1}\left\{\displaystyle\frac{1}{(s-1)^2+4}\right\}$
+<p />
+In the table we find ${\mathcal
+L}\{e^{at}\sin(bt)\}=\displaystyle\frac{b}{(s-a)^2+b^2}$. Applying this 
+with $a=1$
+and $b=2$ we get ${\mathcal 
+L}^{-1}\left\{\displaystyle\frac{2}{(s-1)^2+4}\right\} =
+e^t\sin(2t)$. So ${\mathcal 
+L}^{-1}\left\{\displaystyle\frac{1}{(s-1)^2+4}\right\}=
+\displaystyle\frac 12e^t\sin(2t)$.  Note that it is best to get the 
+denominator
+right first and then multiply by a constant to get the numerator
+right.
+<p />
+<hr />
+EXAMPLE: Compute 
+${\mathcal L}^{-1}\left\{\displaystyle\frac{2}{s^2+3s+2}\right\}$
+<p />
+There isn't anything like this in the table at first glance. We have fractions
+with linear terms $(s-a)$ in the denominator and with sums of squares and the
+like but no general quadratic terms in the denominator. Now the general rule
+is to try to treat the expression as if we were going to integrate it. This is
+a case for partial fractions.
+$$ \begin{align}
+\frac{2}{s^2+3s+2}=\frac{2}{(s+2)(s+1)}&=\frac{A}{s+2}+\frac{B}{s+1} \\
+2&=A(s+1)+B(s+2) \\
+2&=(A+B)s+(A+2B)
+\end{align} $$
+Equating the $s$ terms and the constant terms we get two equations in two
+unknowns
+$$ \begin{align}
+0&=A+B \tag{$s$ terms} \\
+2&=A+2B \tag{constant terms}
+\end{align} $$
+Solving we get $B=2$ and $A=-2$ so
+$$
+\frac{2}{s^2+3s+2}=\frac{-2}{s+2}+\frac{2}{s+1}
+$$
+Then
+$$ \begin{align}
+{\mathcal L}^{-1}\left\{\frac{2}{s^2+3s+2}\right\}&=
+{\mathcal L}^{-1}\left\{\frac{-2}{s+2}+\frac{2}{s+1}\right\} \\
+&={\mathcal L}^{-1}\left\{\frac{-2}{s+2}\right\}
++{\mathcal L}^{-1}\left\{\frac{2}{s+1}\right\} \\
+&=-2e^{-2t}+2e^{-t}
+\end{align} $$
+
+<h4>Randomly Generated Examples</h4>
+Two randomly generated example problems are below. In one you will find the Laplace transform and in one you will find the
+inverse Laplace transform. As always, once you submit an answer, you will have a link to see the detailed
+solution for the problem, as well as the option to generate a new problem and you can just quickly enter 
+a "dummy" answer like $s$ to quickly get to the detailed solution if that is all you want to see.
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1439727" width="100%" height="500" style="border: none;"></iframe>
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1440050" width="100%" height="500" style="border: none;"></iframe>
+<p />
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+
