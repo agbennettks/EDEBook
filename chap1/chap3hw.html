@@ -1,0 +1,463 @@
+<head>
+<title>EDE Chapter 3: Homework</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+
+<center>
+<h3>Laplace Transforms</h3>
+</center>
+<p />
+<ol start=5>
+Justify the following lines from a (larger) Laplace Transform Table. 
+Note that you can use the rules you already have in your table, you don't 
+have to go back to evaluating the integral in the definition of Laplace 
+Transform.
+<center>
+<table>
+<tr>
+<th></th><th width=40%></th>
+<th><i>f</i>(<i>t</i>)<br /><hr /></th>
+<th>$\qquad\qquad\qquad$</th>
+<th><i>F</i>(<i>s</i>)<br /><hr /></th>
+<th width=40%></th>
+</tr>
+<tr>
+<td>1.</td><td></td>
+<td align=center>$\cosh(bt)$</td>
+<td></td>
+<td align=center>$\displaystyle\frac{s}{s^2-b^2}$</td>
+</tr>
+<tr>
+<td>2.</td><td></td>
+<td align=center>$\sinh(bt)$</td>
+<td></td>
+<td align=center>$\displaystyle\frac{b}{s^2-b^2}$</td>
+</tr>
+<tr><td>&nbsp;</td></tr>
+<tr>
+<td>3.</td><td></td>
+<td align=center>$e^{at}\cosh(bt)$</td>
+<td></td>
+<td align=center>$\displaystyle\frac{s-a}{(s-a)^2-b^2}$</td>
+</tr>
+<tr>
+<td>4.</td><td></td>
+<td align=center>$e^{at}\sinh(bt)$</td>
+<td></td>
+<td align=center>$\displaystyle\frac{b}{(s-a)^2-b^2}$</td>
+</tr>
+</table>
+</center>
+<p />
+<li>What is the Laplace transform of the solution to the initial value problem
+$$ x''+6x'+5x=0,\qquad x(0)=1, \quad x'(0)=2 $$
+</li>
+<li>What is the Laplace transform of the solution to the initial value problem
+$$ x''+11x'+28x=0,\qquad x(0)=-1, \quad x'(0)=3 $$
+</li>
+<li>What is the Laplace transform of the solution to the initial value problem
+$$ x''+2x'+x=4\sin(3t),\qquad x(0)=0, \quad x'(0)=0 $$
+</li>
+<li>What is the Laplace transform of the solution to the initial value problem
+$$ x''-3x'-4x=\exp(-t),\qquad x(0)=0, \quad x'(0)=0 $$
+</li>
+<li>What is the Laplace transform of the solution to the initial value problem
+$$ x''+8x'+12x=\exp(-2t),\qquad x(0)=3, \quad x'(0)=-2 $$
+</li>
+
+<hr />
+Sometimes the solution of one constant coefficient linear differential 
+equation will become part of the statement of another such equation. In 
+this case, using Laplace transforms and leaving everything in the 
+frequency domain until the very end is often easiest. 
+<hr />
+
+<li>Solve the following for $y$ (you don't need to give $x$).
+$$ \begin{align}
+\frac{dx}{dt}+4x&=\exp(t), \qquad &x(0)=0 \\
+\frac{dy}{dt}+2y&=x(t), \qquad &y(0)=0
+\end{align} $$
+</li>
+
+<li> Solve the following for $y$ (you don't need to give $x$).
+$$ \begin{align}
+\frac{dx}{dt}+x&=\cos(t), \qquad &x(0)=0 \\
+\frac{dy}{dt}-y&=x(t), \qquad &y(0)=0
+\end{align} $$
+</li>
+
+<li> Solve the following for $y$ (you don't need to give $x$).
+$$ \begin{align}
+\frac{d^2x}{dt^2}+5\frac{dx}{dt}+4x&=0, \qquad &x(0)=24, \quad x'(0)=0 \\
+\frac{d^2y}{dt^2}+5\frac{dy}{dt}+6y&=0, \qquad &y(0)=0, \quad y'(0)=0
+\end{align} $$
+</li>
+
+<li> Solve the following for $y$ (you don't need to give $x$).
+$$ \begin{align}
+\frac{d^2x}{dt^2}+9x&=\sin(t), \qquad &x(0)=0,\quad x'(0)=0 \\
+\frac{d^2y}{dt^2}+3\frac{dy}{dt}+2y&=x(t), \qquad &y(0)=0,\quad y'(0)=0 
+\end{align} $$
+</li>
+
+<li>Consider a 4-tank CSTR. Each tank holds 1000 liters and fluid flows
+between them at the rate of 5 liters/min. 200g of contaminant is 
+introduced to the first tank. Assuming perfect mixing, what is the Laplace transform of the amount
+of contaminant in the each tank? You do <b>not</b> have to find the 
+functions for the amount of contaminant, just their Laplace transforms.
+<p /></li>
+
+<li>Consider a 4-tank CSTR. Each tank holds 2000 liters and fluid flows
+between them at the rate of 4 liters/min. 400g of contaminant is 
+introduced to the first tank. Assuming perfect mixing, what is the Laplace transform of the amount
+of contaminant in the each tank? You do <b>not</b> have to find the 
+functions for the amount of contaminant, just their Laplace transforms.
+<p /></li>
+
+<li>Consider a 4-tank CSTR. Each tank holds 1000 liters and fluid flows
+between them at the rate of 5 liters/min. 200g of contaminant is 
+introduced to the first tank. Assuming perfect mixing, what is the amount of contaminant in the
+fourth tank as a function of time. Note: This is the identical situation to
+problem 14 above, except now you are asked for the function for the fourth tank instead of 
+the Laplace transform.
+<p /></li>
+
+<li>Consider a 4-tank CSTR. Each tank holds 2000 liters and fluid flows
+between them at the rate of 4 liters/min. 400g of contaminant is 
+introduced to the first tank. Assuming perfect mixing, what is the amount of contaminant in the
+fourth tank as a function of time. Note: This is the identical situation to
+problem 15 above, except now you are asked for the function for the fourth tank instead of 
+the Laplace transform.
+<p /></li>
+
+<a name='week9' />
+<li>
+$$ \begin{align}
+\frac{d^2x}{dt^2}+9x&=3\delta(t), \qquad &x(0)=0,\quad x'(0)=0 \\
+\frac{d^2y}{dt^2}+y&=x(t), \qquad &y(0)=0,\quad y'(0)=0 
+\end{align} $$
+</li>
+
+<li>
+$$ \begin{align}
+\frac{dx}{dt}+x&=\delta(t), \qquad &x(0)=0 \\
+\frac{d^2y}{dt^2}+4y&=x(t), \qquad &y(0)=0,\quad y'(0)=0 
+\end{align} $$
+</li>
+
+<li>
+$$ \begin{align}
+\frac{d^2x}{dt^2}+x&=\delta(t),\qquad &x(0)=0, \quad x'(0)=0 \\
+\frac{dy}{dt}+4y&=x(t), \qquad &y(0)=0
+\end{align} $$
+</li>
+
+<li>Compute ${\mathcal L}\{f_c(t)\}$ for the "impulse train"
+$$f_c(t) = \delta(t)+\delta(t-c)+\delta(t-2c)+\delta(t-3c)+\cdots
+=\sum_{n=0}^{\infty}\delta(t-nc)$$
+</li>
+<li>Compute ${\mathcal L}\{g(t)\}$ for the "decaying impulse train"
+$$g(t) = \delta(t)+\frac12\delta(t-\pi)+\frac14\delta(t-2\pi)+
+\frac18\delta(t-3\pi)+\cdots
+=\sum_{n=0}^{\infty}\left(\frac12\right)^n\delta(t-n\pi)$$
+</li>
+<li>Let $u(t)$ be the unit step function. Graph the "square wave" $g(t)$ 
+and
+compute ${\mathcal L}\{g(t)\}$ where
+$$g(t) = -1+2\sum_{n=0}^{\infty}(-1)^nu(t-n)$$
+</li>
+<li>Let $u(t)$ be the unit step function. Let $f(t)$ be the "triangle 
+wave" with amplitude 1 and period 2 graphed below.
+<center>
+<img src=triwave.png height=420 width=560 />
+</center>
+Compute ${\mathcal L}\{f(t)\}$. Hint: write a formula for $f(t)$ using an 
+infinite sum of step functions.<p />
+<!--
+$$
+f(t) = -1+2tu(t)-4\sum_{n=1}^{\infty}(t-(2n-1))u(t-(2n-1))-(t-2n)u(t-2n)
+$$
+-->
+</li>
+
+<li>Let $u(t)$ be the unit step function. Let $f(t)$ be the "sawtooth 
+wave" with amplitude 1 and period 1 graphed below.
+<center>
+<img src=sawwave.png height=420 width=560 />
+</center>
+Compute ${\mathcal L}\{f(t)\}$. Hint: write a formula for $f(t)$ using an
+infinite sum of step functions.<p />
+<!--
+$$
+f(t) = -1+2tu(t)-2\sum_{n=1}^{\infty}u(t-n)
+$$
+-->
+</li>
+
+
+<li>Let $f(t)$ be an "impulse train," 
+$$f(t)=\delta(t)+\delta(t-\pi)+\delta(t-2\pi)+\cdots$$
+Show the Laplace transform of the solution to
+$$\frac{d^2x}{dt^2}+4x=f(t),\qquad x(0)=0,\quad x'(0)=0 $$
+has a double pole on the imaginary axis, which suggests (but doesn't 
+prove) that this solution might be in resonance. Explain why resonance is 
+reasonable here.<p /></li>
+
+<li>Let $g(t)$ be the square wave 
+$$g(t) = -1+2\sum_{n=0}^{\infty}(-1)^nu(t-n)$$
+Show the Laplace transform of the solution to
+$$\frac{d^2x}{dt^2}+\pi^2x=g(t),\qquad x(0)=0,\quad x'(0)=0 $$
+has a double pole on the imaginary axis, which suggests (but doesn't 
+prove) that this solution might be in resonance. Explain why resonance is 
+reasonable here.<p /></li>
+
+<li>Solve as a convolution integral.
+$$\frac{d^2x}{dt^2}-x=e^{-t^2},\qquad x(0)=0,\quad x'(0)=0. $$
+</li>
+
+<li>Solve using variation of parameters.
+$$\frac{d^2x}{dt^2}-x=e^{-t^2},\qquad x(0)=0,\quad x'(0)=0. $$
+</li>
+
+<li>Solve using variation of parameters.
+$$\frac{d^2x}{dt^2}+x=\sec(t),\qquad x(0)=0,\quad x'(0)=0. $$
+</li>
+
+<li>Solve as a convolution integral.
+$$\frac{d^2x}{dt^2}+x=\sec(t),\qquad x(0)=0,\quad x'(0)=0. $$
+</li>
+
+<li>Solve as a convolution integral.
+$$\frac{d^2x}{dt^2}+2\frac{dx}{dt}+10x=f(t),\qquad x(0)=0,\quad x'(0)=0. $$
+Here $f(t)$ is an undefined function, so your answer will have $f(t)$ in it.
+<p /></li>
+
+<li>Solve using variation of parameters
+$$\frac{d^2x}{dt^2}+2\frac{dx}{dt}+10x=f(t),\qquad x(0)=0,\quad x'(0)=0. $$
+Here $f(t)$ is an undefined function, so your answer will have $f(t)$ in it.
+<p /></li>
+
+<li>The homogeneous solutions to the following equation are $y=x^2$ 
+and $y=x^3$. Solve the initial value problems using variation of 
+parameters, 
+and explain why Laplace transform techniques are not helpful here.
+$$
+x^2\frac{d^2y}{dx^2}-4x\frac{dy}{dx}+6y=3x^5,\qquad y(1)=0,\quad y'(1)=0.
+$$
+</li>
+<li>The homogeneous solution to the following equation are $y=x$ and 
+$y=\exp(x).$ Solve the initial value problem using 
+variation of parameters, and 
+explain why Laplace transform techniques are not helpful here.
+$$
+(3x-3)\frac{d^2y}{dx^2}-3x\frac{dy}{dx}+3y=\exp(2x),\qquad y(0)=0,\quad 
+y'(0)=0.
+$$
+</li>
+
+<a name='week10' />
+<li>In some situations you may expect a system to experience several 
+shocks in sequence of different amplitudes (think of an earthquake 
+and aftershocks). Solve the initial value problem $$
+\frac{d^2x}{dt^2}+2\frac{dx}{dt}+10x=\delta(t)+\frac12\delta(t-1),
+\qquad x(0)=0,\quad x'(0)=0.
+$$
+</li>
+
+<li>In some situations you may expect a system to experience several 
+shocks in sequence of different amplitudes (think of an earthquake 
+and aftershocks). Solve the initial value problem $$
+\frac{d^2x}{dt^2}+2\frac{dx}{dt}+2x=
+\delta(t)+\frac12\delta(t-2\pi)+\frac12\delta(t-4\pi),
+\qquad x(0)=0,\quad x'(0)=0.
+$$
+</li>
+
+<li><i>Graph</i> the solution of
+the initial value problem 
+$$
+\frac{d^2x}{dt^2}+4\pi^2x=\delta(t)-\delta(t-1),
+\qquad x(0)=0,\quad x'(0)=0.
+$$
+Give a physical explanation for what this problem might represent.
+</li>
+<p />
+
+
+<li>Solve the linear system
+$$ \begin{align}
+\frac{dx}{dt}&=3x-2y+\delta(t),\qquad &x(0)=0 \\
+\frac{dy}{dt}&=5x+y,\qquad &y(0)=0 
+\end{align} $$
+</li>
+</a>
+
+<li>Solve the linear system
+$$ \begin{align}
+\frac{dx}{dt}&=3x-2y,\qquad &x(0)=0 \\
+\frac{dy}{dt}&=5x+y+\delta(t),\qquad &y(0)=0 
+\end{align} $$
+</li>
+
+<li>Solve the linear system
+$$ \begin{align}
+\frac{d^2x}{dt^2}&=5x+2y,\qquad &x(0)=1,\quad x'(0)=0 \\
+\frac{d^2y}{dt^2}&=2x+8y,\qquad &y(0)=2,\quad y'(0)=0 
+\end{align} $$
+</li>
+
+<li>Solve the linear system
+$$ \begin{align}
+\frac{d^2x}{dt^2}&=2x+6y,\qquad &x(0)=3,\quad x'(0)=0 \\
+\frac{d^2y}{dt^2}&=x+y,\qquad &y(0)=1,\quad y'(0)=0 
+\end{align} $$
+</li>
+
+<li>Find and classify the equilibria for
+$$ \begin{align}
+\frac{dx}{dt}&=x^2+y^2-2 \\
+\frac{dy}{dt}&=x-y
+\end{align} $$
+</li>
+
+<li>Find and classify the equilibria for
+$$ \begin{align}
+\frac{dx}{dt}&=x^2+y^2-2 \\
+\frac{dy}{dt}&=y-x
+\end{align} $$
+</li>
+
+<li>Find and classify the equilibria for
+$$ \begin{align}
+\frac{dx}{dt}&=x^2+y^2-5 \\
+\frac{dy}{dt}&=xy-2
+\end{align} $$
+</li>
+
+<li>Find and classify the equilibria for
+$$ \begin{align}
+\frac{dx}{dt}&=5-x^2-y^2 \\
+\frac{dy}{dt}&=xy-2
+\end{align} $$
+</li>
+
+<li>Find and classify the equilibria for
+$$ \begin{align}
+\frac{dx}{dt}&=y-x^2 \\
+\frac{dy}{dt}&=x-y^2
+\end{align} $$
+</li>
+
+<li>Find and classify the equilibria for
+$$ \begin{align}
+\frac{dx}{dt}&=x^2-y^2 \\
+\frac{dy}{dt}&=x-2y+2
+\end{align} $$
+</li>
+
+<li>In the paradigm we considered the problem 
+$$ \begin{align}
+\frac{dx}{dt}&=4x-2xy \\ 
+\frac{dy}{dt}&=xy-3y 
+\end{align} $$ 
+
+This is an example of a "predator-prey" population model. $x$ represents
+the population of a prey species that naturally grows exponentially but is
+controlled by predation by the predator species (hence the $-2xy$ term).  
+$y$ represents the population of a predator species that needs to find
+sufficient prey to survive (hence the $+xy$ term). As observed in the
+text, this system has an equilibrium point at $(3,2)$, but linearization
+failed to classify it. However, using the fact that $\displaystyle
+\frac{dy}{dx} = \frac{dy/dt}{dx/dt}$ we can rewrite this system as a
+first-order equation in $x$ and $y$. <b>Solve this equation.</b> Note that
+this tells you how $x$ and $y$ are related, but doesn't tell you how they
+evolve with respect to $t$.<p />
+
+</li> <li>Now that you've found the "solution" (relating $x$ and $y$ to 
+each other but not to $t$) for 
+$$ \begin{align} 
+\frac{dx}{dt}&=4x-2xy \\ 
+\frac{dy}{dt}&=xy-3y 
+\end{align} $$
+in the previous problem, find the implicit formula for $y$ and $x$ for the
+initial value problem with $x(0)=2$, $y(0)=1/2$. Sketch the graph. AI can be
+helpful here since your solution will be a messy implicit formula, though I had
+to experiment a little to get a prompt that worked. Put
+arrows on your sketch showing how the point $(x(t),y(t))$ will move around
+the "orbit" you've sketched in the $xy-\text{plane}$ as $t$ increases.
+Mark the equilibrium $(3,2)$ (note that it is not in the center of the
+orbit). Write a short explanation in paragraph form for what this solution
+predicts about the behavior of the populations of the prey, $x$, and the
+predators, $y$. 
+<p /></li> 
+
+<li>The basic "competitive species" model is 
+$$ \begin{align}
+\frac{dx}{dt}&=ax-mxy \\ 
+\frac{dy}{dt}&=by-nxy 
+\end{align} $$ 
+where $x$ and $y$ represent the populations of two competing species, $a$ 
+and $b$ are the growth rates of each species, and $m$ and $n$ reflect 
+competitive pressures between the species. All
+coefficients are positive, $a,b,m,n &gt; 0.$ Find the 
+equilibria for this model. Your answers will be expressed in terms of $a$, 
+$b$, $m$, and $n.$ 
+<p /></li>
+
+<li>Classify the equilibria you found for the competitive species model in 
+the previous problem. Note that there is no stable equilibrium for this 
+model.
+<p /></li>
+
+<li>Using the fact that $\displaystyle \frac{dy}{dx}=\frac{dy/dt}{dx/dt}$, 
+rewrite the competitive species system as a first order equation in $x$ 
+and $y.$ <b>Solve this equation.</b> Note that this tells you how $x$ and 
+$y$ are related, but doesn't tell you how they evolve with respect to $t.$
+<p /></li>
+
+<li>For the competitive species model, graph the curves $dx/dt=0$ and 
+$dy/dt=0.$ Draw arrows to show how the populations are growing or 
+shrinking in the regions defined by those curves and use those 
+arrows to sketch some solution curves in the $xy$-plane. Note that the 
+graphical technique here is significantly easier than trying to plot 
+points using the formula found in the previous problem.<p /></li>
+
+<li>Ernst Mayr in <i>Populations, Species and Evolution</i> wrote, 
+<blockquote>
+"In sum: two species cannot indefinitely coexist in the same locality if
+they have identical ecological requirements. ... The validity of this
+exclusion principle has been tested in numerous laboratory experiments in
+which mixed populations of two species were established in a uniform
+environment. In virtually every case, one of the two species was
+eliminated sooner or later."
+</blockquote>
+Write a short explanation of whether this principle is true for the 
+competitive species model we have been considering in the previous 
+problems.
+<p /></li>
+
+<li>One unrealistic feature of the basic competitive species model
+considered in the previous problems is that one of the populations will
+tend to infinity. Create a (slightly) more complicated model for 
+competitive species for which populations undergo logistic growth (rather 
+than exponential growth) in the absence of a competitor.
+<p /></li>
+
+</ol>
+<p />
+<a href=chap3ans.html target=_blank>Answers to the odd numbered 
+exercises.</a>
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

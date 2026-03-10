@@ -1,0 +1,194 @@
+<head>
+<title>EDE Chapter 3: Homework</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center> 
+<h3>Math 340 Written Homework Chapter 3<br />Solutions to Odd
+Exercises</h3> 
+</center> 
+
+1. $$ \begin{align}
+{\mathcal L}\{\cosh(bt)\}&={\mathcal 
+L}\{\frac12\exp(bt)+\frac12\exp(-bt)\} \\
+&=\frac{1/2}{s-b}  + \frac{1/2}{s+b} \\
+&=\frac{s}{s^2-b^2}
+\end{align}
+$$
+
+3. $$ 
+\begin{align}
+{\mathcal L}\{e^{at}\cosh(bt)\}&={\mathcal 
+L}\{e^{at}(\frac12\exp(bt)+\frac12\exp(-bt))\} \\
+&={\mathcal L}\{\frac12\exp((a+b)t)+\frac12\exp((a-b)t)\} \\
+&=\frac{1/2}{s-(a+b)}  + \frac{1/2}{s-(a-b)} \\
+&=\frac{(1/2)(s-a)+(1/2)b + (1/2)(s-a)-(1/2)b}{s^2-2as+a^2-b^2} \\
+&=\frac{s-a}{(s-a)^2-b^2} 
+\end{align}
+$$
+
+5. $\displaystyle \frac{s+8}{(s+5)(s+1)}$
+<p />
+
+7. $\displaystyle \frac{4}{(s+1)^2(s^2+9)}$
+<p />
+
+9. $\displaystyle \frac{3s^2+28s+45}{(s+2)^2(s+6)}
+<p />
+
+11. $\displaystyle y(t)=-\frac{1}{2}\cos(t) + \frac{1}{4}e^t + \frac{1}{4}e^{-t}$
+<p />
+
+13. $y(t) = -(3/80)\cos(t) + (1/80)\sin(t) + (3/1040)\cos(3t) + 
+(7/1040)\sin(3t) -(1/65)\exp(-2t) + (1/20)\exp(-t),$<br /> 
+or, if you use a 
+calculator and get answers in decimal format (to the nearest 0.0001),
+<br />
+$y(t) = -0.0375\cos(t) + 0.0125\sin(t) + 0.0029\cos(3t) + 0.0067\sin(3t)
+-0.0154\exp(-2t) + 0.05\exp(-t).$
+<p /> 
+
+15. If $Z_i(s)$ is the Laplace transform of the amount of contaminant in tank $i$, then
+$$ \begin{align} 
+Z_1(s) &= \frac{400}{s+0.02} \\
+Z_2(s) &= \frac{8}{(s+0.02)^2} \\
+Z_3(s) &= \frac{0.16}{(s+0.02)^3} \\
+Z_4(s) &= \frac{0.032}{(s+0.02)^4}
+\end{align} $$
+
+17. $z_4(t) = (0.005333...)t^3e^{-0.02t}$.
+<p />
+
+19. $\displaystyle 
+y(t)=\frac{1}{5}e^{-t}+\frac{1}{10}\sin(2t)-\frac{1}{5}\cos(2t).$
+<p />
+
+21. $\displaystyle \frac{1}{1-\exp(-cs)} $
+<p />
+
+23. $\displaystyle \frac{1-\exp(-s)}{s(1+\exp(-s))} $<br /><center>
+<img src=m240hw7ans.png height=420 width=560 /></center>
+<p />
+
+25. $\displaystyle \frac{(2-s)-(2+s)e^{-s}}{s^2(1-e^{-s})} $
+<p />
+
+
+27. The Laplace transform of the solution is
+$$
+\frac{1-\exp(-s)}{s(1+\exp(-s))(s^2+\pi^2)} 
+$$
+At $s=\pm i\pi$ both the $s^2+\pi^2$ term and the $1+\exp(-s)$ term are 
+zero, so there is a double pole. Resonance is reasonable because the 
+equation is undamped with natural (circular) frequency $\pi,$ hence the 
+natural period is 2, and the square wave has period 2. 
+<p />
+
+29. $$
+\frac{e^x}{2}\int_0^x e^{-t^2-t}dt - 
+\frac{e^{-x}}{2}\int_0^x e^{-t^2+t}dt
+$$
+
+31. The convolution integral is
+$$ \begin{align}
+\int_0^x \sin(x-u)\sec(u) du
+&= \int_0^x (\sin(x)\cos(u)-\cos(x)\sin(u))\sec(u) du \\
+&= \sin(x)\int_0^x \cos(u)\sec(u) du - \cos(x)\int_0^x \sin(u)\sec(u) du 
+\\
+&= \sin(x)\int_0^x 1 du - \cos(x)\int_0^x \tan(u) du \\
+&=x\sin(x)+\cos(x)\ln|\cos(x)|
+\end{align}
+$$
+
+33. $\displaystyle -\frac{e^{-t}\cos(3t)}{3} \int_0^t e^u\sin(3u)f(u)\, du 
++ \frac{e^{-t}\sin(3t)}{3} \int_0^t e^u\cos(3u)f(u)\, du$
+<p />
+
+35. $\displaystyle
+y(x) = \frac{e^x}{3} \int_0^x \frac{te^t}{(t-1)^2} dt
+-\frac{x}{3} \int_0^x \frac{e^{2t}}{(t-1)^2} dt.$<br />
+Laplace transforms aren't helpful here since the problem is not 
+constant-coefficient, but variation of parameters still works.
+<p />
+
+37.  
+$\displaystyle
+x(t) = e^{-t}+\frac12 u(t-2\pi)e^{2\pi-t}\sin(t)
++\frac12 u(t-4\pi)e^{4\pi-t}\sin(t).
+$
+<p />
+
+39. $$ \begin{align}
+x(t) &= \exp(2t)(\cos(3t)+\frac13\sin(3t)) \\
+y(t) &= \frac53\exp(2t)\sin(3t)
+\end{align}
+$$
+
+41. $$ 
+\begin{align}
+x(t) &= \frac12\exp(3t)+\frac12\exp(3t) &= \frac12 \cosh(3t) \\
+y(t) &= \frac32\exp(3t) + \frac32\exp(-3t) - \frac12\exp(2t)
+-\frac12\exp(-2t) &= \frac32\cosh(3t) - \frac12 \sinh(2t)
+\end{align}
+$$
+
+43. <ul>
+<li>The solution curves <i>spiral in</i> to the equilibrium at $(-1,-1).$
+</li>
+<li>The equilibrium at $(1,1)$ is a <i>saddle point</i>.</li>
+</ul>
+<p />
+
+45. <ul>
+<li>The equilibrium at $(1,2)$ is a <i>saddle point</i>.</li>
+<li>The solution curves go <i>directly out</i> from the equilibrium at 
+$(2,1).$</li>
+<li>The solution curves go <i>directly in</i> to the equilibrium at 
+$(-2,-1).$</li>
+<li>The equilibrium at $(-1,-2)$ is a <i>saddle point</i>.</li>
+</ul>
+<p />
+
+47. <ul>
+<li>The solution curves go <i>directly in</i> to the equilibrium at 
+$(1,1).$</li>
+<li>The equilibrium at $(0,0)$ is a <i>saddle point</i>.</li>
+</ul>
+<p />
+
+49. $\displaystyle \exp(x+2y)=kx^3y^4$ or equivalently
+$\displaystyle y^4\exp(-2y)=\frac{K\exp(x)}{x^3}$ 
+(where $K = 1/k$).
+<p />
+
+51. The equilibria are at $(0,0)$ and 
+$\displaystyle \left(\frac{b}{n},\frac{a}{m}\right).$
+<p /> 
+
+53. $y^a\exp(-my)=kx^b\exp(-nx)$ where $k$ is an arbitrary constant.
+<p />
+
+55. The graphs in problem 54 show that as $t \to \infty$ either 
+$(x(t),y(t)) \to (0,\infty)$ or 
+$(x(t),y(t)) \to (\infty,0).$ So in either case one population tends to 0
+which is in line with the exclusion principle. <br />
+(That the other population tends to $\infty$ rather than a finite value is 
+unrealistic and is addressed in the next problem, but that isn't part of 
+this problem).
+
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
+
+
