@@ -81,7 +81,10 @@ Unfortunately, I can't evaluate this integral. But then from the very
 beginning we have run into problems where the best we could do was find
 an integral version for the solution.
 <p />
-EXAMPLE:
+Sometimes you may want to derive a formula for how a system will react to
+an arbitrary input. For example, you might want a formula for 
+<p />
+EXAMPLE: 
   $$ \begin{align}
 x'' + 2x' + 5x &= f(t) \\
 x(0)=0\quad&\quad x'(0)=0
@@ -106,6 +109,18 @@ Dirac delta function on the right-hand side. The solution when you have a $\delt
 (though this terminology is more common when working with partial differential equations). Once you have the fundamental
 solution to a linear ordinary differential equation, you can find the solution for any right-hand side by convolution.
 
+<h4>Properties of Convolutions</h4>
+Convolutions have a number of nice properties. If you have a solution to a differetial equation in the form of a convolution, then these properties can be helpful in simplifying your results, particularly if you are in a situation where the solution to one equation is being taken as input for a different equations. The following properties are not hard to prove using 
+techniques of integration (particularly if you don't worry about convergence). You can also think of them as following from the fact that the Laplace transform of a convolution is the product of the Laplace transforms, so since, for example, the products of Laplace transforms commute, so does convolution.
+<ul>
+<li><b>Commutativity:</b> $f\star g = g\star f$<p /></li>
+<li><b>Associativity:</b> $f\star (g \star h) = (f \star g)\star h$<p /></li>
+<li><b>Distributivity:</b> $f\star(g + h) = f\star g + f\star h$<p /></li>
+<li><b>Identity:</b> $f\star \delta = \delta\star f = f$, where $\delta$ is the Dirac delta functions<p /></li>
+<li><b>Differentiation:</b> $d/dt f\star g = f'\star g = f\star g'$, provided $f(0)=0$ or $g(0)=0$ depending on which function is differentiated.<p /></li>
+</ul>
+The proofs of some of these identities are addressed in the written homework.
+<p />
 <hr />
 &copy;1994-2026 Andrew G. Bennett
 </body>
