@@ -161,17 +161,17 @@ $$ \begin{align}
 \end{align} $$
 Repeating this for $(3,2)$ we get
 $$ \begin{align}
-4x-2xy &\approx 0 + \left.(4-2y)\right|_{(x,y)=(3,2)}\times(x-0) 
-+ \left.(-2x)\right|_{(x,y)=(3,2)}\times(y-0) \\
+4x-2xy &\approx 0 + \left.(4-2y)\right|_{(x,y)=(3,2)}\times(x-3) 
++ \left.(-2x)\right|_{(x,y)=(3,2)}\times(y-2) \\
 &=-6y \\
-xy-3y &\approx 0 + \left.(y)\right|_{(x,y)=(3,2)}\times(x-0) 
-+ \left.(x-3)\right|_{(x,y)=(3,2)}\times(y-0) \\
+xy-3y &\approx 0 + \left.(y)\right|_{(x,y)=(3,2)}\times(x-3) 
++ \left.(x-3)\right|_{(x,y)=(3,2)}\times(y-2) \\
 &=2x  
 \end{align} $$
 and near $(3,2)$ our linearized system becomes
 $$ \begin{align}
-\frac{dx}{dt}&=-6y \\
-\frac{dy}{dt}&=2x
+\frac{dx}{dt}&=-6(y-2) \\
+\frac{dy}{dt}&=2(x-3)
 \end{align} $$
 <i>Step 3:</i> Compute the trace and determinant and classify each 
 critical point according to the rules developed in studio.
@@ -187,8 +187,8 @@ non-linear system.
 <p />
 Near $(3,2)$ our linearized system is
 $$ \begin{align}
-\frac{dx}{dt}&=-6y \\
-\frac{dy}{dt}&=2x
+\frac{dx}{dt}&=-6(y-2) \\
+\frac{dy}{dt}&=2(x-3)
 \end{align} $$
 which has trace 0 and determinant 12, and so the solutions to the 
 linearized system spin around the origin on ellipses, neither converging 
