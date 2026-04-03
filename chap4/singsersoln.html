@@ -1,0 +1,310 @@
+<head>
+<title>EDE Chapter 4: Series Solutions</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+
+<center>
+<h3>Series Solutions About Regular Singular Points</h3>
+</center>
+
+<h4>Discussion</h4>
+We are finally ready to work out series solutions
+about regular singular points. About ordinary points we guess the
+form of the solution is $\sum_{n=0}^{\infty}a_n(x-x_0)^n$, plug that
+into the equation and solve for the $a_n$. About regular singular
+points we do pretty much the same thing, except we must pick a
+different form for the solution. We pick the form in analogy with
+Euler equations. If $x_0$ is a regular singular point for the
+equation $p(x)y''+q(x)y'+r(x)y=0$ with
+$\lim_{x\to x_0}(x-x_0)q(x)/p(x)=\alpha_0$ and
+$\lim_{x\to x_0}(x-x_0)^2r(x)/p(x)=\beta_0$, then near the point
+$x_0$ the equation $p(x)y''+q(x)y'+r(x)y=0$ should behave similarly to
+the equation $(x-x_0)^2y''+\alpha_0(x-x_0)y'+\beta_0y=0$, called the
+associated Euler equation. We can
+solve this Euler equation and find it has solutions that look like
+$cx^r$ where $r$ is a root of the <b>indicial equation</b>
+$r^2+(\alpha_0-1)r+\beta_0=0$ and $c$ is a constant (remember that $r$
+as used in this sentence is a constant, not to be confused with the
+function $r(x)$ that appears in the original equation). So near the point
+$x_0$, the solution to $p(x)y''+q(x)y'+r(x)y=0$ should look like
+$cx^r$. Now the series $\sum_{n=0}^{\infty}a_n(x-x_0)^n$ looks like
+the constant $a_0$ near $x_0$, since all the other terms drop out. If
+we want to make it look like a constant times $x^r$, the obvious
+guess is to multiply through by $x^r$. And that is exactly the right
+guess to make. In the paradigm that follows we will assume that the
+roots of the associated Euler equation are real. If they are complex,
+we can still find a solution, but the situation becomes messier than
+I care to think about. If you are curious about the complex valued
+case, stop by my office and I'll go over it with you.
+<p />
+<h4>Paradigm:</h4> Solve $2x^2y''-xy'+(x+1)y=0$ about $x_0=0$.
+<p />
+<i>Step 1:</i> Check that $x_0$ is a regular singular point. (If it
+isn't, give up and call a mathematician for help.)
+$$ \eqalign {
+&\lim_{x\to0}\frac{(x-0)(-x)}{2x^2}=-\frac12 \cr
+&\lim_{x\to0}\frac{(x-0)^2(x+1)}{2x^2}=\frac12 \cr}
+$$
+Both limits exist so $x_0=0$ is a regular singular point.
+<p />
+<i>Step 2:</i> Find the roots of the indicial equation,
+$r^2+(\alpha_0-1)r+\beta_0=0$.
+<p />
+The indicial equation in this case is $r^2-3/2r+1/2=0$ and it has
+roots $r=1$ and $r=1/2$.
+<p />
+<i>Step 3:</i> Guess that a solution takes the form
+$(x-x_0)^r\sum_{n=0}^{\infty}a_n(x-x_0)^n$ with $a_0=1$ using the 
+<i>larger</i> $r$ found in step 2. (This assumes the roots are real).
+Then plug in and solve for the $a_n$.
+<P />
+The process of carrying out step 3 is very similar to the process of
+finding the series solution about an ordinary point.
+<p />
+SubStep 1: Make the guess and compute all the pieces.
+$$ \eqalign {
+y&=x\sum_{n=0}^{\infty}a_nx^n=\sum_{n=0}^{\infty}a_nx^{n+1} \cr
+y'&=\sum_{n=0}^{\infty}(n+1)a_nx^n \cr
+y''&=\sum_{n=0}^{\infty}(n+1)na_nx^{n-1} \cr}
+$$
+and from these we get
+$$ \eqalign {
+(x+1)y&=\sum_{n=0}^{\infty}a_nx^{n+2}+\sum_{n=0}^{\infty}a_nx^{n+1} \cr
+-xy'&=\sum_{n=0}^{\infty}-(n+1)a_nx^{n+1} \cr
+2x^2y''&=\sum_{n=0}^{\infty}2(n+1)na_nx^{n+1} \cr}
+$$
+SubStep 2: Change all terms to the original form of $y$.
+<p />
+In this case the original form involves $x^{n+1}$. So we want all the
+pieces to be sums of $x^{n+1}$ or $x^{j+1}$ or some such term. So let $j=n+1$.
+Then we have
+$$ \eqalign {
+(x+1)y&=\sum_{j=1}^{\infty}a_{j-1}x^{j+1}+
+\sum_{n=0}^{\infty}a_nx^{n+1} \cr
+-xy'&=\sum_{n=0}^{\infty}-(n+1)a_nx^{n+1} \cr
+2x^2y''&=\sum_{n=0}^{\infty}2(n+1)na_nx^{n+1} \cr}
+$$
+
+SubStep 3: Change all indices to the same letter (I use $m$) and
+plug into the equation.
+
+$$
+2x^2y''-xy'+(x+1)y=
+\eqalign {
+&\sum_{m=0}^{\infty}2(m+1)ma_mx^{m+1}+
+\sum_{m=0}^{\infty}-(m+1)a_mx^{m+1} \cr
+&+\sum_{m=1}^{\infty}a_{m-1}x^{m+1} +
+\sum_{m=0}^{\infty}a_mx^{m+1}  \cr }
+=0
+$$
+
+SubStep 4: Collect like terms.
+
+$$
+(0a_0-1a_0+1a_0)x^1 +
+\sum_{m=1}^{\infty}(2(m+1)ma_m-(m+1)a_m+a_{m-1}+a_m)x^{m+1} = 0
+$$
+
+SubStep 5: Equate coefficients to 0 and solve for the recurrence
+relation.
+
+$$ \eqalign {
+0&=0\qquad(m=0\text{ term}) \cr
+(2m^2+m)a_m+a_{m-1}&=0\qquad(\text{general term}) \cr }
+$$
+Solving the last equation for $a_m$, the highest order term, we find
+the recurrence relation
+$$
+a_m=-\frac{a_{m-1}}{2m^2+m}.
+$$
+
+SubStep 6: Plug in $a_0=1$ to find the solution.
+
+$$ \eqalign {
+a_0&=1 \cr
+a_1&=-\frac{1}{3} \cr
+a_2&=-\frac{-1/3}{10}=\frac{1}{30} \cr
+a_3&=-\frac{1/30}{21}=-\frac{1}{630} \cr
+&\vdots \cr }
+$$
+So the solution is
+$$
+y_1(x)=x-\frac13x^2+\frac{1}{30}x^3-\frac{1}{630}x^4+\ldots
+$$
+
+<i>Step 4:</i> If the smaller root of the indicial equation doesn't
+differ from the larger root by an integer, find a second solution
+using the smaller root. (If it does differ by an integer, the process
+of finding a second solution is much harder. Stop by my office for
+details if you are interested. Fortunately, in applications the
+solution corresponding to the larger root is usually more interesting
+if the two roots differ by an integer. There is a good reason for
+this, and again you can stop by my office if you are curious.)
+<p />
+The substeps here are the same as for step 3 and so we will just run
+through them quickly and without comment.
+<p />
+SubStep 1:
+$$ \eqalign {
+y&=x^{1/2}\sum_{n=0}^{\infty}a_nx^n=\sum_{n=0}^{\infty}a_nx^{n+1/2} \cr
+y'&=\sum_{n=0}^{\infty}(n+1/2)a_nx^{n-1/2} \cr
+y''&=\sum_{n=0}^{\infty}(n+1/2)(n-1/2)a_nx^{n-3/2} \cr }
+$$
+So we get
+$$ \eqalign {
+(x+1)y&=\sum_{n=0}^{\infty}a_nx^{n+3/2}+\sum_{n=0}^{\infty}a_nx^{n+1/2} \cr
+-xy'&=\sum_{n=0}^{\infty}-(n+1/2)a_nx^{n+1/2} \cr
+2x^2y''&=\sum_{n=0}^{\infty}2(n+1/2)(n-1/2)a_nx^{n+1/2} \cr }
+$$
+
+SubStep 2: Let $j=n+1$.
+$$ \eqalign {
+(x+1)y&=\sum_{j=1}^{\infty}a_{j-1}x^{j+1/2}
++\sum_{n=0}^{\infty}a_nx^{n+1/2} \cr
+-xy'&=\sum_{n=0}^{\infty}-(n+1/2)a_nx^{n+1/2} \cr
+2x^2y''&=\sum_{n=0}^{\infty}2(n+1/2)(n-1/2)a_nx^{n+1/2} \cr }
+$$
+
+SubStep 3:
+$$ \eqalign {
+2x^2y''-xy'+(x+1)y&=
+\sum_{m=0}^{\infty}2(m+1/2)(m-1/2)a_mx^{m+1/2} \cr
+&\qquad+\sum_{m=0}^{\infty}-(m+1/2)a_mx^{m+1/2} \cr
+&\qquad+\sum_{m=1}^{\infty}a_{m-1}x^{m+1/2} \cr
+&\qquad+\sum_{m=0}^{\infty}a_mx^{m+1/2} \cr
+&=0 \cr}
+$$
+
+SubStep 4:
+$$ \eqalign {
+&(-1/2a_0-1/2a_0+a_0)x^{1/2} \cr
+&+\sum_{m=1}^{\infty}(2(m+1/2)(m-1/2)a_m-(m+1/2)a_m+a_{m-1}+a_m)x^{m+1/2}
+\cr }
+=0
+$$
+
+SubStep 5:
+$$ \eqalign {
+0&=0\qquad(m=0\text{ term}) \cr
+(2m^2-m)a_m+a_{m-1}&=0 \qquad\text{(general term)} \cr }
+$$
+We solve the last equation for the recurrence relation
+$$
+a_m=-\frac{a_{m-1}}{2m^2-m}
+$$
+
+SubStep 6:
+$$ \eqalign {
+a_0&=1 \cr
+a_1&=-\frac{1}{2-1}=-1 \cr
+a_2&=-\frac{-1}{8-2}=\frac16 \cr
+a_3&=-\frac{1/6}{18-3}=-\frac{1}{90} \cr
+&\vdots \cr}
+$$
+So the solution is
+$$
+y_2(x)=x^{1/2}-x^{3/2}+\frac16x^{5/2}-\frac{1}{90}x^{7/2}+\ldots
+$$
+
+<i>Step 5</i> The general solution is $c_1y_1(x)+c_2y_2(x)$.
+<p />
+EXAMPLE: Find one solution of Bessel's equation of order 0, 
+$x^2y''+xy'+x^2y=0$ about $x_0=0$.
+<p />
+Step 1:
+$$ \eqalign {
+\lim_{x\to0}\frac{x\cdot x}{x^2}&=1=\alpha_0  \cr
+\lim_{x\to0}\frac{x^2\cdot x^2}{x^2}&=0=\beta_0 \cr }
+$$
+So $x_0=0$ is a regular point.
+<p />
+Step 2: $r^2+(1-1)r+0=0$ has a double root at $r=0$.
+<p />
+Step 3: Since the largest (and only) root of the indicial equation is 0, 
+we try $y=x^0\sum_{n=0}^{\infty}a_nx^n$. 
+<p />
+SubStep 1:
+$$ \eqalign {
+y&=\sum_{n=0}^{\infty}a_nx^n \cr
+y'&=\sum_{n=0}^{\infty}na_nx^{n-1} \cr
+y''&=\sum_{n=0}^{\infty}n(n-1)a_nx^{n-2}. \cr }
+$$
+Plugging these in we get
+$$ \eqalign {
+x^2y&=\sum_{n=0}^{\infty}a_nx^{n+2} \cr
+xy'&=\sum_{n=0}^{\infty}na_nx^n \cr
+x^2y''&=\sum_{n=0}^{\infty}n(n-1)a_nx^n. \cr }
+$$
+SubStep 2: Let $j=n+2$ so
+$$ \eqalign {
+x^2y&=\sum_{j=2}^{\infty}a_{j-2}x^j \cr
+xy'&=\sum_{n=0}^{\infty}na_nx^n \cr
+x^2y''&=\sum_{n=0}^{\infty}n(n-1)a_nx^n. \cr }
+$$
+SubStep 3:
+$$
+x^2y''+xy'+x^2y=
+\sum_{m=0}^{\infty}m(m-1)a_mx^m+\sum_{m=0}^{\infty}ma_mx^m
++\sum_{m=2}^{\infty}a_{m-2}x^m=0
+$$
+SubStep 4:
+$$
+0a_0x^0+1a_1x^1+\sum_{m=2}^{\infty}
+\bigl(m(m-1)a_m+ma_m+a_{m-2}\bigl)x^m=0
+$$
+SubStep 5:
+$$ \eqalign {
+0&=0 \cr
+a_1&=0 \cr
+m^2a_m+a_{m-2}&=0,\qquad m\ge2 \cr }
+$$
+The recurrence relation is 
+$$
+a_m=-\frac{a_{m-2}}{m^2},\qquad m\ge2
+$$
+SubStep 6:
+$$ \eqalign {
+a_0&=1 \cr
+a_1&=0 \cr
+a_2&=-\frac14 \cr
+a_3&=0 \cr
+a_4&=\frac{1}{64} \cr
+&\vdots \cr }
+$$
+$$
+J_0(x)=1-\frac14x^2+\frac{1}{64}x^4+\cdots
+$$
+Step 4: Since the indicial equation has a double root, the two roots 
+differ by an integer, 0, and so we stop here.
+<p />
+No, you can't claim 1 point for a misprint for my writing $J_0(x)$ instead 
+of $y_1(x)$ in the last example. The equation $x^2y''+xy'+(x^2-\nu^2)y=0$ 
+is called Bessel's equation of order $\nu$. It arises in solving Laplace's 
+equation in cylindrical coordinates. $J_0(x)$ is the standard notation for 
+the Bessel function of the first kind of order 0, which is the solution we 
+just computed. A second linearly independent solution is $Y_0(x)$, the 
+Bessel function of the second kind of degree 0. Since when we have a 
+double root in an Euler equation we tack on a $\log$ term, it shouldn't be 
+too surprising that $Y_0(x)$ has a logarithmic singularity at $x=0$. 
+Accordingly, if we want a bounded solution near $x=0$, we want $J_0$ which 
+is why it is accorded the privilege of being of the <i>first</i> kind. 
+Bessel functions fall just after the trigonometric functions in their 
+importance in practical applications. You 
+can read much much more about Bessel functions in <i>A Treatise on Bessel 
+Functions</i> by Watson.
+
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

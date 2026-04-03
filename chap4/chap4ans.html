@@ -1,0 +1,232 @@
+<head>
+<title>EDE Chapter 4: Series Solutions</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center> 
+<h3>Math 340 Written Homework Chapter 4<br />Solutions to Odd
+Exercises</h3> 
+</center> 
+
+1. $\displaystyle \sum_{n=0}^{n=\infty}(-1)^nx^{2n}$
+<p />
+
+3. $\displaystyle \sum_{n=0}^{n=\infty} \frac{x^{2n}}{(2n)!} $
+<p />
+
+5. $\displaystyle \sum_{n=1}^{n=\infty} \frac{2^{n-1}x^n}{n!} $
+<p />
+
+7. We are given $\displaystyle y(x) = \sum_{n=0}^{\infty} a_{2n}x^{2n} $ 
+since the coefficients of all the odd terms are 0. Then
+$$
+y(-x) = \sum_{n=0}^{\infty} a_{2n}(-x)^{2n} 
+= \sum_{n=0}^{\infty} a_{2n}x^{2n} = y(x)
+$$
+and so $y(x)$ is an even function.
+<p />
+
+9. The recurrence relations are
+$$ \begin{align}
+a_2 &= -\frac{a_0}{2} \\
+a_3 &= -\frac{3a_1}{6} \\
+a_{n+2} &= -\frac{(2n+1)a_n + a_{n-2}}{(n+2)(n+1)},\qquad (n \ge 2)
+\end{align} $$
+Since $a_1 = y'(0)= 0,$ it follows from the second equation that $a_3=0,$ 
+and then since each odd coefficient depends only on the two previous odd 
+coefficients (i.e. $a_{n+2}$ depends only on $a_n$ and $a_{n-2}$ and if 
+$n+2$ is odd then so are $n$ and $n-2$), it follows that all odd 
+coefficients will be 0. Hence the function is even by problem 7.
+<p />
+
+11. Since $a_0\ne 0$ and $a_1\ne 0,$ it 
+follows that there are non-zero coefficients among both the odd and even 
+terms and so the function is neither odd nor even. Now in 
+problems 7 and 8, we only showed that if the odd or even terms vanish, 
+then the function is even or odd. We did not show that if the function is 
+even or odd, then the odd or even terms must necessarily vanish. However, 
+the converse is indeed true. 
+<p />
+
+13.
+$\displaystyle -\sum_{n=0}^{\infty} 
+\frac{x^{2n+1}}{(2n-1)(2n+1)}$ or, equivalently, 
+$\displaystyle \sum_{n=0}^{\infty} 
+\frac{x^{2n+1}}{1-4n^2}$
+<p /> 
+
+15. $\displaystyle y = -(1/3)x^3 + 1$.
+<p />
+
+17. The recurrence relation is
+$$a_{n+2} = \frac{(2p-2n)a_n}{(n+2)(n+1)}.$$
+Since we are given $y(0)=0$, we have $a_0=0$ and hence $a_n=$ for all even $n$.
+Since we are given $y'(0)=1$, we have $a_1=1$ and hence $a_n \ne 0$ for odd $n$
+up to $n=p$. But at $n=p$ the recurrence relation gives us $a_{p+2} = 0$, which
+implies $a_n=0$ for all odd $n>p$. So our solution is not an infinite series but
+is a polynomial of the form
+$$ y(x) = a_1 + a_3 x^2 + \cdots + a_p x^p $$
+which is an odd polynomial of degree $p$.
+<p />
+
+19. $\displaystyle a_{n+2} = -\frac{n^2-n+1}{4n^2+12n+8}a_n$
+<p />
+
+21. Assuming $n$ is even (since all the odd coefficients are 0), we have
+$$ \begin{align}
+\lim_{n\to\infty}\left| \frac{a_{n+2}x^{n+2}}{a_nx^n}\right| &=
+\lim_{n\to\infty}\left| \frac{a_{n+2}}{a_n}\right| x^2 \\
+&= \lim_{n\to\infty}\left| \frac{n^2-n+1}{4n^2+12n+8}\right|x^2 \\
+&= \lim_{n\to\infty}\left| \frac{1-1/n+1/n^2}{4+12/n+8/n^2}\right|x^2 \\
+&= \frac{x^2}{4} 
+\end{align} $$
+So $\displaystyle \lim_{n\to\infty}\left| \frac{a_{n+2}x^{n+2}}{a_nx^n}\right| 
+&lt; 1$ if 
+$\displaystyle \frac{x^2}{4} &lt; 1,$ or $|x| &lt; 2,$ while 
+$\displaystyle \lim_{n\to\infty}\left| \frac{a_{n+2}x^{n+2}}{a_nx^n}\right| 
+&gt; 1$ if 
+$\displaystyle \frac{x^2}{4} &gt; 1,$ or $|x| &gt; 2.$ So the series 
+converges for $|x| &lt; 2$ and diverges for $|x| &gt; 2,$ hence the radius 
+of convergence is 2.
+<p/ >
+
+23. $\displaystyle y = c_1x^{-1} + c_2x^{-3}.$
+<p />
+
+25. $\displaystyle y = c_1\sqrt{x} + c_2x^3.$
+<p />
+
+27. $\displaystyle y=\frac{x^4}{2} + c_1x^2 + c_2x^3.$
+<p />
+
+29. $\displaystyle y = x\exp(x)+c_1x + c_2x^2. $ 
+<p />
+
+31. $\displaystyle y = 2x.$
+<p />
+
+33. $\displaystyle y = c_1\cos(\log|x^2|) + c_2\sin(\log|x^2|). $
+<p />
+
+35. $\displaystyle y = c_1x^2\cos(\log|x^2|) + c_2x^2\sin(\log|x^2|). $
+<p />
+
+37. $\displaystyle y = \frac{c_1}{(x+2)^2} + \frac{c_2}{(x+2)^4}. $
+<p />
+
+39. -1 is regular, -2 is regular.
+<p />
+
+41. 0 is irregular.
+<p />
+
+43. -1 is regular, 1 is regular.
+<p />
+ 
+45. $2\pi n$ is regular for all integer $n$.
+<p />
+
+47. $0 &lt; |x| &lt; \infty$
+<p />
+
+49. $0 &lt; |x-1| &lt; 2$
+<p />
+
+51. -1 and -3
+<p />
+
+53. $1 \pm i\sqrt{3}$
+<p />
+
+55. $-1 \pm \sqrt{11}$
+<p />
+
+57. $$\frac{\partial u}{\partial x} = 
+\sin(\phi)\cos(\theta)\frac{\partial u}{\partial \rho}
+- \frac{\sin(\theta)}{\rho \sin(\phi)} \frac{\partial u}{\partial \theta}
++ \frac{\cos(\theta)\cos(\phi)}{\rho} \frac{\partial u}{\partial \phi} $$
+
+59. $$ \frac{\partial u}{\partial z} =
+\cos(\phi)\frac{\partial u}{\partial \rho} 
+- \frac{\sin(\phi)}{\rho}\frac{\partial u}{\partial \phi} $$
+
+61.
+$$
+\begin{align}
+\frac{\partial^2 u}{\partial y^2} = 
+&\sin^2(\theta)\sin^2(\phi)\frac{\partial^2 u}{\partial \rho^2}
++ \frac{\cos^2(\theta)}{\rho^2\sin^2(\phi)}\frac{\partial^2 u}{\partial 
+\theta^2}
++ \frac{\sin^2(\theta)\cos^2(\phi)}{\rho^2}\frac{\partial^2 u}{\partial 
+\phi^2} \\
+&+ \frac{2\sin(\theta)\cos(\theta)}{\rho}\frac{\partial^2 u}{\partial 
+\rho \partial \theta}
++ \frac{2\sin^2(\theta)\sin(\phi)\cos(\phi)}{\rho} 
+\frac{\partial^2 u}{\partial \rho \partial \phi}
++ \frac{2\sin(\theta)\cos(\theta)\cos(\phi)}{\rho^2\sin(\phi)}
+\frac{\partial^2 u}{\partial \theta \partial \phi} \\
+&+ \frac{\cos^2(\theta)+\sin^2(\theta)\cos^2(\phi)}{\rho}\frac{\partial 
+u}{\partial \rho}
+- \frac{2\sin(\theta)\cos(\theta)}{\rho^2\sin^2(\phi)}\frac{\partial 
+u}{\partial \theta}
++ 
+\frac{\cos^2(\theta)\cos(\phi)-2\sin^2(\theta)\sin^2(\phi)\cos(\phi)}{\rho^2
+\sin(\phi)}\frac{\partial u}{\partial \phi} 
+\end{align}
+$$
+
+63. $$ \frac{\partial^2 u}{\partial \rho^2} 
++ \frac{2}{\rho}\frac{\partial u}{\partial \rho}
++ \frac{1}{\rho^2\sin(\phi)} \frac{\partial^2 u}{\partial \theta^2}
++ \frac{1}{\rho^2}\frac{\partial^2 u}{\partial \phi^2}
++ \frac{\cos(\phi)}{\rho^2 \sin(\phi)}\frac{\partial u}{\partial \phi} 
+=0 $$
+<p />
+
+65. $\displaystyle y(x)=(2e^2)x\exp(-2x) = 2x\exp(2-2x)$
+<p />
+
+67. $\displaystyle y(x) = \exp(-x)\cos(2x) + 
+\frac{2e-\cos(2)}{\sin(2)}\exp(-x)\sin(2x) $
+<p />
+
+69. $\displaystyle x_1 = \frac{n\pi}{2}$ for any integer $n$
+<p />
+
+71. $\displaystyle \alpha = (n\pi)^2$ for any integer $n$
+<p />
+
+73. $\displaystyle \alpha = 4+(n\pi)^2$ for any integer $n$
+<p />
+
+75. $$ \begin{align}
+T''(t)X(x) &= cT(t)X''(x) \\
+\frac{T''(t)X(x)}{T(t)X(x)} & = \frac{cT(t)X''(x)}{T(t)X(x)} \\
+\frac{T''(t)}{T(t)}&=\frac{cX''(x)}{X(x)}
+\end{align}$$
+Now since the only way a function of $t$ alone can equal a function of $x$ 
+alone is if they are constant. So we have 
+$$
+\frac{T''(t)}{T(t)}=\frac{cX''(x)}{X(x)}=\lambda
+$$
+and so we have the two ordinary differential equations
+$$ \begin{align}
+T''(t)-\lambda T(t) &= 0 \\
+cX''(x)-\lambda X(x) &=0
+\end{align} $$
+
+
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

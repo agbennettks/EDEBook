@@ -1,0 +1,291 @@
+<head>
+<title>EDE Chapter 3: Laplace Transforms</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Series Solutions</h3>
+</center>
+
+<h4>Discussion</h4>
+So now we know that given a linear variable coefficient initial value 
+problem we can find all the derivatives of the solution at the initial 
+point. That means we can write that solution as a Taylor series about the 
+initial point. Rather than work this out by repeatedly differentiating the 
+equation as in the last section, however, it is easier to guess that we 
+have a solution in the form of a power series, plug this guess into the 
+equation, and solve for the coefficients. We will apply this approach to
+second order linear homogeneous differential equations in this section 
+(restricting to second order homogeneous equations because they are both 
+the most common in application and because the algebra for them tends to 
+be a little simpler, though as you will see "simpler" is a relative term). 
+This is a lengthy process. To
+keep everything straight, it helps to follow an explicit plan.
+<p />
+<h4>Paradigm</h4>
+Find the general solution to $$ y'' - y' +xy = 0.$$
+<i>Step 1:</i>  Guess  $y(x) = \displaystyle 
+\sum_{n=0}^{\infty}a_n(x-x_0)^n$   and compute all the different
+pieces.
+<p />
+In this case, I will choose $x_0 = 0$.
+$$ \begin{align}
+xy &= \sum_{n=0}^{\infty}a_nx^{n+1} \\
+-y' &= \sum_{n=1}^{\infty}-na_nx^{n-1} \\
+y'' &=\sum_{n=2}^{\infty}n(n-1)a_nx^{n-2}
+\end{align} $$
+
+<i>Step 2:</i>  Change all the terms to the form $x^n$  or $x^j$, etc.
+<p />
+Let $j=n+1$, $k=n-1$, and $p=n-2$
+$$ \begin{align}
+xy &= \sum_{j=1}^{\infty}a_{j-1}x^j \\
+-y'&= \sum_{k=0}^{\infty}-(k+1)a_{k+1}x^{k} \\
+y'' &= \sum_{p=0}^{\infty}(p+2)(p+1)a_{p+2}x^p
+\end{align} $$
+
+<i>Step 3:</i>   Change all the indices to the same letter (I use $m$) and
+plug into the equation.
+$$
+y'' - y' + xy =
+\sum_{m=0}^{\infty}(m+2)(m+1)a_{m+2}x^m
++ \sum_{m=0}^{\infty}-(m+1)a_{m+1}x^{m}
++\sum_{m=1}^{\infty}a_{m-1}x^m
+$$
+
+<i>Step 4:</i>   Collect like terms.
+$$
+(2a_2 - a_1 )
++ \sum_{m=1}^{\infty} \left[(m+2)(m+1)a_{m+2} - (m+1)a_{m+1}
+                       + a_{m-1}\right]x^m   = 0
+$$
+Here the first term $2a_2-a_1$ is the coefficient of $x^0$ and the sum
+contains the general term. Since not all pieces have an $x^0$ term, it must
+be separated from the general term.
+<p />
+<i>Step 5:</i>   Equate coefficients to 0.
+$$    \begin{align}
+2a_2  - a_1  &= 0 \\
+(m+2)(m+1)a_{m+2}   - (m+1)a_{m+1}    + a_{m-1}     &=  0,
+\qquad\text{for $m\ge1$}
+\end{align} $$
+and we rewrite the last equation by solving for the highest
+coefficient, $a_{m+2}$, to obtain
+$$
+a_{m+2}=\frac{(m+1)a_{m+1}-a_{m-1}}{(m+2)(m+1)}\qquad\text{for $m\ge1$.}
+$$
+This last equality is called the <b>recurrence relation</b> for the
+differential equation.
+<p />
+<i>Step 6:</i>   Plug in $a_0 = 1$, $a_1 = 0$ to find the first solution 
+$y_1(x)$.
+$$ \begin{align}
+a_0  &= 1 \\
+a_1  &= 0 \\
+a_2  &= (1/2)a_1  = 0 \\
+a_3&=\frac{2a_2-a_0}{6}=-1/6 \\
+a_4&=\frac{3a_3-a_1}{12}=-1/24 \\
+&\vdots \\
+y_1 (x) &= 1 - (1/6)x^3  - (1/24)x^4  + \ldots
+\end{align} $$
+
+<i>Step 7:</i>  Plug in $a_0 = 0$, $a_1 = 1$ to find the second solution 
+$y_2(x)$.
+$$ \begin{align}
+a_0  &= 0 \\
+a_1  &= 1 \\
+a_2  &= (1/2)a_1  = 1/2 \\
+a_3&=\frac{2a_2-a_0}{6}=1/6 \\
+&\vdots \\
+y_2 (x) &= x + (1/2)x^2  + (1/6)x^3  + \ldots
+\end{align} $$
+
+<i>Step 8:</i>   The general solution is then
+$$
+y(x) = c_1 y_1 (x) + c_2 y_2 (x).
+$$
+
+Note that by our choice of $a_0$  and $a_1$  in our two solutions and since
+$x_0=0$, we have
+$y(0) = c_1$    and    $y'(0) = c_2$.
+This makes it easy to find $c_1$  and $c_2$  to solve initial value problems.
+Also
+note that if you are going to need to solve initial value problems with the
+initial values given at some point $a$, then you should choose $x_0 = a$ when
+you
+find the series solution so you will be able to find the $c_1$  and $c_2$
+easily.
+<p />
+<b>Example</b> Find the general solution to
+$$
+(1-x^2)y''-xy'+4y=0
+$$
+Step 1:
+$$\eqalign {
+4y&=\sum_{n=0}^{\infty}4a_nx^n \cr
+-xy'&=\sum_{n=1}^{\infty}-na_nx^n \cr
+(1-x^2)y''&=\sum_{n=2}^{\infty}n(n-1)a_nx^{n-2}
+-\sum_{n=2}^{\infty}n(n-1)a_nx^n \cr }
+$$
+Step 2: Let $j=n-2$, then
+$$ \eqalign {
+4y&=\sum_{n=0}^{\infty}4a_nx^n \cr
+-xy'&=\sum_{n=1}^{\infty}-na_nx^n \cr
+(1-x^2)y''&=\sum_{j=0}^{\infty}(j+2)(j+1)a_{j+2}x^j
+-\sum_{n=2}^{\infty}n(n-1)a_nx^n \cr }
+$$
+Step 3:
+$$ 
+(1-x^2)y''-xy'+4y =
+\eqalign {
+\sum_{m=0}^{\infty}&(m+2)(m+1)a_{m+2}x^m-\sum_{m=2}^{\infty}m(m-1)a_mx^m 
+\cr
+&-\sum_{m=1}^{\infty}ma_mx^m+\sum_{m=0}^{\infty}4a_mx^m \cr }
+= 0
+$$
+Step 4:
+$$
+(2a_2+4a_0)+(6a_3-a_1+4a_1)x+
+\sum_{m=2}^{\infty}\bigl((m+2)(m+1)a_{m+2}-m(m-1)a_m-ma_m+4a_m\bigl)x^m=0
+$$
+Step 5:
+$$ \eqalign {
+2a_2+4a_0&=0 \cr
+6a_3+3a_1&=0 \cr
+(m+2)(m+1)a_{m+2}-m^2a_m+4a_m&=0,\qquad m\ge2 \cr}
+$$
+The recurrence relation is
+$$
+a_{m+2}=\frac{(m^2-4)a_m}{(m+2)(m+1)},\qquad m\ge2
+$$
+Step 6:
+$$ \eqalign {
+a_0&=1 \cr
+a_1&=0 \cr
+a_2&=\frac{-4}{2}a_0=-2 \cr
+a_3&=0 \cr
+a_4&=\frac{0}{12}a_2=0 \cr
+a_5&=0 \cr
+a_6&=0 \cr
+&\vdots \cr}
+$$
+$$
+y_1(x)=1-2x^2 
+$$
+Step 7:
+$$ \eqalign {
+a_0&=0 \cr
+a_1&=1 \cr
+a_2&=0 \cr
+a_3&=\frac{-3}{6}a_1=-\frac12 \cr
+a_4&=0 \cr
+a_5&=\frac{5}{20}a_3=-\frac18 \cr
+&\vdots \cr }
+$$
+$$
+y_2(x)=x-\frac12x^3-\frac18x^5+\cdots
+$$
+Step 8: The general solution is 
+$$
+y(x)=c_1y_1(x)+c_2y_2(x).
+$$
+<p />
+Note that all coefficients of $y_1(x)$ are 0 after $a_2$ and so $y_1(x)$ 
+is actually a polynomial instead of an infinite series. The equation 
+$(1-x^2)y''-xy'+\alpha^2y=0$ is called Chebyshev's equation. For every 
+integer $\alpha$, this equation has a solution which is a polynomial of 
+degree $\alpha$, called the Chebyshev polynomial (actually, for 
+technical reasons relating to the specific applications of the Chebyshev 
+polynomial, most books would multiply our answer by $1/2^{\alpha}$ and 
+define that to be the Chebyshev polynomial of order $\alpha$). These 
+polynomials are important in approximation theory. As always, you are 
+welcome to stop by my office and I'll discuss Chebyshev polynomials and 
+their applications in more detail.
+<p />
+<b>Example</b> Solve the initial value problem
+$$
+y''-x^2y=0,\qquad y(0)=1,\quad y'(0)=0
+$$
+Step 1: Since we have initial data at $x=0$, we choose $x_0=0$ and so
+$$ y=\sum_{n=0}^{\infty}a_nx^n $$ from which we derive
+$$ \begin{align}
+-x^2y&=\sum_{n=0}^{\infty}-a_nx^{n+2} \\
+y''&=\sum_{n=2}^{\infty}n(n-1)a_nx^{n-2}
+\end{align} $$
+Step 2: Let $j=n+2$ and $k=n-2$ so
+$$ \begin{align}
+-x^2y&=\sum_{j=2}^{\infty}-a_{j-2}x^j \\
+y''&=\sum_{k=0}^{\infty}(k+2)(k+1)a_{k+2}x^k
+\end{align} $$
+Step 3:
+$$
+y''-x^2y=\sum_{m=0}^{\infty}(m+2)(m+1)a_{m+2}x^m
++\sum_{m=2}^{\infty}-a_{m-2}x^m
+$$
+Step 4:
+$$
+2a_2+6a_3x+\sum_{m=2}^{\infty}\bigl[(m+2)(m+1)a_{m+2}-a_{m-2}\bigl]x^m=0
+$$
+Step 5:
+$$ \begin{align}
+2a_2&=0 \\
+6a_3&=0 \\
+(m+2)(m+1)a_{m+2}-a_{m-2}&=0,\qquad\text{for $m\ge2$}
+\end{align} $$
+and from the last equation we obtain the recurrence relation
+$$
+a_{m+2}=\frac{a_{m-2}}{(m+2)(m+1)},\qquad\text{for $m\ge2$}.
+$$
+Step 6: Rather than find the general solution and plug in the initial
+values, we are going to plug in the initial values right now. We
+recall that
+$$ \begin{align}
+a_0&=y(x_0) \\
+\text{and}\qquad a_1&=y'(x_0)
+\end{align} $$
+and since we chose $x_0=0$ we can now read off
+$$ \begin{align}
+a_0&=1 \\ a_1&=0
+\end{align} $$
+from the initial conditions. We then obtain
+$$ \begin{align}
+a_2&=0 \\ a_3&=0
+\end{align} $$
+from our first two equations in step 5. Finally, we apply the
+recurrence relation to obtain
+$$ \begin{align}
+a_4&=\frac{a_0}{(2+2)(2+1)}=\frac{1}{12} \\
+a_5&=\frac{a_1}{(3+2)(3+1)}=0 \\
+a_6&=\frac{a_2}{(4+2)(4+1)}=0 \\
+a_7&=\frac{a_3}{(5+2)(5+1)}=0 \\
+a_8&=\frac{a_4}{(6+2)(6+1)}=\frac{1}{672} \\
+&\vdots
+\end{align} $$
+from which we get
+$$
+y(x)=1+(1/12)x^4+(1/672)x^8+\ldots
+$$
+
+
+<h4>Randomly Generated Examples</h4>
+Unfortunately, while I have been able to get the system we are now using for online homework to generate and grade
+series solution problems, I haven't been able to get it to print out a detailed solution that I think is useful. I haven't
+found a way to get it to print out more complicated expressions with summation signs and the like. But you can at least
+generate examples and see what the answers are below.
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1440845" width="100%" height="500" style="border: none;"></iframe>
+<p />
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

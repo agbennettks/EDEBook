@@ -1,0 +1,123 @@
+<head>
+<title>EDE Chapter 4: Series Solutions</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+
+<center>
+<h3>Convergence About Regular Singular Points</h3>
+</center>
+
+<h4>Discussion</h4>
+Convergence results near a regular singular point must be
+different from results near an ordinary point. After all, the series probably
+won't converge at the singular point. If a root of the indicial equation is negative,
+the leading term is $a_0(x-x_0)^r$ where $r<0$ and so the leading term is
+undefined. By convergence about a regular singular point, we really mean
+"about" and not "at." While the series may diverge at the singular point
+itself, we can hope it converges in a "punctured neighborhood" of the
+singular point, excluding the singular point. Once we adjust our sights
+accordingly, it turns out that series solutions about regular singular points
+satisfy a convergence theorem very similar to series solutions about ordinary
+points.
+<p />
+<i>Theorem:</i>
+Suppose $y(x) = (x-x_0)^r \displaystyle\sum_{n=0}^{\infty}a_n(x-x_0)^n$ is the 
+series solution
+to the
+differential equation  $p(x)y'' + q(x)y' + r(x)y = 0$  where $p(x)$, $q(x)$
+and
+$r(x)$ are all polynomials and  $x_0$ is a regular singular point.
+Then
+$y(x)$ converges in the regions $0 < x-x_0< a$ and $-a < x-x_0 < 0$ where $a$ 
+is the
+distance from $x_0$ to the next nearest singular point of the equation.
+NOTE: We must consider complex $x$, even though the equation is real.
+<p />
+This theorem is exactly the same as the corresponding theorem for ordinary
+points, except that the series need not converge at the point $x_0$ and that
+we use the nearest singular point to $x_0$ excluding $x_0$ itself.
+The same points raised in the "More Discussion" part of that section apply
+here as well.
+<p />
+<h4>Paradigm</h4> Where will the series solution to $(x^3+x^2)y''+xy'+y=0$
+about $x_0=0$ converge?
+<p />
+<i>Step 1:</i> Check that $x_0$ is a regular singular point so the 
+theorem
+applies.
+<p />
+Since all the coefficients are polynomials and the leading coefficient,
+$x^3+x^2$ is 0 at $x_0=0$, $x_0$ is a singular point. Next we check
+the appropriate limits.
+$$ \eqalign {
+&\lim_{x\to0}\frac{(x-0)x}{x^3+x^2}=\lim_{x\to0}\frac{1}{x+1}=1 \cr
+&\lim_{x\to0}\frac{(x-0)^2}{x^3+x^2}=\lim_{x\to0}\frac{1}{x+1}=1 \cr }
+$$
+Since both limits exist, $x_0$ is a regular singular point.
+<p />
+<i>Step 2:</i> Find all singular points, including those in the complex
+plane.
+<p />
+Since all coefficients are polynomial, the singular points are just the roots
+of the leading coefficient, $x^3+x^2$. The roots are $-1$ and $0$.
+<p />
+<i>Step 3:</i> Find the distances from $x_0$ to the other singular points.
+<p />
+The only singular point other than $x_0=0$ is $-1$ which is 1 unit away from
+$x_0$.
+<p />
+<i>Step 4:</i> The series solution converges in the regions $0 < x-x_0 < a$ and
+$-a < x-x_0 < 0$ where $a$ is the smallest distance found in step 3.
+<p />
+Since the only distance found was 1, the series solution converges in the
+regions $-1 < x < 0$ and $0 < x < 1$. Note that it may also converge outside 
+the
+region as well; the theorem states a region where it converges but doesn't
+say
+anything about where it diverges.
+<p />
+EXAMPLE: Where does the series solution of Bessel's equation of order 1, 
+$x^2y''+xy'+(x^2-1)y=0$ converge? 
+<p />
+Step 1: $0^2=0$ so $x_0=0$ is singular.
+$$ \eqalign {
+&\lim_{x\to0}\frac{(x-0)x}{x^2}=1 \cr
+&\lim_{x\to0}\frac{(x-0)^2(x^2-1)}{x^2}=\lim_{x\to0}x^2-1=-1 \cr }
+$$
+So $x_0=0$ is a regular singular point.
+<p />
+Step 2: All coefficients are polynomials so the singular points are the roots
+of the leading coefficient, $x^2$, which is just $0$.
+<p />
+Step 3: Since 0 is the only singular point, there are no other singular points
+to find the distance to.
+<p />
+Step 4: Since there is only the one singular point at $x_0=0$, the series
+converges in the regions $0 < x < \infty$ and $-\infty < x < 0$.
+<p />
+This last example illustrates why one might want to find a series solution 
+about a singular point rather than an ordinary point. If a series solution 
+for Bessel's equation is found about any ordinary point, we can only 
+guarantee that the series will converge in a bounded interval because the 
+singular point at 0 will be some finite distance away from the ordinary 
+point (see problem 10 in section 3). But the expansion about the singular 
+point 0 itself converges in two unbounded intervals. Actually,
+one solution to this particular equation will converge everywhere, 
+including at the point 0. This is a special bonus to Bessel's equation 
+and we won't be that lucky in general.
+
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

@@ -1,0 +1,108 @@
+<head>
+<title>EDE Chapter 4: Series Solutions</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+
+<center>
+<h3>Regular Singular Points</h3>
+</center>
+
+<h4>Discussion</h4>
+We have seen earlier in this chapter how to find
+series solutions about ordinary points. While those techniques don't
+work in general around singular points, there are different
+techniques that will work around some singular points. The key is
+whether the differential equation looks like an Euler equation near
+the singular point. If it does, then we can guess the correct form of
+the series solution by considering an Euler equation. If it doesn't
+look like an Euler equation, we are probably out of luck. There are
+no general techniques for that case.
+<p />
+Obviously, it is important to determine whether an equation looks
+like an Euler equation in the neighborhood of a singular point. If it
+does, we say the singular point is a regular singular point.
+Otherwise the singular point is an irregular singular point. The
+precise definition is the following.
+<p />
+<i>Definition:</i> A point $x_0$ is a <b>regular singular point</b>
+for the linear differential equation $p(x)y''+q(x)y'+r(x)y=0$ if
+$p(x)$, $q(x)$ and $r(x)$ are all analytic in a neighborhood of $x_0$
+and the following limits exist:
+$$
+\lim_{x\to x_0}\frac{(x-x_0)q(x)}{p(x)}{\buildrel\text{def}\over =} 
+\alpha_0\qquad\text{and}\qquad
+\lim_{x\to x_0}\frac{(x-x_0)^2r(x)}{p(x)}{\buildrel\text{def}\over =} 
+\beta_0
+$$
+If either limit fails to exist, $x_0$ is an <b>irregular singular 
+point</b>.
+<p />
+As before, don't worry about functions being "analytic." Any
+polynomial is analytic as is any rational, exponential, logarithmic
+or trigonometric function away from their singularities. The 
+$\buildrel\text{def}\over =$
+symbol means that $\alpha_0$ and $\beta_0$ are defined to be the values of
+those limits (if they exist). We will use $\alpha_0$ and $\beta_0$ in 
+what follows.
+<p />
+The rationale behind this definition (other than that it is the one that
+makes the theorems we have later true) is the following. Divide
+through the equation $p(x)y''+q(x)y'+r(x)y=0$ by $p(x)$ and multiply
+by $(x-x_0)^2$ and you obtain
+$$
+(x-x_0)^2y''+(x-x_0)\left(\frac{(x-x_0)q(x)}{p(x)}\right)y'+
+\left(\frac{(x-x_0)^2r(x)}{p(x)}\right)y=0.
+$$
+Now assuming $x_0$ is a regular singular point, we make the substitution
+$u=x-x_0$ and then
+can approximate
+this equation by the associated Euler equation
+$$
+u^2y''+\alpha_0uy'+\beta_0y=0.
+$$
+So the differential equation does indeed look like an Euler equation
+in the neighborhood of a regular singular point as promised. We will
+discuss how to use this information to obtain a series solution about
+a regular singular point in the next section.
+<p />
+<h4>Paradigm</h4> Find and classify the singular points of
+$(x^3-3x^2)y''+y'+2y=0$.
+<p />
+<i>Step 1:</i> Find the singular points.
+<p />
+Since all the coefficients are polynomials, the singular points are
+just the roots of the leading coefficient, in this case $x^3-3x^2$.
+So the singular points are $0$ and $3$.
+<p />
+<i>Step 2:</i> For each singular point, classify it as regular or
+irregular by computing the appropriate limits.
+<p />
+For $x=0$,
+$$
+\lim_{x\to0}\frac{(x-0)1}{x^3-3x^2}=\lim_{x\to0}\frac{1}{x^2-3x}
+\text{ is undefined.}
+$$
+so $x=0$ is an irregular singular point.
+<p />
+For $x=3$,
+$$ \eqalign {
+&\lim_{x\to3}\frac{(x-3)1}{x^3-3x^2}=\lim_{t\to3}\frac{1}{x^2}=\frac19 \cr
+&\lim_{x\to3}\frac{(x-3)^22}{x^3-3x^2}=\lim_{x\to3}\frac{2(x-3)}{x^2}=0 \cr}
+$$
+so both limits exist and $x=3$ is a regular singular point.
+
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

@@ -1,0 +1,173 @@
+<head>
+<title>EDE Chapter 4: Series Solutions</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+
+<center>
+<h3>Radius of Convergence</h3>
+</center>
+<h4>Discussion</h4>
+Consider the linear homogeneous variable coefficient initial value problem
+$$ \begin{align}
+   xy'' + y' + y &= 0 \\
+           y(0) &= -1 \\
+           y'(0) &= 1
+\end{align} $$
+Suppose we try to solve for $y''(0)$ as we did in section 1. If we plug $x=0$
+and the initial values into the problem we find
+$$
+    0 + 1 + -1 = 0
+$$
+which is certainly true, but gives us no hint about the value of $y''(0)$. The
+trouble is that the coefficient of $y''$  (which is $x$)  is 0 at $x=0$. A
+point where the coefficient of $y''$ is $0$ is called a singular point of the
+differential equation. More generally, we can define singular points as
+follows.
+<p />
+<i>Definition:</i> Let $p(x)$, $q(x)$ and $r(x)$ be analytic functions.
+A point $x_0$ is a <b>singular point</b> for the differential
+equation $p(x)y'' + q(x)y' + r(x)y=0$ if either $q(x)/p(x)$ or $r(x)/p(x)$ is
+undefined at $x=x_0$. A point which is not a singular point is an
+<b>ordinary point</b>.
+<p />
+A function is analytic in an interval if its Taylor series converges to the
+function in that interval. Don't let that definition bother you. Any
+polynomial or rational function is analytic, as are the exponential, log, and
+trigonometric functions, away from their singularities. I will not try to
+trick you by using non-analytic functions in this class. It should be noted
+that if $p(x)$, $q(x)$ and $r(x)$
+are all polynomials, then $x_0$ will only be a singular point if $p(x_0)=0$.
+<p />
+Example:   $x^2 y'' + xy' = 0$  has a singular point at $x=0$ since
+$x/x^2=1/x$ is undefined at $x=0$.
+<p />
+Example: $2y''+y/(x-1)=0$ has a singular point at $x=1$ since
+$(1/(x-1))/2=1/(2x-2)$ is undefined at $x=1$.
+<p />
+The techniques we learned in the last section will work for ordinary 
+points but will not work for singular points. We will study solutions 
+about singular points in the next several sections after this one.
+<p />
+So far, we have not worried about where a power series solution to a
+differential equation is valid in this class. We have just gone through
+the manipulations to find the solution and then assumed what we found was
+actually a solution. But of course, the manipulations we went through are only
+valid inside the radius of convergence of the power series. So now we will
+take up the question of how large the radius of convergence of our series
+solution will be. Of course, we already have some examples to build on from
+the labs. Fortunately, we don't have to try to remember all the old tests for
+deciding on the radius of convergence of a power series from calculus.
+Instead, we have the following theorem.
+<p />
+<i>Theorem:</i> Suppose 
+$\displaystyle y(x) = \sum_{n=0}^{\infty}a_n(x-x_0)^n$  
+is the series solution to the
+differential equation  $p(x)y'' + q(x)y' + r(x)y = 0$  where $p(x)$, $q(x)$
+and
+$r(x)$ are all polynomials and  $x_0$ is an ordinary point.
+Then
+the radius of convergence for $y(x)$ is at least as large as the distance from
+$x_0$  to the nearest singular point of the equation. 
+<p />
+NOTE: We must consider complex $x$, even though the equation is real.
+<p />
+<h4>Paradigm</h4>
+  What is the radius of convergence of the series solution to
+           $(x+1)y'' + y' + (x+1)y = 0$  about the point $x_0 = 0$?
+<p />
+<i>Step 1:</i>
+Check the series is expanded about an ordinary point (so the
+theorem applies).
+<p />
+           Since all the coefficients are polynomials and $p(0)=0+1=1\ne0$,
+0 is an ordinary point and the above theorem applies.
+<p />
+<i>Step 2:</i> Compute all singular points.
+<p />
+ The only singular point is $-1$.
+<p />
+<i>Step 3:</i> Find the distances from the singular points to center of
+expansion.
+<p />
+ $-1$ is a distance of
+             1 away from 0
+<p />
+<i>Step 4:</i> The radius of convergence is at least as large as the
+smallest
+distance from a singular point to the center of expansion of the series.
+<p />
+The radius of convergence is at least 1.
+<hr />
+<p />
+EXAMPLE:  What is the radius of convergence of the series solution to
+          $ (x^2 - 2x - 3)y'' + (x+1)y' + 3y = 0$ about the point $x_0 = 0$?
+<p />
+Step 1:   Since all coefficients are polynomial and $p(0)=0+0-3=-3\ne 0$,
+0 is an ordinary point and the above theorem applies.
+<p />
+Step 2:      The two singular points are $-1$ and $3$.
+<p />
+Step 3: $-1$ is 1 unit from 0 and 3 is 3 units from 0.
+<p />
+Step 4: $-1$ is the singular point closest to 0 and it is a distance 1
+away. The
+radius of convergence is at least 1.
+<hr />
+<p />
+EXAMPLE:           What is the radius of convergence of the series solution to
+$(x^3 + x^2 + x + 1)y'' + 2xy' + (x-1)y = 0$ about the point
+            $x_0 = 1$?
+<p />
+Step 1: Since all coefficients are polynomial and $p(1)=1+1+1+1=4\ne0$,
+1 is an ordinary point and the above theorem applies.
+<p />
+Step 2:     The three singular points are $-1$, $i$ and $-i$.
+<p />
+Step 3: $-1$ is 2 away
+             from 1 while $\pm i$ are $\sqrt2<2$ away from 1.
+<p />
+Step 4: The radius of convergence is at least $\sqrt2$.
+<hr />
+<p />
+This is a very powerful theorem because we can decide where a power
+series solution will be valid even before we have found the series.
+The hypothesis can be weakened
+somewhat ($p$, $q$, $r$ analytic instead of polynomial), but this leads to
+more
+technical questions than we need to consider. The easiest mistake to make is
+to forget to consider complex singular points, but complex analysis is used in
+the proof and so complex points must be considered. In fact, if you go back to
+the labs and consider the Taylor series expansion for $1/(1+x^2 )$ about
+$x_0=0$
+you will see that the Taylor series had a radius of convergence of 1,
+corresponding to the singularities at $\pm i$ which are a distance 1 from 0.
+ The other point to remember is that this just gives a lower bound on
+the radius of convergence. It is possible for the radius of
+convergence to be larger than this test indicates. But that is fairly
+rare in practice; this test works out pretty accurately.
+
+<h4>Randomly Generated Examples</h4>
+A randomly generated problem where you find the a priori lower bound for the radius of convergence
+of the series solution to a second order linear equation is below.
+As always, once you submit an answer, you will have a link to see the detailed
+solution for the problem, as well as the option to generate a new problem and you can just quickly enter 
+a "dummy" answer to quickly get to the detailed solution if that is all you want to see.
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1440399" width="100%" height="500" style="border: none;"></iframe>
+<p />
+
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

@@ -1,0 +1,204 @@
+<head>
+<title>EDE Chapter 4: Series Solutions</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<center>
+<h3>Euler Equations</h3>
+</center>
+<h4>Discussion</h4>
+We will now begin to work on solutions to
+differential equations near singular points. The simplest examples we
+can easily solve are called Euler equations. A differential equation
+is called an <b>Euler equation</b> if it can be written in the form
+$a_nx^ny^{(n)}(x)+\cdots+a_1xy'+a_0y=f(x)$. We will be interested
+primarily in second order homogeneous Euler equations. To find the
+general solution to such an equation, we need two linearly
+independent solutions. One way to find such solutions, which is very
+quick if it works, is to guess what they are. The key idea is to
+notice that if $y(x)=x^r$, then $x^ny^{(n)}(x)=r!/(r-n)!x^r$ for
+$r\ge n$. But then every term in the Euler equation will be a
+constant times $x^r$ and we can hope to choose $r$ so that they all
+cancel out. That is the strategy.
+<h4>Paradigm</h4>
+$$x^2y''+4xy'+2y=0$$
+
+<i>Step 1:</i> Guess $y(x)=x^r$ and plug into the equation.
+$$ \eqalign {
+x^2y''+4xy'+2y&=x^2(r(r-1)x^{r-2})+4x(rx^{r-1})+2x^r \cr
+&=(r(r-1)+4r+2)x^r \cr
+&=(r^2+3r+2)x^r {\buildrel \text{set}\over =} 0 \cr}
+$$
+<i>Step 2:</i> Solve for $r$.
+<p />
+The roots of $r^2+3r+2=0$ are $r=-1$ and $r=-2$. So two solutions are
+$x^{-1}$ and $x^{-2}$.
+<p />
+<i>Step 3:</i> If you have found two distinct real roots, $r_1$ and
+$r_2$, then the general solution is $y(x)=c_1x^{r_1}+c_2x^{r_2}$.
+<p />
+The general solution is therefore $y(x)=c_1x^{-1}+c_2x^{-2}$.
+<p />
+EXAMPLE: Find the general solution to 
+$$ x^2y''+xy'-n^2y=0 $$
+($n$ is an integer constant. This equation arises in solving Laplace's 
+Equation $\Delta u=\partial^2u/\partial x^2+\partial^2u/\partial y^2=0$ on 
+the disk. This should seem reasonable if you recall that in polar 
+coordinates $\Delta=\partial^2/\partial r^2 + (1/r)\partial/\partial r + 
+(1/r^2)\partial/\partial\theta^2$.)
+<p />
+Step 1:
+$$ \eqalign {
+x^2y''+xy'-n^2y&=x^2r(r-1)x^{r-2}+xrx^{r-1}-n^2x^r \cr
+&=r^2x^r-n^2x^r \cr
+&=(r^2-n^2)x^r {\buildrel \text{set}\over =} 0 \cr }
+$$
+Step 2:
+The roots of $r^2-n^2=0$ are $r=\pm n$. So the two solutions are $x^n$ 
+and $x^{-n}$.
+<p />
+Step 3: The general solution is $y(x)=c_1x^n+c_2x^{-n}$.
+<p />
+You can check using the Wronskian that $x^{r_1}$ and $x^{r_2}$ are
+linearly independent if $r_1\ne r_2$. If the equation is of higher
+order than second, this paradigm still works, you just need $n$
+distinct roots of the equation to get $n$ linearly independent
+functions to build the general solution of an $n^{th}$ order equation.
+Now what if the roots are not real and distinct? In the case where
+the roots are complex conjugates we can treat them as we have always
+treated complex roots. We find a complex solution and take its real
+and imaginary parts to obtain two real solutions. Of course, then we
+have to work with quantities like $x^i$. But this isn't as bad as it
+seems, we just use $x^i=e^{i\log x}$. (Actually, taking a logarithm
+in the complex plane can be a dangerous thing, but we won't worry
+about that now. You should take the introductory complex variables
+class sometime though and learn all about it.) But what if the roots
+are repeated? In that case we have no obvious guess for how to find a
+second root. There are several ways to deal with this. The way we
+will use is to make a change of variables to reduce the original
+equation to a constant coefficient equation. This technique will work
+on any Euler equation, not just those with repeated roots. But the
+first paradigm is more efficient when it works.
+<p />
+<h4>Paradigm (Take 2)</h4> 
+$$x^2y''+7xy'+9y=0.$$
+
+<i>Step 1:</i> Make the change of variables $z=\log x$ or
+equivalently $x=e^z$.
+<p />
+The crucial calculations here are how the derivatives of $y$ with
+respect to $x$ convert to derivatives of $y$ with respect to $z$. We
+first compute
+$$
+\frac{dy}{dx}=\frac{dy}{dz}\frac{dz}{dx}=\frac1x\frac{dy}{dz}
+$$
+where we have used the chain rule. So $xdy/dx=dy/dz$. Next we tackle
+the second derivative. Here we must remember we want to write the
+derivative with respect to $x$ of the derivative with respect to $x$
+in terms of the derivative with respect to $z$ of the derivative with
+respect to $z$.
+$$ \eqalign {
+\frac{d^2y}{dx^2}&=\frac{d}{dx}\left(\frac{dy}{dx}\right) \cr
+&=\frac1x\frac{d}{dz}\left(\frac1x\frac{dy}{dz}\right) \cr
+&=\frac1x\left(\frac{d(1/x)}{dz}\frac{dy}{dz}
++\frac1x\frac{d^2y}{dz^2}\right) \cr
+&=\frac1x\left(-\frac1x\frac{dy}{dz}
++\frac1x\frac{d^2y}{dz^2}\right) \cr
+&=\frac{1}{x^2}\left(\frac{d^2y}{dz^2}-\frac{dy}{dz}\right) \cr }
+$$
+where we used the product rule in the third line. So $x^2d^2y/dx^2=
+d^2y/dz^2-dy/dz$.
+Applying this rule, along with our computation for $dy/dx$ we find
+the equation becomes
+$$ \eqalign {
+&\frac{d^2y}{dz^2}-\frac{dy}{dz}+7\frac{dy}{dz}+9y \cr
+=\quad &\frac{d^2y}{dz^2}+6\frac{dy}{dz}+9y=0. \cr }     
+$$ 
+<i>Step 2:</i> Solve the transformed equation.
+<p />
+Since  $D^2+6D+9=0$ has a double root of $-3$, the solution is
+$c_1e^{-3z}+c_2ze^{-3z}$.
+<p />
+<i>Step 3:</i> Take the inverse transform to find the answer in terms of the
+original variable.
+$$ \eqalign {
+c_1e^{-3z}+c_2ze^{-3z}&=c_1e^{-3\log x}+c_2(\log x)e^{-3\log x} \cr
+&=c_1x^{-3}+c_2(\log x)x^{-3} \cr }
+$$
+The crucial step to note here is that while $xdy/dx=dy/dz$,
+$x^2d^2y/dx^2=d^2y/dz^2-dy/dz$. So the leading coefficient and the
+constant coefficient will remain unchanged when the equation is
+transformed, but the coefficient of $dy/dx$ will be changed because
+it picks up not only the $dy/dx$ term but also part of the
+$d^2y/dx^2$ term. The two easiest errors to make in solving Euler
+equations using the second paradigm are either to forget to change the
+middle coefficient in transforming the equation or to forget to back-substitute 
+to get the answer in terms of the original variable.
+<p />
+Of course we have only dealt with the homogeneous case in these
+paradigms. To handle the inhomogeneous equation, we can either use
+the second paradigm, make the change of variables on the right hand
+side as well and hope we can apply undetermined coefficients (which
+isn't all that likely), or we
+can just use variation of parameters.
+<p />
+EXAMPLE: $x^2y''+5xy'+3y=e^x$
+<p />
+We will use the first paradigm and variation of parameters.
+<p />
+Step 1: $y(x)=x^r$, so $xy'(x)=rx^r$ and $x^2y''(x)=r(r-1)x^r$.
+Plugging these into the equation we obtain $(r^2+4r+3)x^r=0$
+<p />
+Step 2: The roots of $r^2+4r+3=0$ are $r=-3$ and $r=-1$.
+<p />
+Step 3: Two linearly independent solutions of the homogeneous
+equation are $x^{-3}$ and $x^{-1}$.
+<p />
+Now that we have two linearly independent homogeneous solutions, we want
+to use the variation of parameters formula to find the
+general solution. First we note that <a href=../chap2/vop.php#vopform>the 
+formula in our theorem on 
+variation of parameters</a> only applies to
+equations where the coefficient of the leading term is 1. So we divide
+through our Euler equation by $x^2$ to put it in the correct form,
+$$y''+5x^{-1}y'+3x^{-2}y=x^{-2}e^x.$$
+Our linearly independent solutions of the homogeneous equation, as noted
+in step 3, are $y_1(x)=x^{-3}$ and $y_2(x)=x^{-1}$. We compute
+$W(x^{-3},x^{-1})(x)=-x^{-5}+3x^{-5}=2x^{-5}$. The right hand
+side is $g(x)=x^{-2}e^x$.
+From our formula for
+variation of parameters we then
+find the general solution is
+$$ \eqalign {
+y(x)&=-x^{-3}\int_0^x \frac{s^{-1}s^{-2}e^s}{2s^{-5}}\,ds+x^{-1}\int_0^x
+\frac{s^{-3}s^{-2}e^{s}}{2s^{-5}}\,ds+C_1x^{-3}+C_2x^{-1} \cr
+&=\frac{-x^{-3}}{2}\int_0^x s^2e^s\,ds
++\frac{x^{-1}}{2}\int_0^x e^s\,ds+C_1x^{-3}+C_2x^{-1} \cr
+&=\frac{-x^{-3}}{2}(x^2e^x-2xe^x+2e^x-2)
++\frac{x^{-1}}{2}(e^x-1)+C_1x^{-3}+C_2x^{-1} \cr
+&=\frac{-x^{-1}}{2}e^x+x^{-2}e^x-x^{-3}e^x+\frac{x^{-1}}{2}e^x+(C_1+1)x^{-3}
++(C_2-1/2)x^{-1} \cr
+&=x^{-2}e^x-x^{-3}e^x+c_1x^{-3}+c_2x^{-1} \cr }
+$$
+where $c_1=C_1+1$ and $c_2=C_2-1/2$.
+
+<h4>Randomly Generated Examples</h4>
+A randomly generated second order Euler initial value problem is below.
+As always, once you submit an answer, you will have a link to see the detailed
+solution for the problem, as well as the option to generate a new problem and you can just quickly enter 
+a "dummy" answer like $x$ to quickly get to the detailed solution if that is all you want to see.
+<p />
+<iframe src="https://www.myopenmath.com/embedq.php?id=1445341" width="100%" height="500" style="border: none;"></iframe>
+<p />
+
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

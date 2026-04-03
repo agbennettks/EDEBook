@@ -1,0 +1,252 @@
+<head>
+<title>EDE Chapter 4: Power Series</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+<body>
+
+
+<center>
+<h3>Power Series</h3>
+</center>
+<h4>Discussion</h4>
+We have earlier considered constant coefficient linear second order 
+equations. We will now
+consider the much more difficult case of variable coefficients. Consider the
+following equation, called the Airy equation:
+$$
+y'' - xy = 0
+$$
+It can be shown that there is no closed form solution to this equation in
+terms of sines, cosines, exponentials and powers of $x$. Yet this is about the
+simplest variable coefficient second order equation there is. Note that while
+there is no solution in terms of functions we are familiar with, the general
+theory assures us there are lots of solutions; they just can't be written in
+terms of familiar functions. This being the case, we will have to find some
+way to decide what these solutions look like without being able to write them
+out explicitly in finite form. Consider the following initial value problem
+$$  \begin{align}
+y'' - xy &= 0 \\
+y(0) &= 1     \\
+y'(0) &= 2
+\end{align}  $$
+Substituting in the initial values at $x=0$ we find
+$$
+y''(0) - 0\times1 = 0 \qquad\text{or}\qquad    y''(0) = 0
+$$
+Differentiating the differential equation we find
+  $$
+y''' - xy' - y = 0
+    $$
+and substituting in the initial values we find
+      $$
+y'''(0) - 0\times2 - 1 = 0\qquad\text{or}\qquad    y'''(0) = 1
+$$
+Differentiating the differential equation a second time yields
+  $$
+y'''' - xy'' - 2y' = 0
+$$
+and substituting in the initial values we find
+$$
+y''''(0) - 0\times 0 - 2\times2 = 0  \qquad\text{or}\qquad    y''''(0) = 4
+$$
+We can continue in this fashion and find the values of all the derivatives of
+$y$ at the point 0. Then we can write out the Taylor series for $y(x)$
+about 0
+$$ \begin{align}
+y(x) &= y(0) + y'(0)x + (1/2)y''(0)x^2  + (1/6)y'''(0)x^3  + \ldots \\
+y(x) &= 1+2x+1/6x^3+\ldots
+\end{align}  $$
+This will give us a solution to our equation, though not in a finite form. We
+can then look at the partial sums of the Taylor series, which are polynomials
+and can be easily graphed, and use these as convenient approximations to the
+true solution.
+<p />
+<h4>Review of Power Series</h4>
+At this point it is useful to recall some facts about power series from
+Calculus II.
+<p />
+A <b>power series</b> is an infinite series of the form
+$$
+a_0  + a_1 (x-x_0 ) + a_2 (x-x_0 )^2  + a_3 (x-x_0 )^3  + \ldots
+$$
+The power series is said to <b>converge</b> at a point $x$ if the 
+sequence of partial sums converges at the point $x$. The series 
+<b>converges absolutely</b> at the point $x$ if the  sequence of partial 
+sums 
+of the absolute values of the terms converges at the point $x$. For 
+every power series there is a <b>radius of convergence</b> $r$. The power 
+series converges absolutely for $|x-x_0| < r$ and diverges for $|x-x_0| 
+> r$. The series may converge or diverge at $|x-x_0| = r$. Note that the 
+radius of convergence must always be non-negative. One way to determine 
+the radius of convergence of the series $\sum_{n=0}^{\infty}a_nx^n$ at 
+$x$ is the <b>ratio test</b>. Compute
+$$\lim_{n\to\infty}\frac{a_{n+1}x^{n+1}}{a_nx^n}.$$
+If the limit is less than 1, then the series converges. If the limit is 
+greater than 1, then the series diverges. If the limit is equal to 
+1, then we are at the boundary of the regions of convergence and 
+divergence, so we are at the radius of convergence. 
+<p />
+Within the radius of convergence, the derivative of a power
+series may be taken term by term. That is, if
+$$
+f(x) = a_0  + a_1 (x-x_0 ) + a_2 (x-x_0 )^2  + a_3 (x-x_0 )^3  + \ldots
+$$
+then
+$$
+f'(x) = a_1  + 2a_2 (x-x_0 ) + 3a_3 (x-x_0 )^2  + \ldots
+$$
+so long as $|x-x_0| < r$. Note that here we just differentiated every term in
+the power series and then summed the terms. The derived power series will
+converge absolutely in the range $|x-x_0| < r$.
+By plugging $x_0$ into the original series we see $a_0 = f(x_0)$  and by
+plugging into the derived series we see $a_1 = f'(x_0 )$. In general,
+$a_n = f^{(n)}(x_0 ) / n!$. So the power series is the Taylor series of its
+sum. Two
+power series are equal if and only if each term is equal, i.e.
+$$
+a_0  + a_1 (x-x_0 ) + a_2 (x-x_0 )^2  + \ldots  =  b_0  + b_1 (x-x_0 ) + b_2
+(x-x_0)^2+\ldots
+$$
+if and only if $a_0 = b_0$ , $a_1 = b_1$ , $a_2 = b_2$ , etc. Two power series
+about the same point $x_0$  may be added term by term.
+$$ \begin{align}
+\text{if}\qquad\qquad\qquad f(x) &= a_0  + a_1 (x-x_0 ) + a_2 (x-x_0 )^2  
++ a_3 (x-x_0 
+)^3  + \ldots \\
+\text{and}\qquad\qquad\qquad g(x) &= b_0  + b_1 (x-x_0 ) + b_2 (x-x_0 )^2
++ b_3 (x-x_0 )^3  + \ldots \\
+\text{then}\qquad
+f(x)+g(x) &= (a_0 + b_0 ) + (a_1 + b_1 )(x-x_0 ) + (a_2 + b_2 )(x-x_0 )^2 +
+\ldots
+\end{align} $$
+The radius of convergence of the summed series is at least as large as the
+smaller of the radii of convergence of the individual series (and possibly
+larger).
+<p />
+The rule for multiplication is somewhat more difficult.
+$$ \begin{align}
+f(x)\times g(x) &= c_0  + c_1 (x-x_0 ) + c_2 (x-x_0 )^2  + c_3 (x-x_0 )^3  
++
+\ldots \\
+&\text{where} \\
+c_n  &= a_n  b_0  + a_{n-1} b_1  + a_{n-2}  b_2  + \cdots + a_0  b_n
+\end{align} $$
+The radius of convergence of the product series is at least as large as the
+smaller of the radii of convergence of the individual series (and possibly
+larger).
+<p />
+The sequence $c_n$  is called the <b>convolution</b> of the sequences 
+$a_n$ 
+and $b_n$. This is the discrete analogue of the integral formula for 
+convolution we had in the last chapter. If you are interested in the 
+connection between the discrete and integral convolutions and can't work 
+it out on your own, stop by my office. Division of power series is quite 
+messy, though it can be useful in some situations (where it is usually 
+called deconvolution). We won't need to deal with it. 
+<p />
+EXAMPLE: Find the Taylor series for $\displaystyle \frac{x}{1-x}$ about 
+$x_0=0$. Also find the radius of convergence of this Taylor series.
+<p />
+While we could repeatedly differentiate and evaluate at 0 to find the 
+Taylor series, a shorter way is to recall that the sum of a geometric 
+series is
+$$
+1+x+x^2+x^3+\cdots=\frac{1}{1-x},\qquad \text{for }|x|<1.
+$$
+Note that the radius of convergence of this series is 1. So from the 
+series for $\displaystyle \frac{1}{1-x}$ we can derive that
+$$ \eqalign {
+\frac{x}{1-x}&=x\frac{1}{1-x} \cr
+&=x(1+x+x^2+x^3+\cdots \cr
+&=x+x^2+x^3+x^4+\cdots \cr }
+$$ 
+and that the radius of convergence of this new series is also at least 1.
+If we want to find the radius of convergence precisely, we use the ratio 
+test.
+$$ 
+\lim_{n\to\infty}\frac{x^{n+1}}{x^n}=x
+$$
+The ratio is equal to 1 when $x=1$, so in this case the radius of 
+convergence is indeed 1. 
+<p />
+In what has gone before, we have written out all the terms of the series 
+with an ellipsis (3 dots) at the end to show the series continues 
+forever. It is often easier to use a capital sigma 
+to denote an infinite series like so
+$$
+\sum_{n=0}^{\infty}a_n(x-x_0)^n=a_0+a_1(x-x_0)+a_2(x-x_0)^2+\cdots
+$$
+We repeat the above example in this notation.
+<p />
+EXAMPLE (repeat): Find the Taylor series for $\displaystyle 
+\frac{x}{1-x}$ about $x_0=0$.
+<p />
+We write $$\frac{1}{1-x}=\sum_{n=0}^{\infty}x^n.$$
+Then multiplying by $x$ we get
+$$\eqalign{
+\frac{x}{1-x}&=x\sum_{n=0}^{\infty}x^n \cr
+&=\sum_{n=0}^{\infty}x^{n+1} \cr}
+$$
+
+Note that the answer we got had an $x^{n+1}$ instead of an $x^n$ in each 
+term. This can cause some difficulties on occasion. When necessary, we 
+can make a change of variables for the variable of summation ($n$ in 
+this case) to transform the sum to terms of the form $x^n$. In this 
+case, if we let $j=n+1$, then when $n=0$ we have $j=1$ and when $n=\infty$ 
+we have $j=\infty$ and so our sum becomes
+$$\sum_{n=0}^{\infty}x^{n+1}=\sum_{j=1}^{\infty}x^j$$
+
+EXAMPLE: Find the Taylor series for $(1+x)e^x$ about $x_0=0$.
+
+$$\eqalign{
+(1+x)e^x&=(1+x)\sum_{n=0}^{\infty}\frac{x^n}{n!} \cr
+&=\sum_{n=0}^{\infty}\frac{x^n}{n!}+x\sum_{n=0}^{\infty}\frac{x^n}{n!}\cr
+&=\sum_{n=0}^{\infty}\frac{x^n}{n!}+\sum_{n=0}^{\infty}\frac{x^{n+1}}{n!} 
+\cr }
+$$
+Now we would like to add the two series, but the $x^n$ and $x^{n+1}$ 
+terms don't match up. We handle this problem by making a change of 
+variables in the second sum. Let $j=n+1$. Then when $n=0$, $j=1$, when 
+$n=\infty$, $j=\infty$ and $n!$ becomes $(j-1)!$. Plugging all this into 
+the second sum we get
+$$\eqalign{
+(1+x)e^x&=
+\sum_{n=0}^{\infty}\frac{x^n}{n!}+\sum_{n=0}^{\infty}\frac{x^{n+1}}{n!} 
+\cr
+&=\sum_{n=0}^{\infty}\frac{x^n}{n!}+\sum_{j=1}^{\infty}\frac{x^{j}}{(j-1)!}
+\cr}
+$$
+Now the name of the variable of summation in the second sum doesn't 
+matter. $\sum_{j=1}^5j=1+2+3+4+5=\sum_{n=1}^{5}n$ for example. So we 
+just change the name $j$ to $n$ in the second sum to get
+$$\eqalign{
+(1+x)e^x&=
+\sum_{n=0}^{\infty}\frac{x^n}{n!}+\sum_{n=1}^{\infty}\frac{x^{n}}{(n-1)!}
+\cr}
+$$
+Now things look better, but there is a $n=0$ term in the first sum and 
+no corresponding term in the second sum. We handle this by splitting the 
+$n=0$ term out of the first sum and finally we get our answer.
+$$\eqalign{
+(1+x)e^x&=
+\sum_{n=0}^{\infty}\frac{x^n}{n!}+\sum_{n=1}^{\infty}\frac{x^{n}}{(n-1)!} 
+\cr
+&=1+\sum_{n=1}^{\infty}\frac{x^n}{n!}+\sum_{n=1}^{\infty}\frac{x^{n}}{(n-1)!} 
+\cr
+&=1+\sum_{n=1}^{\infty}\bigl(\frac{x^n}{n!}+\frac{x^n}{(n-1)!}\bigl) \cr
+&=1+\sum_{n=1}^{\infty}\frac{(n+1)x^n}{n!} \cr }
+$$
+Manipulations like in this example will be very useful in dealing with 
+series solutions for differential equations.
+
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

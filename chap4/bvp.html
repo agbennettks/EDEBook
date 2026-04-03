@@ -1,0 +1,133 @@
+<head>
+<title>EDE Chapter 4: Series Solutions</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+
+<center>
+<h3>Boundary Value Problems</h3>
+</center>
+
+<h4>Discussion</h4>
+A second order equation will have two arbitrary constants in its general
+solution, so if you want to specify a particular solution you should
+expect to require two additional conditions. So far, the conditions we
+have considered have always been initial values, where you are given the
+value of the function and its derivative at a point. Physically, this
+corresponds to knowing the position and velocity at a given time. But it
+is quite possible to be given other types of conditions. Another common
+example is boundary conditions, where you are told the value of the
+function at two different points. Physically, this corresponds to knowing
+the position at two different times or positions. These sorts of problems are 
+very common when you have ordinary differential equations that arise in the 
+solution of partial differential equations. For example, if you are solving the 
+wave equation for a string that is tacked down at both ends, you will encounter 
+the equation $T''+\lambda T=0$, $T(0)=0$, $T(1)=0$, where the boundary 
+conditions reflect the fact that the string is tacked down at both ends (hence 
+the value at both ends must be 0 for all times).
+<p />
+ At first glance, there 
+appears to be
+little different about such problems. You just find the general solution,
+then plug in the two conditions and solve to find the values of the
+constants. This is indeed how you go about solving the problem. But there
+turn out to be various interesting difficulties that arise in boundary
+value problems that don't arise in initial value problems.
+<p />
+EXAMPLE: Solve the boundary value problem $y''+y=0$, $y(0)=1$, $y(1)=2$.
+<p />
+FIRST: Find the general solution. This is a homogeneous equation so it is
+easy to find that the general solution is $y(x)=c_1\sin(x)+c_2\cos(x)$.
+<p />
+SECOND: Plug in the boundary values and solve for the constants.
+$$ \eqalign {
+y(0)&=c_1\sin(0)+c_2\cos(0)=c_2{\buildrel \text{set}\over =}1 \cr
+y(1)&=c_1\sin(1)+c_2\cos(1){\buildrel \text{set}\over =}2 \cr } $$
+Solving the equations we get
+$$ \eqalign {
+c_1&=\frac{2-\cos(1)}{\sin(1)} \cr
+c_2&=1 \cr } $$
+so the solution is 
+$y(x)=\frac{2-\cos(1)}{\sin(1)}\sin(x)+\cos(x).$
+<p />
+That didn't seem very exciting. But consider the next example.
+<p />
+<hr />
+EXAMPLE: $y''+y=0$, $y(0)=1$, $y(\pi)=2$.
+<p />
+FIRST: As before, we find the general solution is
+$y(x)=c_1\sin(x)+c_2\cos(x)$. 
+<p />
+SECOND: This time we plug in and get
+$$ \eqalign {
+y(0)=c_1\sin(0)+c_2\cos(0)=c_2&{\buildrel \text{set}\over =}1 \cr
+y(\pi)=c_1\sin(\pi)+c_2\cos(\pi)=-c_2&{\buildrel \text{set}\over =}2 \cr
+} $$
+This can't happen since $c_2$ can't equal both 1 and -2. In this case there
+is no solution to the boundary value problem. That never happened with
+initial value problems, and there is a theorem that it can't happen for
+any
+reasonable initial value problem. But boundary value problems are a whole
+new ball game. Another weird possibility is in the following example.
+<p />
+<hr />
+EXAMPLE: $y''+y=0$, $y(0)=0$, $y(\pi)=0$.
+<p />
+FIRST: As always, the general solution is $y(x)=c_1\sin(x)+c_2\cos(x)$.
+<p />
+SECOND: We plug in and get
+$$ \eqalign {
+y(0)=c_1\sin(0)+c_2\cos(0)=c_2&{\buildrel \text{set}\over =}0 \cr
+y(\pi)=c_1\sin(\pi)+c_2\cos(\pi)=-c_2&{\buildrel \text{set}\over =}0 \cr
+} $$
+<p />
+So we see that $c_2$ emphatically must be 0. But we don't know anything
+about $c_1$. Any function of the form $y(x)=c_1\sin(x)$ satisfies the
+given boundary value problem. Again, with initial value problems we don't
+have this difficulty. Any reasonable initial value problem has exactly
+one solution. With boundary value problems, we might have just one
+solution, as in the first example, or no solutions, as in the second
+example, or infinitely many solutions, as in the third example. 
+<hr />
+<p />
+Boundary value problems often arise in connection with partial
+differential equations. In this case, it is usually most interesting to
+know when you get infinitely many solutions. This isn't quite so
+standardized a problem that I can give you a paradigm to mimic, but I can
+work one to give you the general idea.
+<p />
+QUESTION: For what values of $k$ does $y''+k^2y=0$, $y(0)=0$, $y(\pi)=0$,
+have infinitely many solutions?
+<p />
+Observe that $y(x)=0$ is always a solution to the given problem, but we
+are interested in when there are other solutions as well (once there is a
+second solution you are guaranteed that there are infinitely many
+solutions).
+<p />
+The way to begin such a problem is to write out the general solution and
+plug in the boundary values.
+The general solution to $y''+k^2y=0$ is $y(x)=c_1\sin(kx)+c_2\cos(kx)$. We
+plug in the boundary values to get
+$$ \eqalign {
+y(0)=c_1\sin(0)+c_2\cos(0)=c_2&{\buildrel \text{set}\over =}0 \cr
+y(\pi)=c_1\sin(k\pi)+c_2\cos(k\pi)&{\buildrel \text{set}\over =}0 \cr } $$
+From the first equation we know $c_2$ must be 0. Plugging this into the
+second equation we get $c_1\sin(k\pi)=0$, so either $c_1=0$ or
+$\sin(k\pi)=0$. If $c_1=0$, we just get the solution $y(x)=0$, so if we
+want infinitely many solutions we need $\sin(k\pi)=0$. This happens
+exactly when $k$ is an integer.
+
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

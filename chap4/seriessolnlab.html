@@ -1,0 +1,154 @@
+
+<html>
+<head>
+<title>Math 340, Power Series Lab</title>
+</head>
+<body>
+<a href=../>Textbook Contents</a>,
+<a href=roclab.html target=_blank>Launch Series Solutions Lab</a>
+<hr>
+<p>
+<center>
+<h3>Series Solutions Lab Instructions</h3>
+</center>
+In chapter 4 we are building new functions using Taylor series. These 
+functions are designed to be the solutions of differential equations. 
+Naturally, we will want to be able to evaluate these functions. Since they 
+are defined in terms of an infinite series, we can't just evaluate all 
+infinitely many terms. The easy and natural (and usually correct) way to 
+approximate the value is to sum up the first terms of the Taylor series, 
+which gives the Taylor polynomial approximation. Depending on the 
+situation, you may be able to sum just a few terms, or you may want to 
+sum hundreds of terms.
+<p />
+A key feature of a power series is the <i>radius of convergence.</i> If 
+you have a series 
+<nobr>a<sub>0</sub> + a<sub>1</sub><i>x</i> + 
+a<sub>2</sub><i>x</i><sup>2</sup> + ... </nobr>, then there is a constant 
+<i>R</i> such that the series converges in the region 
+<nobr>|<i>x</i>| &lt; <i>R</i></nobr> and diverges in the region
+<nobr>|<i>x</i>| &gt; <i>R</i></nobr>. That is, the region of convergence 
+can't extend more in one direction than the other. While the function may 
+be defined outside the radius of convergence, the series diverges there 
+and the Taylor polynomials do <b>not</b> provide a reasonable 
+approximation outside the radius of convergence. For example, the function 
+<nobr>(1 + <i>x</i><sup>2</sup>)<sup>&minus;1</sup></nobr> has Taylor 
+series 
+<nobr>1 &minus; <i>x</i><sup>2</sup> + <i>x</i><sup>4</sup> &minus;
+<i>x</i><sup>6</sup> + ...</nobr>, which has radius of convergence 1. 
+While the function is defined for all real <i>x</i>, the Taylor series 
+diverges and the Taylor polynomials do <b>not</b> provide an accurate 
+approximation for <nobr>|<i>x</i>| &ge; 1</nobr>. Obviously it is 
+important to be aware where the Taylor polynomial approximation breaks 
+down if you are going to use it to approximate a solution to a 
+differential equation.
+<p />
+In this lab, 
+we will look at Taylor polynomials that approximate the solution of 
+a differential equation. In this case, we won't know the exact solution, 
+so we won't be able to compare our approximations to the 
+actual function value in most cases. However, it usually isn't hard to 
+<i>see</i> where things seem to work, and this will build some intuition 
+about where series converge that we can justify with theorems in next 
+Monday's lecture. We will also look at a 
+couple of situations that illustrate dangers in using Taylor polynomial 
+approximations that you 
+should be aware of.
+<p>
+<ol>
+<li>The first problem we will consider is 
+<nobr><code>(x<sup>2</sup>+1)y" + xy' + 2y = 0, y(0)=0, 
+y'(0)=1</code></nobr>. 
+Launch the lab (see the link at the top of the page) and change the 
+coefficients to match this equation. Now look at the  5th, 10th, 25th, 50th, 500th
+and 5000th degree Taylor polynomials. <b>What do you think is the radius of 
+convergence of the series solution for this problem?</b><p></li>
+<li>Now change the coefficients of <code>y</code> and <code>y'</code>, 
+along with the initial values. <b>How does changing the lower order 
+coefficients seem to affect the radius of convergence of the power 
+series?</b> (You may find it easiest to 
+check the radius of convergence if you leave the degree set at 
+5000).<p></li>
+<li>Next consider the problem
+<nobr><code>(.5x<sup>2</sup>+x+1)y" + (x + 1)y' + 3y = 0, y(0)=1, 
+y'(0)=0</code></nobr>. <b>Where do you think the series 
+solution for this problem converges? How does changing the 
+lower order terms affect the radius of convergence?</b>.<p></li>
+<li>Based on your work so far, <b>make a conjecture about the relationship 
+between radius of convergence and the coefficients of the differential 
+equation. Test your conjecture with at least two additional initial value 
+problems.</b><p></li>
+<u>The next two problems point out 
+places where looking at Taylor approximations may be misleading.</u><p>
+<li>A series solution will be valid up to the radius of convergence. The 
+approximation provided by a finite Taylor <i>polynomial</i> (as opposed to 
+the infinite Taylor <i>series</i>) won't work over quite as large a 
+region. In fact, sometimes it can be difficult to impossible to discover 
+features of the solution near the radius of convergence from examining 
+Taylor polynomials. Consider the equation
+<nobr><code>(x<sup>2</sup>+2x+1)y" + (x+1)y' + y = 0, y(0)=1, 
+y'(0)=0</code></nobr>.
+The exact solution to this initial value problem is 
+<nobr><code>y = cos(log(x+1))</code></nobr> (we will see how to find this 
+solution next week). The radius of convergence of this equation is 1, 
+so the Taylor series represents the function in the region 
+<nobr><code>-1 < x < 1</code></nobr>. Look at the behavior of the Taylor 
+polynomials near <nobr><code>x = -1</code></nobr>. <b>Sketch how you would 
+guess the solution to the initial value problem behaves near 
+<nobr><code>x = -1</code></nobr> based on the behavior of the Taylor 
+polynomials up to degree 5000. Show that the solution actually oscillates 
+between -1 and 1 infinitely many times near 
+<nobr><code>x = -1</code></nobr>. Explain why no polynomial can represent 
+infinitely many oscillations (and in this case, it doesn't even come 
+close).</b><p></li>
+<li>Other problems may arise with the <i>computation</i> of the Taylor 
+polynomials even away from the radius of convergence. Consider the 
+equation
+<nobr><code>y" + 400y = 0, y(0)=1, y'(0)=0</code></nobr>. The true 
+solution 
+to this problem is <nobr><code>y = cos(20x)</code></nobr> of course, and 
+the radius of convergence is infinity. 
+<!--
+But try to get a Taylor polynomial 
+approximation that works well past about <nobr><code>x = 1.8</code></nobr>. 
+-->
+<b>Sketch the behavior of the Taylor polynomial approximations.</b> The 
+difficulty you observe is  
+caused by a buildup of round-off error in the computation of the Taylor 
+polynomial. Note that the applet uses double-precision arithmetic and is 
+coded to minimize the number of multiplications (and hence the amount of 
+accumulated round-off error). Sometimes the computation just doesn't want  
+to behave (and then you try to come up with some means other than blindly
+computing the polynomial to find the answer). By the way, the problem here 
+is not that 400 is too large. Anytime you try to compute a cosine using 
+Taylor polynomials in double-precision, you will run into roundoff errors 
+a little after 6 periods. The same behavior happens with 
+<nobr><i>y</i>" + <i>y</i> = 0</nobr>, <i>y</i>(0)=1, <i>y</i>'(0)=0, 
+whose solution is <nobr><i>y</i> = cos(<i>x</i>)</nobr>, a little past 
+<i>x</i>=37.5. The choice of cos(20<i>x</i>) was made to get the bad 
+behavior in the graphing window.
+<!--
+Consider the 
+equation
+<nobr><code>y" + x<sup>2</sup>y' = 0, y(0)=0, y'(0)=1</code></nobr>.
+     The solution to this equation is 
+     <nobr><code>y(x) = 
+     Integral<sub>0</sub><sup>x</sup>exp(-t<sup>3</sup>/3)dt</code></nobr>. 
+<b>Where should the series solution converge for this problem? What is the 
+range of values where you think the computation of the polynomials 
+provides a good approximation to the solution function? Why don't the 
+polynomials provide a good approximation over the predicted 
+region?</b>
+-->
+<p></li>
+</ol>
+Write up a lab report with your answers to the questions in bold-face 
+above. Be sure to use complete sentences in your explanations.
+<p />
+<hr>
+<font size=-1>If you have any problems with this page, please contact 
+bennett@ksu.edu.<br />
+&copy;1994-2025 Andrew G. Bennett
+</font>
+</body>
+</html>

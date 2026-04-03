@@ -1,0 +1,169 @@
+<head>
+<title>EDE Chapter 4: Series Solutions</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+
+<center>
+<h3>Separation of Variables</h3>
+</center>
+
+<h4>Discussion</h4>
+Consider Laplace's equation on the disk, which we discussed in the last 
+section.
+$$
+\frac{\partial^2u}{\partial r^2}+\frac{1}{r}\frac{\partial u}{\partial r}
++\frac{1}{r^2}\frac{\partial^2 u}{\partial\theta^2} = 0
+$$
+We want to break this partial differential equation in two variables into 
+two ordinary differential equations (each in one variable) so that we can 
+use the techniques we've learned earlier to build a solution. I doubt you 
+will be surprised that the first thing we do is guess the form of the 
+solution, then try to fit that form to solve the equation. In this case, 
+we guess that the function $u(r,\theta)$ is the product of two 
+one-variable functions,
+$$
+u(r,\theta)=R(r)\Theta(\theta)
+$$
+where $\Theta$ is a capital $\theta.$ Then
+$$ \begin{align}
+\frac{\partial u}{\partial r} &= \frac{\partial R}{\partial r}\Theta + 
+R\frac{\partial \Theta}{\partial r} \\
+&= R'\Theta+0 \\
+&=R'\Theta
+\end{align} $$
+since $\Theta$ is a function of $\theta$ alone and doesn't depend on $r.$ 
+Similarly we can compute
+$$
+\frac{\partial^2 u}{\partial r^2} = R''\Theta \qquad\text{and}\qquad
+\frac{\partial^2 u}{\partial \theta^2}=R\Theta''
+$$
+Plugging these into Laplace's equation we get
+$$
+\frac{\partial^2u}{\partial r^2}+\frac{1}{r}\frac{\partial u}{\partial r}
++\frac{1}{r^2}\frac{\partial^2 u}{\partial\theta^2} 
+=R''\Theta+\frac1rR'\Theta+\frac{1}{r^2}R\Theta''=0
+$$
+Next we <b>separate the variables</b> by putting all the $r\text{'s}$ (and 
+hence all the $R(r)\text{'s}$) on one side and all the $\theta\text{'s}$ 
+(and hence all the $\Theta(\theta)\text{'s}$) on the other side.
+$$
+\begin{align}
+R''\Theta+\frac1rR'\Theta+\frac{1}{r^2}R\Theta''&=0 \\
+(R''+\frac1rR)\Theta&=-\frac{1}{r^2}R\Theta'' \\
+\frac{r^2R''+rR'}{R}&=-\frac{\Theta''}{\Theta}
+\end{align} $$
+Now this is a curious equation. The left-hand-side, 
+$\displaystyle \frac{r^2R''+rR'}{R},$ depends only on $r$ and not on 
+$\theta$. The right-hand-side,
+$-\displaystyle\frac{\Theta''}{\Theta},$ depends only on $\theta$ and not 
+on $r$. And yet the two sides are equal to each other. So as $r$ changes, 
+the right-hand-side won't change (since it depends only on $\theta$ and 
+not on $r$) and hence the left-hand-side must not change either. 
+Similarly, as $\theta$ changes, the left-hand-side won't change (since it 
+depends only on $r$ and not on $\theta$) and hence the right-hand-side 
+won't change either. In other words, the two sides must be constant and 
+not depend on either $r$ or $\theta.$ So there is some constant 
+$\lambda$ such that
+$$
+\frac{r^2R''+rR'}{R}=-\frac{\Theta''}{\Theta}=\lambda.
+$$
+Now we can work with each side separately to get two ordinary differential 
+equations out of the one partial differential equation.
+$$ \begin{align}
+r^2R''+rR'-\lambda R &=0 \\
+\Theta''+\lambda\Theta&=0
+\end{align} $$
+The first equation is an Euler equation and the second equation is a 
+constant coefficient equation so we can solve these using the techniques 
+we've learned. Then we multiply these solutions to find a 
+$u(r,\theta)=R(r)\Theta(\theta)$ which solves Laplace's equation in the 
+disk. Actually, we get infinitely many such $u(r,\theta)$, one for every 
+possible choice of constant $\lambda$. Furthermore, since the equation is 
+linear, any linear combination of solutions gives us a new solution. So we 
+can build series not out of $x^n$ but out of our basic solutions to build 
+more complicated solutions to Laplace's equation. We will then use the 
+boundary values to the coefficients of this series to find the unique 
+$u(r,\theta)$ that solves the boundary value problem. This leads to topics 
+like Fourier series, which, while beautiful, we don't have time to develop 
+in this class. Math 632, Partial Differential Equations, will go through 
+this in detail. The technique illustrated in this problem is very general, 
+and many different partial differential equations are solved using 
+separation of variables. 
+<p />
+<h4>Strings and Drums</h4>
+As a final comment about applications of variable coefficient problems, 
+we'll consider the tonal qualities of string instruments compared to 
+drums. The wave equation for a string is
+$$
+\frac{\partial^2 u}{\partial t^2}=c^2\frac{\partial^2 u}{\partial x^2}
+$$ 
+where $t$ is time, $x$ is location along the string, and $c$ is the speed 
+of the wave through the string (which depends on density and other 
+factors). This problem can be solved with separation of variables. When 
+you do this, you get the two equations
+$$ \begin{align}
+T''+\lambda T&=0 \\
+X''+\lambda X&=0
+\end{align} $$
+whose solutions are sines and cosines. In two dimensions the wave equation 
+becomes
+$$
+\frac{\partial^2 u}{\partial t^2}=
+c^2\left(\frac{\partial^2 u}{\partial x^2}
++\frac{\partial^2 u}{\partial y^2}\right)
+$$ 
+and if we are working on a disk (because drums are circular), then we need 
+to rewrite this in polar coordinates as
+$$
+\frac{\partial^2 u}{\partial t^2}=c^2\left(
+\frac{\partial^2 u}{\partial r^2}+\frac1r\frac{\partial u}{\partial r}
++\frac{1}{r^2}\frac{\partial^2 u}{\partial\theta^2}\right)
+$$
+When you apply separation of variables this time you will get three 
+equations (one for $t$, $r,$ and $\theta$). And the equation for $r$ will 
+be
+Bessel's equation
+$$
+r^2R''+rR'+(r^2-\nu^2)R=0
+$$
+This is not a solution which has an equation in terms of the functions we 
+already know and love like exponentials, polynomials, sines, or cosines. 
+We will need to do a series solution to find the function that solves this 
+equation. Even more fun, this equation has a singular point at $r=0$ and 
+we can't avoid working at the origin, so we will end up creating a series 
+solution about this singular point (fortunately it is a regular singular 
+point). We call the functions we build here Bessel functions. So 
+for the drum the solution to the wave equations involves Bessel functions 
+while the wave equation on the string involves sines and cosines. Sines 
+and cosines are nice periodic functions and that means the sounds they 
+produce blend together well, which is why you hear the string sections 
+during the romantic scenes in a movie, strings sound pretty. On the other 
+hand, Bessel functions are not periodic so drums don't sound so pretty 
+(but they work well during the action scenes in the movies). Note that 
+this all comes from the geometry of a drum. If you had a nice rectangular 
+drum, then it would sound much prettier. Unfortunately, no one has found a 
+good way to get uniform tension of a membrane stretched over a rectangle, 
+which is why drums are usually circular. On the other hand, if you built a 
+drum based on stiffness rather than tension you could use rectangles or 
+other shapes. And Caribbean steel drums do indeed feature 
+plates that have been shaped to produce specific notes and better tonal 
+qualities. However, stiffness leads to third order equations instead of 
+second order equations so we won't follow this any further. But I did want 
+to give an example of where different geometries led to different 
+functions and different results.
+
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

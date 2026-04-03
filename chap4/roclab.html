@@ -1,0 +1,282 @@
+
+<html>
+<head> 
+<title>Series Solutions</title>
+<link rel="stylesheet" type="text/css" href="../JSXGraph/jsxgraph.css" /> 
+<script type="text/javascript" src="../JSXGraph/jsxgraphcore.js"></script>
+<script>
+
+
+function evalatx(x,n) {
+  var tot=0;
+  if (n>0) {
+    tot=a[n]*x+a[n-1];
+    n--;
+    while (n>0) {
+      n--;
+      tot=tot*x+a[n];
+    }
+  } else {
+    tot=a[0];
+  }
+  return tot;
+}
+
+function makecurve(n) {
+  var datax=[];
+  var datay=[];
+  for (x=-5;x<=5;x+=.01) {
+    datax.push(x);
+    datay.push(evalatx(x,n));
+  }
+  return [datax,datay];
+}
+
+var a=[];
+var alpha=0;
+var b=0;
+var c=0;
+var d=0;
+var e=0;
+var f=0;
+var g=0;
+var h=4;
+var a0=1;
+var a1=0;
+var n=6;
+var maxn=5000;
+var eqnchanged=false;
+
+function makecoeff() {
+  a=[];
+  a[0]=a0;
+  a[1]=a1;
+
+  a[2]=-(e*a[1]+h*a[0])/2;
+  a[3]=-(2*(b+e)*a[2]+(d+h)*a[1]+g*a[0])/6;
+
+  for (var k=2;k<=maxn;k++) {
+    a[k+2]=-((b*k+e)*(k+1)*a[k+1]+(alpha*k*(k-1)+d*k+h)*a[k]
+             +(c*(k-1)+g)*a[k-1]+f*a[k-2])/((k+2)*(k+1));
+  }
+}
+
+makecoeff();
+
+</script>
+</head>
+<body>
+<center>
+<h3>Series Solutions</h3>
+<p />
+<form name="eqn" onsubmit='return redraw();'>
+<table>
+<tr>
+<td align="right">(<input type="text" name="alpha" size="4" value="0"></td>
+<td align="center">x<sup>2</sup>&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="b" size=4 value="0"></td>
+<td align="center">x&nbsp;+&nbsp;</td>
+<td align="right">1)</td>
+<td align="left">y"</td>
+<td></td><td align="right">Degree of Taylor Polynomial:</td>
+</tr>
+<tr>
+<td align="right">(<input type="text" name="c" size="4" value="0"></td>
+<td align="center">x<sup>2</sup>&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="d" size=4 value="0"></td>
+<td align="center">x&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="e" size=4 value="0">)</td>
+<td align="left">y'</td>
+<td></td>
+<td align='right'>n=<input type="text" name="n" size=4 value="6"></td>
+</tr>
+<tr>
+<td align="right">(<input type="text" name="f" size="4" value="0"></td>
+<td align="center">x<sup>2</sup>&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="g" size=4 value="0"></td>
+<td align="center">x&nbsp;+&nbsp;</td>
+<td align="center"><input type="text" name="h" size=4 value="4">)</td>
+<td align="left">y</td>
+<td>&nbsp;&nbsp;=&nbsp;&nbsp;0</td><td></td>
+</tr>
+<tr>
+<td align="right">y(0)&nbsp;=&nbsp;</td>
+<td align="left"><input type="text" name="a0" size=4 value="1"></td>
+<td></td>
+<td align="right">y'(0)&nbsp;=&nbsp;</td>
+<td align=left><input type="text" name="a1" size=4 value="0"></td>
+<td></td>
+<td></td>
+<td align=right><input type="submit" value="Update Graph"></td> 
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td align=right><input type="button" value="Clear Old Curves"
+                  onClick="clearold();"></td> 
+<tr>
+<td colspan=8 align='center'><span id='emsg1' style="color:red"> 
+</span></td>
+</tr>
+</table>
+<p />
+</form>
+
+<div id="box" class="jxgbox" style="width:500px; height:500px;"></div>
+<script type="text/javascript"> 
+
+function redraw() {
+  if (parseinput()) {
+    if (eqnchanged) {
+      for (var i=0;i<solncurves.length;i++) {
+        brd.removeObject(solncurves[i]);
+      }
+      solncurves=[];
+      makecoeff();
+      solncurves.push(brd.create('curve',makecurve(n),
+                                 {highlightStrokeColor:'purple',
+                                  highlightStrokeOpacity:1,
+                                  strokeWidth:1}));
+    } else {
+      for (var i=0;i<solncurves.length;i++) {
+        solncurves[i].setAttribute({strokeColor:'gray'});
+      }
+      solncurves.push(brd.create('curve',makecurve(n),
+                              {highlightStrokeColor:'purple',
+                               highlightStrokeOpacity:1,
+                               strokeWidth:1}));
+    }
+  }
+  return false;
+}
+
+function clearold() {
+  var holding=solncurves[solncurves.length-1];
+  for (var i=0;i<solncurves.length-1;i++) {
+    brd.removeObject(solncurves[i]);
+  }
+  solncurves=[];
+  solncurves.push(holding);
+}
+
+
+function parseinput() {
+  alpha0=parseFloat(document.eqn.alpha.value);
+  b0=parseFloat(document.eqn.b.value);
+  c0=parseFloat(document.eqn.c.value);
+  d0=parseFloat(document.eqn.d.value);
+  e0=parseFloat(document.eqn.e.value);
+  f0=parseFloat(document.eqn.f.value);
+  g0=parseFloat(document.eqn.g.value);
+  h0=parseFloat(document.eqn.h.value);
+  a00=parseFloat(document.eqn.a0.value);
+  a01=parseFloat(document.eqn.a1.value);
+  n0=parseFloat(document.eqn.n.value);
+  if (isNaN(alpha0)) {
+    document.getElementById('emsg1').innerHTML=
+        'Can\'t interpret coefficient of x<sup>2</sup> for y"';
+    return false;
+  } else if (isNaN(b0)) {
+    document.getElementById('emsg1').innerHTML=
+        'Can\'t interpret coefficient of x for y"';
+    return false;
+  } else if (isNaN(c0)) {
+    document.getElementById('emsg1').innerHTML=
+        'Can\'t interpret coefficient of x<sup>2</sup> for y\' ';
+    return false;
+  } else if (isNaN(d0)) {
+    document.getElementById('emsg1').innerHTML=
+        'Can\'t interpret coefficient of x for y\' ';
+    return false;
+  } else if (isNaN(e0)) {
+    document.getElementById('emsg1').innerHTML=
+        'Can\'t interpret constant coefficient for y\' ';
+    return false;
+  } else if (isNaN(f0)) {
+    document.getElementById('emsg1').innerHTML=
+        'Can\'t interpret coefficient of x<sup>2</sup> for y ';
+    return false;
+  } else if (isNaN(g0)) {
+    document.getElementById('emsg1').innerHTML=
+        'Can\'t interpret coefficient of x for y ';
+    return false;
+  } else if (isNaN(h0)) {
+    document.getElementById('emsg1').innerHTML=
+        'Can\'t interpret constant coefficient for y ';
+    return false;
+  } else if (isNaN(a00)) {
+    document.getElementById('emsg1').innerHTML=
+        'Can\'t interpret y(0) ';
+    return false;
+  } else if (isNaN(a01)) {
+    document.getElementById('emsg1').innerHTML=
+        'Can\'t interpret y\'(0) ';
+    return false;
+  } else if (isNaN(n0)) {
+    document.getElementById('emsg1').innerHTML=
+        'Can\'t interpret degree of Taylor polynomial ';
+    return false;
+  } else {
+    document.getElementById('emsg1').innerHTML='';
+  }
+  if (n0>maxn) { n0=maxn; }
+  if (n0<0) { n0=0; }
+  n0=Math.round(n0);
+  document.eqn.n.value=n0;
+  n=n0;
+  eqnchanged=false;
+  if (alpha0!=alpha || b0!=b || c0!=c || d0!=d || e0!=e || f0!=f
+                    || g0!=g || h0!=h || a00!=a0 || a01!=a1) {
+    alpha=alpha0;
+    b=b0;
+    c=c0;
+    d=d0;
+    e=e0;
+    f=f0;
+    g=g0;
+    h=h0;
+    a0=a00;
+    a1=a01;
+    eqnchanged=true;
+  }
+  return true;
+}
+
+var brd = JXG.JSXGraph.initBoard('box', 
+  {originX: 250, originY: 250, unitX: 100, unitY: 100, axis:true});
+
+for (var tsm=-4.75;tsm<5;tsm+=0.25) {
+  brd.create('segment',[[tsm,-0.05],[tsm,0.05]],
+              {strokeColor:'gray',highlightStrokeColor:'gray',
+               strokeWidth:1});
+  brd.create('segment',[[-0.05,tsm],[0.05,tsm]],
+              {strokeColor:'gray',highlightStrokeColor:'gray',
+               strokeWidth:1});
+}
+
+for (var tbig=-5;tbig<5.5;tbig++) {
+  brd.create('segment',[[tbig,-0.1],[tbig,0.1]],
+              {strokeColor:'gray',highlightStrokeColor:'gray',
+               strokeWidth:1});
+  brd.create('segment',[[-0.1,tbig],[0.1,tbig]],
+              {strokeColor:'gray',highlightStrokeColor:'gray',
+               strokeWidth:1});
+}  
+
+var solncurves=[];
+
+solncurves.push(brd.create('curve',makecurve(6),
+                              {highlightStrokeColor:'purple',
+                               highlightStrokeOpacity:1,
+                               strokeWidth:1}));
+
+
+</script> 
+ 
+</body> 
+</html>

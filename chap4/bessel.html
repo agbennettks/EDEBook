@@ -1,0 +1,123 @@
+<head>
+<title>EDE Chapter 4: Series Solutions</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+
+<center>
+<h3>Extra Credit 4<br />Bessel Functions</h3>
+</center>
+
+<ol>
+The Bessel functions are solutions to Bessel's equation,
+$$
+x^2y''+xy'+(x^2 - \nu^2)y=0
+$$
+The parameter $\nu$ is called the order of the equation. 
+This equation has a regular singular point at $x_0=0.$ Since that is the 
+only singular point, the series solution about $x_0=0$ encounters no other 
+singular point so the series solution about $x_0=0$ will converge in the 
+entire punctured plane, $0 &lt; |x| &lt; \infty$ (by a "punctured" plane 
+we mean the plane which has a single point cut out, in this case the point 
+$x_0=0$). 
+<hr />
+<p />
+
+<li>(6 points) Find the series solution about $x_0=0$ of Bessel's equation 
+of order 
+$\nu=1/2$ corresponding to the larger root of the indicial equation.
+<p /></li>
+
+<li>(2 points) Find the pattern for the coefficients of the series 
+solution constructed in the previous problem. Show that the series is equal to
+$\displaystyle \frac{\sin(x)}{\sqrt{x}}.$
+<p /></li>
+
+<hr />
+In problem 1, following the pattern in the text, you picked 
+$a_0=1,$ but you could have picked any other value for $a_0$ and gotten 
+another solution. This just multiplies the solution you found by a 
+constant. For example, if you had picked $a_0=2,$ then every coefficient 
+would be multiplied by 2, so the overall function would be multiplied by 
+2. That's not anything new, anytime you find a solution  
+to a homogeneous linear differential 
+equation, any other multiple of the solution solves the same equation. 
+But this can cause confusion if we want to talk about "the" Bessel 
+function. In order to avoid confusion, we pick a 
+particular solution and call it $J_{\nu}(x),$ the Bessel function of order 
+$\nu.$ This is similar to choosing units in a physical problem. The agreed 
+convention is to define
+$$
+J_{\nu}(x)=\sum_{k=0}^{\infty} (-1)^k 
+\frac{x^{2k+\nu}}{2^{2k+\nu}k!\Gamma(k+\nu+1)}
+$$
+This is <i>not</i> the series you found in problem 1. Since 
+$\Gamma(3/2)=\sqrt{\pi}/2$ as was worked out in a previous extra credit 
+assignment, you get
+$\displaystyle J_{1/2}(x)=\sqrt{\frac{2}{\pi x}}\sin(x).$ You may be
+wondering why anyone would pick to multiply the series you 
+found by $\sqrt{2/\pi}$ and make that "the" Bessel function. The reason is 
+that part of the power of Bessel functions lies in the identities that 
+relate Bessel functions of different orders, as in problem 3 below. The 
+form of those identities is made simpler by choosing the $a_0$ terms for 
+different orders in a clever pattern. So you use $a_0=1$ for $J_0(x)$ 
+(which was worked out in the text) but $a_0=\sqrt{2/\pi}$ for 
+$J_{1/2}(x)$ and so on. Feel free to stop by my office if you want to see 
+more about this normalization and why it is convenient.
+<p />
+$J_{1/2}(x)$ is one solution of the Bessel equation of order $1/2.$ 
+Since the Bessel equation of order $1/2$ is a second-order linear 
+homogeneous equation, we need to find a second linearly independent 
+solution in order to build the general solution to the equation. We will 
+now prove one identity for Bessel functions and use that to find that 
+second solution.
+<hr />
+<p />
+
+<li>(2 points) Show $\displaystyle 
+\frac{d}{dx}\left(x^{\nu}J_{\nu}(x)\right)
+= x^{\nu}J_{\nu-1}(x).$ <p /></li>
+
+<li>(2 points) Using the identity in the previous problem, show 
+$\displaystyle J_{-1/2}(x)=\sqrt{\frac{2}{\pi x}}\cos(x).$
+<p /></li>
+
+<hr /> 
+
+Since the parameter $\nu$ is squared in Bessel's equation,
+$x^2y''+xy'+(x^2-\nu^2)y=0,$ you get the same equation with $\nu=1/2$ and
+$\nu=-1/2.$ So both $J_{1/2}(x)$ and $J_{-1/2}(x)$ are solutions, and
+since they are linearly independent (as you can check by computing the
+Wronskian), that makes the general solution
+$y=c_1J_{1/2}(x)+c_2J_{-1/2}(x).$
+<p /> 
+
+It will always be the case that $J_{\nu}(x)$ and $J_{-\nu}(x)$ both
+satisfy Bessel's equation of order $\nu,$ though they usually won't have a
+simple representation in terms of $\sin(x)$ and $\cos(x)$ (or what would
+be the point of defining a new type of functions). As long as $\nu$ is not
+an integer, $J_{\nu}(x)$ and $J_{-\nu}(x)$ will also be linearly
+independent and so you build the general solution of Bessel's equation of
+order $\nu$ from these two functions. If $\nu$ is an integer, then they
+are <i>not</i> linearly independent, in fact $J_n(x)=(-1)^nJ_{-n}(x)$ for
+any integer $n.$ In this case you need the Bessel functions of the second
+kind, $Y_n(x),$ which add a logarithmic singularity to the mix. And there
+are many more identities and tricks involving both kinds of Bessel
+functions. As I noted in class, you can fill a whole book about the Bessel
+functions. I hope the few problems you've done here provide a small taste
+of this area of mathematics.
+
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>

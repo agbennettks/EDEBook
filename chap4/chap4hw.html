@@ -1,0 +1,477 @@
+<head>
+<title>EDE Chapter 4: Series Solutions</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Series Solutions</h3>
+</center>
+
+<ol>
+In problems 1-5, find the Taylor series of the given functions about 
+$x_0=0.$ You may use your knowledge of the Taylor series of $e^x,$ 
+$\sin(x),$ $\cos(x),$ and $\displaystyle \frac{1}{1-x}$ (the geometric 
+series).
+<li>$\displaystyle \frac{1}{1+x^2}$<p /></li>
+
+<li>$\displaystyle (x^2-1)\cos(x)$<p /></li>
+
+<li>$\displaystyle \cosh(x)$<p /></li>
+
+<li>$\displaystyle \sinh(x)$<p /></li>
+
+<li>$\displaystyle \exp(x)\sinh(x)$<p /></li>
+
+<li>If $\displaystyle y(x)=\sum_{n=0}^{\infty}a_nx^n$, then $y(0)=a_0$ and 
+$y'(0)=a_1$. Show this pattern does <b>not</b> continue. In particular
+show $y''(0)\ne a_2$.<p />
+</li>
+
+<a name='week2' />
+
+<li>Suppose $\displaystyle y(x)=\sum_{n=0}^{\infty}a_nx^n$
+where the sum for $y(x)$ has only even terms, i.e. $a_{2n+1}=0$ for 
+all $n$. Show that $y(x)=y(-x)$, i.e. $y$ is an even function.<p /></li>
+
+<li>Suppose $\displaystyle y(x)=\sum_{n=0}^{\infty}a_nx^n$
+where the sum for $y(x)$ has only odd terms, i.e. $a_{2n}=0$ for 
+all $n$. Show that $y(x)=-y(-x)$, i.e. $y$ is an odd function.
+<p /></li>
+
+<li>Show that the solution to 
+$$ \begin{align}
+y''+2xy'+(x^2+1)y=0, \\
+y(0)=1, y'(0)=0
+\end{align} $$
+is an even function.<p /></li>
+
+<li>Show that the solution to 
+$$ \begin{align}
+y''+2xy'+(x^2+1)y=0, \\
+y(0)=0, y'(0)=1
+\end{align} $$
+is an odd function.<p /></li>
+
+<li>Show that the solution to 
+$$ \begin{align}
+y''+2xy'+(x^2+1)y=0, \\
+y(0)=1, y'(0)=1
+\end{align} $$
+is neither an even function nor an odd function.<p /></li>
+
+<li>Defining a function in terms of a series written out in the form 
+$\displaystyle 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + 
+\cdots$ is generally less useful than a compact formula such as
+$\displaystyle \sum_{n=0}^{\infty}\frac{x^n}{n!}$ which gives a formula 
+for every term. Solve the initial value problem $y''+xy'+y=0$, $y(0)=1$, 
+$y'(0)=0$, and then find a pattern for the terms so you can write the 
+solution in $\sum$ form.<p /></li>
+
+<li>Defining a function in terms of a series written out in the form 
+$\displaystyle 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + 
+\cdots$ is generally less useful than a compact formula such as
+$\displaystyle \sum_{n=0}^{\infty}\frac{x^n}{n!}$ which gives a formula 
+for every term. Solve the initial value problem $(1-x^2)y''+2y=0$, 
+$y(0)=0$, $y'(0)=1$, and then find a pattern for the terms so you can write the 
+solution in $\sum$ form.<p /></li>
+
+<hr />
+The polynomials in the next four problems are called the Hermite polynomials. They are useful in
+certain situations involving the normal probability distribution.
+<hr />
+
+<li>Solve the initial value problem
+$$ y'' - 2xy' + 4y = 0, \qquad y(0)=1, \quad y'(0)=0.$$
+Show that the series solution terminates so your solution is actually a polynomial.<p /></li>
+
+<li>Solve the initial value problem
+$$ y'' - 2xy' + 6y = 0, \qquad y(0)=0, \quad y'(0)=1.$$
+Show that the series solution terminates so your solution is actually a polynomial.<p /></li>
+
+<li>Let $p$ be an even integer. Show that the solution to the initial value problem
+$$ y'' - 2xy' + 2py = 0, \qquad y(0)=1, \quad y'(0)=0 $$
+is an even polynomial of degree $p$.<p /></li>
+
+<li>Let $p$ be an odd integer. Show that the solution to the initial value problem
+$$ y'' - 2xy' + 2py = 0, \qquad y(0)=0, \quad y'(0)=1 $$
+is an odd polynomial of degree $p$.<p /></li>
+
+<hr /><p />
+We have claimed that the lower bound for the radius of convergence by 
+the distance to the nearest singular point is usually the actual radius of 
+convergence. In the next four problems you will justify this claim for 
+the problem 
+$$ \begin{align}(x^2+4)y''+y&=0 \\ y(0)=1,\quad y'(0)=&0 \end{align} $$ 
+<hr />
+
+<li>Find the singular points for the equation $(x^2+4)y''+y=0$ and use 
+them to find the lower bound for the radius of convergence about 
+$x_0=0.$<p /></li>
+
+<li>Find the recurrence relation for the series solution to 
+$(x^2+4)y''+y=0$ <p /></li>
+
+<li>Using the recurrence relation from the previous problem, show that the 
+series solution $\displaystyle y(x)=\sum_{n=0}^{\infty}a_nx^n$ to the 
+initial value problem 
+$$ \begin{align}
+(x^2+4)y''+y&=0 \\ 
+y(0)=1,\quad y'(0)=&0 
+\end{align} $$ 
+has $a_n=0$ for all odd $n,$ so the ratio of successive terms 
+is $\displaystyle \frac{a_{n+2}x^{n+2}}{a_nx^n}.$ <p /></li>
+
+<li>By the ratio test, the series solution in the previous 
+problems converges if  
+$\displaystyle \lim_{n\to\infty}
+\left| \frac{a_{n+2}x^{n+2}}{a_nx^n} \right| < 1$
+and diverges if
+$\displaystyle \lim_{n\to\infty}
+\left| \frac{a_{n+2}x^{n+2}}{a_nx^n}\right| >1.$
+Use the recurrence relation and this test to show the series converges for 
+$|x|<2$ and diverges for $|x|>2$, hence the radius of convergence is 
+indeed 2. 
+<p /></li>
+
+<a name='week3' />
+
+<li>Find the general solution to 
+$$ x^2y'' + xy' - 4y = 0. $$
+</li>
+
+<li>Find the general solution to 
+$$ x^2y'' + 5xy' + 3y = 0. $$
+</li>
+
+<li>Find the general solution to
+$$ x^2y'' - 5xy' + 8y = 0. $$
+</li>
+
+<li>Find the general solution to 
+$$ 2x^2y'' - 5xy' + 3y = 0. $$
+</li>
+
+<li>Find the general solution to 
+$$ 3x^2y'' - 2xy' + 2y = 0. $$
+</li>
+
+<li>Find the general solution to 
+$$ x^2y'' - 4xy' + 6y = x^4. $$
+</li>
+
+<li>Find the general solution to 
+$$ x^2y'' + 4xy' + 2y = \exp(2x). $$
+</li>
+
+<li>Find the general solution to 
+$$ x^2y'' - 2xy' + 2y = x^3\exp(x). $$
+</li>
+
+<li>Find the general solution to 
+$$ x^2y'' + 6xy' + 6y = \cos(3x). $$
+</li>
+
+<li>Solve the initial value problem 
+$$ x^2 y'' + x y' - y = 0, \qquad y'(0) = 2.$$
+Note that even though you are only given one initial value for this second-order equation, that
+is sufficient to determine the solution.<p /></li>
+
+<li>Solve the initial value problem
+$$ x^2 y'' + 2x y' - 2y = 0, \qquad y'(0) = 3.$$
+Note that even though you are only given one initial value for this second-order equation, that
+is sufficient to determine the solution.<p /></li>
+
+<hr />
+$$
+\begin{align}
+x^{a+ib} &= x^a x^{ib} \\
+&= x^a \exp(ib\log|x|) \\
+&= x^a \left(\cos(b\log|x|) + i\sin(b\log|x|) \right) \\
+&= x^a\cos(\log|x^b|) + i x^a\sin(\log|x^b|)
+\end{align}
+$$
+Recall from chapter 2 that if you have a complex 
+solution to a real homogeneous linear differential equation, then the real 
+and imaginary parts must both be solutions to the equation. These facts 
+may be helpful in the next several problems.
+<hr />
+<p />
+
+<li>Find the general solution to 
+$$ x^2y'' + xy' + 4y = 0. $$
+</li>
+
+<li>Find the general solution to 
+$$ x^2y'' + 3xy' + 10y = 0. $$
+</li>
+
+<li>Find the general solution to 
+$$ x^2y'' - 3xy' + 8y = 0. $$
+</li>
+
+<li>Find the general solution to 
+$$ (x^2+2x+1)y'' - (2x+2)y' + 2y = 0. $$
+(Hint: make the substitution $u = x+1$).<p />
+</li>
+
+<li>Find the general solution to 
+$$ (x^2+4x+4)y'' + (7x+14)y' + 8y = 0. $$
+(Hint: make the substitution $u = x+2$).<p />
+</li>
+
+<li>Find the general solution to 
+$$ (x^2+2x+1)y'' + (x+1)y' + y = 0. $$
+(Hint: make the substitution $u = x+1$).<p />
+</li>
+
+<li>Find and classify (as regular or irregular) the singular points for
+$$ (x^2+3x+2)^2y''+(x^2-4)y'+(2x-3)y=0. $$
+</li>
+
+<li>Find and classify (as regular or irregular) the singular points for
+$$ (x^4+x^3)y''+ x^2y' + (x+1)y=0. $$
+</li>
+
+<li>Find and classify (as regular or irregular) the singular points for 
+$$ x^3 y'' + x^2y' + y = 0. $$
+</li>
+
+<li>Find and classify (as regular or irregular) the singular points for 
+$$ (x^4 - 2x^2 + 1)y'' + (x^3+6x^2+5x)y' + (3x+2)y = 0. $$
+</li>
+
+<li>Find and classify (as regular or irregular) the singular points for
+$$ y'' + \frac{x}{x+1} y' + \frac{x+1}{x-1} y = 0. $$
+</li>
+
+<li>Find and classify (as regular or irregular) the singular points for
+$$ y'' + \frac{x^2+1}{x^3+x^2} y' + \frac{x^2-1}{x^2+1}y = 0. $$
+</li>
+
+<li>Find and classify (as regular or irregular) the singular points for
+$$ (\cos(x)-1)y'' + \sin(x)y' + \exp(x)y = 0. $$
+</li>
+
+<li>Find and classify (as regular or irregular) the singular points for
+$$ (\cosh(x)-1)y'' + \sinh(x)y' - xy = 0. $$ 
+
+<li>Where is the series solution about $x_0=0$ to the equation
+$$x^2y''+(x^2-x)y'+(x-2)y=0$$
+guaranteed to converge?<p />
+</li>
+
+<li>Where is the series solution about $x_0=-1$ to the equation
+$$(x^2-2x-3)y''+(x^2+4x)y'+7y=0$$
+guaranteed to converge?<p />
+</li>
+
+<li>Where is the series solution about $x_0=1$ to the equation 
+$$(x^4-2x^2+1)y'' + (x^2+3x+2)y'+x^2y=0$$
+guaranteed to converge?<p />
+</li>
+
+<li>The hypergeometric equation with parameters $a$, $b$, and $c$ 
+is  $$z(1-z)\frac{d^2w}{dz^2}+[c-(a+b+1)z]\frac{dw}{dz}-abw=0.$$
+Where are you guaranteed the series solution to the 
+hypergeometric equation about $z_0=0$ converges?<p />
+</li>
+
+
+<li>Find the roots of the indicial equation about $x_0=0$ for 
+$$ x^2y'' + (x^2+5x)y' + (x+3)y = 0. $$
+</li>
+
+<li>Find the roots of the indicial equation about $x_0=0$ for 
+$$ 6x^2y'' + (2x^2+11x)y' + (2x^2+3x+4)y = 0 $$
+</li>
+
+<li>Find the roots of the indicial equation about $x_0=0$ for
+$$(x^3-x^2)y''+(x^2+x)y'+(2x-4)y=0$$
+</li>
+
+<li>Find the roots of the indicial equation about $x_0=0$ for 
+$$ (x^4+6x^3+9x^2)y'' + (x^3-9x)y' + (33x+9)y = 0 $$
+</li>
+
+<li>Find the roots of the indicial equation about $x_0=-3$ for 
+$$ (x^4+6x^3+9x^2)y'' + (x^3-9x)y' + (33x+9)y = 0 $$
+</li>
+
+<li>Find the roots of the indicial equation about $x_0=0$ for
+$$ (\cos(x)-1)y'' + \sin(x)y' + \exp(x)y = 0. $$
+</li>
+
+
+<hr />
+<p />
+Spherical coordinates are defined by the transformations
+<center>
+<table>
+<tr><td>
+$$ \begin{align}
+x&=\rho\sin(\phi)\cos(\theta) \\
+y&=\rho\sin(\phi)\sin(\theta) \\
+z&=\rho\cos(\phi) 
+\end{align} $$
+</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+$$ \begin{align}
+\rho&=\sqrt{x^2+y^2+z^2} \\
+\tan(\theta)&=\frac{y}{x} \\
+\tan(\phi)&=\frac{\sqrt{x^2+y^2}}{z}
+\end{align} $$
+</td></tr>
+</table>
+</center>
+Warning: physicists and mathematicians use different definitions of $\phi$ 
+and $\theta$. This is a math class so these are the conventional 
+definitions used by mathematicians.
+<hr />
+<p />
+
+<li>Write $\displaystyle \frac{\partial u}{\partial x}$ in terms of 
+$\rho,$ $\theta,$ and $\phi.$ <p />
+</li>
+
+<li>Write $\displaystyle \frac{\partial u}{\partial y}$ in terms of 
+$\rho,$ $\theta,$ and $\phi.$ <p />
+</li>
+
+<li>Write $\displaystyle \frac{\partial u}{\partial z}$ in terms of 
+$\rho,$ $\theta,$ and $\phi.$ <p />
+</li>
+
+
+<li>Write $\displaystyle \frac{\partial^2 u}{\partial x^2}$ in terms of 
+$\rho,$ $\theta,$ and $\phi.$ <p />
+</li>
+
+<li>Write $\displaystyle \frac{\partial^2 u}{\partial y^2}$ in terms of 
+$\rho,$ $\theta,$ and $\phi.$ <p />
+</li>
+
+<li>Write $\displaystyle \frac{\partial^2 u}{\partial z^2}$ in terms of 
+$\rho,$ $\theta,$ and $\phi.$ <p />
+</li>
+
+<li>Convert Laplace's equation,
+$$\frac{\partial^2 u}{\partial x^2} 
++ \frac{\partial^2 u}{\partial y^2}
++ \frac{\partial^2 u}{\partial z^2}
+= 0 $$
+to spherical coordinates.<p />
+</li>
+
+<li>If possible, solve the boundary value problem
+$$ y'' + 5y' + 4y = 0, \qquad y(0)=1, \quad y(1) = 2. $$
+</li>
+
+<li>If possible, solve the boundary value problem
+$$ y'' + 4y' + 4y = 0, \qquad y(0)=0, \quad y(1) = 2. $$
+</li>
+
+<li>If possible, solve the boundary value problem
+$$ y'' + 2y' + 5y = 0, \qquad y(0)=0, \quad y(\pi) = 1. $$
+</li>
+
+<li>If possible, solve the boundary value problem
+$$ y'' + 2y' + 5y = 0, \qquad y(0)=1, \quad y(1) = 2. $$
+</li>
+
+<li>For what values of $x_1$ are there infinitely many solutions to the 
+boundary value problem
+$$ y'' + y = 0, \qquad y(0)=0, \quad y(x_1)=0. $$
+</li>
+
+<li>For what values of $x_1$ are there infinitely many solutions to the 
+boundary value problem
+$$ y'' + 4y'+8y = 0, \qquad y(0)=0, \quad y(x_1)=0. $$
+</li>
+
+<li>For what values of $\alpha$ are there infinitely many solutions to the 
+boundary value problem
+$$ y'' + \alpha y = 0, \qquad y(0)=0, \quad y(\pi) = 0. $$
+</li>
+
+<li>For what values of $\alpha$ are there infinitely many solutions to the 
+boundary value problem
+$$ y'' + \alpha y = 0, \qquad y(0)=0, \quad y(1) = 0. $$
+</li>
+
+<li>For what values of $\alpha$ are there infinitely many solutions to the 
+boundary value problem
+$$ y'' + 6y'+ \alpha y = 0, \qquad y(0)=0, \quad y(\pi) = 0. $$
+</li>
+
+<li>For what values of $\alpha$ are there infinitely many solutions to the 
+boundary value problem
+$$ y'' + 4y' + \alpha y = 0, \qquad y(0)=0, \quad y(1) = 0. $$
+</li>
+
+<li>Make the substitution $u(t,x)=T(t)X(x)$ in the heat equation
+$$ \frac{\partial u}{\partial t} = \kappa\frac{\partial^2 u}{\partial 
+x^2}$$
+and show the equation separates into equations for $T$ and $X.$ <p />
+</li>
+
+<li>Make the substitution $u(t,x)=T(t)X(x)$ in the wave equation
+$$ \frac{\partial^2 u}{\partial t^2} = c\frac{\partial^2 u}{\partial 
+x^2}$$
+and show the equation separates into equations for $T$ and $X.$ <p />
+</li>
+
+<!--
+<li>Find and classify (as regular or irregular) the singular points for the 
+differential equations:
+<ol type='a'>
+<li>$(x^4-2x^2+1)y'' + (x^2+3x+2)y'+x^2y=0$</li>
+<li>$(x^2-2x-3)y''+(x^2+4x)y'+7y=0$</li>
+</ol><p />
+</li>
+<li>Find the roots of the indicial equations for the following equations
+<ol type='a'>
+<li>$(1-\cos(x))y''+\sin(x)y'+\tan(x)y=0$ about $x_0=0$</li>
+</ol>
+<p /></li>
+<li>The hypergeometric equation with parameters $a$, $b$, and $c$ 
+is  $$z(1-z)\frac{d^2w}{dz^2}+[c-(a+b+1)z]\frac{dw}{dz}-abw=0.$$
+Where are you guaranteed the series solution to the 
+hypergeometric equation about $z_0=0$ converges?<p />
+</li>
+<li>Solve the following:
+<ol type='a'>
+<li>$y''+4y'+3y=0$, $y(0)=0$, $y(1)=1$.</li>
+<li>For what values of $k$ are there infinitely many solutions to 
+$y''+k^2y=0$, 
+$y(0)=0$, $y(1)=0.$
+</ol>
+<p />
+</li>
+-->
+
+<li>Show that for any values of $a$ and $b$, if the boundary value problem 
+$y''+ ay' + by=0$, $y(0)=0$, $y(1)=0$, has a non-zero solution, then it 
+has infinitely many solutions. <b>Hint:</b> You don't have to solve the 
+equation to show this. Just assume you have one non-zero solution and show 
+how to make infinitely many more solutions from that one. 
+</li>
+
+</ol>
+
+<p />
+<a href=chap4ans.html target=_blank>Answers to the odd numbered 
+exercises.</a>
+
+<p />
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
