@@ -121,6 +121,30 @@ techniques of integration (particularly if you don't worry about convergence). Y
 </ul>
 The proofs of some of these identities are addressed in the written homework.
 <p />
+<h4>Convolution Equations</h4>
+While this book is about solving differential equations, in some cases it may be easier to think in terms of integrals than derivatives. Since integration and 
+differentiation are inverse operations by the funadamental theorem of calculus, integral equations and differential equations are deeply connected. 
+Just as we can solve differential equations using Laplace transforms, we can also use Laplace transforms to solve some types of integral equations. 
+One basic form of integral equations are convolution equations. Consider the equation
+$$ x(t) = \exp(-2t)\int_0^t \exp(-\tau)x(t-\tau) \, d\tau = x(t) = \exp(-2t) + \exp(-t)\star x(t). $$
+Taking the Laplace transform of both sides we get
+$$ \begin{align}
+X(s) &= \frac{1}{s+2} + \frac{1}{s+1}X(s) \\
+\left(1-\frac{1}{s+1}\right)X(s) &= \frac{1}{s+2} \\
+\frac{s}{s+1} X(s) &= \frac{1}{s+2} \\
+X(s) &= \frac{s+1}{s(s+2)} \\
+X(s) &= \frac{1/2}{s}+\frac{1/2}{s+2} 
+\end{align}
+and taking the inverse Laplace transform we find
+$$ x(t) = \frac{1+\exp(-2t)}{2}. $$
+The example above probably looked like it was made up just to make everything simple. Well, that's true. But in fact equations like this do come up
+in applications. Suppose you have a piece of equipment that fails randomly after some time and needes to be replaced.You want to know how many of that piece of equipment 
+you will need on average over a time interval of length T. Denote this average value by $X(t)$. Then $x(t)$ can be found from the <i>renewal equation</i>, 
+$$ x(t) = 1 + \int_0^T p(\tau)x(T-\tau) dt = 1 + p(t)\star x(t) $$
+where $p(t)$ is the probability density that the part fails at time $t$ (that is, $p(t)dt$ is the probability that the part fails in an infinitely small 
+time interval of length $dt$ around time $t$). This is just one example of where you may encounter integral equations and use techniques from this class to 
+analyze them. Signal processing in particular often involves solving convolution equations (which is referred to as "deconvolution" in that context).
+<p />
 <hr />
 &copy;1994-2026 Andrew G. Bennett
 </body>
