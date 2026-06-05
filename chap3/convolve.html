@@ -138,12 +138,12 @@ X(s) &= \frac{1/2}{s}+\frac{1/2}{s+2}
 and taking the inverse Laplace transform we find
 $$ x(t) = \frac{1+\exp(-2t)}{2}. $$
 The example above probably looked like it was made up just to make everything simple. Well, that's true. But in fact equations like this do come up
-in applications. Suppose you have a piece of equipment that fails randomly after some time and needes to be replaced.You want to know how many of that piece of equipment 
-you will need on average over a time interval of length T. Denote this average value by $X(t)$. Then $x(t)$ can be found from the <i>renewal equation</i>, 
+in applications. Suppose you have a piece of equipment that fails randomly after some time and needs to be replaced.You want to know how many of that piece of equipment 
+you will need on average over a time interval of length T. Denote this average value by $x(t)$. Then $x(t)$ can be found from the <i>renewal equation</i>, 
 $$ x(t) = 1 + \int_0^T p(\tau)x(T-\tau) dt = 1 + p(t)\star x(t) $$
 where $p(t)$ is the probability density that the part fails at time $t$ (that is, $p(t)dt$ is the probability that the part fails in an infinitely small 
 time interval of length $dt$ around time $t$). This is just one example of where you may encounter integral equations and use techniques from this class to 
-analyze them. Signal processing in particular often involves solving convolution equations (which is referred to as "deconvolution" in that context).
+analyze them. Signal processing in particular often involves solving convolution equations (which is typically referred to as "deconvolution" in that context).
 <p />
 <hr />
 &copy;1994-2026 Andrew G. Bennett
