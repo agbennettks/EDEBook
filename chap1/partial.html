@@ -86,14 +86,17 @@ THEOREM: Suppose $F(x,y(x))$ is a function of $x$ and $y$, where $y$ is a functi
 $$
 \frac{dF}{dx} = \frac{\partial F}{\partial x} + \frac{\partial F}{\partial y}\frac{dy}{dx}
 $$
-This extends in a straightforward way to functions of more than two variables. With these tools, you are ready 
-for most of the applications of multivariable calculus that we will encounter in this class.
+This extends in a straightforward way to functions of more than two variables. 
 <p />
 The last theorem in this section is a key result underlying machine learning algorithms.
 <p />
 THEOREM: Suppose $F(x_1, ..., x_n)$ is continuously differentiable (with respect to all variables). Then the <i>gradient</i>, 
 $$\nabla F = \left(\frac{\partial F}{\partial x_1}, ..., \frac{\partial F}{\partial x_n}\right)$$
 points in the direction of steepest increase for $F$, and $-\nabla F$ points in the direction of steepest descent.
+<p />
+So if you are looking for a minimum value, one approach is just to always move in the direction of the negative gradient until you
+reach a local minimum. With these tools, you are ready 
+for most of the applications of multivariable calculus that we will encounter in this class.
 <p />
 <hr />
 &copy;2026 Andrew G. Bennett
