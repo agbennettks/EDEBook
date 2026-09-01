@@ -1,0 +1,63 @@
+<head>
+<title>EDE Chapter 1: Exact Equations</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>How To Find An Integrating Factor
+</h3>
+</center>
+<h4>Discussion</h4>
+You may be wondering how we determined that $$\mu(x)=\exp\left(\int p(x)\,dx\right)$$
+was the integrating factor for the first-order linear equation 
+$$\frac{dy}{dx}+p(x)y=q(x).$$
+Of course, once we have this integrating factor it is straightforward to check that multiplying by it 
+gives an equation that can be integrated. That is just Step 3 of the paradigm. But that is just
+the integrating factor for a linear equation. How might you find integrating factors in general?
+<h4>Equation for an integrating factor</h4>
+Suppose we have the equation $M(x,y) dx + N(x,y) dy = 0$. We want to multiply through by an integrating
+factor $\mu(x,y)$ to turn this into an exact equation,
+$$\mu(x,y)M(x,y) dx + \mu(x,y)N(x,y) dy = 0.$$
+The test for exactness tells us we need to find a $\mu(x,y)$ such that
+$$\frac{\partial (\mu M)}{\partial y} = \frac{\partial (\mu N)}{\partial x}.$$
+Applying the product rule this becomes
+$$N \frac{\partial \mu}{\partial x} - M \frac{\partial \mu}{\partial y} +\mu \left(\frac{\partial N}{\partial x} - \frac{\partial M}{\partial y} \right).$$
+So to find an integrating factor for our first-order ordinary differential equation, we just need to solve a first-order partial differential equation. 
+Since it is usually more work to solve a partial differential equation than an ordinary differential equation, this doesn't seem to have helped much.
+<h4>Looking for a special case</h4>
+Because finding an integrating factor can be difficult, we usually restrict our attention to just trying to find
+integrating factors of some special form. For example, suppose we ask if there is an integrating factor that is a function of just $x$ 
+instead of both $x$ and $y$. Then $\frac{\partial \mu}{\partial y} = 0$ and we can write $\frac{d\mu}{dx}$instead of $\frac{\partial \mu}{\partial x}$
+so our equation becomes  
+$$\frac{d\mu}{dx}+\mu(x)\left(\frac{\frac{\partial N}{\partial x}-\frac{\partial M}{\partial y}}{N}\right) = 0. $$
+Now we can write this equation as
+$$\frac{1}{\mu(x)}\frac{d\mu}{dx} = \frac{\frac{\partial N}{\partial x}-\frac{\partial M}{\partial y}}{N}$$
+where the left-hand-side depends only on $x$. So in order for there to be an integrating factor that depends only in $x$, we must have the right-hand-side
+$$\frac{\frac{\partial N}{\partial x}-\frac{\partial M}{\partial y}}{N}$$ also depend only on $x$. 
+<h4>Linear equations</h4>
+Now consider the general first-order linear equation
+$\frac{dy}{dx}+p(x)y= q(x)$. If we rewrite this in the form $M dx + N dy = 0$ we get
+$$(p(x)y-q(x))dx + dy = 0$$ with $M=p(x)y-q(x)$ and $N=1$. Then 
+$$\frac{\frac{\partial N}{\partial x}-\frac{\partial M}{\partial y}}{N} = -p(x)$$
+which depends only on $x$. So we can find an integrating factor for a first-order linear equation that is a function of $x$ alone. Going back to first equation under "Looking for a special case" above, we need
+$$\frac{d\mu}{dx}-p(x)\mu=0.$$
+This is a separable equation which we can solve and we fiinally get
+$$\mu(x) = \exp\left(\int p(x)\,dx \right).$$
+So that's how to derive the integrating factor for first-order linear equations. You can of course look for what types of equations will have
+other sorts of integrating factors (e.g. a function $y$ alone). There are also a number of examples where people have some special integrating factor
+that works for a particular equation. Problems 47-49 in the homework give some examples.
+<p />
+<hr />
+&copy;2026 Andrew G. Bennett
+</body>
+</html>
