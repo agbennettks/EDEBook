@@ -233,11 +233,7 @@ function parseinput1() {
 var brd1 = JXG.JSXGraph.initBoard('box1', 
   {originX: 10, originY: 250, unitX: 25, unitY: 50, axis:true});
 
-/*
-var fixed1=brd1.create('functiongraph',
-[function(x) {return 4*Math.sin(x);},0,100],
-{strokeColor:"red",highlightStrokeColor:'purple',highlightStrokeOpacity:1});
-*/
+
   
 var resp1=brd1.create('functiongraph', 
 [function(x) { return evalatx(x,m1,c1,k1,f1,w1,y10,y11,a1,b1); },0,100],
