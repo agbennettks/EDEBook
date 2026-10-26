@@ -1,0 +1,152 @@
+<head>
+<title>EDE Chapter 3: Laplace Transforms</title>
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js" defer></script>
+</head>
+
+<body>
+<a href='../index.html'>Table of Contents</a>
+<hr />
+<center>
+<h3>Behavior of Solutions to First-Order Linear Systems</h3>
+</center>
+<p />
+<a href='syslab.html' target='_blank'>Launch Systems App</a>. 
+<p />
+The solution of a system is a pair of functions, <i>x</i>(<i>t</i>) and 
+<i>y</i>(<i>t</i>) (or even three or more functions depending on the size 
+of the system). To view the solution, it is usually most helpful to 
+consider (<i>x</i>(<i>t</i>),&nbsp;<i>y</i>(<i>t</i>)) as a parametric 
+curve which can be plotted on the <i>xy</i>-plane. In this lab we will 
+look at a variety of such curves and develop some ideas about how the 
+pictures relate to the initial equation.
+<p />
+Launch the <a href='syslab.html' target='_blank'>systems app</a>.
+You can enter a constant-coefficient first-order system for <i>x</i> and 
+<i>y</i>, along with a pair of initial values in the applet at the top of the page. If you press the 
+<nobr>"Update Graph"</nobr> button, it will draw the solution to the system 
+as a parametric curve in blue. It will also draw two lines. The red line 
+marks where <nobr><i>x'</i> = 0</nobr> and the green line 
+marks where <nobr><i>y'</i> = 0</nobr>. The arrows show the direction the 
+blue parametric curve will travel when it crosses the line (as <i>t</i> 
+increases). If you change the initial conditions without changing the 
+equations, a new curve will be added to the current graph, with the old 
+blue curve changing to gray so you can clearly distinguish the new curve
+from the old. The 
+<nobr>"Clear Old Curves"</nobr> button will erase all the blue and 
+gray curves if 
+things get too confusing. If you change the equations, all the old curves 
+will be automatically erased when you <nobr>"Update Graph"</nobr> as part 
+of graphing the new system.
+<h4>Questions</h4>
+<ol>
+<li>Experiment with different systems and initial values. Note that the 
+solution curves are always horizontal when they cross the green line and 
+vertical when they cross the red line. <b>Why do the curves behave 
+like that?</b><p /></li>
+
+<li><b>Now find examples of systems of each of the following 6 types of 
+systems.</b> Note 
+that you don't have to find examples that look exactly like the pictures, 
+just examples that have the same sort of behavior. Of course, using 
+the red and green lines you can actually match the pictures without 
+much effort, and that is probably the easiest way to find examples of some 
+of the behaviors.
+
+<table><tr><td valign=top>(A)</td><td valign=top>
+Solutions diverge straight out to infinity</td>
+<td><img src=sys1.png height=501 width=501 alig=right>
+</td></tr>
+<tr><td colspan=3><p /><hr /></td></tr>
+
+<tr><td valign=top>(B)</td><td valign=top>
+Solutions converge directly to the origin (possibly with a "twist" as 
+illustrated here).
+</td><td>
+<img src=sys2.png height=501 width=501 alig=right>
+</td></tr>
+<tr><td colspan=3><p /><hr /></td></tr>
+
+<tr><td valign=top>(C)</td><td valign=top>
+A "saddle point" at (0,0) where solutions converge toward the origin 
+in one direction and then turn and diverge away in a different direction 
+(there will be one solution converging to the origin in between the 
+solutions turning in each direction). 
+</td><td>
+<img src=sys3.png height=501 width=501 alig=right>
+</td></tr>
+<tr><td colspan=3><p /><hr /></td></tr>
+
+<tr><td valign=top>(D)</td><td valign=top>
+Solutions spiral out to infinity.
+</td><td>
+<img src=sys4.png height=501 width=501 alig=right>
+</td></tr>
+<tr><td colspan=3><p /><hr /></td></tr>
+
+<tr><td valign=top>(E)</td><td valign=top>
+Solutions spiral in to the origin.
+</td><td>
+<img src=sys5.png height=501 width=501 alig=right>
+</td></tr>
+<tr><td colspan=3><p /><hr /></td></tr>
+
+<tr><td valign=top>(F)</td><td valign=top>
+Solutions spin around the origin along ellipses, neither converging 
+toward the origin nor diverging away from it.
+</td><td>
+<img src=sys6.png height=501 width=501 alig=right>
+</td></tr></table>
+<tr><td colspan=3><p /><hr /></td></tr>
+
+<p /></li>
+
+<li>In the system
+<p /><center>
+<i>x'</i> = <i>a</i><i>x</i> + <i>b</i><i>y</i>, 
+<i>x</i>(0)=<i>x</i><sub>0</sub>,<br>
+<i>y'</i> = <i>c</i><i>x</i> + <i>d</i><i>y</i>,
+<i>y</i>(0)=<i>y</i><sub>0</sub>,<br>
+</center><p />
+two very useful quantities to know are the 
+<nobr><u>trace</u> = <i>a</i> + <i>d</i></nobr> and the
+<nobr><u>determinant</u> = <i>ad</i> - <i>bc</i></nobr>. Compute the trace 
+and determinant for each of your examples. <b>Can you find a relationship
+between the type of system (saddle, spiral in, etc.) and the values of the 
+trace and determinant?</b> Many of these are straightforward, but 
+distinguishing between a couple of cases will be a little subtle. 
+You will want to check some other examples to be sure you have the 
+relationship correct.<p /></li>
+
+<li>Finally, write the Laplace transform of the solutions to the system
+<p><center>
+<i>x'</i> = <i>a</i><i>x</i> + <i>b</i><i>y</i>, 
+<i>x</i>(0)=<i>x</i><sub>0</sub>,<br>
+<i>y'</i> = <i>c</i><i>x</i> + <i>d</i><i>y</i>,
+<i>y</i>(0)=<i>y</i><sub>0</sub>,<br>
+</center><p />
+in terms of the coefficients, <i>a</i>, <i>b</i>, <i>c</i>, <i>d</i>, 
+<i>x</i><sub>0</sub>, and <i>y</i><sub>0</sub>.
+<b>Identify where the trace and determinant appear in the formulas for the 
+solution. Explain why knowledge of the trace and determinant should enable 
+you to predict the form of the solution.</b> You don't have to justify 
+each of 
+your 6 relationships, just relate what you discover to a previous lab to 
+explain in general why knowledge of the trace and determinant can give you 
+so much information about the shape of the solution.<p /></li>
+</ol>
+
+<p />
+Prepare a lab report for this lab which includes your results for the 
+questions/instructions in bold face.
+<p />
+
+<hr />
+&copy;1994-2026 Andrew G. Bennett
+</body>
