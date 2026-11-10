@@ -22,12 +22,24 @@ function evalatx(x,n) {
   return tot;
 }
 
+var ymax=1000;
+  
 function makecurve(n) {
+  var y, last=ymax;
   var datax=[];
   var datay=[];
   for (x=-5;x<=5;x+=.01) {
+    y=evalatx(x,n);
+    if (isNaN(y)) {
+      y=last;
+    } else if (y>ymax) {
+      y=ymax;
+    } else if (y<-ymax) {
+      y=-ymax;
+    }
     datax.push(x);
-    datay.push(evalatx(x,n));
+    datay.push(y);
+    last=y;
   }
   return [datax,datay];
 }
